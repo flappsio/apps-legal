@@ -601,14 +601,14 @@
     <!-- Top Bar Navigation -->
     <nav class="top-bar" aria-label="Üst Menü">
       <div class="nav-actions">
-        <a href="../index.html" class="nav-btn legal-nav-link">
+        <a href="../index.html" data-base-href="../index.html" class="nav-btn legal-nav-link">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="19" y1="12" x2="5" y2="12"></line>
             <polyline points="12 19 5 12 12 5"></polyline>
           </svg>
           Legal Hub
         </a>
-        <a href="./privacy-policy.html" class="nav-btn legal-nav-link">
+        <a href="privacy-policy.html" data-base-href="privacy-policy.html" class="nav-btn legal-nav-link">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           <span>Gizlilik Politikası</span>
         </a>
@@ -616,7 +616,7 @@
 
       <div class="brand-group">
         <div class="app-brand">
-          <img src="../assets/images/logo.png" alt="Crosshair Valo Logo" class="brand-logo-img" />
+          <img src="../assets/images/logo.png" onerror="this.onerror=null; this.src='assets/images/logo.png';" alt="Crosshair Valo Logo" class="brand-logo-img" />
           <span>Crosshair Valo</span>
         </div>
 
@@ -908,8 +908,8 @@
     <footer>
       <div>© 2026 FL • Apps. Tüm hakları saklıdır.</div>
       <div class="footer-links">
-        <a href="./privacy-policy.html" class="legal-nav-link">Gizlilik Politikası</a>
-        <a href="../index.html" class="legal-nav-link">Tüm Uygulamalar</a>
+        <a href="privacy-policy.html" data-base-href="privacy-policy.html" class="legal-nav-link">Gizlilik Politikası</a>
+        <a href="../index.html" data-base-href="../index.html" class="legal-nav-link">Tüm Uygulamalar</a>
       </div>
     </footer>
   </div>
@@ -954,7 +954,7 @@
       const query = `?theme=${encodeURIComponent(theme)}`;
       
       document.querySelectorAll('.legal-nav-link').forEach(link => {
-        const baseHref = link.getAttribute('href').split('?')[0];
+        const baseHref = link.getAttribute('data-base-href') || link.getAttribute('href').split('?')[0];
         link.setAttribute('href', baseHref + query);
       });
     }

@@ -653,14 +653,14 @@
     <!-- Top Bar Navigation -->
     <nav class="top-bar" aria-label="Üst Menü">
       <div class="nav-actions">
-        <a href="../index.html" class="nav-btn legal-nav-link">
+        <a href="../index.html" data-base-href="../index.html" class="nav-btn legal-nav-link">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="19" y1="12" x2="5" y2="12"></line>
             <polyline points="12 19 5 12 12 5"></polyline>
           </svg>
           Legal Hub
         </a>
-        <a href="./terms-of-use.html" class="nav-btn legal-nav-link">
+        <a href="terms-of-use.html" data-base-href="terms-of-use.html" class="nav-btn legal-nav-link">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
           <span>Kullanım Koşulları</span>
         </a>
@@ -668,7 +668,7 @@
 
       <div class="brand-group">
         <div class="app-brand">
-          <img src="../assets/images/logo.png" alt="Crosshair Valo Logo" class="brand-logo-img" />
+          <img src="../assets/images/logo.png" onerror="this.onerror=null; this.src='assets/images/logo.png';" alt="Crosshair Valo Logo" class="brand-logo-img" />
           <span>Crosshair Valo</span>
         </div>
 
@@ -1047,8 +1047,8 @@
     <footer>
       <div>© 2026 FL • Apps. Tüm hakları saklıdır.</div>
       <div class="footer-links">
-        <a href="./terms-of-use.html" class="legal-nav-link">Kullanım Koşulları</a>
-        <a href="../index.html" class="legal-nav-link">Tüm Uygulamalar</a>
+        <a href="terms-of-use.html" data-base-href="terms-of-use.html" class="legal-nav-link">Kullanım Koşulları</a>
+        <a href="../index.html" data-base-href="../index.html" class="legal-nav-link">Tüm Uygulamalar</a>
       </div>
     </footer>
   </div>
@@ -1094,7 +1094,7 @@
       const query = `?theme=${encodeURIComponent(theme)}`;
       
       document.querySelectorAll('.legal-nav-link').forEach(link => {
-        const baseHref = link.getAttribute('href').split('?')[0];
+        const baseHref = link.getAttribute('data-base-href') || link.getAttribute('href').split('?')[0];
         link.setAttribute('href', baseHref + query);
       });
     }

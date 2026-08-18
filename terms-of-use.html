@@ -4,8 +4,16 @@
   <meta charset="UTF-8" />
   <title>Yönlendiriliyor... - Crosshair Valo Kullanım Koşulları</title>
   <script>
-    const search = window.location.search || "";
-    window.location.replace("./crosshair/terms-of-use.html" + search);
+    (function() {
+      const search = window.location.search || "";
+      const path = window.location.pathname;
+      let target = "crosshair/terms-of-use.html";
+      if (path.endsWith("/terms-of-use.html") || path.endsWith("/terms-of-use")) {
+        const basePath = path.substring(0, path.lastIndexOf("/") + 1);
+        target = basePath + "crosshair/terms-of-use.html";
+      }
+      window.location.replace(target + search);
+    })();
   </script>
 </head>
 <body style="background-color: #12131A; color: #F2F1F0; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0;">
