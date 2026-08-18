@@ -1,26 +1,39 @@
-# index.html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>App Legal & Policies</title>
+  <title>App Legal & Policies | FL • Apps</title>
   <meta
     name="description"
-    content="Privacy policies, terms of use, and legal information for our applications."
+    content="Mobil uygulamalarımıza ait gizlilik politikaları, kullanım koşulları ve yasal bilgilendirmeler."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
   />
 
   <style>
     :root {
       color-scheme: dark;
-      --background: #0f1117;
-      --surface: #171a22;
-      --surface-hover: #1d212b;
-      --border: #2a2f3a;
-      --text: #f5f7fa;
-      --text-secondary: #9ca3af;
+      --bg-base: #0a0c12;
+      --bg-surface: #121622;
+      --bg-card: #181d2c;
+      --bg-card-hover: #1e2438;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(124, 92, 255, 0.4);
+      --text-main: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
       --accent: #7c5cff;
+      --accent-gradient: linear-gradient(135deg, #7c5cff 0%, #a855f7 100%);
+      --accent-glow: rgba(124, 92, 255, 0.2);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
     }
 
     * {
@@ -31,30 +44,57 @@
 
     body {
       min-height: 100vh;
-      font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-      background: var(--background);
-      color: var(--text);
+      font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-base);
+      color: var(--text-main);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      background-image: 
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(124, 92, 255, 0.15), transparent 70%),
+        radial-gradient(circle 600px at 100% 400px, rgba(168, 85, 247, 0.05), transparent 60%);
+      background-attachment: fixed;
     }
 
     .container {
       width: min(960px, calc(100% - 40px));
       margin: 0 auto;
-      padding: 80px 0;
+      padding: 70px 0;
     }
 
     header {
       margin-bottom: 48px;
     }
 
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(124, 92, 255, 0.12);
+      border: 1px solid rgba(124, 92, 255, 0.3);
+      border-radius: 20px;
+      color: #c4b5fd;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .brand-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent);
+    }
+
     h1 {
-      font-size: clamp(2rem, 5vw, 3rem);
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
       margin-bottom: 12px;
+      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     header p {
@@ -65,35 +105,78 @@
 
     .apps {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
     }
 
     .app-card {
-      padding: 24px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      transition:
-        transform 0.2s ease,
-        background 0.2s ease;
+      padding: 28px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .app-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent-gradient);
+      opacity: 0;
+      transition: opacity 0.25s ease;
     }
 
     .app-card:hover {
-      transform: translateY(-3px);
-      background: var(--surface-hover);
+      transform: translateY(-4px);
+      background: var(--bg-card);
+      border-color: var(--border-hover);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .app-card:hover::before {
+      opacity: 1;
+    }
+
+    .app-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .app-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--accent-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: bold;
+      box-shadow: 0 4px 12px var(--accent-glow);
     }
 
     .app-name {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 6px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: -0.01em;
     }
 
     .app-description {
       color: var(--text-secondary);
-      font-size: 0.95rem;
-      margin-bottom: 20px;
+      font-size: 0.94rem;
+      margin-bottom: 24px;
+      line-height: 1.55;
     }
 
     .links {
@@ -105,32 +188,57 @@
     .links a {
       display: inline-flex;
       align-items: center;
-      padding: 8px 12px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      color: var(--text);
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-card);
+      color: var(--text-main);
       text-decoration: none;
-      font-size: 0.9rem;
-      transition:
-        background 0.2s ease,
-        border-color 0.2s ease;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
     }
 
     .links a:hover {
-      background: rgba(124, 92, 255, 0.12);
+      background: rgba(124, 92, 255, 0.15);
       border-color: var(--accent);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .links a.primary-link {
+      background: var(--accent-gradient);
+      border: none;
+      color: #ffffff;
+      box-shadow: 0 4px 14px var(--accent-glow);
+    }
+
+    .links a.primary-link:hover {
+      box-shadow: 0 6px 20px rgba(124, 92, 255, 0.4);
     }
 
     footer {
-      margin-top: 64px;
+      margin-top: 70px;
       padding-top: 24px;
-      border-top: 1px solid var(--border);
-      color: var(--text-secondary);
-      font-size: 0.9rem;
+      border-top: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
     footer a {
       color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: var(--text-main);
     }
   </style>
 </head>
@@ -138,60 +246,58 @@
 <body>
   <main class="container">
     <header>
+      <div class="brand-badge">
+        <span class="brand-dot"></span>
+        FL • Apps Legal Portal
+      </div>
       <h1>App Legal & Policies</h1>
 
       <p>
-        Privacy policies, terms of use, and other legal information
-        for our applications.
+        Mobil uygulamalarımıza ait gizlilik politikaları, kullanım koşulları ve diğer yasal bilgilendirmelere buradan ulaşabilirsiniz.
       </p>
     </header>
 
     <section class="apps">
 
+      <!-- Crosshair Valo -->
       <article class="app-card">
-        <div class="app-name">Valorant Crosshair Pro</div>
+        <div>
+          <div class="app-header">
+            <div class="app-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="22" y1="12" x2="18" y2="12"></line>
+                <line x1="6" y1="12" x2="2" y2="12"></line>
+                <line x1="12" y1="6" x2="12" y2="2"></line>
+                <line x1="12" y1="22" x2="12" y2="18"></line>
+              </svg>
+            </div>
+            <div class="app-name">Crosshair Valo</div>
+          </div>
 
-        <p class="app-description">
-          Legal documents and privacy information for Valorant Crosshair Pro.
-        </p>
+          <p class="app-description">
+            Crosshair Valo mobil uygulaması için resmi gizlilik politikası, lisans şartları ve kullanım koşulları.
+          </p>
+        </div>
 
         <div class="links">
-          <a href="./crosshair/privacy-policy.html">
-            Privacy Policy
+          <a href="./crosshair/privacy-policy.html" class="primary-link">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Gizlilik Politikası
           </a>
 
           <a href="./crosshair/terms-of-use.html">
-            Terms of Use
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            Kullanım Koşulları
           </a>
         </div>
       </article>
-
-      <!-- Add future applications here -->
-
-      <!--
-      <article class="app-card">
-        <div class="app-name">App Name</div>
-
-        <p class="app-description">
-          Legal documents for App Name.
-        </p>
-
-        <div class="links">
-          <a href="./app-name/privacy-policy.html">
-            Privacy Policy
-          </a>
-
-          <a href="./app-name/terms-of-use.html">
-            Terms of Use
-          </a>
-        </div>
-      </article>
-      -->
 
     </section>
 
     <footer>
-      © 2026 All rights reserved.
+      <div>© 2026 FL • Apps. Tüm hakları saklıdır.</div>
+      <div>İletişim: <a href="mailto:dev.flapps.info@gmail.com">dev.flapps.info@gmail.com</a></div>
     </footer>
   </main>
 </body>
