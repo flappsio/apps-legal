@@ -2,7 +2,7 @@
 
 **Son güncelleme:** 18 Ağustos 2026  
 **Veri sorumlusu / uygulama yayıncısı:** FL • Apps  
-**İletişim:** dev.flapps.info@gmail.com
+**İletişim:** info@flappsio.com
 
 Bu Gizlilik Bildirimi, Crosshair Valo mobil uygulamasını ("Uygulama") kullandığınızda hangi bilgilerin işlendiğini, bu bilgilerin hangi amaçlarla kullanıldığını, kimlerle paylaşılabildiğini ve tercihlerinizi nasıl yönetebileceğinizi açıklar.
 
@@ -117,5 +117,5 @@ Uygulamanın özellikleri, kullandığımız hizmetler veya hukuki gereklilikler
 Bu Gizlilik Bildirimi, kişisel bilgileriniz veya hak talepleriniz hakkında bizimle iletişime geçebilirsiniz:
 
 **Veri sorumlusu / yayıncı:** FL • Apps  
-**E-posta:** dev.flapps.info@gmail.com
+**E-posta:** info@flappsio.com
 

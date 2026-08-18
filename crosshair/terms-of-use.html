@@ -8,6 +8,7 @@
     name="description"
     content="Crosshair Valo mobil uygulaması kullanım koşulları, lisans şartları, abonelik kuralları ve yasal sorumluluklar."
   />
+  <link rel="icon" type="image/png" href="../assets/images/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -15,33 +16,81 @@
     rel="stylesheet"
   />
 
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
   <style>
-    :root {
+    :root,
+    [data-theme="dark"] {
       color-scheme: dark;
-      --bg-base: #0a0c12;
-      --bg-surface: #121622;
-      --bg-card: #181d2c;
-      --bg-card-hover: #1e2438;
-      --bg-subtle: #22293f;
+      --bg-base: #12131A; /* kDarkBackground2 */
+      --bg-surface: #1A1B23; /* kDarkBackground / kDarkColor */
+      --bg-card: #20222E;
+      --bg-card-hover: #292B3A;
+      --bg-subtle: #252836;
       --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-focus: #7c5cff;
-      --text-main: #f8fafc;
-      --text-secondary: #94a3b8;
-      --text-muted: #64748b;
-      --accent: #7c5cff;
-      --accent-gradient: linear-gradient(135deg, #7c5cff 0%, #a855f7 100%);
-      --accent-glow: rgba(124, 92, 255, 0.2);
-      --badge-bg: rgba(124, 92, 255, 0.12);
-      --badge-border: rgba(124, 92, 255, 0.3);
+      --border-focus: #69F0AE;
+      --text-main: #F2F1F0; /* kLightColor */
+      --text-secondary: #9E9EAF;
+      --text-muted: #68697A;
+      --accent: #69F0AE; /* kIconDarkColor */
+      --accent-gradient: linear-gradient(135deg, #69F0AE 0%, #00E676 100%);
+      --accent-glow: rgba(105, 240, 174, 0.25);
+      --badge-bg: rgba(105, 240, 174, 0.12);
+      --badge-border: rgba(105, 240, 174, 0.3);
+      --badge-text: #69F0AE;
+      --link-color: #69F0AE;
+      --link-hover: #00E676;
+      --callout-bg: rgba(105, 240, 174, 0.08);
+      --callout-border: rgba(105, 240, 174, 0.25);
+      --contact-bg: linear-gradient(145deg, var(--bg-card) 0%, rgba(105, 240, 174, 0.1) 100%);
+      --contact-border: rgba(105, 240, 174, 0.3);
+      --bg-radial-1: rgba(105, 240, 174, 0.1);
+      --bg-radial-2: rgba(18, 19, 26, 0.8);
       --radius-sm: 8px;
       --radius-md: 14px;
       --radius-lg: 20px;
+    }
+
+    [data-theme="light"] {
+      color-scheme: light;
+      --bg-base: #E7E6E5; /* kLightBackground2 */
+      --bg-surface: #F2F1F0; /* kLightBackground / kLightColor */
+      --bg-card: #FFFFFF;
+      --bg-card-hover: #F8F7F6;
+      --bg-subtle: #ECEAE8;
+      --border-subtle: rgba(26, 27, 35, 0.12);
+      --border-focus: #177654;
+      --text-main: #1A1B23; /* kDarkColor */
+      --text-secondary: #555666;
+      --text-muted: #888998;
+      --accent: #177654; /* kIconLightColor */
+      --accent-gradient: linear-gradient(135deg, #177654 0%, #1ea576 100%);
+      --accent-glow: rgba(23, 118, 84, 0.2);
+      --badge-bg: rgba(23, 118, 84, 0.1);
+      --badge-border: rgba(23, 118, 84, 0.25);
+      --badge-text: #177654;
+      --link-color: #177654;
+      --link-hover: #0e4c35;
+      --callout-bg: rgba(23, 118, 84, 0.08);
+      --callout-border: rgba(23, 118, 84, 0.25);
+      --contact-bg: linear-gradient(145deg, var(--bg-card) 0%, rgba(23, 118, 84, 0.08) 100%);
+      --contact-border: rgba(23, 118, 84, 0.25);
+      --bg-radial-1: rgba(23, 118, 84, 0.08);
+      --bg-radial-2: rgba(242, 241, 240, 0.9);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
     }
 
     html {
@@ -56,8 +105,8 @@
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       background-image: 
-        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(124, 92, 255, 0.15), transparent 70%),
-        radial-gradient(circle 600px at 100% 400px, rgba(168, 85, 247, 0.05), transparent 60%);
+        radial-gradient(ellipse 80% 50% at 50% -20%, var(--bg-radial-1), transparent 70%),
+        radial-gradient(circle 600px at 100% 400px, var(--bg-radial-2), transparent 60%);
       background-attachment: fixed;
     }
 
@@ -100,28 +149,62 @@
 
     .nav-btn:hover {
       color: var(--text-main);
-      border-color: var(--accent);
       background: var(--bg-card);
       transform: translateY(-1px);
+    }
+
+    .theme-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      cursor: pointer;
+    }
+
+    .theme-toggle-btn:hover {
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    [data-theme="dark"] .sun-icon {
+      display: block;
+    }
+    [data-theme="dark"] .moon-icon {
+      display: none;
+    }
+    [data-theme="light"] .sun-icon {
+      display: none;
+    }
+    [data-theme="light"] .moon-icon {
+      display: block;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
 
     .app-brand {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-size: 0.95rem;
+      gap: 12px;
+      font-size: 1rem;
       font-weight: 700;
       letter-spacing: -0.01em;
       color: var(--text-main);
     }
 
-    .app-brand-badge {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      background: var(--accent-gradient);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--accent);
+    .brand-logo-img {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      object-fit: contain;
     }
 
     /* Header & Hero */
@@ -133,7 +216,6 @@
       margin-bottom: 40px;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
     }
 
     .hero::before {
@@ -161,7 +243,7 @@
       background: var(--badge-bg);
       border: 1px solid var(--badge-border);
       border-radius: 20px;
-      color: #c4b5fd;
+      color: var(--badge-text);
       font-size: 0.82rem;
       font-weight: 600;
     }
@@ -172,9 +254,7 @@
       letter-spacing: -0.025em;
       line-height: 1.25;
       margin-bottom: 16px;
-      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--text-main);
     }
 
     .hero-meta-grid {
@@ -207,13 +287,13 @@
     }
 
     .meta-value a {
-      color: #a78bfa;
+      color: var(--link-color);
       text-decoration: none;
       transition: color 0.2s;
     }
 
     .meta-value a:hover {
-      color: #c4b5fd;
+      color: var(--link-hover);
       text-decoration: underline;
     }
 
@@ -264,13 +344,14 @@
       font-size: 0.83rem;
       text-decoration: none;
       line-height: 1.4;
-      transition: all 0.15s ease;
+      opacity: 0.85;
+      transition: opacity 0.2s ease, color 0.2s ease, background-color 0.2s ease;
     }
 
     .toc-link:hover {
       color: var(--text-main);
       background: var(--bg-subtle);
-      padding-left: 14px;
+      opacity: 1;
     }
 
     /* Content Area */
@@ -290,7 +371,7 @@
     }
 
     .policy-section:hover {
-      border-color: rgba(124, 92, 255, 0.3);
+      background: var(--bg-card);
     }
 
     .section-header {
@@ -319,7 +400,7 @@
     h3 {
       font-size: 1.05rem;
       font-weight: 600;
-      color: #e2e8f0;
+      color: var(--text-main);
       margin: 22px 0 10px;
       display: flex;
       align-items: center;
@@ -374,8 +455,8 @@
 
     /* Callouts */
     .callout {
-      background: rgba(124, 92, 255, 0.08);
-      border: 1px solid rgba(124, 92, 255, 0.25);
+      background: var(--callout-bg);
+      border: 1px solid var(--callout-border);
       border-left: 4px solid var(--accent);
       border-radius: var(--radius-sm);
       padding: 16px 20px;
@@ -389,15 +470,15 @@
     }
 
     .callout p {
-      color: #e2e8f0;
+      color: var(--text-main);
       font-size: 0.92rem;
       margin: 0;
     }
 
     /* Contact Box */
     .contact-box {
-      background: linear-gradient(145deg, var(--bg-card) 0%, rgba(124, 92, 255, 0.1) 100%);
-      border: 1px solid rgba(124, 92, 255, 0.3);
+      background: var(--contact-bg);
+      border: 1px solid var(--contact-border);
       border-radius: var(--radius-md);
       padding: 24px;
       margin-top: 14px;
@@ -411,7 +492,7 @@
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
-      color: #c4b5fd;
+      color: var(--badge-text);
       text-decoration: none;
       font-family: "JetBrains Mono", monospace;
       font-size: 0.95rem;
@@ -421,9 +502,7 @@
     }
 
     .contact-email:hover {
-      border-color: var(--accent);
       background: var(--bg-card-hover);
-      box-shadow: 0 0 15px var(--accent-glow);
     }
 
     /* Footer */
@@ -474,7 +553,6 @@
       opacity: 0;
       visibility: hidden;
       transition: all 0.25s ease;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
       z-index: 100;
     }
 
@@ -487,7 +565,6 @@
       background: var(--accent);
       color: #fff;
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px var(--accent-glow);
     }
 
     /* Responsive */
@@ -529,9 +606,28 @@
         </a>
       </div>
 
-      <div class="app-brand">
-        <span class="app-brand-badge"></span>
-        Crosshair Valo
+      <div class="brand-group">
+        <div class="app-brand">
+          <img src="../assets/images/logo.png" alt="Crosshair Valo Logo" class="brand-logo-img" />
+          <span>Crosshair Valo</span>
+        </div>
+
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Temayı Değiştir" title="Açık / Koyu Tema">
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
       </div>
     </nav>
 
@@ -563,7 +659,7 @@
         <div class="meta-item">
           <span class="meta-label">İletişim</span>
           <span class="meta-value">
-            <a href="mailto:dev.flapps.info@gmail.com">dev.flapps.info@gmail.com</a>
+            <a href="mailto:info@flappsio.com">info@flappsio.com</a>
           </span>
         </div>
       </div>
@@ -781,9 +877,9 @@
           <div class="contact-box">
             <p><strong>Yayıncı / Geliştirici:</strong> FL • Apps</p>
             <p style="margin-top: 6px;"><strong>E-posta:</strong></p>
-            <a href="mailto:dev.flapps.info@gmail.com" class="contact-email">
+            <a href="mailto:info@flappsio.com" class="contact-email">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-              dev.flapps.info@gmail.com
+              info@flappsio.com
             </a>
           </div>
         </section>
@@ -842,6 +938,15 @@
           link.style.fontWeight = '600';
         }
       });
+    });
+
+    // Theme toggle listener
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    themeToggleBtn.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
     });
   </script>
 </body>

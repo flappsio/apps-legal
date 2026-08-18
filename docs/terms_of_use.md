@@ -2,7 +2,7 @@
 
 **Son güncelleme:** 18 Ağustos 2026  
 **Uygulama yayıncısı:** FL • Apps  
-**İletişim:** dev.flapps.info@gmail.com
+**İletişim:** info@flappsio.com
 
 Crosshair Valo mobil uygulamasını ("Uygulama") indirerek, yükleyerek veya kullanarak bu Kullanım Koşulları'nı ("Koşullar") kabul etmiş sayılırsınız. Bu Koşulları kabul etmiyorsanız lütfen Uygulamayı yüklemeyiniz veya kullanmayınız.
 
@@ -106,4 +106,4 @@ Bu Koşullar Türkiye Cumhuriyeti kanunlarına tabidir. Bu Koşullardan doğabil
 Bu Kullanım Koşulları ile ilgili soru, öneri veya destek talepleriniz için bizimle iletişime geçebilirsiniz:
 
 - **Yayıncı / Geliştirici:** FL • Apps  
-- **E-posta:** dev.flapps.info@gmail.com
+- **E-posta:** info@flappsio.com
