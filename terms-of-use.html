@@ -2,13 +2,16 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="0; url=./crosshair/terms-of-use.html" />
   <title>Yönlendiriliyor... - Crosshair Valo Kullanım Koşulları</title>
   <script>
-    window.location.href = "./crosshair/terms-of-use.html";
+    const search = window.location.search || "";
+    window.location.replace("./crosshair/terms-of-use.html" + search);
   </script>
 </head>
 <body style="background-color: #12131A; color: #F2F1F0; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0;">
-  <p>Kullanım Koşullarına yönlendiriliyorsunuz... <a href="./crosshair/terms-of-use.html" style="color: #69F0AE;">Buraya tıklayın</a>.</p>
+  <p>Kullanım Koşullarına yönlendiriliyorsunuz... <a id="redirectLink" href="./crosshair/terms-of-use.html" style="color: #69F0AE;">Buraya tıklayın</a>.</p>
+  <script>
+    document.getElementById('redirectLink').href = "./crosshair/terms-of-use.html" + (window.location.search || "");
+  </script>
 </body>
 </html>

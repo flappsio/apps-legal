@@ -19,10 +19,18 @@
 
   <script>
     (function() {
+      const params = new URLSearchParams(window.location.search);
+      
+      // Tema tespiti: URL parametresi (?theme=light|dark) -> localStorage -> prefers-color-scheme -> varsayılan dark
+      const urlTheme = params.get('theme');
       const savedTheme = localStorage.getItem('theme');
       const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+      const theme = (urlTheme === 'light' || urlTheme === 'dark') 
+        ? urlTheme 
+        : (savedTheme || (prefersDark ? 'dark' : 'light'));
+      
       document.documentElement.setAttribute('data-theme', theme);
+      if (urlTheme) localStorage.setItem('theme', theme);
     })();
   </script>
 
@@ -135,9 +143,9 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       color: var(--text-main);
@@ -216,7 +224,6 @@
 
     .app-card:hover {
       transform: translateY(-3px);
-      /* background: var(--bg-card); */
     }
 
     .app-card:hover::before {
@@ -351,11 +358,12 @@
     <div class="top-nav">
       <div class="brand-badge">
         <img src="./assets/images/logo.png" alt="FL Apps Logo" />
-        FL • Apps Legal Portal
+        <span>FL • Apps Legal Portal</span>
       </div>
 
+      <!-- Theme Switcher -->
       <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Temayı Değiştir" title="Açık / Koyu Tema">
-        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="5"></circle>
           <line x1="12" y1="1" x2="12" y2="3"></line>
           <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -366,7 +374,7 @@
           <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
         </svg>
-        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
         </svg>
       </button>
@@ -374,7 +382,6 @@
 
     <header>
       <h1>App Legal & Policies</h1>
-
       <p>
         Mobil uygulamalarımıza ait gizlilik politikaları, kullanım koşulları ve diğer yasal bilgilendirmelere buradan ulaşabilirsiniz.
       </p>
@@ -393,7 +400,7 @@
               <div class="app-name">Crosshair Valo</div>
               <div class="app-tag">
                 <span class="app-tag-dot"></span>
-                Crosshair Generator & Overlay
+                <span>Crosshair Generator & Overlay</span>
               </div>
             </div>
           </div>
@@ -404,14 +411,14 @@
         </div>
 
         <div class="links">
-          <a href="./crosshair/privacy-policy.html" class="primary-link">
+          <a href="./crosshair/privacy-policy.html" class="primary-link legal-link">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Gizlilik Politikası
+            <span>Gizlilik Politikası</span>
           </a>
 
-          <a href="./crosshair/terms-of-use.html">
+          <a href="./crosshair/terms-of-use.html" class="legal-link">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-            Kullanım Koşulları
+            <span>Kullanım Koşulları</span>
           </a>
         </div>
       </article>
@@ -425,13 +432,28 @@
   </main>
 
   <script>
+    function updateLinks() {
+      const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+      const query = `?theme=${encodeURIComponent(theme)}`;
+      
+      document.querySelectorAll('.legal-link').forEach(link => {
+        const baseHref = link.getAttribute('href').split('?')[0];
+        link.setAttribute('href', baseHref + query);
+      });
+    }
+
+    // Theme toggle
     const themeToggleBtn = document.getElementById('themeToggleBtn');
     themeToggleBtn.addEventListener('click', () => {
       const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
+      updateLinks();
     });
+
+    // Initial links sync
+    updateLinks();
   </script>
 </body>
 </html>

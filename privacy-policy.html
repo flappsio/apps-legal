@@ -2,13 +2,16 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="0; url=./crosshair/privacy-policy.html" />
   <title>Yönlendiriliyor... - Crosshair Valo Gizlilik Politikası</title>
   <script>
-    window.location.href = "./crosshair/privacy-policy.html";
+    const search = window.location.search || "";
+    window.location.replace("./crosshair/privacy-policy.html" + search);
   </script>
 </head>
 <body style="background-color: #12131A; color: #F2F1F0; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0;">
-  <p>Gizlilik Politikasına yönlendiriliyorsunuz... <a href="./crosshair/privacy-policy.html" style="color: #69F0AE;">Buraya tıklayın</a>.</p>
+  <p>Gizlilik Politikasına yönlendiriliyorsunuz... <a id="redirectLink" href="./crosshair/privacy-policy.html" style="color: #69F0AE;">Buraya tıklayın</a>.</p>
+  <script>
+    document.getElementById('redirectLink').href = "./crosshair/privacy-policy.html" + (window.location.search || "");
+  </script>
 </body>
 </html>
