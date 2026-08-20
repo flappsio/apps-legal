@@ -1,459 +1,53 @@
 <!DOCTYPE html>
-<html lang="tr" data-theme="dark">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="tr" data-theme="dark" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>App Legal & Policies | FL • Apps</title>
-  <meta
-    name="description"
-    content="Mobil uygulamalarımıza ait gizlilik politikaları, kullanım koşulları ve yasal bilgilendirmeler."
-  />
-  <link rel="icon" type="image/png" href="./assets/images/logo.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
-    rel="stylesheet"
-  />
+    <title>App Legal & Policies | flappsio</title>
+    <meta
+      name="description"
+      content="Mobil uygulamalarımıza ait gizlilik politikaları, kullanım koşulları ve yasal bilgilendirmeler."
+    />
+    <link rel="icon" type="image/png" href="/assets/images/logo.png" />
 
-  <script>
-    (function() {
-      const params = new URLSearchParams(window.location.search);
-      
-      // Tema tespiti: URL parametresi (?theme=light|dark) -> localStorage -> prefers-color-scheme -> varsayılan dark
-      const urlTheme = params.get('theme');
-      const savedTheme = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const theme = (urlTheme === 'light' || urlTheme === 'dark') 
-        ? urlTheme 
-        : (savedTheme || (prefersDark ? 'dark' : 'light'));
-      
-      document.documentElement.setAttribute('data-theme', theme);
-      if (urlTheme) localStorage.setItem('theme', theme);
-    })();
-  </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-  <style>
-    /* Dark Theme (Default: const.dart - kDarkBackground, kDarkBackground2, kIconDarkColor) */
-    :root,
-    [data-theme="dark"] {
-      color-scheme: dark;
-      --bg-base: #12131A; /* kDarkBackground2 */
-      --bg-surface: #1A1B23; /* kDarkBackground / kDarkColor */
-      --bg-card: #20222E;
-      --bg-card-hover: #292B3A;
-      --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-hover: rgba(105, 240, 174, 0.45);
-      --text-main: #F2F1F0; /* kLightColor */
-      --text-secondary: #9E9EAF;
-      --text-muted: #68697A;
-      --accent: #69F0AE; /* kIconDarkColor */
-      --accent-glow: rgba(105, 240, 174, 0.25);
-      --accent-gradient: linear-gradient(135deg, #69F0AE 0%, #00E676 100%);
-      --accent-contrast: #12131A;
-      --badge-bg: rgba(105, 240, 174, 0.12);
-      --badge-border: rgba(105, 240, 174, 0.3);
-      --badge-text: #69F0AE;
-      --bg-radial-1: rgba(105, 240, 174, 0.1);
-      --bg-radial-2: rgba(18, 19, 26, 0.8);
-      --radius-sm: 8px;
-      --radius-md: 14px;
-      --radius-lg: 20px;
-    }
+    <!-- Inline script to prevent theme flashing on load -->
+    <script>
+      (function () {
+        try {
+          const params = new URLSearchParams(window.location.search);
+          const urlTheme = params.get("theme");
+          const savedTheme = localStorage.getItem("theme");
+          const prefersDark =
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches;
+          const theme =
+            urlTheme === "light" || urlTheme === "dark"
+              ? urlTheme
+              : savedTheme || (prefersDark ? "dark" : "light");
 
-    /* Light Theme (const.dart - kLightBackground, kLightBackground2, kIconLightColor) */
-    [data-theme="light"] {
-      color-scheme: light;
-      --bg-base: #E7E6E5; /* kLightBackground2 */
-      --bg-surface: #F2F1F0; /* kLightBackground / kLightColor */
-      --bg-card: #FFFFFF;
-      --bg-card-hover: #F8F7F6;
-      --border-subtle: rgba(26, 27, 35, 0.12);
-      --border-hover: rgba(23, 118, 84, 0.45);
-      --text-main: #1A1B23; /* kDarkColor */
-      --text-secondary: #555666;
-      --text-muted: #888998;
-      --accent: #177654; /* kIconLightColor */
-      --accent-glow: rgba(23, 118, 84, 0.2);
-      --accent-gradient: linear-gradient(135deg, #177654 0%, #1ea576 100%);
-      --accent-contrast: #FFFFFF;
-      --badge-bg: rgba(23, 118, 84, 0.1);
-      --badge-border: rgba(23, 118, 84, 0.25);
-      --badge-text: #177654;
-      --bg-radial-1: rgba(23, 118, 84, 0.08);
-      --bg-radial-2: rgba(242, 241, 240, 0.9);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
-    }
-
-    body {
-      min-height: 100vh;
-      font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background-color: var(--bg-base);
-      color: var(--text-main);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      background-image: 
-        radial-gradient(ellipse 80% 50% at 50% -20%, var(--bg-radial-1), transparent 70%),
-        radial-gradient(circle 600px at 100% 400px, var(--bg-radial-2), transparent 60%);
-      background-attachment: fixed;
-    }
-
-    .container {
-      width: min(960px, calc(100% - 40px));
-      margin: 0 auto;
-      padding: 60px 0 80px;
-    }
-
-    /* Top Nav Bar with Theme Toggle */
-    .top-nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 40px;
-    }
-
-    .brand-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 6px 14px;
-      background: var(--badge-bg);
-      border: 1px solid var(--badge-border);
-      border-radius: 20px;
-      color: var(--badge-text);
-      font-size: 0.82rem;
-      font-weight: 600;
-    }
-
-    .brand-badge img {
-      width: 20px;
-      height: 20px;
-      border-radius: 4px;
-      object-fit: contain;
-    }
-
-    .theme-toggle-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-main);
-      cursor: pointer;
-    }
-
-    .theme-toggle-btn:hover {
-      color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    .sun-icon, .moon-icon {
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    [data-theme="dark"] .sun-icon {
-      display: block;
-    }
-    [data-theme="dark"] .moon-icon {
-      display: none;
-    }
-    [data-theme="light"] .sun-icon {
-      display: none;
-    }
-    [data-theme="light"] .moon-icon {
-      display: block;
-    }
-
-    header {
-      margin-bottom: 48px;
-    }
-
-    h1 {
-      font-size: clamp(2.2rem, 5vw, 3.2rem);
-      font-weight: 800;
-      letter-spacing: -0.025em;
-      margin-bottom: 12px;
-      color: var(--text-main);
-    }
-
-    header p {
-      max-width: 620px;
-      color: var(--text-secondary);
-      font-size: 1.05rem;
-    }
-
-    .apps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 24px;
-    }
-
-    .app-card {
-      padding: 28px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .app-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--accent-gradient);
-      opacity: 0;
-      transition: opacity 0.25s ease;
-    }
-
-    .app-card:hover {
-      transform: translateY(-3px);
-    }
-
-    .app-card:hover::before {
-      opacity: 1;
-    }
-
-    .app-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-
-    .app-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 14px;
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      padding: 6px;
-    }
-
-    .app-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .app-title-group {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .app-name {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--text-main);
-      letter-spacing: -0.01em;
-    }
-
-    .app-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    .app-tag-dot {
-      width: 6px;
-      height: 6px;
-      background: var(--accent);
-      border-radius: 50%;
-    }
-
-    .app-description {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      margin-bottom: 24px;
-      line-height: 1.6;
-    }
-
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .links a {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 18px;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border-subtle);
-      background: var(--bg-card);
-      color: var(--text-main);
-      text-decoration: none;
-      font-size: 0.88rem;
-      font-weight: 600;
-    }
-
-    .links a:hover {
-      background: var(--bg-card-hover);
-      color: var(--accent);
-      transform: translateY(-1px);
-    }
-
-    .links a.primary-link {
-      background: var(--accent-gradient);
-      border: none;
-      color: var(--accent-contrast);
-    }
-
-    .links a.primary-link:hover {
-      filter: brightness(1.08);
-      color: var(--accent-contrast);
-    }
-
-    footer {
-      margin-top: 70px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border-subtle);
-      color: var(--text-muted);
-      font-size: 0.88rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    footer a {
-      color: var(--text-secondary);
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      color: var(--accent);
-    }
-  </style>
-</head>
-
-<body>
-  <main class="container">
-    <div class="top-nav">
-      <div class="brand-badge">
-        <img src="assets/images/logo.png" onerror="this.onerror=null; this.src='../assets/images/logo.png';" alt="FL Apps Logo" />
-        <span>FL • Apps Legal Portal</span>
-      </div>
-
-      <!-- Theme Switcher -->
-      <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Temayı Değiştir" title="Açık / Koyu Tema">
-        <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="5"></circle>
-          <line x1="12" y1="1" x2="12" y2="3"></line>
-          <line x1="12" y1="21" x2="12" y2="23"></line>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-          <line x1="1" y1="12" x2="3" y2="12"></line>
-          <line x1="21" y1="12" x2="23" y2="12"></line>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-        </svg>
-        <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-      </button>
-    </div>
-
-    <header>
-      <h1>App Legal & Policies</h1>
-      <p>
-        Mobil uygulamalarımıza ait gizlilik politikaları, kullanım koşulları ve diğer yasal bilgilendirmelere buradan ulaşabilirsiniz.
-      </p>
-    </header>
-
-    <section class="apps">
-
-      <!-- Crosshair Valo -->
-      <article class="app-card">
-        <div>
-          <div class="app-header">
-            <div class="app-icon">
-              <img src="assets/images/logo.png" onerror="this.onerror=null; this.src='../assets/images/logo.png';" alt="Crosshair Valo" />
-            </div>
-            <div class="app-title-group">
-              <div class="app-name">Crosshair Valo</div>
-              <div class="app-tag">
-                <span class="app-tag-dot"></span>
-                <span>Crosshair Generator & Overlay</span>
-              </div>
-            </div>
-          </div>
-
-          <p class="app-description">
-            Crosshair Valo mobil uygulaması için resmi gizlilik politikası, lisans şartları ve kullanım koşulları.
-          </p>
-        </div>
-
-        <div class="links">
-          <a href="crosshair/privacy-policy.html" data-base-href="crosshair/privacy-policy.html" class="primary-link legal-link">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            <span>Gizlilik Politikası</span>
-          </a>
-
-          <a href="crosshair/terms-of-use.html" data-base-href="crosshair/terms-of-use.html" class="legal-link">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-            <span>Kullanım Koşulları</span>
-          </a>
-        </div>
-      </article>
-
-    </section>
-
-    <footer>
-      <div>© 2026 FL • Apps. Tüm hakları saklıdır.</div>
-      <div>İletişim: <a href="mailto:info@flappsio.com">info@flappsio.com</a></div>
-    </footer>
-  </main>
-
-  <script>
-    function updateLinks() {
-      const theme = document.documentElement.getAttribute('data-theme') || 'dark';
-      const query = `?theme=${encodeURIComponent(theme)}`;
-      
-      document.querySelectorAll('.legal-link').forEach(link => {
-        const baseHref = link.getAttribute('data-base-href') || link.getAttribute('href').split('?')[0];
-        link.setAttribute('href', baseHref + query);
-      });
-    }
-
-    // Theme toggle
-    const themeToggleBtn = document.getElementById('themeToggleBtn');
-    themeToggleBtn.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      updateLinks();
-    });
-
-    // Initial links sync
-    updateLinks();
-  </script>
-</body>
+          document.documentElement.setAttribute("data-theme", theme);
+          if (theme === "dark") {
+            document.documentElement.classList.add("dark");
+            document.documentElement.classList.remove("light");
+          } else {
+            document.documentElement.classList.add("light");
+            document.documentElement.classList.remove("dark");
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
