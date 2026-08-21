@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import {
-  ShieldCheck,
-  FileText,
-  Search,
-  CheckCircle2,
-  ExternalLink,
-  ChevronRight,
-  Sparkles,
-  Lock,
-  Zap,
-} from "lucide-react";
-import { APPS_DATA } from "@/data/apps";
-import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { APPS_DATA } from "@/data/apps";
+import {
+  CheckCircle2,
+  ChevronRight,
+  ExternalLink,
+  FileText,
+  Lock,
+  Search,
+  ShieldCheck,
+  Sparkles,
+  Zap,
+} from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export const HomePage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -46,7 +46,7 @@ export const HomePage: React.FC = () => {
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.15]">
             Şeffaf, Güvenilir ve <br />
-            <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-primary bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary via-primary/80 to-accent bg-clip-text text-transparent">
               Kullanıcı Odaklı
             </span>{" "}
             Politikalar
@@ -64,7 +64,7 @@ export const HomePage: React.FC = () => {
               placeholder="Uygulama adı veya yasal konu ara..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 h-12 text-sm bg-card/80 border-border/80 rounded-2xl shadow-sm"
+              className="pl-10 h-12 text-sm bg-card/80 border-border/80 rounded-2xl shadow-sm focus-visible:ring-primary"
             />
           </div>
         </div>
@@ -105,7 +105,7 @@ export const HomePage: React.FC = () => {
                 className="group relative flex flex-col justify-between overflow-hidden border-border/80 bg-card/70 backdrop-blur-sm hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300"
               >
                 {/* Accent top border gradient on hover */}
-                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-emerald-400 via-primary to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-primary via-primary/80 to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 <CardHeader className="space-y-4">
                   <div className="flex items-start justify-between gap-4">

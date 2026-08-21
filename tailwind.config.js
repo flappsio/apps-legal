@@ -53,9 +53,9 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         brand: {
-          DEFAULT: "#69F0AE",
-          dark: "#177654",
-          light: "#00E676",
+          DEFAULT: "hsl(var(--primary))",
+          dark: "#450ec0",
+          light: "#5e17eb",
         }
       },
       borderRadius: {

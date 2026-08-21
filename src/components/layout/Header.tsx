@@ -16,8 +16,8 @@ export const Header: React.FC = () => {
 
   const logoSrc =
     theme === "light"
-      ? "/assets/images/fIappsio_black.png"
-      : "/assets/images/fIappsio_white.png";
+      ? "/assets/images/flappsio_black.png"
+      : "/assets/images/flappsio_white.png";
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur-md transition-colors duration-200">

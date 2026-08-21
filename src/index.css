@@ -41,7 +41,7 @@
     --bg-radial-2: rgba(18, 19, 26, 0.95);
   }
 
-  /* Light Theme */
+  /* Light Theme (#5e17eb flappsio "io" purple branding) */
   [data-theme="light"] {
     --background: 40 5% 91%; /* #E7E6E5 */
     --foreground: 233 15% 12%; /* #1A1B23 */
@@ -52,7 +52,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 233 15% 12%;
 
-    --primary: 158 68% 28%; /* #177654 */
+    --primary: 260 84% 51%; /* #5E17EB */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 40 6% 95%; /* #F2F1F0 */
@@ -61,7 +61,7 @@
     --muted: 233 8% 88%;
     --muted-foreground: 234 9% 45%;
 
-    --accent: 158 68% 28%;
+    --accent: 260 84% 51%; /* #5E17EB */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -69,12 +69,12 @@
 
     --border: 233 10% 84%;
     --input: 233 10% 84%;
-    --ring: 158 68% 28%;
+    --ring: 260 84% 51%; /* #5E17EB */
 
     --radius: 0.75rem;
 
-    --brand-glow: rgba(23, 118, 84, 0.2);
-    --bg-radial-1: rgba(23, 118, 84, 0.06);
+    --brand-glow: rgba(94, 23, 235, 0.25);
+    --bg-radial-1: rgba(94, 23, 235, 0.08);
     --bg-radial-2: rgba(242, 241, 240, 0.9);
   }
 }
@@ -109,5 +109,11 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground));
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* Selection highlight */
+::selection {
+  background-color: hsl(var(--primary) / 0.25);
+  color: hsl(var(--foreground));
 }

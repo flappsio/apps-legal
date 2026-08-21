@@ -9,8 +9,8 @@ export const Footer: React.FC = () => {
 
   const logoSrc =
     theme === "light"
-      ? "/assets/images/fIappsio_black.png"
-      : "/assets/images/fIappsio_white.png";
+      ? "/assets/images/flappsio_black.png"
+      : "/assets/images/flappsio_white.png";
 
   if (isMinimal) {
     return (

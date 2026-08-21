@@ -142,7 +142,7 @@ export const LegalLayout: React.FC<LegalLayoutProps> = ({ document }) => {
             >
               {copied ? (
                 <>
-                  <Check className="w-3.5 h-3.5 text-emerald-400" />
+                  <Check className="w-3.5 h-3.5 text-primary" />
                   Kopyalandı
                 </>
               ) : (
@@ -316,7 +316,7 @@ export const LegalLayout: React.FC<LegalLayoutProps> = ({ document }) => {
                         section.callout.type === "warning"
                           ? "bg-amber-500/10 border-amber-500/30 text-amber-300"
                           : section.callout.type === "success"
-                          ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-300"
+                          ? "bg-primary/10 border-primary/30 text-primary"
                           : "bg-primary/10 border-primary/25 text-foreground"
                       }`}
                     >
