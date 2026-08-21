@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   ShieldCheck,
@@ -19,6 +19,11 @@ import { Input } from "@/components/ui/input";
 
 export const HomePage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    window.document.title = "App Legal & Policies | flappsio";
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+  }, []);
 
   const filteredApps = APPS_DATA.filter((app) => {
     const query = searchQuery.toLowerCase();

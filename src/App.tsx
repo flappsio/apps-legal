@@ -1,14 +1,39 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { HomePage } from "@/pages/HomePage";
 import { PrivacyPolicyPage } from "@/pages/PrivacyPolicyPage";
 import { TermsOfUsePage } from "@/pages/TermsOfUsePage";
 import { LicensePage } from "@/pages/LicensePage";
+import { NotFoundPage } from "@/pages/NotFoundPage";
 import { LegacyRedirect } from "@/pages/LegacyRedirect";
 
 export const App: React.FC = () => {
+  const location = useLocation();
+
+  // Check known routes to conditionally hide standard Header/Footer on 404 page
+  const knownRoutes = [
+    "/",
+    "/crosshair/privacy-policy",
+    "/crosshair/privacy-policy.html",
+    "/crosshair/terms-of-use",
+    "/crosshair/terms-of-use.html",
+    "/license",
+    "/mit-license",
+    "/license.html",
+    "/privacy-policy",
+    "/privacy-policy.html",
+    "/terms-of-use",
+    "/terms-of-use.html",
+  ];
+
+  const isNotFound = !knownRoutes.includes(location.pathname);
+
+  if (isNotFound) {
+    return <NotFoundPage />;
+  }
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -55,8 +80,8 @@ export const App: React.FC = () => {
             element={<LegacyRedirect to="/crosshair/terms-of-use" />}
           />
 
-          {/* Catch-all fallback */}
-          <Route path="*" element={<HomePage />} />
+          {/* 404 Catch-all */}
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
       <Footer />
