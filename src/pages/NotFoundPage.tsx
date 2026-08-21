@@ -1,3 +1,4 @@
+import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { ArrowRight } from "lucide-react";
 import React, { useEffect } from "react";
@@ -15,13 +16,13 @@ export const NotFoundPage: React.FC = () => {
       <Header />
 
       {/* Main Content Area */}
-      <main className="flex-1 container max-w-6xl mx-auto px-4 sm:px-8 flex items-center justify-center py-8 sm:py-12">
+      <main className="flex-1 container max-w-6xl mx-auto px-4 sm:px-8 flex items-center justify-center py-12 sm:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center w-full">
 
           {/* Left Column: 404 Illustration Image with Code Bubble */}
           <div className="lg:col-span-6 flex justify-center order-2 lg:order-1">
             <div className="relative w-full max-w-[500px]">
-              
+
               {/* Floating Code Bubble */}
               <div className="absolute -top-6 sm:-top-2 left-2 sm:left-4 z-20 max-w-[240px] sm:max-w-[270px] rounded-2xl bg-[#14151B] text-white p-4 sm:p-5 shadow-2xl border border-white/10 font-mono text-xs select-none animate-in fade-in zoom-in-95 duration-500">
                 <div className="text-emerald-400 font-bold mb-1.5 text-xs">&lt;/&gt;</div>
@@ -73,10 +74,8 @@ export const NotFoundPage: React.FC = () => {
         </div>
       </main>
 
-      {/* Footer Info */}
-      <footer className="w-full py-6 px-6 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} flappsio. Tüm hakları saklıdır.
-      </footer>
+      {/* Global Footer */}
+      <Footer />
     </div>
   );
 };
