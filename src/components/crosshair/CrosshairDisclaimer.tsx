@@ -1,0 +1,39 @@
+import React from "react";
+import { useLanguage } from "@/context/LanguageContext";
+import { ShieldAlert } from "lucide-react";
+
+export const CrosshairDisclaimer: React.FC<{ className?: string }> = ({ className = "" }) => {
+  const { isTr } = useLanguage();
+
+  return (
+    <div
+      className={`p-5 rounded-2xl bg-secondary/40 border border-border/70 backdrop-blur-sm text-xs text-muted-foreground ${className}`}
+    >
+      <div className="flex items-start gap-3">
+        <div className="p-2 rounded-xl bg-amber-500/10 text-amber-400 shrink-0 mt-0.5">
+          <ShieldAlert className="w-4 h-4" />
+        </div>
+        <div className="space-y-1">
+          <h4 className="font-bold text-foreground text-xs flex items-center gap-1.5">
+            <span>
+              {isTr
+                ? "Fikri Mülkiyet ve Bağımsızlık Beyanı (Disclaimer)"
+                : "Intellectual Property & Independence Disclaimer"}
+            </span>
+          </h4>
+          <p className="leading-relaxed text-[11px] sm:text-xs">
+            {isTr ? (
+              <>
+                <strong>Crosshair Valo</strong>, bağımsız bir yardımcı araç olup <strong>Riot Games, Inc.</strong> veya <strong>VALORANT</strong> ile hiçbir resmi bağı, ortaklığı, sponsorluğu veya onayı bulunmamaktadır. VALORANT ve ilgili tüm logolar, Riot Games, Inc.'nin tescilli ticari markalarıdır. Uygulama içerisindeki referanslar yalnızca dürüst bilgilendirme (nominal fair use) amacıyla yer almaktadır.
+              </>
+            ) : (
+              <>
+                <strong>Crosshair Valo</strong> is an independent utility tool and is not affiliated with, endorsed, sponsored, or approved by <strong>Riot Games, Inc.</strong> or <strong>VALORANT</strong>. VALORANT and all associated logos are registered trademarks of Riot Games, Inc. All in-app game references are for nominative fair use and identification purposes only.
+              </>
+            )}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};

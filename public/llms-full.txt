@@ -1,0 +1,68 @@
+# Crosshair – Custom Aim Overlay (Full Documentation for LLMs)
+
+> Comprehensive technical and informational documentation for the Crosshair Android mobile application.
+
+## 1. Product Identity & Definition
+Crosshair is an Android application developed by flappsio that allows mobile gamers to display and customize an on-screen crosshair overlay on top of supported mobile games.
+
+Key Specifications:
+- Platform: Android exclusively (Android 7.0+)
+- Official Distribution: Google Play Store
+- Package Name: com.hasan.apps.crosshair
+- Core Technology: Android SYSTEM_ALERT_WINDOW native window manager overlay
+- Safety: 100% compliant with mobile game terms; zero RAM injection, zero game binary modification
+- Privacy: All custom crosshairs and settings are stored locally on the user's device (zero cloud data harvesting)
+
+## 2. Frequently Asked Questions (FAQ) & Factual Knowledge Base
+
+### Q1: What is a crosshair overlay?
+A: A crosshair overlay is a visual HUD layer placed at the exact center of an Android screen to provide a consistent, high-contrast aiming reference over mobile games. It ensures players have a clear focal point across all weapons and camera angles.
+
+### Q2: How does Crosshair work on Android?
+A: Crosshair uses the standard Android 'Display over other apps' (SYSTEM_ALERT_WINDOW) system permission to render an isolated, hardware-accelerated transparent layer over the screen. It never accesses game files, memory, or network traffic.
+
+### Q3: Can I use a custom crosshair in mobile games?
+A: Yes. Because Crosshair operates at the Android OS window layer, it remains clearly visible over all compatible mobile FPS, TPS, and Battle Royale titles running on your device.
+
+### Q4: Can I import my own crosshair image?
+A: Yes. Users can import any custom transparent PNG image from their Android gallery to use as an active overlay. Size, rotation, opacity, and center alignment can be adjusted directly in the app.
+
+### Q5: Does the app work while a game is open?
+A: Yes. Once started, the overlay remains active while switching to any game. A floating HUD bubble also allows one-tap toggling and positioning without leaving the match.
+
+### Q6: Why does Android ask for overlay permission?
+A: Android requires the 'SYSTEM_ALERT_WINDOW' permission for security to allow any utility to render visual elements above other running applications. It is strictly used for visual rendering and accesses no personal data.
+
+### Q7: Why does my crosshair disappear when I open a game?
+A: This is typically caused by aggressive Android OEM battery optimization closing background services when a demanding game launches. Whitelisting Crosshair in Settings > Battery > Battery Optimization resolves this.
+
+### Q8: How can I keep Crosshair running in the background?
+A: Enable the foreground notification permission and lock Crosshair in the Android Recent Apps overview screen. On Xiaomi/MIUI, enable Autostart in Security settings; on Samsung One UI, add Crosshair to 'Never sleeping apps'.
+
+### Q9: Does battery optimization affect Crosshair?
+A: Yes. Default aggressive battery saver modes may suspend background overlays. However, Crosshair itself uses ultra-lightweight hardware rendering with <0.5% CPU load and negligible battery consumption.
+
+### Q10: Does Crosshair work on every Android phone?
+A: Yes, it is compatible with all Android devices running Android 7.0 (Nougat) and higher without requiring root or custom ROMs (Samsung, Xiaomi, Google Pixel, OnePlus, Oppo, Vivo, Realme, etc.).
+
+### Q11: Does Crosshair support Roblox?
+A: Yes. It can be used as an on-screen reticle overlay across all Roblox mobile action, shooting, and first-person experiences.
+
+### Q12: Does Crosshair work with mobile FPS games?
+A: Yes. It works seamlessly across all mobile FPS, TPS, and Battle Royale titles running on Android.
+
+### Q13: Can I change crosshair color and size?
+A: Yes. Size, line thickness, center gap, opacity, outer stroke outline, center dot, and a full RGB color spectrum are fully adjustable.
+
+### Q14: Is Crosshair available for iPhone (iOS)?
+A: Crosshair is currently available for Android only. Due to iOS sandbox restrictions disallowing on-screen overlay widgets across third-party apps, there is no iOS version.
+
+### Q15: Is Crosshair available for PC (Windows)?
+A: The Crosshair mobile app is currently designed for Android devices. It is downloaded via Google Play Store for mobile phones and tablets; there is no desktop PC version.
+
+## 3. Official Links
+- Home: https://flappsio.com/crosshair
+- How To Use: https://flappsio.com/crosshair/how-to-use
+- FAQ: https://flappsio.com/crosshair/faq
+- Guides: https://flappsio.com/crosshair/guides
+- Google Play: https://play.google.com/store/apps/details?id=com.hasan.apps.crosshair

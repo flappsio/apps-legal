@@ -1,0 +1,40 @@
+# robots.txt for https://flappsio.com
+# Crosshair – Custom Aim Overlay & Apps Portal
+
+User-agent: *
+Allow: /
+Allow: /crosshair
+Allow: /crosshair/how-to-use
+Allow: /crosshair/faq
+Allow: /crosshair/guides
+Allow: /crosshair/guides/*
+Allow: /crosshair/about
+Allow: /crosshair/support
+Allow: /crosshair/privacy-policy
+Allow: /crosshair/terms-of-use
+Allow: /license
+Allow: /assets/
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+# AI Search & Answer Engine Optimization (AEO / GEO Crawlers)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap & LLMs.txt Location
+Sitemap: https://flappsio.com/sitemap.xml

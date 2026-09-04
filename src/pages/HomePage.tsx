@@ -108,9 +108,12 @@ export const HomePage: React.FC = () => {
                 <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-primary via-primary/80 to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 <CardHeader className="space-y-4">
-                  <div className="flex items-start justify-between gap-4">
+                  <Link
+                    to={app.links.showcase || app.links.privacyPolicy}
+                    className="flex items-start justify-between gap-4 group/header cursor-pointer"
+                  >
                     <div className="flex items-center gap-3.5">
-                      <div className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-background/80 border border-border/80 p-2 shadow-inner group-hover:scale-105 transition-transform duration-200">
+                      <div className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-background/80 border border-border/80 p-1.5 shadow-inner group-hover/header:scale-105 group-hover/header:border-primary/50 transition-all duration-200">
                         <img
                           src={app.iconUrl}
                           alt={app.name}
@@ -118,7 +121,7 @@ export const HomePage: React.FC = () => {
                         />
                       </div>
                       <div>
-                        <CardTitle className="text-lg font-bold">
+                        <CardTitle className="text-lg font-bold group-hover/header:text-primary transition-colors">
                           {app.name}
                         </CardTitle>
                         <span className="text-xs text-muted-foreground">
@@ -130,11 +133,16 @@ export const HomePage: React.FC = () => {
                     <Badge variant={app.badge.variant}>
                       {app.badge.text}
                     </Badge>
-                  </div>
+                  </Link>
 
-                  <CardDescription className="text-xs sm:text-sm line-clamp-3">
-                    {app.description}
-                  </CardDescription>
+                  <Link
+                    to={app.links.showcase || app.links.privacyPolicy}
+                    className="block"
+                  >
+                    <CardDescription className="text-xs sm:text-sm line-clamp-3 hover:text-foreground transition-colors cursor-pointer">
+                      {app.description}
+                    </CardDescription>
+                  </Link>
 
                   {/* Highlights list */}
                   <div className="space-y-2 pt-2 border-t border-border/40">
@@ -151,6 +159,22 @@ export const HomePage: React.FC = () => {
                 </CardHeader>
 
                 <CardFooter className="pt-2 flex flex-col gap-3">
+                  {app.links.showcase && (
+                    <Button
+                      asChild
+                      size="sm"
+                      className="w-full text-xs h-10 bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-xl shadow-sm justify-between group/main"
+                    >
+                      <Link to={app.links.showcase}>
+                        <span className="flex items-center gap-2">
+                          <Sparkles className="w-4 h-4" />
+                          Uygulama Tanıtımı & Canlı Simülatör
+                        </span>
+                        <ChevronRight className="w-4 h-4 group-hover/main:translate-x-1 transition-transform" />
+                      </Link>
+                    </Button>
+                  )}
+
                   <div className="grid grid-cols-2 gap-2.5 w-full">
                     <Button
                       asChild

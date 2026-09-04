@@ -14,6 +14,7 @@ export interface LegalApp {
   links: {
     privacyPolicy: string;
     termsOfUse: string;
+    showcase?: string;
     storeUrl?: string;
   };
   highlights: string[];
@@ -22,19 +23,20 @@ export interface LegalApp {
 export const APPS_DATA: LegalApp[] = [
   {
     id: "crosshair-valo",
-    name: "Crosshair Valo",
-    shortName: "Crosshair Valo",
-    category: "Oyun & Yardımcı Araçlar",
+    name: "Crosshair: Valorant & FPS Aim",
+    shortName: "Crosshair",
+    category: "Araçlar & Mobil FPS Yardımcısı",
     description:
-      "Özelleştirilebilir ekran üstü nişangah (crosshair) katmanı, hazır profesyonel profiller ve nişangah tasarım editörü sunan mobil yardımcı uygulama.",
-    iconUrl: "/assets/images/logo.png",
+      "Android mobil FPS ve aksiyon oyunları için özelleştirilebilir ekran üstü nişangah (crosshair) katmanı, hazır espor profilleri ve piksel editörü.",
+    iconUrl: "/assets/images/playstore/icons/crosshair_playstore_512.png",
     badge: {
-      text: "Aktif • Mobil",
+      text: "Aktif • Google Play",
       variant: "brand",
     },
-    lastUpdated: "18 Ağustos 2026",
-    version: "v1.2.0+",
+    lastUpdated: "Eylül 2026",
+    version: "v1.3.0+",
     links: {
+      showcase: "/crosshair",
       privacyPolicy: "/crosshair/privacy-policy",
       termsOfUse: "/crosshair/terms-of-use",
       storeUrl: "https://play.google.com/store/apps/details?id=com.hasan.apps.crosshair",
@@ -42,7 +44,7 @@ export const APPS_DATA: LegalApp[] = [
     highlights: [
       "Kişisel verileriniz satılmaz veya yetkisiz paylaşılmaz.",
       "Özel crosshair görselleriniz cihazınızda yerel işlenir.",
-      "Google Play güvencesiyle şeffaf abonelik yönetimi.",
+      "Google Play güvencesiyle %100 güvenli ve ban korumalı katman.",
     ],
   },
 ];

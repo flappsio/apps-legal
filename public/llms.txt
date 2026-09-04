@@ -1,0 +1,33 @@
+# Crosshair – Custom Aim Overlay
+
+> Crosshair is an Android application that enables mobile gamers to place and customize an on-screen crosshair overlay on top of supported mobile games.
+
+## Overview
+Crosshair runs independently via Android's native `SYSTEM_ALERT_WINDOW` permission to render a hardware-accelerated, high-contrast reticle on mobile screens. It never modifies game binaries, memory (RAM), or network packets, making it 100% compliant and ban-safe.
+
+## Core Features
+- **Esports Presets Library**: Built-in Dot, Classic Cross (+), Circle, Sniper T-Cross, Box, and Diamond reticle geometries.
+- **Custom PNG Import**: Import any transparent PNG crosshair image directly from the Android gallery.
+- **Pixel-Perfect Editor**: Millimeter controls for length, thickness, center gap, opacity, outer stroke outline, and center dot.
+- **Dynamic Color Spectrum**: High-contrast shades (Neon Green `#69F0AE`, Cyber Cyan `#00E5FF`, Electric Violet `#8B5CF6`, Valor Red `#FF4655`, Sun Orange `#FF9100`, Pure White).
+- **Floating Quick Toggle**: In-game HUD bubble to enable, disable, or adjust reticle positions without minimizing the active game.
+- **Lightweight Engine**: Hardware-accelerated vector drawing with <0.5% CPU load and negligible battery consumption.
+
+## Platform & Availability
+- **Operating System**: Android (Android 7.0 Nougat to Android 15+)
+- **Store**: Official download exclusively via Google Play Store
+- **Note**: iOS (iPhone) and PC (Windows) are not supported.
+
+## Pages & Documentation
+- [Overview & Interactive Simulator](https://flappsio.com/crosshair): Core features, real-time simulator, and presets.
+- [Setup & How It Works](https://flappsio.com/crosshair/how-to-use): 3-step setup guide and Android overlay permission instructions.
+- [Frequently Asked Questions (FAQ)](https://flappsio.com/crosshair/faq): Direct, factual answers to 15 common questions regarding permissions, safety, battery whitelisting, and compatibility.
+- [Reticle Selection Guide](https://flappsio.com/crosshair/guides/crosshair-secimi): Guide for choosing between Dot, Classic Cross, and T-style reticles.
+- [Color & Contrast Guide](https://flappsio.com/crosshair/guides/renk-ve-gorunurluk): Guide for choosing high-contrast colors across different map terrains.
+- [Troubleshooting & Battery Whitelist](https://flappsio.com/crosshair/guides/sorun-giderme-overlay-izinleri): Android battery optimization guides for Xiaomi, Samsung, and Oppo devices.
+- [Privacy Policy](https://flappsio.com/crosshair/privacy-policy): Privacy commitments and local device data retention policies.
+- [Terms of Service](https://flappsio.com/crosshair/terms-of-use): Terms of use and legal fair-use disclaimers.
+- [Google Play Store](https://play.google.com/store/apps/details?id=com.hasan.apps.crosshair): Official Android application download link.
+
+## Optional
+- [Full LLM Documentation](https://flappsio.com/llms-full.txt): Complete, uncompressed knowledge base and technical specifications for LLMs and AI search engines.

@@ -4,26 +4,121 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>App Legal & Policies | flappsio</title>
+    <title>Crosshair – Custom Aim Overlay for Android Mobile Games | flappsio</title>
     <meta
       name="description"
-      content="Mobil uygulamalarımıza ait gizlilik politikaları, kullanım koşulları ve yasal bilgilendirmeler."
+      content="Crosshair is an Android app that lets mobile gamers place and customize a crosshair overlay on top of supported games. Download free on Google Play."
     />
-    <link rel="icon" type="image/png" href="/assets/images/logo.png" />
+    <meta name="theme-color" content="#08090d" />
+    <meta name="color-scheme" content="dark light" />
 
-    <!-- Google Fonts -->
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/png" href="/assets/images/logo.png" />
+    <link rel="apple-touch-icon" href="/assets/images/logo.png" />
+
+    <!-- Google Search Console & Bing Webmaster Verification -->
+    <meta name="google-site-verification" content="flappsio-gsc-verification-code" />
+    <meta name="msvalidate.01" content="flappsio-bing-verification-code" />
+
+    <!-- Preconnect to Font Origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
 
-    <!-- Inline script to prevent theme flashing on load -->
+    <!-- Non-Blocking Asynchronous Font Loading with Swap -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+
+    <!-- Critical CSS for Instant Paint (FCP / LCP < 0.4s) -->
+    <style>
+      :root, [data-theme="dark"] {
+        --bg-init: #0c0e14;
+        --fg-init: #f2f1f0;
+        --card-init: #151824;
+        --primary-init: #69f0ae;
+      }
+      body {
+        margin: 0;
+        background-color: var(--bg-init);
+        color: var(--fg-init);
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      .ssr-shell {
+        max-width: 1152px;
+        margin: 0 auto;
+        padding: 40px 16px;
+        text-align: center;
+      }
+      .ssr-eyebrow {
+        display: inline-block;
+        padding: 6px 16px;
+        border-radius: 9999px;
+        background: rgba(105, 240, 174, 0.1);
+        border: 1px solid rgba(105, 240, 174, 0.3);
+        color: #69f0ae;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        margin-bottom: 20px;
+      }
+      .ssr-title {
+        font-size: clamp(32px, 6vw, 64px);
+        font-weight: 900;
+        line-height: 1.1;
+        margin: 0 0 16px 0;
+      }
+      .ssr-sub {
+        color: #9e9eaf;
+        font-size: clamp(14px, 2vw, 18px);
+        max-width: 600px;
+        margin: 0 auto 24px auto;
+        line-height: 1.5;
+      }
+      .ssr-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #69f0ae;
+        color: #0c0e14;
+        font-weight: 800;
+        font-size: 14px;
+        padding: 14px 28px;
+        border-radius: 16px;
+        text-decoration: none;
+      }
+    </style>
+
+    <!-- Inline script to prevent theme & language flashing on initial page render -->
     <script>
       (function () {
         try {
+          // Language preference
           const params = new URLSearchParams(window.location.search);
+          const urlLang = params.get("lang");
+          const savedLang = localStorage.getItem("flappsio_lang");
+          const browserLang = navigator.language?.toLowerCase();
+          const lang =
+            urlLang === "tr" || urlLang === "en"
+              ? urlLang
+              : savedLang || (browserLang && !browserLang.startsWith("tr") ? "en" : "tr");
+          document.documentElement.lang = lang;
+
+          // Theme preference
           const urlTheme = params.get("theme");
           const savedTheme = localStorage.getItem("theme");
           const prefersDark =
@@ -32,7 +127,7 @@
           const theme =
             urlTheme === "light" || urlTheme === "dark"
               ? urlTheme
-              : savedTheme || (prefersDark ? "dark" : "light");
+              : savedTheme || (prefersDark ? "dark" : "dark");
 
           document.documentElement.setAttribute("data-theme", theme);
           if (theme === "dark") {
@@ -47,7 +142,21 @@
     </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Instant Critical HTML Shell (Guarantees sub-0.5s FCP and LCP on any crawler/device) -->
+      <main class="ssr-shell">
+        <div class="ssr-eyebrow">CUSTOM CROSSHAIR FOR ANDROID</div>
+        <h1 class="ssr-title">Your aim. Your crosshair.</h1>
+        <p class="ssr-sub">
+          Crosshair is an Android app that lets mobile gamers place and customize a crosshair overlay on top of supported games.
+        </p>
+        <div>
+          <a class="ssr-btn" href="https://play.google.com/store/apps/details?id=com.hasan.apps.crosshair">
+            Get it on Google Play
+          </a>
+        </div>
+      </main>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

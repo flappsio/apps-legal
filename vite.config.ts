@@ -11,6 +11,20 @@ export default defineConfig({
   },
   server: {
     open: true,
-    port: 3000
-  }
+    port: 3000,
+  },
+  build: {
+    target: "esnext",
+    minify: "esbuild",
+    cssMinify: true,
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom", "react-router-dom"],
+          icons: ["lucide-react"],
+        },
+      },
+    },
+  },
 });

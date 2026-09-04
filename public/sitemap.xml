@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- 1. Crosshair Valo Main Landing Showcase -->
+  <url>
+    <loc>https://flappsio.com/crosshair</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://flappsio.com/crosshair?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://flappsio.com/crosshair?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://flappsio.com/crosshair"/>
+  </url>
+
+  <!-- 2. How to Use & Setup Guide -->
+  <url>
+    <loc>https://flappsio.com/crosshair/how-to-use</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://flappsio.com/crosshair/how-to-use?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://flappsio.com/crosshair/how-to-use?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://flappsio.com/crosshair/how-to-use"/>
+  </url>
+
+  <!-- 3. FAQ Knowledge Base (AEO/GEO) -->
+  <url>
+    <loc>https://flappsio.com/crosshair/faq</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://flappsio.com/crosshair/faq?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://flappsio.com/crosshair/faq?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://flappsio.com/crosshair/faq"/>
+  </url>
+
+  <!-- 4. Guides Hub -->
+  <url>
+    <loc>https://flappsio.com/crosshair/guides</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://flappsio.com/crosshair/guides?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://flappsio.com/crosshair/guides?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://flappsio.com/crosshair/guides"/>
+  </url>
+
+  <!-- 5. Guide: Crosshair Selection -->
+  <url>
+    <loc>https://flappsio.com/crosshair/guides/crosshair-secimi</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://flappsio.com/crosshair/guides/crosshair-secimi?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://flappsio.com/crosshair/guides/crosshair-secimi?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://flappsio.com/crosshair/guides/crosshair-secimi"/>
+  </url>
+
+  <!-- 6. Guide: Color & Contrast -->
+  <url>
+    <loc>https://flappsio.com/crosshair/guides/renk-ve-gorunurluk</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://flappsio.com/crosshair/guides/renk-ve-gorunurluk?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://flappsio.com/crosshair/guides/renk-ve-gorunurluk?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://flappsio.com/crosshair/guides/renk-ve-gorunurluk"/>
+  </url>
+
+  <!-- 7. Guide: Overlay Permission & Battery Optimization -->
+  <url>
+    <loc>https://flappsio.com/crosshair/guides/sorun-giderme-overlay-izinleri</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://flappsio.com/crosshair/guides/sorun-giderme-overlay-izinleri?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://flappsio.com/crosshair/guides/sorun-giderme-overlay-izinleri?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://flappsio.com/crosshair/guides/sorun-giderme-overlay-izinleri"/>
+  </url>
+
+  <!-- 8. About Page -->
+  <url>
+    <loc>https://flappsio.com/crosshair/about</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://flappsio.com/crosshair/about?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://flappsio.com/crosshair/about?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://flappsio.com/crosshair/about"/>
+  </url>
+
+  <!-- 9. Support & Contact Page -->
+  <url>
+    <loc>https://flappsio.com/crosshair/support</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://flappsio.com/crosshair/support?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://flappsio.com/crosshair/support?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://flappsio.com/crosshair/support"/>
+  </url>
+
+  <!-- 10. Privacy Policy -->
+  <url>
+    <loc>https://flappsio.com/crosshair/privacy-policy</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://flappsio.com/crosshair/privacy-policy?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://flappsio.com/crosshair/privacy-policy?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://flappsio.com/crosshair/privacy-policy"/>
+  </url>
+
+  <!-- 11. Terms of Use / Terms of Service -->
+  <url>
+    <loc>https://flappsio.com/crosshair/terms-of-use</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://flappsio.com/crosshair/terms-of-use?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://flappsio.com/crosshair/terms-of-use?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://flappsio.com/crosshair/terms-of-use"/>
+  </url>
+
+  <!-- 12. Main Legal Hub Root -->
+  <url>
+    <loc>https://flappsio.com/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 13. License Page -->
+  <url>
+    <loc>https://flappsio.com/license</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>

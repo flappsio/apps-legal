@@ -9,81 +9,112 @@ import { LicensePage } from "@/pages/LicensePage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 import { LegacyRedirect } from "@/pages/LegacyRedirect";
 
+// Crosshair App Pages
+import { CrosshairLandingPage } from "@/pages/crosshair/CrosshairLandingPage";
+import { CrosshairHowToUsePage } from "@/pages/crosshair/CrosshairHowToUsePage";
+import { CrosshairFAQPage } from "@/pages/crosshair/CrosshairFAQPage";
+import { CrosshairGuidesPage } from "@/pages/crosshair/CrosshairGuidesPage";
+import { CrosshairGuideDetailPage } from "@/pages/crosshair/CrosshairGuideDetailPage";
+import { CrosshairAboutPage } from "@/pages/crosshair/CrosshairAboutPage";
+import { CrosshairSupportPage } from "@/pages/crosshair/CrosshairSupportPage";
+
 export const App: React.FC = () => {
   const location = useLocation();
 
-  // Check known routes to conditionally hide standard Header/Footer on 404 page
-  const knownRoutes = [
+  // Known routes list for header/footer rendering
+  const knownPrefixes = [
     "/",
-    "/crosshair/privacy-policy",
-    "/crosshair/privacy-policy.html",
-    "/crosshair/terms-of-use",
-    "/crosshair/terms-of-use.html",
+    "/crosshair",
+    "/how-to-use",
+    "/faq",
+    "/guides",
+    "/about",
+    "/support",
     "/license",
     "/mit-license",
-    "/license.html",
     "/privacy-policy",
-    "/privacy-policy.html",
     "/terms-of-use",
-    "/terms-of-use.html",
+    "/terms-of-service",
   ];
 
-  const isNotFound = !knownRoutes.includes(location.pathname);
+  const isKnownRoute = knownPrefixes.some(
+    (prefix) =>
+      location.pathname === prefix ||
+      location.pathname.startsWith(`${prefix}/`) ||
+      location.pathname.startsWith(`${prefix}.html`)
+  );
 
-  if (isNotFound) {
+  if (!isKnownRoute) {
     return <NotFoundPage />;
   }
 
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <div className="flex-1">
+      <main className="flex-1">
         <Routes>
+          {/* Main Legal Portal */}
           <Route path="/" element={<HomePage />} />
-          <Route
-            path="/crosshair/privacy-policy"
-            element={<PrivacyPolicyPage />}
-          />
+
+          {/* Crosshair Showcase & Landing */}
+          <Route path="/crosshair" element={<CrosshairLandingPage />} />
+          <Route path="/crosshair/how-to-use" element={<CrosshairHowToUsePage />} />
+          <Route path="/crosshair/faq" element={<CrosshairFAQPage />} />
+          <Route path="/crosshair/guides" element={<CrosshairGuidesPage />} />
+          <Route path="/crosshair/guides/:slug" element={<CrosshairGuideDetailPage />} />
+          <Route path="/crosshair/about" element={<CrosshairAboutPage />} />
+          <Route path="/crosshair/support" element={<CrosshairSupportPage />} />
+
+          {/* Legal Documents */}
+          <Route path="/crosshair/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route
             path="/crosshair/privacy-policy.html"
             element={<LegacyRedirect to="/crosshair/privacy-policy" />}
           />
-          <Route
-            path="/crosshair/terms-of-use"
-            element={<TermsOfUsePage />}
-          />
+          <Route path="/crosshair/terms-of-use" element={<TermsOfUsePage />} />
           <Route
             path="/crosshair/terms-of-use.html"
             element={<LegacyRedirect to="/crosshair/terms-of-use" />}
           />
+          <Route
+            path="/crosshair/terms-of-service"
+            element={<LegacyRedirect to="/crosshair/terms-of-use" />}
+          />
+          <Route
+            path="/crosshair/terms-of-service.html"
+            element={<LegacyRedirect to="/crosshair/terms-of-use" />}
+          />
 
-          {/* License routes */}
+          {/* License */}
           <Route path="/license" element={<LicensePage />} />
           <Route path="/mit-license" element={<LegacyRedirect to="/license" />} />
           <Route path="/license.html" element={<LegacyRedirect to="/license" />} />
 
-          {/* Top-level redirect aliases */}
-          <Route
-            path="/privacy-policy"
-            element={<LegacyRedirect to="/crosshair/privacy-policy" />}
-          />
+          {/* Top-Level Aliases */}
+          <Route path="/how-to-use" element={<LegacyRedirect to="/crosshair/how-to-use" />} />
+          <Route path="/faq" element={<LegacyRedirect to="/crosshair/faq" />} />
+          <Route path="/guides" element={<LegacyRedirect to="/crosshair/guides" />} />
+          <Route path="/about" element={<LegacyRedirect to="/crosshair/about" />} />
+          <Route path="/support" element={<LegacyRedirect to="/crosshair/support" />} />
+          <Route path="/privacy-policy" element={<LegacyRedirect to="/crosshair/privacy-policy" />} />
           <Route
             path="/privacy-policy.html"
             element={<LegacyRedirect to="/crosshair/privacy-policy" />}
           />
+          <Route path="/terms-of-use" element={<LegacyRedirect to="/crosshair/terms-of-use" />} />
           <Route
-            path="/terms-of-use"
+            path="/terms-of-use.html"
             element={<LegacyRedirect to="/crosshair/terms-of-use" />}
           />
           <Route
-            path="/terms-of-use.html"
+            path="/terms-of-service"
             element={<LegacyRedirect to="/crosshair/terms-of-use" />}
           />
 
           {/* 404 Catch-all */}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
-      </div>
+      </main>
       <Footer />
     </div>
   );
