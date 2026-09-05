@@ -82,24 +82,59 @@
       />
     </noscript>
 
-    <!-- Schema.org Structured Data (JSON-LD) for Search Engines -->
+    <!-- Schema.org Structured Data (JSON-LD) for Search Engines & Brand Entity Recognition -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "MobileApplication",
-        "name": "Crossio: Custom Crosshair",
-        "operatingSystem": "Android",
-        "applicationCategory": "GameApplication",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        },
-        "description": "Crossio displays a customizable crosshair overlay on Android. Choose designs, adjust appearance transparently, and improve your gaming precision.",
-        "url": "https://flappsio.com",
-        "image": "https://flappsio.com/assets/images/logo.png",
-        "screenshot": "https://flappsio.com/assets/images/logo.png",
-        "installUrl": "https://play.google.com/store/apps/details?id=com.hasan.apps.crosshair"
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://flappsio.com/#organization",
+            "name": "flappsio",
+            "alternateName": ["Flappsio", "flappsio.com"],
+            "url": "https://flappsio.com",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://flappsio.com/assets/images/logo.png",
+              "width": 512,
+              "height": 512
+            },
+            "sameAs": [
+              "https://play.google.com/store/apps/details?id=com.hasan.apps.crosshair"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://flappsio.com/#website",
+            "name": "flappsio",
+            "alternateName": ["Flappsio", "flappsio.com"],
+            "url": "https://flappsio.com",
+            "publisher": {
+              "@id": "https://flappsio.com/#organization"
+            },
+            "inLanguage": ["tr", "en"]
+          },
+          {
+            "@type": "MobileApplication",
+            "@id": "https://flappsio.com/#app",
+            "name": "Crossio: Custom Crosshair",
+            "operatingSystem": "Android",
+            "applicationCategory": "GameApplication",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "description": "Crossio displays a customizable crosshair overlay on Android. Choose designs, adjust appearance transparently, and improve your gaming precision.",
+            "url": "https://flappsio.com",
+            "image": "https://flappsio.com/assets/images/logo.png",
+            "screenshot": "https://flappsio.com/assets/images/logo.png",
+            "installUrl": "https://play.google.com/store/apps/details?id=com.hasan.apps.crosshair",
+            "author": {
+              "@id": "https://flappsio.com/#organization"
+            }
+          }
+        ]
       }
     </script>
 
