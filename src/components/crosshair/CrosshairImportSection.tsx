@@ -103,7 +103,7 @@ export const CrosshairImportSection: React.FC = () => {
                     </div>
                   </div>
                   <Badge variant="brand" className="text-[10px] font-mono">
-                    my_custom_reticle.png
+                    custom_aim.png / .jpg
                   </Badge>
                 </div>
 

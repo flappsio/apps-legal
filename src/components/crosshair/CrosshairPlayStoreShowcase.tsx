@@ -14,6 +14,7 @@ import {
   ZoomIn,
   X,
   ExternalLink,
+  Image as ImageIcon,
 } from "lucide-react";
 
 export const CrosshairPlayStoreShowcase: React.FC = () => {
@@ -186,9 +187,9 @@ export const CrosshairPlayStoreShowcase: React.FC = () => {
             </div>
 
             <div className="space-y-1 border-l border-border/60">
-              <div className="flex items-center justify-center gap-1 text-base sm:text-lg font-extrabold text-foreground">
-                <Download className="w-4 h-4 text-primary" />
-                <span>PNG</span>
+              <div className="flex items-center justify-center gap-1.5 text-base sm:text-lg font-extrabold text-foreground">
+                <ImageIcon className="w-4 h-4 text-primary" />
+                <span>JPG / PNG</span>
               </div>
               <p className="text-[11px] text-muted-foreground">{t("store.localImport")}</p>
             </div>

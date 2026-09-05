@@ -58,7 +58,7 @@ export const CrosshairHowToUsePage: React.FC = () => {
       desc: t("howToUsePage.step4Desc"),
       icon: <Layers className="w-5 h-5 text-purple-400" />,
       image: `/assets/images/playstore/${langPath}/4.png`,
-      badge: "PNG IMPORT",
+      badge: "JPG & PNG IMPORT",
     },
     {
       number: "05",

@@ -65,6 +65,11 @@ const CrosshairMobileFirstSection = lazy(() =>
     default: m.CrosshairMobileFirstSection,
   }))
 );
+const CrosshairFeatureMatrixSection = lazy(() =>
+  import("@/components/crosshair/CrosshairFeatureMatrixSection").then((m) => ({
+    default: m.CrosshairFeatureMatrixSection,
+  }))
+);
 const CrosshairFinalCTA = lazy(() =>
   import("@/components/crosshair/CrosshairFinalCTA").then((m) => ({
     default: m.CrosshairFinalCTA,
@@ -152,7 +157,8 @@ export const CrosshairLandingPage: React.FC = () => {
         {/* Section: Built for Android. Not adapted to it */}
         <CrosshairMobileFirstSection />
 
-        {/* Section: Real Play Store Reviews */}
+        {/* Section: Full Technical Feature Matrix & AI Knowledge Base */}
+        <CrosshairFeatureMatrixSection />
 
         {/* FAQ Spotlight Section */}
         <section className="py-16 sm:py-20 border-t border-border/40">

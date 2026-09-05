@@ -135,6 +135,18 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
         "description": description,
         "downloadUrl": "https://play.google.com/store/apps/details?id=com.hasan.apps.crosshair",
         "screenshot": `${BASE_URL}/assets/images/logo.png`,
+        "featureList": [
+          "Import custom images (JPG and transparent PNG) from device gallery as reticles",
+          "Advanced in-app custom reticle designer with granular pixel-level control",
+          "7 core geometric reticle bases: cross, dot, circle, ring+dot, t-cross, diamond, box",
+          "Fine-tune size, line thickness, center gap, opacity, and center dot",
+          "High-contrast black outline mode for visibility across light and dark game scenes",
+          "Floating quick-toggle HUD overlay for instant one-thumb visibility and position control",
+          "100% anti-cheat compliant passive visual overlay with zero game memory modification",
+          "No root required, utilizes standard Android SYSTEM_ALERT_WINDOW",
+          "Lightweight passive canvas rendering optimized for minimal battery and GPU usage",
+          "100% offline privacy with local on-device design storage and zero telemetry collection"
+        ],
         "author": {
           "@type": "Organization",
           "name": "flappsio"
