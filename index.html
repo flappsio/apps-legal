@@ -29,6 +29,9 @@
       content="custom crosshair, android crosshair, screen overlay crosshair, crossio, gaming crosshair, aim overlay, valorant crosshair android, custom aim helper"
     />
 
+    <!-- Robots & Image Preview Directives -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
     <!-- Canonical URL -->
     <link rel="canonical" href="https://flappsio.com/" />
 
@@ -94,6 +97,8 @@
         },
         "description": "Crossio displays a customizable crosshair overlay on Android. Choose designs, adjust appearance transparently, and improve your gaming precision.",
         "url": "https://flappsio.com",
+        "image": "https://flappsio.com/assets/images/logo.png",
+        "screenshot": "https://flappsio.com/assets/images/logo.png",
         "installUrl": "https://play.google.com/store/apps/details?id=com.hasan.apps.crosshair"
       }
     </script>
@@ -215,6 +220,15 @@
               ? urlLang
               : savedLang || (browserLang && !browserLang.startsWith("tr") ? "en" : "tr");
           document.documentElement.lang = lang;
+
+          // Initial localized title & description before React hydration
+          if (lang === "tr") {
+            document.title = "Crossio: Android Özel Nişangah Katmanı | flappsio";
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) {
+              metaDesc.setAttribute("content", "Crossio, kullanıcı tarafından seçilen nişangahı Android ekranında pasif ve özelleştirilebilir bir görsel katman olarak gösterir.");
+            }
+          }
 
           // Theme preference
           const urlTheme = params.get("theme");
