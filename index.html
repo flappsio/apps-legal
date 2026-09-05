@@ -4,13 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Crossio: Custom Crosshair – Passive Android Visual Overlay | flappsio</title>
+    <!-- Optimized SEO Title (58 chars, ideal 50-60 range) -->
+    <title>Crossio: Custom Crosshair – Android Visual Layer | flappsio</title>
+
+    <!-- Optimized Meta Description (146 chars, ideal 140-155 range) -->
     <meta
       name="description"
-      content="Crossio displays a user-selected crosshair as a passive, customizable visual layer on Android. Choose a design, adjust its appearance, and control it transparently."
+      content="Crossio displays a customizable crosshair overlay on Android. Choose designs, adjust appearance transparently, and improve your gaming precision."
     />
+
+    <!-- SEO Keywords -->
+    <meta
+      name="keywords"
+      content="custom crosshair, android crosshair, screen overlay crosshair, crossio, gaming crosshair, aim overlay, valorant crosshair android, custom aim helper"
+    />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://flappsio.com/" />
+
     <meta name="theme-color" content="#08090d" />
     <meta name="color-scheme" content="dark light" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Crossio: Custom Crosshair – Android Visual Layer | flappsio" />
+    <meta property="og:description" content="Crossio displays a customizable crosshair overlay on Android. Choose designs, adjust appearance transparently, and improve your gaming precision." />
+    <meta property="og:url" content="https://flappsio.com/" />
+    <meta property="og:image" content="https://flappsio.com/assets/images/logo.png" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Crossio: Custom Crosshair – Android Visual Layer | flappsio" />
+    <meta name="twitter:description" content="Crossio displays a customizable crosshair overlay on Android. Choose designs, adjust appearance transparently, and improve your gaming precision." />
+    <meta name="twitter:image" content="https://flappsio.com/assets/images/logo.png" />
 
     <!-- Favicon & Touch Icons -->
     <link rel="icon" type="image/png" href="/assets/images/logo.png" />
@@ -24,26 +50,45 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Non-Blocking Asynchronous Font Loading with Swap -->
+    <!-- Non-Blocking Asynchronous Font Loading with Swap (W3C Compliant &amp; Encoding) -->
     <link
       rel="preload"
       as="style"
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
       rel="stylesheet"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
       <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
         rel="stylesheet"
       />
     </noscript>
 
-    <!-- Critical CSS for Instant Paint (FCP / LCP < 0.4s) -->
+    <!-- Schema.org Structured Data (JSON-LD) for Search Engines -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MobileApplication",
+        "name": "Crossio: Custom Crosshair",
+        "operatingSystem": "Android",
+        "applicationCategory": "GameApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "description": "Crossio displays a customizable crosshair overlay on Android. Choose designs, adjust appearance transparently, and improve your gaming precision.",
+        "url": "https://flappsio.com",
+        "installUrl": "https://play.google.com/store/apps/details?id=com.hasan.apps.crosshair"
+      }
+    </script>
+
+    <!-- Critical CSS for Instant Paint & SEO Shell (FCP / LCP < 0.4s) -->
     <style>
       :root, [data-theme="dark"] {
         --bg-init: #0c0e14;
@@ -59,10 +104,18 @@
         -webkit-font-smoothing: antialiased;
       }
       .ssr-shell {
-        max-width: 1152px;
+        max-width: 1024px;
         margin: 0 auto;
-        padding: 40px 16px;
+        padding: 48px 20px;
         text-align: center;
+      }
+      .ssr-logo {
+        width: 80px;
+        height: 80px;
+        border-radius: 20px;
+        margin: 0 auto 18px auto;
+        display: block;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
       }
       .ssr-eyebrow {
         display: inline-block;
@@ -77,17 +130,31 @@
         margin-bottom: 20px;
       }
       .ssr-title {
-        font-size: clamp(32px, 6vw, 64px);
+        font-size: clamp(32px, 5.5vw, 56px);
         font-weight: 900;
-        line-height: 1.1;
+        line-height: 1.15;
         margin: 0 0 16px 0;
+        letter-spacing: -0.02em;
       }
       .ssr-sub {
         color: #9e9eaf;
-        font-size: clamp(14px, 2vw, 18px);
-        max-width: 600px;
+        font-size: clamp(15px, 2vw, 18px);
+        max-width: 680px;
         margin: 0 auto 24px auto;
-        line-height: 1.5;
+        line-height: 1.6;
+      }
+      .ssr-h2 {
+        font-size: clamp(20px, 3vw, 28px);
+        font-weight: 800;
+        margin: 40px 0 14px 0;
+        color: #ffffff;
+      }
+      .ssr-desc {
+        color: #8c8ea2;
+        font-size: 15px;
+        max-width: 640px;
+        margin: 0 auto 20px auto;
+        line-height: 1.6;
       }
       .ssr-btn {
         display: inline-flex;
@@ -96,10 +163,31 @@
         background: #69f0ae;
         color: #0c0e14;
         font-weight: 800;
-        font-size: 14px;
-        padding: 14px 28px;
+        font-size: 15px;
+        padding: 14px 32px;
         border-radius: 16px;
         text-decoration: none;
+        transition: transform 0.2s ease;
+      }
+      .ssr-nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin: 32px auto 0 auto;
+        padding: 0;
+        list-style: none;
+        max-width: 720px;
+      }
+      .ssr-nav-links a {
+        color: #a0a3bd;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 8px 16px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
       }
     </style>
 
@@ -143,18 +231,57 @@
   </head>
   <body>
     <div id="root">
-      <!-- Instant Critical HTML Shell (Guarantees sub-0.5s FCP and LCP on any crawler/device) -->
+      <!-- High-Performance SEO & Semantic Shell (Instant FCP/LCP + Full Crawlability for Non-JS Bots) -->
       <main class="ssr-shell">
+        <img
+          src="/assets/images/logo.png"
+          alt="Crossio: Custom Crosshair App Logo"
+          width="80"
+          height="80"
+          class="ssr-logo"
+        />
         <div class="ssr-eyebrow">CROSSIO: CUSTOM CROSSHAIR</div>
         <h1 class="ssr-title">Your design. Your display.</h1>
         <p class="ssr-sub">
-          Crossio displays the crosshair you choose as a passive, customizable visual layer on your Android screen.
+          Crossio displays the crosshair you choose as a passive, customizable visual layer on your Android screen. Customize your crosshair size, color, opacity, outline, and position with complete control.
         </p>
+
         <div>
-          <a class="ssr-btn" href="https://play.google.com/store/apps/details?id=com.hasan.apps.crosshair">
+          <a
+            class="ssr-btn"
+            href="https://play.google.com/store/apps/details?id=com.hasan.apps.crosshair"
+            rel="noopener"
+          >
             Get it on Google Play
           </a>
         </div>
+
+        <section>
+          <h2 class="ssr-h2">Passive Screen Overlay & Safe Visual Layer</h2>
+          <p class="ssr-desc">
+            Crossio runs as an independent visual overlay without accessing or modifying your game files. It functions passively on top of your screen to ensure complete stability, low battery consumption, and zero memory footprint.
+          </p>
+
+          <h2 class="ssr-h2">Customizable Reticle Styles & Pro Presets</h2>
+          <p class="ssr-desc">
+            Choose from dot, classic cross, circle, and professional esports designs. Adjust RGB color values, toggle high-contrast outlines for dark maps, and fine-tune your center point precision on any display size.
+          </p>
+
+          <h2 class="ssr-h2">Guides, Knowledge Base & Resources</h2>
+          <nav aria-label="Site Navigation">
+            <ul class="ssr-nav-links">
+              <li><a href="/crosshair">Crosshair Showcase</a></li>
+              <li><a href="/crosshair/how-to-use">Setup & How to Use Guide</a></li>
+              <li><a href="/crosshair/faq">Frequently Asked Questions</a></li>
+              <li><a href="/crosshair/guides">Gaming Crosshair Guides</a></li>
+              <li><a href="/crosshair/about">About Crossio</a></li>
+              <li><a href="/crosshair/support">Contact & Support</a></li>
+              <li><a href="/crosshair/privacy-policy">Privacy Policy</a></li>
+              <li><a href="/crosshair/terms-of-use">Terms of Use</a></li>
+              <li><a href="/license">Licenses</a></li>
+            </ul>
+          </nav>
+        </section>
       </main>
     </div>
     <script type="module" src="/src/main.tsx"></script>

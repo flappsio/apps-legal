@@ -3,21 +3,14 @@
 
 User-agent: *
 Allow: /
-Allow: /crosshair
-Allow: /crosshair/how-to-use
-Allow: /crosshair/faq
-Allow: /crosshair/guides
-Allow: /crosshair/guides/*
-Allow: /crosshair/about
-Allow: /crosshair/support
-Allow: /crosshair/privacy-policy
-Allow: /crosshair/terms-of-use
-Allow: /license
-Allow: /assets/
-Allow: /llms.txt
-Allow: /llms-full.txt
 
-# AI Search & Answer Engine Optimization (AEO / GEO Crawlers)
+# Dedicated Search & AI Crawlers (AEO / GEO)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 User-agent: GPTBot
 Allow: /
 
@@ -33,8 +26,5 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-User-agent: Bingbot
-Allow: /
-
-# Sitemap & LLMs.txt Location
+# Sitemap Location
 Sitemap: https://flappsio.com/sitemap.xml
