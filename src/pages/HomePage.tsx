@@ -14,10 +14,12 @@ import {
   Sparkles,
   Zap,
 } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export const HomePage: React.FC = () => {
+  const { t } = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
@@ -41,19 +43,19 @@ export const HomePage: React.FC = () => {
         <div className="container max-w-5xl mx-auto px-4 sm:px-6 text-center space-y-6">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/25 text-primary text-xs font-semibold backdrop-blur-sm animate-pulse-glow">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>flappsio Legal & Privacy Portal</span>
+            <span>{t("home.badge")}</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.15]">
-            Şeffaf, Güvenilir ve <br />
+            {t("home.titleLine1")} <br />
             <span className="bg-gradient-to-r from-primary via-primary/80 to-accent bg-clip-text text-transparent">
-              Kullanıcı Odaklı
+              {t("home.titleHighlight")}
             </span>{" "}
-            Politikalar
+            {t("home.titleLine2")}
           </h1>
 
           <p className="text-muted-foreground text-sm sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Geliştirdiğimiz tüm mobil uygulamalara ait güncel gizlilik bildirimleri, kullanım koşulları ve veri koruma ilkelerine buradan kolayca ulaşabilirsiniz.
+            {t("home.subtitle")}
           </p>
 
           {/* Search Bar */}
@@ -61,7 +63,7 @@ export const HomePage: React.FC = () => {
             <Search className="absolute left-3.5 top-7 h-4 w-4 text-muted-foreground" />
             <Input
               type="text"
-              placeholder="Uygulama adı veya yasal konu ara..."
+              placeholder={t("home.searchPlaceholder")}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-10 h-12 text-sm bg-card/80 border-border/80 rounded-2xl shadow-sm focus-visible:ring-primary"
@@ -75,10 +77,10 @@ export const HomePage: React.FC = () => {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h2 className="text-xl sm:text-2xl font-bold text-foreground">
-              Uygulamalar ve Politikalar
+              {t("home.appsTitle")}
             </h2>
             <p className="text-xs sm:text-sm text-muted-foreground">
-              {filteredApps.length} uygulama listeleniyor
+              {t("home.appsCount", { count: filteredApps.length })}
             </p>
           </div>
         </div>
@@ -86,7 +88,7 @@ export const HomePage: React.FC = () => {
         {filteredApps.length === 0 ? (
           <div className="text-center p-12 rounded-2xl bg-card border border-border/70">
             <p className="text-muted-foreground text-sm">
-              Aramanızla eşleşen bir uygulama bulunamadı.
+              {t("home.noResults")}
             </p>
             <Button
               variant="outline"
@@ -94,7 +96,7 @@ export const HomePage: React.FC = () => {
               onClick={() => setSearchQuery("")}
               className="mt-4 text-xs"
             >
-              Aramayı Sıfırla
+              {t("home.resetSearch")}
             </Button>
           </div>
         ) : (
@@ -168,7 +170,7 @@ export const HomePage: React.FC = () => {
                       <Link to={app.links.showcase}>
                         <span className="flex items-center gap-2">
                           <Sparkles className="w-4 h-4" />
-                          Uygulama Tanıtımı & Canlı Simülatör
+                          {t("home.showcaseBtn")}
                         </span>
                         <ChevronRight className="w-4 h-4 group-hover/main:translate-x-1 transition-transform" />
                       </Link>
@@ -185,7 +187,7 @@ export const HomePage: React.FC = () => {
                       <Link to={app.links.privacyPolicy}>
                         <span className="flex items-center gap-1.5">
                           <ShieldCheck className="w-3.5 h-3.5 text-primary" />
-                          Gizlilik Politikası
+                          {t("common.privacy")}
                         </span>
                         <ChevronRight className="w-3.5 h-3.5 text-muted-foreground group-hover/btn:translate-x-0.5 transition-transform" />
                       </Link>
@@ -200,7 +202,7 @@ export const HomePage: React.FC = () => {
                       <Link to={app.links.termsOfUse}>
                         <span className="flex items-center gap-1.5">
                           <FileText className="w-3.5 h-3.5 text-primary" />
-                          Kullanım Koşulları
+                          {t("common.terms")}
                         </span>
                         <ChevronRight className="w-3.5 h-3.5 text-muted-foreground group-hover/btn:translate-x-0.5 transition-transform" />
                       </Link>
@@ -214,7 +216,7 @@ export const HomePage: React.FC = () => {
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center gap-1.5 text-[11px] font-medium text-muted-foreground hover:text-primary transition-colors w-full text-center"
                     >
-                      <span>Google Play Store'da İncele</span>
+                      <span>{t("home.viewOnPlayStore")}</span>
                       <ExternalLink className="w-3 h-3" />
                     </a>
                   )}
@@ -231,8 +233,8 @@ export const HomePage: React.FC = () => {
               <Lock className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-xs font-bold text-foreground">Gizlilik Önceliğimizdir</h4>
-              <p className="text-[11px] text-muted-foreground">Kişisel veriler asla satılmaz veya izinsiz aktarılmaz.</p>
+              <h4 className="text-xs font-bold text-foreground">{t("home.privacyTitle")}</h4>
+              <p className="text-[11px] text-muted-foreground">{t("home.privacyDesc")}</p>
             </div>
           </div>
 
@@ -241,8 +243,8 @@ export const HomePage: React.FC = () => {
               <Zap className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-xs font-bold text-foreground">Yerel İşleme</h4>
-              <p className="text-[11px] text-muted-foreground">Özel tasarımlar ve ayarlar cihazınızda saklanır.</p>
+              <h4 className="text-xs font-bold text-foreground">{t("home.localTitle")}</h4>
+              <p className="text-[11px] text-muted-foreground">{t("home.localDesc")}</p>
             </div>
           </div>
 
@@ -251,8 +253,8 @@ export const HomePage: React.FC = () => {
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-xs font-bold text-foreground">Şeffaf Lisanslama</h4>
-              <p className="text-[11px] text-muted-foreground">Açık, anlaşılır ve denetlenebilir kullanım şartları.</p>
+              <h4 className="text-xs font-bold text-foreground">{t("home.licenseTitle")}</h4>
+              <p className="text-[11px] text-muted-foreground">{t("home.licenseDesc")}</p>
             </div>
           </div>
         </div>

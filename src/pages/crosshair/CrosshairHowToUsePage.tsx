@@ -18,69 +18,52 @@ import {
 import { Link } from "react-router-dom";
 
 export const CrosshairHowToUsePage: React.FC = () => {
-  const { t, isTr, language } = useLanguage();
+  const { t, language } = useLanguage();
   const langPath = language === "en" ? "en" : "tr";
 
-  const title = isTr
-    ? "Crossio Nasıl Kullanılır? – Android Katman ve İzin Rehberi"
-    : "How to Use Crossio on Android – Overlay & Permission Guide";
-
-  const description = isTr
-    ? "Android cihazlarda Crossio kurulumu ve kullanımı: açıklamayı okuma, katman iznini verme, nişangahı özelleştirme, başlatma ve durdurma adımları."
-    : "Step-by-step Crossio setup on Android: read the disclosure, grant overlay permission, customize, start, and stop the layer.";
+  const title = t("howToUsePage.metaTitle");
+  const description = t("howToUsePage.metaDesc");
 
   const steps = [
     {
       number: "01",
-      title: isTr ? "Uygulamayı İndirin ve Başlatın" : "Download & Open the App",
-      desc: isTr
-        ? "Google Play Store üzerinden Crossio uygulamasını indirin ve açın."
-        : "Download Crossio from Google Play Store and launch the app.",
+      title: t("howToUsePage.step1Title"),
+      desc: t("howToUsePage.step1Desc"),
       icon: <Download className="w-5 h-5 text-primary" />,
       image: `/assets/images/playstore/${langPath}/4.png`,
       badge: "GOOGLE PLAY",
-      actionText: isTr ? "Google Play'den İndir" : "Download from Play Store",
+      actionText: t("common.installOnGooglePlay"),
       actionUrl: "https://play.google.com/store/apps/details?id=com.hasan.apps.crosshair",
     },
     {
       number: "02",
-      title: isTr ? "Ekran Üstü Katman (Overlay) İznini Verin" : "Enable 'Display Over Other Apps' Permission",
-      desc: isTr
-        ? "Katmanı ilk kez başlatırken gösterilen açıklamayı okuyun. Devam etmeyi seçerseniz Android ayarlarında Crossio için 'Diğer uygulamaların üzerinde göster' (SYSTEM_ALERT_WINDOW) iznini açın."
-        : "When you first start the layer, read the disclosure. If you choose to continue, open Android Settings and enable 'Display over other apps' for Crossio.",
+      title: t("howToUsePage.step2Title"),
+      desc: t("howToUsePage.step2Desc"),
       icon: <ShieldCheck className="w-5 h-5 text-cyan-400" />,
       image: `/assets/images/playstore/${langPath}/4.png`,
       badge: "SYSTEM_ALERT_WINDOW",
-      tip: isTr
-        ? "Bu izin pasif görsel katmanı göstermek içindir. Ana nişangah dokunma veya tuş girdisi alamaz; Crossio diğer uygulamaların koduna, belleğine, dosyalarına, verilerine veya ağ trafiğine erişmez ve otomasyon sağlamaz."
-        : "This permission displays the passive visual layer. The main crosshair cannot receive touch or key input; Crossio does not access another app's code, memory, files, data, or network traffic and provides no automation.",
+      tip: t("howToUsePage.step2Tip"),
     },
     {
       number: "03",
-      title: isTr ? "Nişangahınızı Seçin veya Özelleştirin" : "Select or Customize Your Crosshair",
-      desc: isTr
-        ? "Hazır tasarımlar (Nokta, Klasik Artı, T-Cross vb.) arasından seçim yapın veya editörle çizgi kalınlığı, boyut, merkez boşluğu ve rengi ayarlayın."
-        : "Choose a built-in design (Dot, Classic Cross, T-Cross, etc.) or use the editor to adjust line thickness, size, center gap, and color.",
+      title: t("howToUsePage.step3Title"),
+      desc: t("howToUsePage.step3Desc"),
       icon: <Sliders className="w-5 h-5 text-primary" />,
       image: `/assets/images/playstore/${langPath}/2.png`,
       badge: "PIXEL EDITOR",
     },
     {
       number: "04",
-      title: isTr ? "Özel PNG İçe Aktarma (İsteğe Bağlı)" : "Import Custom PNG (Optional)",
-      desc: isTr
-        ? "Hazır modeller yerine kendi tasarımınızı kullanmak isterseniz, Android galerinizden arka planı şeffaf olan herhangi bir PNG nişangah görselini anında içe aktarabilirsiniz."
-        : "Want your own design? Import any transparent PNG crosshair image from your Android gallery with full scaling and opacity controls.",
+      title: t("howToUsePage.step4Title"),
+      desc: t("howToUsePage.step4Desc"),
       icon: <Layers className="w-5 h-5 text-purple-400" />,
       image: `/assets/images/playstore/${langPath}/4.png`,
       badge: "PNG IMPORT",
     },
     {
       number: "05",
-      title: isTr ? "Katmanı Başlatın ve Yönetin" : "Start and Manage the Layer",
-      desc: isTr
-        ? "Katmanı uygulamadaki güç düğmesiyle açıkça başlatın. İsteğe bağlı yüzen kontrolle görünürlüğü ve konumu yönetebilir, servisi kalıcı bildirimdeki Durdur eylemiyle kapatabilirsiniz."
-        : "Start the layer explicitly with the in-app power button. Use the optional floating control to manage visibility and position, and stop the service from the persistent notification.",
+      title: t("howToUsePage.step5Title"),
+      desc: t("howToUsePage.step5Desc"),
       icon: <Sparkles className="w-5 h-5 text-amber-400" />,
       image: `/assets/images/playstore/${langPath}/4.png`,
       badge: "FLOATING HUD",
@@ -91,7 +74,7 @@ export const CrosshairHowToUsePage: React.FC = () => {
   const howToJsonLd = {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    "name": isTr ? "Crosshair Nasıl Kurulur ve Kullanılır?" : "How to Setup and Use Crosshair on Android",
+    "name": t("howToUse.title"),
     "description": description,
     "totalTime": "PT2M",
     "step": steps.map((s, idx) => ({
@@ -118,9 +101,9 @@ export const CrosshairHowToUsePage: React.FC = () => {
           "enable crosshair overlay android",
         ]}
         breadcrumbs={[
-          { name: isTr ? "Ana Sayfa" : "Home", url: "/" },
+          { name: t("common.home"), url: "/" },
           { name: "Crosshair", url: "/crosshair" },
-          { name: isTr ? "Nasıl Kullanılır" : "How to Use", url: "/crosshair/how-to-use" },
+          { name: t("common.howItWorks"), url: "/crosshair/how-to-use" },
         ]}
         jsonLd={howToJsonLd}
       />
@@ -143,19 +126,11 @@ export const CrosshairHowToUsePage: React.FC = () => {
         <QuickAnswerBlock
           question={t("howToUse.quickAnswerQ")}
           summary={t("howToUse.quickAnswerSummary")}
-          keyPoints={
-            isTr
-              ? [
-                  "Root gerektirmez; Android 7.0 veya üzerini hedefler ve davranış üreticiye göre değişebilir.",
-                  "Overlay izni yalnızca ekrana çizim yapmak içindir, kişisel veriye erişmez.",
-                  "İsteğe bağlı dokunulabilir mini kontrol görünürlük ve konumu yönetir.",
-                ]
-              : [
-                  "No root required; targets Android 7.0 or later, with behavior varying by manufacturer.",
-                  "Overlay permission is strictly for visual drawing, zero personal data accessed.",
-                  "The optional touchable mini control manages visibility and position.",
-                ]
-          }
+          keyPoints={[
+            t("howToUsePage.point1"),
+            t("howToUsePage.point2"),
+            t("howToUsePage.point3"),
+          ]}
         />
 
         {/* Step-by-Step Cards with Authentic Play Store Screenshots */}
@@ -232,15 +207,11 @@ export const CrosshairHowToUsePage: React.FC = () => {
           <div className="flex items-center gap-2.5 text-amber-400">
             <AlertTriangle className="w-5 h-5" />
             <h2 className="text-sm sm:text-base font-bold text-foreground">
-              {isTr
-                ? "Xiaomi (MIUI/HyperOS), Huawei ve Samsung Cihazlar İçin Önemli İpucu"
-                : "Important Tip for Xiaomi, Huawei & Samsung Devices"}
+              {t("howToUsePage.oemTitle")}
             </h2>
           </div>
           <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-            {isTr
-              ? "Bazı telefon üreticileri pil tasarrufu için arka plandaki katman servisini durdurabilir. Katman beklenmedik biçimde kapanıyorsa yalnızca ihtiyaç hâlinde Cihaz Ayarları > Uygulamalar > Crossio > Pil bölümünden üreticinizin sunduğu uygun seçeneği kullanın. Pil optimizasyonu muafiyeti ve üreticiye özgü otomatik başlatma ayarı isteğe bağlıdır."
-              : "Some manufacturers may stop the background layer service to save battery. If the layer closes unexpectedly, use the appropriate option under Device Settings > Apps > Crossio > Battery only when needed. Battery-optimization exemption and manufacturer-specific autostart settings are optional."}
+            {t("howToUsePage.oemDesc")}
           </p>
           <div className="pt-2">
             <Button
@@ -250,7 +221,7 @@ export const CrosshairHowToUsePage: React.FC = () => {
               className="text-xs rounded-xl border-border/80 gap-1.5"
             >
               <Link to="/crosshair/guides/sorun-giderme-overlay-izinleri">
-                <span>{isTr ? "Detaylı Sorun Giderme Rehberini Oku" : "Read Troubleshooting Guide"}</span>
+                <span>{t("howToUsePage.oemBtn")}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </Button>
@@ -260,12 +231,10 @@ export const CrosshairHowToUsePage: React.FC = () => {
         {/* Bottom CTA Card */}
         <div className="text-center py-12 space-y-4">
           <h2 className="text-xl sm:text-2xl font-bold text-foreground">
-            {isTr ? "Nişangahınızı Özelleştirmeye Başlayın" : "Ready to Customize Your Crosshair?"}
+            {t("howToUsePage.readyTitle")}
           </h2>
           <p className="text-xs sm:text-sm text-muted-foreground max-w-md mx-auto">
-            {isTr
-              ? "Hazır tasarımları keşfedin, kendi görselinizi ekleyin ve görünümü tercihlerinize göre düzenleyin."
-              : "Explore built-in designs, add your own image, and adjust the appearance to your preferences."}
+            {t("howToUsePage.readyDesc")}
           </p>
           <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
             <Button
@@ -290,7 +259,7 @@ export const CrosshairHowToUsePage: React.FC = () => {
               className="rounded-2xl text-xs sm:text-sm h-12 px-6 border-border/80"
             >
               <Link to="/crosshair/faq">
-                <span>{isTr ? "SSS Sayfasına Git" : "Visit FAQ Page"}</span>
+                <span>{t("howToUsePage.visitFaq")}</span>
                 <ExternalLink className="w-3.5 h-3.5 ml-1.5" />
               </Link>
             </Button>

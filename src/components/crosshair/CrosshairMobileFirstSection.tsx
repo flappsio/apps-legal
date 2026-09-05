@@ -5,30 +5,24 @@ import { Badge } from "@/components/ui/badge";
 import { Smartphone, Cpu, BatteryCharging } from "lucide-react";
 
 export const CrosshairMobileFirstSection: React.FC = () => {
-  const { isTr } = useLanguage();
+  const { t } = useLanguage();
   const { activeColorOption } = useCrosshairState();
 
   const specs = [
     {
       icon: <Cpu className="w-5 h-5 text-primary" />,
-      title: isTr ? "Hafif Görsel Çizim" : "Lightweight Rendering",
-      desc: isTr
-        ? "Kaynak kullanımı cihazınıza, Android sürümüne ve seçtiğiniz ayarlara göre değişebilir."
-        : "Resource use may vary by device, Android version, and selected settings.",
+      title: t("mobileFirst.spec1Title"),
+      desc: t("mobileFirst.spec1Desc"),
     },
     {
       icon: <BatteryCharging className="w-5 h-5 text-cyan-400" />,
-      title: isTr ? "Kontrollü Arka Plan Çalışması" : "Controlled Background Operation",
-      desc: isTr
-        ? "Katman etkinken ön plan servisi kalıcı bir bildirim gösterir ve bildirimdeki Durdur eylemiyle kapatılabilir."
-        : "The visual layer is rendered while active and can be stopped from its persistent notification.",
+      title: t("mobileFirst.spec2Title"),
+      desc: t("mobileFirst.spec2Desc"),
     },
     {
       icon: <Smartphone className="w-5 h-5 text-purple-400" />,
-      title: isTr ? "Dokunmatik & Yüzen HUD" : "Touch Ergonomics",
-      desc: isTr
-        ? "Mobil parmak kontrollerine uygun yüzen hızlı erişim menüsü."
-        : "Designed around mobile ergonomics and one-thumb quick toggle HUD widgets.",
+      title: t("mobileFirst.spec3Title"),
+      desc: t("mobileFirst.spec3Desc"),
     },
   ];
 
@@ -39,25 +33,23 @@ export const CrosshairMobileFirstSection: React.FC = () => {
           {/* Left Text */}
           <div className="lg:col-span-6 space-y-5">
             <Badge variant="brand" className="text-xs px-3 py-1 font-semibold">
-              {isTr ? "Android'e Özel Mimari" : "Android Native Exclusivity"}
+              {t("mobileFirst.badge")}
             </Badge>
 
             <h2 className="text-3xl sm:text-5xl font-extrabold text-foreground tracking-tight leading-[1.12]">
-              {isTr ? "Android İçin Üretildi." : "Built for Android."} <br />
+              {t("mobileFirst.title1")} <br />
               <span
                 className="bg-clip-text text-transparent"
                 style={{
                   backgroundImage: `linear-gradient(135deg, ${activeColorOption.hex} 0%, #00E5FF 100%)`,
                 }}
               >
-                {isTr ? "Sonradan Uyarlanmadı." : "Not adapted to it."}
+                {t("mobileFirst.title2")}
               </span>
             </h2>
 
             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-              {isTr
-                ? "Crossio, Android işletim sisteminin pencere yöneticisi ve farklı mobil ekran boyutları için geliştirilmiştir."
-                : "Crossio is designed around Android's window manager and a range of mobile screen sizes."}
+              {t("mobileFirst.subtitle")}
             </p>
 
             <div className="space-y-4 pt-4">
@@ -124,9 +116,7 @@ export const CrosshairMobileFirstSection: React.FC = () => {
               </div>
 
               <div className="pt-3 border-t border-border/60 text-center text-[11px] text-muted-foreground">
-                {isTr
-                  ? "Desteklenen Android sürümlerinde kullanılabilir; davranış üretici ayarlarına göre değişebilir"
-                  : "Available on supported Android versions; behavior may vary by manufacturer settings"}
+                {t("mobileFirst.compatibilityNote")}
               </div>
             </div>
           </div>

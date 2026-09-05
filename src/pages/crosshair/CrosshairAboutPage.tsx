@@ -6,37 +6,26 @@ import { Badge } from "@/components/ui/badge";
 import { ShieldCheck, Lock, Zap } from "lucide-react";
 
 export const CrosshairAboutPage: React.FC = () => {
-  const { isTr } = useLanguage();
+  const { t } = useLanguage();
 
-  const title = isTr
-    ? "Hakkımızda & Proje Misyonu | Crossio & flappsio"
-    : "About Us & Mission | Crossio & flappsio";
-
-  const description = isTr
-    ? "flappsio ve Crossio hakkında. Android için şeffaf, kullanıcı kontrollü ve gizlilik odaklı yardımcı araçlar geliştirme vizyonumuz."
-    : "About flappsio and Crossio. Our mission is to build transparent, user-controlled, privacy-conscious Android utilities.";
+  const title = t("aboutPage.metaTitle");
+  const description = t("aboutPage.metaDesc");
 
   const values = [
     {
       icon: <Lock className="w-5 h-5 text-primary" />,
-      title: isTr ? "Kullanıcı Gizliliği Önceliğimizdir" : "Privacy First",
-      desc: isTr
-        ? "Özel tasarımlarınız ve kişisel verileriniz asla satılmaz, cihazınızda yerel tutulur."
-        : "Your custom designs and data are never monetized or sold; they remain local to your device.",
+      title: t("aboutPage.val1Title"),
+      desc: t("aboutPage.val1Desc"),
     },
     {
       icon: <ShieldCheck className="w-5 h-5 text-[#00E5FF]" />,
-      title: isTr ? "Şeffaf ve Etik Mühendislik" : "Transparent & Ethical Engineering",
-      desc: isTr
-        ? "Otomatik nişan alma, otomatik dokunma, makro veya bellek enjeksiyonu geliştirmeyiz. Crossio, Android'in standart katman iznini kullanan kullanıcı kontrollü bir görsel araçtır."
-        : "We do not build auto-aim, auto-tap, macros, or memory injection. Crossio is a user-controlled visual tool that uses Android's standard overlay permission.",
+      title: t("aboutPage.val2Title"),
+      desc: t("aboutPage.val2Desc"),
     },
     {
       icon: <Zap className="w-5 h-5 text-amber-400" />,
-      title: isTr ? "Sade ve Ölçülü Tasarım" : "Focused, Measured Design",
-      desc: isTr
-        ? "Uygulamayı gereksiz işlevlerden arındırıp kaynak kullanımını farklı cihazlarda izlemeye ve iyileştirmeye odaklanırız."
-        : "We keep the app focused, monitor resource use across devices, and improve it without making absolute performance claims.",
+      title: t("aboutPage.val3Title"),
+      desc: t("aboutPage.val3Desc"),
     },
   ];
 
@@ -53,9 +42,9 @@ export const CrosshairAboutPage: React.FC = () => {
           "about crossio",
         ]}
         breadcrumbs={[
-          { name: isTr ? "Ana Sayfa" : "Home", url: "/" },
+          { name: t("common.home"), url: "/" },
           { name: "Crossio", url: "/crosshair" },
-          { name: isTr ? "Hakkımızda" : "About", url: "/crosshair/about" },
+          { name: t("common.about"), url: "/crosshair/about" },
         ]}
       />
 
@@ -63,33 +52,23 @@ export const CrosshairAboutPage: React.FC = () => {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
           <Badge variant="brand" className="text-xs px-3 py-1 font-semibold">
-            {isTr ? "Hakkımızda & Vizyonumuz" : "About Us & Vision"}
+            {t("aboutPage.badge")}
           </Badge>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">
-            {isTr ? "Kullanıcılar İçin, Şeffaflıkla" : "Built for Users, with Transparency"}
+            {t("aboutPage.title")}
           </h1>
           <p className="text-sm sm:text-base text-muted-foreground">
-            {isTr
-              ? "Android'de görsel özelleştirmeyi daha şeffaf, anlaşılır ve kullanıcı kontrollü kılmak için buradayız."
-              : "We are here to make visual customization on Android more transparent, understandable, and user-controlled."}
+            {t("aboutPage.subtitle")}
           </p>
         </div>
 
         {/* Story Section */}
         <div className="p-8 rounded-3xl bg-card/60 border border-border/80 backdrop-blur-sm space-y-4 text-sm text-muted-foreground leading-relaxed">
           <h2 className="text-lg sm:text-xl font-bold text-foreground">
-            {isTr ? "flappsio ve Crossio Hikayesi" : "The Story Behind Crossio"}
+            {t("aboutPage.storyTitle")}
           </h2>
-          <p>
-            {isTr
-              ? "Crossio, kullanıcıların hazır bir tasarım seçebilmesi, kendi görsellerini yerel olarak ekleyebilmesi ve nişangah görünümünü ayrıntılı biçimde özelleştirebilmesi için geliştirildi. İzinlerin ne yaptığına dair açık açıklamalar ve kullanıcı tarafından başlatılan bir katman deneyimi sunmayı önemsiyoruz."
-              : "Crossio was created so users can choose a built-in design, add their own local images, and customize a crosshair's appearance in detail. We prioritize clear permission disclosures and an overlay experience that the user starts explicitly."}
-          </p>
-          <p>
-            {isTr
-              ? "Crossio'yu kullanıcı geri bildirimlerini ve Android platform gereksinimlerini dikkate alarak geliştirmeyi sürdürüyoruz."
-              : "We continue to develop Crossio with user feedback and Android platform requirements in mind."}
-          </p>
+          <p>{t("aboutPage.storyP1")}</p>
+          <p>{t("aboutPage.storyP2")}</p>
         </div>
 
         {/* Core Values 3-Grid */}

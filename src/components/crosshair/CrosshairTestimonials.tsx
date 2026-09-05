@@ -5,22 +5,20 @@ import { Star, CheckCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 export const CrosshairTestimonials: React.FC = () => {
-  const { isTr } = useLanguage();
+  const { t, isTr } = useLanguage();
 
   return (
     <section className="py-16 sm:py-24 border-t border-border/40 relative">
       <div className="container max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <Badge variant="brand" className="text-xs px-3 py-1 font-semibold">
-            {isTr ? "Kullanıcı Değerlendirmeleri" : "Google Play Player Reviews"}
+            {t("testimonials.badge")}
           </Badge>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-foreground tracking-tight">
-            {isTr ? "Dünya Çapında Oyuncuların Tercihi." : "Used by mobile players around the world."}
+            {t("testimonials.title")}
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground">
-            {isTr
-              ? "Google Play Store üzerinden doğrulanmış oyuncu deneyimleri ve yorumları."
-              : "Verified feedback from mobile gamers dominating ranked matches and tournaments."}
+            {t("testimonials.subtitle")}
           </p>
         </div>
 

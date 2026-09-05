@@ -8,18 +8,18 @@ import { Input } from "@/components/ui/input";
 import { ChevronDown, Search, HelpCircle, Sparkles } from "lucide-react";
 
 export const CrosshairFAQPage: React.FC = () => {
-  const { isTr } = useLanguage();
+  const { t, isTr } = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [expandedId, setExpandedId] = useState<string | null>(FAQS_DATA[0].id);
 
   const categories = [
-    { id: "all", label: isTr ? `Tümü (${FAQS_DATA.length})` : `All (${FAQS_DATA.length})` },
-    { id: "general", label: isTr ? "Genel" : "General" },
-    { id: "overlay", label: isTr ? "Overlay & İzinler" : "Overlay & Permissions" },
-    { id: "import", label: isTr ? "PNG İçe Aktarma" : "PNG Import" },
-    { id: "performance", label: isTr ? "Pil & Performans" : "Battery & Performance" },
-    { id: "compatibility", label: isTr ? "Uyumluluk & Kurallar" : "Compatibility & Rules" },
+    { id: "all", label: t("faqPage.allCount", { count: FAQS_DATA.length }) },
+    { id: "general", label: t("faqPage.catGeneral") },
+    { id: "overlay", label: t("faqPage.catOverlay") },
+    { id: "import", label: t("faqPage.catImport") },
+    { id: "performance", label: t("faqPage.catPerformance") },
+    { id: "compatibility", label: t("faqPage.catCompatibility") },
   ];
 
   const filteredFaqs = FAQS_DATA.filter((faq) => {
@@ -33,13 +33,8 @@ export const CrosshairFAQPage: React.FC = () => {
     return matchesCategory && matchesSearch;
   });
 
-  const title = isTr
-    ? "Crosshair Sıkça Sorulan Sorular - Overlay, İzinler, Güvenlik ve Uyumluluk"
-    : "Crossio FAQ - Visual Overlay, Android Permissions & Privacy";
-
-  const description = isTr
-    ? "Crossio hakkında sık sorulan sorular: pasif katman nasıl çalışır, izinler ne yapar, üçüncü taraf kuralları nasıl değerlendirilir, PNG nasıl aktarılır ve veriler nasıl işlenir?"
-    : "Frequently asked questions about Crossio: how its passive layer works, what permissions do, how third-party rules apply, PNG import, and data handling.";
+  const title = t("faqPage.metaTitle");
+  const description = t("faqPage.metaDesc");
 
   // FAQPage JSON-LD schema
   const faqJsonLd = {
@@ -72,9 +67,9 @@ export const CrosshairFAQPage: React.FC = () => {
           "crosshair iphone pc",
         ]}
         breadcrumbs={[
-          { name: isTr ? "Ana Sayfa" : "Home", url: "/" },
+          { name: t("common.home"), url: "/" },
           { name: "Crosshair", url: "/crosshair" },
-          { name: isTr ? "SSS" : "FAQ", url: "/crosshair/faq" },
+          { name: t("common.faq"), url: "/crosshair/faq" },
         ]}
         jsonLd={faqJsonLd}
       />
@@ -83,15 +78,13 @@ export const CrosshairFAQPage: React.FC = () => {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
           <Badge variant="brand" className="text-xs px-3 py-1 font-semibold">
-            {isTr ? "Soru ve Cevaplar" : "Knowledge & Direct Answers"}
+            {t("faqPage.badge")}
           </Badge>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">
-            {isTr ? "Sıkça Sorulan Sorular" : "Frequently Asked Questions"}
+            {t("faqPage.title")}
           </h1>
           <p className="text-sm sm:text-base text-muted-foreground">
-            {isTr
-              ? "Crossio Android katmanı, izinler, pil ayarları, gizlilik ve üçüncü taraf kuralları hakkında doğrudan cevaplar."
-              : "Direct answers about Android overlay behavior, permissions, custom PNG import, privacy, and device settings."}
+            {t("faqPage.subtitle")}
           </p>
         </div>
 
@@ -101,13 +94,9 @@ export const CrosshairFAQPage: React.FC = () => {
             <Search className="w-4 h-4 text-muted-foreground absolute left-3.5 top-1/2 -translate-y-1/2" />
             <Input
               id="faq-search-input"
-              aria-label={isTr ? "Sıkça sorulan sorularda ara" : "Search frequently asked questions"}
+              aria-label={t("faqPage.searchAria")}
               type="text"
-              placeholder={
-                isTr
-                  ? "Soru veya konu ara (örn. izin, katman, pil, png, gizlilik)..."
-                  : "Search questions (e.g. permission, overlay, battery, png, privacy)..."
-              }
+              placeholder={t("faqPage.searchPlaceholder")}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-10 h-12 text-sm bg-card/80 border-border/80 rounded-2xl backdrop-blur-sm"
@@ -137,10 +126,10 @@ export const CrosshairFAQPage: React.FC = () => {
             <div className="text-center py-12 p-8 rounded-3xl bg-card/40 border border-border/60 space-y-2">
               <HelpCircle className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
               <p className="text-sm font-semibold text-foreground">
-                {isTr ? "Aramanızla eşleşen soru bulunamadı." : "No matching questions found."}
+                {t("faqPage.noQuestions")}
               </p>
               <p className="text-xs text-muted-foreground">
-                {isTr ? "Farklı bir arama terimi deneyin." : "Try searching with different keywords."}
+                {t("faqPage.tryDifferent")}
               </p>
             </div>
           ) : (

@@ -5,37 +5,29 @@ import { Badge } from "@/components/ui/badge";
 import { Eye, Target, Palette, Sparkles } from "lucide-react";
 
 export const CrosshairWhyUseSection: React.FC = () => {
-  const { isTr } = useLanguage();
+  const { t } = useLanguage();
   const { activeColorOption } = useCrosshairState();
 
   const benefits = [
     {
       icon: <Eye className="w-5 h-5 text-primary" />,
-      title: isTr ? "Ayarlanabilir Görünürlük" : "Adjustable Visibility",
-      desc: isTr
-        ? "Farklı arka planlarda renk, dış çizgi ve opaklık ayarlarını önizleyin."
-        : "Preview color, outline, and opacity settings across different backgrounds.",
+      title: t("whyUse.benefit1Title"),
+      desc: t("whyUse.benefit1Desc"),
     },
     {
       icon: <Target className="w-5 h-5 text-cyan-400" />,
-      title: isTr ? "Sabit Merkez Konumu" : "Fixed Center Position",
-      desc: isTr
-        ? "Seçtiğiniz görsel katmanı Android ekranının merkezinde konumlandırın."
-        : "Position the visual layer you choose at the center of your Android display.",
+      title: t("whyUse.benefit2Title"),
+      desc: t("whyUse.benefit2Desc"),
     },
     {
       icon: <Palette className="w-5 h-5 text-purple-400" />,
-      title: isTr ? "Kişiselleştirilmiş Tasarım" : "Custom Appearance",
-      desc: isTr
-        ? "Nokta, artı veya çember geometrilerini görsel tercihlerinize göre düzenleyin."
-        : "Adjust dot, cross, or circle geometry to your visual preferences.",
+      title: t("whyUse.benefit3Title"),
+      desc: t("whyUse.benefit3Desc"),
     },
     {
       icon: <Sparkles className="w-5 h-5 text-amber-400" />,
-      title: isTr ? "Zemine Göre Renk Seçimi" : "Background Contrast Colors",
-      desc: isTr
-        ? "Açık, koyu ve renkli zeminlerde farklı renk seçeneklerini karşılaştırın."
-        : "Compare color options across light, dark, and colorful backgrounds.",
+      title: t("whyUse.benefit4Title"),
+      desc: t("whyUse.benefit4Desc"),
     },
   ];
 
@@ -45,12 +37,10 @@ export const CrosshairWhyUseSection: React.FC = () => {
         {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
           <Badge variant="brand" className="text-xs px-3 py-1 font-semibold">
-            {isTr ? "Rehber & Temel Faydalar" : "SEO & Knowledge Base"}
+            {t("whyUse.badge")}
           </Badge>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-foreground tracking-tight">
-            {isTr
-              ? "Android'de Neden Özel Crosshair Kullanılır?"
-              : "Why use a custom crosshair on Android?"}
+            {t("whyUse.title")}
           </h2>
         </div>
 
@@ -64,13 +54,11 @@ export const CrosshairWhyUseSection: React.FC = () => {
         >
           <div className="flex items-center gap-2 text-primary text-xs font-bold uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>{isTr ? "Doğrudan Yanıt & Tanım (AEO Summary)" : "Direct Answer & Overview"}</span>
+            <span>{t("whyUse.aeoTitle")}</span>
           </div>
 
           <p className="text-sm sm:text-base font-medium text-foreground leading-relaxed">
-            {isTr
-              ? "Crossio, kullanıcı tarafından seçilen nişangahı Android ekranının merkezinde pasif bir görsel katman olarak gösterir. Tasarımın renk, boyut, kalınlık, boşluk ve opaklık ayarları özelleştirilebilir."
-              : "Crossio displays a user-selected crosshair as a passive visual layer at the center of an Android screen. Its color, size, thickness, gap, and opacity can be customized."}
+            {t("whyUse.aeoSummary")}
           </p>
 
           <div className="pt-2 flex items-center justify-between text-[11px] text-muted-foreground border-t border-border/40">

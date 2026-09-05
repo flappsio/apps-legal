@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Check } from "lucide-react";
 
 export const CrosshairCustomizationSection: React.FC = () => {
-  const { isTr } = useLanguage();
+  const { t } = useLanguage();
   const {
     shape,
     color,
@@ -30,15 +30,13 @@ export const CrosshairCustomizationSection: React.FC = () => {
         {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <Badge variant="brand" className="text-xs px-3 py-1 font-semibold">
-            {isTr ? "Hassas Nişangah Ayarı" : "Precision Reticle Tuning"}
+            {t("customization.badge")}
           </Badge>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-foreground tracking-tight">
-            {isTr ? "Ayrıntılı Görünüm Kontrolü." : "Detailed visual control."}
+            {t("customization.title")}
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground">
-            {isTr
-              ? "Renk, boyut, kalınlık, boşluk ve opaklık ayarlarıyla kendi nişangah görünümünüzü oluşturun."
-              : "Create your own crosshair appearance with color, size, thickness, gap, and opacity controls."}
+            {t("customization.subtitle")}
           </p>
         </div>
 
@@ -227,7 +225,7 @@ export const CrosshairCustomizationSection: React.FC = () => {
           <div className="lg:col-span-5 p-6 sm:p-7 rounded-3xl bg-card/70 border border-border/80 backdrop-blur-xl shadow-xl space-y-5">
             <div>
               <label className="text-xs font-bold text-foreground mb-2 block">
-                {isTr ? "Nişangah Rengi" : "Reticle Color Spectrum"}
+                {t("customization.colorLabel")}
               </label>
               <div className="flex items-center gap-2">
                 {COLOR_OPTIONS.map((c) => (
@@ -251,13 +249,13 @@ export const CrosshairCustomizationSection: React.FC = () => {
               <div className="space-y-1">
                 <div className="flex justify-between text-xs text-muted-foreground">
                   <label htmlFor="custom-size-slider" className="cursor-pointer">
-                    {isTr ? "Boyut / Çizgi Uzunluğu" : "Size / Line Length"}
+                    {t("customization.sizeLabel")}
                   </label>
                   <span className="font-mono font-bold text-foreground">{size}px</span>
                 </div>
                 <input
                   id="custom-size-slider"
-                  aria-label={isTr ? "Nişangah Çizgi Uzunluğu (Piksel)" : "Crosshair Line Length (Pixels)"}
+                  aria-label={t("customization.sizeLabel")}
                   type="range"
                   min="2"
                   max="16"
@@ -270,13 +268,13 @@ export const CrosshairCustomizationSection: React.FC = () => {
               <div className="space-y-1">
                 <div className="flex justify-between text-xs text-muted-foreground">
                   <label htmlFor="custom-thickness-slider" className="cursor-pointer">
-                    {isTr ? "Çizgi Kalınlığı" : "Line Thickness"}
+                    {t("customization.thicknessLabel")}
                   </label>
                   <span className="font-mono font-bold text-foreground">{thickness}px</span>
                 </div>
                 <input
                   id="custom-thickness-slider"
-                  aria-label={isTr ? "Çizgi Kalınlığı (Piksel)" : "Line Thickness (Pixels)"}
+                  aria-label={t("customization.thicknessLabel")}
                   type="range"
                   min="1"
                   max="6"
@@ -290,13 +288,13 @@ export const CrosshairCustomizationSection: React.FC = () => {
                 <div className="space-y-1">
                   <div className="flex justify-between text-xs text-muted-foreground">
                     <label htmlFor="custom-gap-slider" className="cursor-pointer">
-                      {isTr ? "Merkez Boşluğu (Center Gap)" : "Center Gap"}
+                      {t("customization.gapLabel")}
                     </label>
                     <span className="font-mono font-bold text-foreground">{gap}px</span>
                   </div>
                   <input
                     id="custom-gap-slider"
-                    aria-label={isTr ? "Merkez Boşluğu (Piksel)" : "Center Gap (Pixels)"}
+                    aria-label={t("customization.gapLabel")}
                     type="range"
                     min="0"
                     max="14"
@@ -310,13 +308,13 @@ export const CrosshairCustomizationSection: React.FC = () => {
               <div className="space-y-1">
                 <div className="flex justify-between text-xs text-muted-foreground">
                   <label htmlFor="custom-opacity-slider" className="cursor-pointer">
-                    {isTr ? "Şeffaflık / Opaklık" : "Opacity / Transparency"}
+                    {t("customization.opacityLabel")}
                   </label>
                   <span className="font-mono font-bold text-foreground">{Math.round(opacity * 100)}%</span>
                 </div>
                 <input
                   id="custom-opacity-slider"
-                  aria-label={isTr ? "Nişangah Opaklığı" : "Crosshair Opacity"}
+                  aria-label={t("customization.opacityLabel")}
                   type="range"
                   min="0.2"
                   max="1"
@@ -339,7 +337,7 @@ export const CrosshairCustomizationSection: React.FC = () => {
                     : "bg-secondary/40 border-border/60 text-muted-foreground"
                 }`}
               >
-                <span>{isTr ? "Siyah Dış Çizgi" : "Black Outline"}</span>
+                <span>{t("customization.outline")}</span>
                 {outline && <Check className="w-3.5 h-3.5" />}
               </button>
 
@@ -352,7 +350,7 @@ export const CrosshairCustomizationSection: React.FC = () => {
                     : "bg-secondary/40 border-border/60 text-muted-foreground"
                 }`}
               >
-                <span>{isTr ? "Merkez Nokta" : "Center Dot"}</span>
+                <span>{t("customization.centerDot")}</span>
                 {centerDot && <Check className="w-3.5 h-3.5" />}
               </button>
             </div>

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Download, ShieldCheck, Sparkles } from "lucide-react";
 
 export const CrosshairFinalCTA: React.FC = () => {
-  const { isTr } = useLanguage();
+  const { t } = useLanguage();
   const { activeColorOption } = useCrosshairState();
 
   return (
@@ -33,25 +33,23 @@ export const CrosshairFinalCTA: React.FC = () => {
             }}
           >
             <Sparkles className="w-3.5 h-3.5" />
-            <span>{isTr ? "Google Play'de Ücretsiz" : "Free on Google Play"}</span>
+            <span>{t("finalCta.badge")}</span>
           </div>
 
           <h2 className="text-3xl sm:text-6xl font-black text-foreground tracking-tight leading-[1.08]">
-            {isTr ? "Görünümünüz." : "Your visual."} <br />
+            {t("finalCta.titleLine1")} <br />
             <span
               className="bg-clip-text text-transparent"
               style={{
                 backgroundImage: `linear-gradient(135deg, ${activeColorOption.hex} 0%, #00E5FF 100%)`,
               }}
             >
-              {isTr ? "Nişangahınız." : "Your crosshair."}
+              {t("finalCta.titleLine2")}
             </span>
           </h2>
 
           <p className="text-sm sm:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
-            {isTr
-              ? "Seçin, özelleştirin ve Android katmanını siz hazır olduğunuzda başlatın."
-              : "Choose, customize, and start the Android layer when you are ready."}
+            {t("finalCta.subtitle")}
           </p>
 
           <div className="pt-2 flex flex-col items-center justify-center gap-3">
@@ -70,13 +68,13 @@ export const CrosshairFinalCTA: React.FC = () => {
                 rel="noopener noreferrer"
               >
                 <Download className="w-5 h-5" />
-                <span>{isTr ? "Google Play'den İndir" : "Get it on Google Play"}</span>
+                <span>{t("common.getOnGooglePlay")}</span>
               </a>
             </Button>
 
             <span className="text-xs font-mono text-muted-foreground pt-1 flex items-center gap-1.5">
               <ShieldCheck className="w-3.5 h-3.5 text-primary" />
-              <span>{isTr ? "Android 7.0 veya üzeri • Google Play'de mevcut" : "Android 7.0 or later • Available on Google Play"}</span>
+              <span>{t("finalCta.deviceReq")}</span>
             </span>
           </div>
         </div>

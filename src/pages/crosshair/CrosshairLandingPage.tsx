@@ -83,15 +83,10 @@ const SectionSkeleton: React.FC = () => (
 );
 
 export const CrosshairLandingPage: React.FC = () => {
-  const { isTr } = useLanguage();
+  const { t, isTr } = useLanguage();
 
-  const title = isTr
-    ? "Crossio: Custom Crosshair – Android Görsel Katmanı"
-    : "Crossio: Custom Crosshair – Passive Android Visual Overlay";
-
-  const description = isTr
-    ? "Crossio, kullanıcı tarafından seçilen nişangahı Android ekranında pasif ve özelleştirilebilir bir görsel katman olarak gösterir."
-    : "Crossio displays a user-selected crosshair as a passive, customizable visual layer on Android.";
+  const title = t("landingPage.metaTitle");
+  const description = t("landingPage.metaDesc");
 
   const keywords = [
     "crosshair app",
@@ -114,7 +109,7 @@ export const CrosshairLandingPage: React.FC = () => {
         canonicalPath="/crosshair"
         keywords={keywords}
         breadcrumbs={[
-          { name: isTr ? "Ana Sayfa" : "Home", url: "/" },
+          { name: t("common.home"), url: "/" },
           { name: "Crossio", url: "/crosshair" },
         ]}
       />
@@ -165,10 +160,10 @@ export const CrosshairLandingPage: React.FC = () => {
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-10">
               <div>
                 <Badge variant="brand" className="text-xs px-3 py-1 font-semibold mb-2">
-                  {isTr ? "Sıkça Sorulan Sorular" : "Frequently Asked Questions"}
+                  {t("landingPage.faqBadge")}
                 </Badge>
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground">
-                  {isTr ? "Merak Edilen Sorular ve Cevaplar" : "Quick Answers to Common Questions"}
+                  {t("landingPage.faqTitle")}
                 </h2>
               </div>
               <Button
@@ -178,7 +173,7 @@ export const CrosshairLandingPage: React.FC = () => {
                 className="text-xs rounded-xl border-border/80 hover:bg-secondary gap-1.5"
               >
                 <Link to="/crosshair/faq">
-                  <span>{isTr ? `Tüm ${FAQS_DATA.length} SSS'i Görüntüle` : `View All ${FAQS_DATA.length} FAQs`}</span>
+                  <span>{t("landingPage.viewAllFaqs", { count: FAQS_DATA.length })}</span>
                   <ChevronRight className="w-3.5 h-3.5" />
                 </Link>
               </Button>
@@ -211,10 +206,10 @@ export const CrosshairLandingPage: React.FC = () => {
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-10">
               <div>
                 <Badge variant="brand" className="text-xs px-3 py-1 font-semibold mb-2">
-                  {isTr ? "Rehberler & Taktikler" : "Guides & Strategies"}
+                  {t("landingPage.guidesBadge")}
                 </Badge>
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground">
-                  {isTr ? "Görünümünüzü Kişiselleştirin" : "Personalize Your Visual Setup"}
+                  {t("landingPage.guidesTitle")}
                 </h2>
               </div>
               <Button
@@ -224,7 +219,7 @@ export const CrosshairLandingPage: React.FC = () => {
                 className="text-xs rounded-xl border-border/80 hover:bg-secondary gap-1.5"
               >
                 <Link to="/crosshair/guides">
-                  <span>{isTr ? "Tüm Rehberleri Oku" : "Read All Guides"}</span>
+                  <span>{t("landingPage.readAllGuides")}</span>
                   <ChevronRight className="w-3.5 h-3.5" />
                 </Link>
               </Button>
@@ -255,7 +250,7 @@ export const CrosshairLandingPage: React.FC = () => {
                   </div>
 
                   <div className="pt-4 mt-4 border-t border-border/40 flex items-center text-xs text-primary font-semibold group-hover:translate-x-0.5 transition-transform">
-                    <span>{isTr ? "Rehberi Oku" : "Read Guide"}</span>
+                    <span>{t("guidesPage.readGuide")}</span>
                     <ArrowRight className="w-3.5 h-3.5 ml-1" />
                   </div>
                 </Link>

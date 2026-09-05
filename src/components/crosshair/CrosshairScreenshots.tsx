@@ -4,34 +4,28 @@ import { Badge } from "@/components/ui/badge";
 import { Sliders, Layers, Sparkles } from "lucide-react";
 
 export const CrosshairScreenshots: React.FC = () => {
-  const { isTr } = useLanguage();
+  const { t } = useLanguage();
 
   const screens = [
     {
-      title: isTr ? "Hazır Nişangah Galerisi" : "Crosshair Presets Library",
-      category: isTr ? "Hazır Tasarımlar" : "Built-in Designs",
+      title: t("screenshots.screen1Title"),
+      category: t("screenshots.screen1Category"),
       icon: <Sparkles className="w-4 h-4 text-primary" />,
-      description: isTr
-        ? "Hazır nişangahlar arasında arama yapın, bir tasarım seçin ve görünümünü özelleştirin."
-        : "Browse built-in crosshairs, choose a design, and customize its appearance.",
+      description: t("screenshots.screen1Desc"),
       previewType: "presets",
     },
     {
-      title: isTr ? "Hassas Nişangah Editörü" : "Precision Custom Editor",
-      category: isTr ? "Piksel Ayarı" : "Pixel Tuning",
+      title: t("screenshots.screen2Title"),
+      category: t("screenshots.screen2Category"),
       icon: <Sliders className="w-4 h-4 text-[#00E5FF]" />,
-      description: isTr
-        ? "Boyut, kalınlık, aralık, dış çizgi ve opaklığı hassas kaydırıcılarla kontrol edin."
-        : "Adjust length, stroke width, gap, opacity, and outline with real-time feedback.",
+      description: t("screenshots.screen2Desc"),
       previewType: "editor",
     },
     {
-      title: isTr ? "Ekran Katman & Hızlı Menü" : "Overlay & Quick Controls",
-      category: isTr ? "İsteğe Bağlı Kontrol" : "Optional Controls",
+      title: t("screenshots.screen3Title"),
+      category: t("screenshots.screen3Category"),
       icon: <Layers className="w-4 h-4 text-purple-400" />,
-      description: isTr
-        ? "İsteğe bağlı yüzen baloncuk ile görünürlüğü ve konumu yönetin."
-        : "Use the optional floating control to manage visibility and position.",
+      description: t("screenshots.screen3Desc"),
       previewType: "overlay",
     },
   ];
@@ -41,15 +35,13 @@ export const CrosshairScreenshots: React.FC = () => {
       <div className="container max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <Badge variant="brand" className="text-xs px-3 py-1 font-semibold">
-            {isTr ? "Uygulama Ekranları" : "App Interface"}
+            {t("screenshots.badge")}
           </Badge>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-foreground tracking-tight">
-            {isTr ? "Kullanıcı Dostu ve Güçlü Arayüz" : "Intuitive & Powerful Interface"}
+            {t("screenshots.title")}
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground">
-            {isTr
-              ? "Hazır tasarım, yerel içe aktarma ve görünüm ayarlarını bir araya getiren sade arayüz."
-              : "A focused interface for built-in designs, local import, and appearance controls."}
+            {t("screenshots.subtitle")}
           </p>
         </div>
 
@@ -79,8 +71,8 @@ export const CrosshairScreenshots: React.FC = () => {
                 {s.previewType === "presets" && (
                   <div className="space-y-3 w-full">
                     <div className="flex items-center justify-between text-[11px] font-semibold text-muted-foreground pb-1">
-                      <span>{isTr ? "Kategoriler" : "Categories"}</span>
-                      <span className="text-primary text-[10px]">{isTr ? "Tümünü Gör" : "See All"}</span>
+                      <span>{t("screenshots.categories")}</span>
+                      <span className="text-primary text-[10px]">{t("screenshots.seeAll")}</span>
                     </div>
 
                     <div className="grid grid-cols-2 gap-2">
@@ -104,7 +96,7 @@ export const CrosshairScreenshots: React.FC = () => {
 
                     <div className="mt-4 p-2.5 rounded-xl bg-primary/10 border border-primary/20 text-center">
                       <span className="text-[11px] font-bold text-primary">
-                        {isTr ? "Farklı tasarım seçenekleri" : "Multiple design options"}
+                        {t("screenshots.multipleDesigns")}
                       </span>
                     </div>
                   </div>
@@ -124,7 +116,7 @@ export const CrosshairScreenshots: React.FC = () => {
 
                     <div className="space-y-2 text-[10px]">
                       <div className="flex justify-between text-muted-foreground">
-                        <span>{isTr ? "Uzunluk" : "Length"}</span>
+                        <span>{t("screenshots.length")}</span>
                         <span className="font-mono text-foreground font-bold">8 px</span>
                       </div>
                       <div className="h-1 bg-muted rounded-full overflow-hidden">
@@ -132,7 +124,7 @@ export const CrosshairScreenshots: React.FC = () => {
                       </div>
 
                       <div className="flex justify-between text-muted-foreground pt-1">
-                        <span>{isTr ? "Kalınlık" : "Thickness"}</span>
+                        <span>{t("screenshots.thickness")}</span>
                         <span className="font-mono text-foreground font-bold">2 px</span>
                       </div>
                       <div className="h-1 bg-muted rounded-full overflow-hidden">
@@ -140,7 +132,7 @@ export const CrosshairScreenshots: React.FC = () => {
                       </div>
 
                       <div className="flex justify-between text-muted-foreground pt-1">
-                        <span>{isTr ? "Merkez Boşluğu" : "Center Gap"}</span>
+                        <span>{t("screenshots.centerGap")}</span>
                         <span className="font-mono text-foreground font-bold">4 px</span>
                       </div>
                       <div className="h-1 bg-muted rounded-full overflow-hidden">
@@ -154,24 +146,24 @@ export const CrosshairScreenshots: React.FC = () => {
                   <div className="space-y-4 w-full flex flex-col justify-center items-center py-4">
                     <div className="p-4 rounded-2xl bg-secondary/50 border border-border/60 text-center w-full">
                       <span className="text-[10px] uppercase font-bold text-primary block mb-1">
-                        {isTr ? "Katman Durumu" : "Overlay Status"}
+                        {t("screenshots.overlayStatus")}
                       </span>
                       <span className="text-sm font-extrabold text-foreground">
-                        {isTr ? "Ekranda Aktif" : "Active on Screen"}
+                        {t("screenshots.activeOnScreen")}
                       </span>
                     </div>
 
                     <div className="w-full flex items-center justify-between p-3 rounded-xl bg-card border border-border/60 text-[11px]">
-                      <span className="font-medium text-foreground">{isTr ? "Yüzen Menü Butonu" : "Floating Menu"}</span>
+                      <span className="font-medium text-foreground">{t("screenshots.floatingMenu")}</span>
                       <span className="px-2 py-0.5 rounded-md bg-primary/20 text-primary font-bold text-[10px]">
-                        AÇIK
+                        {t("screenshots.statusOn")}
                       </span>
                     </div>
 
                     <div className="w-full flex items-center justify-between p-3 rounded-xl bg-card border border-border/60 text-[11px]">
-                      <span className="font-medium text-foreground">{isTr ? "Hassas Konum Kilidi" : "Position Lock"}</span>
+                      <span className="font-medium text-foreground">{t("screenshots.positionLock")}</span>
                       <span className="px-2 py-0.5 rounded-md bg-primary/20 text-primary font-bold text-[10px]">
-                        MERKEZ
+                        {t("screenshots.statusCenter")}
                       </span>
                     </div>
                   </div>

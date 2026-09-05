@@ -3,12 +3,15 @@ import { Header } from "@/components/layout/Header";
 import { ArrowRight } from "lucide-react";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/context/LanguageContext";
 
 export const NotFoundPage: React.FC = () => {
+  const { t } = useLanguage();
+
   useEffect(() => {
-    window.document.title = "404 - Sayfa Bulunamadı | flappsio";
+    window.document.title = t("notFound.metaTitle");
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
-  }, []);
+  }, [t]);
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground transition-colors duration-200">
@@ -28,7 +31,7 @@ export const NotFoundPage: React.FC = () => {
                 <div className="text-emerald-400 font-bold mb-1.5 text-xs">&lt;/&gt;</div>
                 <div className="text-indigo-400 font-semibold mb-1 text-xs">ConnectionError:</div>
                 <div className="text-slate-300 leading-relaxed text-[11px] sm:text-xs">
-                  The page you're looking for doesn't exist.
+                  {t("notFound.connectionError")}
                   <span className="inline-block w-1.5 h-3.5 bg-indigo-400 ml-0.5 align-middle animate-pulse" />
                 </div>
 
@@ -39,7 +42,7 @@ export const NotFoundPage: React.FC = () => {
               {/* Spaceship Image */}
               <img
                 src="/assets/images/404_image.png"
-                alt="404 - Sayfa Bulunamadı"
+                alt={t("notFound.metaTitle")}
                 className="w-full h-auto object-contain drop-shadow-sm select-none pt-14 sm:pt-16"
               />
             </div>
@@ -49,15 +52,15 @@ export const NotFoundPage: React.FC = () => {
           <div className="lg:col-span-6 flex flex-col items-start text-left order-1 lg:order-2 space-y-6">
             <div className="space-y-2">
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-foreground leading-[1.08]">
-                Bir şeyler <br />
-                <span className="text-[#6366F1] dark:text-[#818CF8]">ters</span>{" "}
-                <span className="text-[#6366F1] dark:text-[#818CF8]">gitti</span>
+                {t("notFound.title1")} <br />
+                <span className="text-[#6366F1] dark:text-[#818CF8]">{t("notFound.titleWrong")}</span>{" "}
+                <span className="text-[#6366F1] dark:text-[#818CF8]">{t("notFound.titleWent")}</span>
                 <span className="text-[#10B981] dark:text-[#34D399]">.</span>
               </h1>
             </div>
 
             <p className="text-muted-foreground text-base sm:text-lg max-w-md leading-relaxed font-normal">
-              Aradığın sayfa uzayda kaybolmuş olabilir. Ama üzülme, birlikte buluruz.
+              {t("notFound.subtitle")}
             </p>
 
             <div className="pt-2">
@@ -65,7 +68,7 @@ export const NotFoundPage: React.FC = () => {
                 to="/"
                 className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[#111218] dark:bg-white text-white dark:text-[#111218] font-bold text-sm sm:text-base hover:opacity-90 active:scale-[0.98] transition-all shadow-xl hover:shadow-2xl group"
               >
-                <span>Ana Sayfaya Dön</span>
+                <span>{t("notFound.backHome")}</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>

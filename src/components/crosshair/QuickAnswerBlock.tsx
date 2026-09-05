@@ -15,13 +15,13 @@ export const QuickAnswerBlock: React.FC<QuickAnswerBlockProps> = ({
   keyPoints = [],
   sourceCategory = "Crossio Knowledge Base",
 }) => {
-  const { isTr } = useLanguage();
+  const { t } = useLanguage();
 
   return (
     <div className="my-6 p-5 sm:p-6 rounded-2xl bg-primary/5 border border-primary/25 backdrop-blur-md shadow-sm">
       <div className="flex items-center gap-2 text-primary text-xs font-bold uppercase tracking-wider mb-2">
         <Sparkles className="w-3.5 h-3.5" />
-        <span>{isTr ? "Hızlı Yanıt & Özet (AEO / AI Summary)" : "Quick Answer & Summary"}</span>
+        <span>{t("quickAnswer.badge")}</span>
       </div>
 
       <h3 className="text-sm sm:text-base font-extrabold text-foreground mb-2">
@@ -45,7 +45,7 @@ export const QuickAnswerBlock: React.FC<QuickAnswerBlockProps> = ({
 
       <div className="mt-3 pt-2 flex items-center justify-between text-[10px] text-muted-foreground">
         <span>{sourceCategory}</span>
-        <span className="text-primary/80 font-mono font-semibold">flappsio Verified Knowledge</span>
+        <span className="text-primary/80 font-mono font-semibold">{t("quickAnswer.verifiedKnowledge")}</span>
       </div>
     </div>
   );

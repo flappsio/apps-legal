@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Image as ImageIcon, ArrowRight, Layers, ShieldCheck, UploadCloud } from "lucide-react";
 
 export const CrosshairImportSection: React.FC = () => {
-  const { isTr } = useLanguage();
+  const { t } = useLanguage();
   const { activeColorOption } = useCrosshairState();
 
   return (
@@ -15,25 +15,23 @@ export const CrosshairImportSection: React.FC = () => {
           {/* Left Text Column */}
           <div className="lg:col-span-6 space-y-6">
             <Badge variant="brand" className="text-xs px-3 py-1 font-semibold">
-              {isTr ? "Özel PNG İçe Aktarma" : "Custom PNG Reticle Import"}
+              {t("import.badge")}
             </Badge>
 
             <h2 className="text-3xl sm:text-5xl font-extrabold text-foreground tracking-tight leading-[1.12]">
-              {isTr ? "Kendi Nişangahınız Var mı?" : "Already have a crosshair?"} <br />
+              {t("import.title1")} <br />
               <span
                 className="bg-clip-text text-transparent"
                 style={{
                   backgroundImage: `linear-gradient(135deg, ${activeColorOption.hex} 0%, #00E5FF 100%)`,
                 }}
               >
-                {isTr ? "Yanınızda Getirin." : "Bring it with you."}
+                {t("import.title2")}
               </span>
             </h2>
 
             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-              {isTr
-                ? "Fotoğraf galerinizden şeffaf arka planlı (PNG) özel bir crosshair görseli seçin, uygulama içinde önizleyin ve pasif katmanınızda kullanın."
-                : "Choose a custom transparent PNG crosshair from your Android gallery, preview it in the app, and use it in your passive visual layer."}
+              {t("import.subtitle")}
             </p>
 
             <div className="space-y-3 pt-2">
@@ -43,12 +41,10 @@ export const CrosshairImportSection: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-xs font-bold text-foreground">
-                    {isTr ? "Şeffaf PNG ve Çıkartma Desteği" : "Transparent PNG & Sticker Support"}
+                    {t("import.feature1Title")}
                   </h3>
                   <p className="text-[11px] text-muted-foreground mt-0.5">
-                    {isTr
-                      ? "Cihazınıza kaydettiğiniz şeffaf PNG nişangah görsellerini galeriden seçebilirsiniz."
-                      : "Select a transparent PNG crosshair image saved on your device."}
+                    {t("import.feature1Desc")}
                   </p>
                 </div>
               </div>
@@ -59,12 +55,10 @@ export const CrosshairImportSection: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-xs font-bold text-foreground">
-                    {isTr ? "Boyut, Opaklık ve Konumlandırma" : "Full Scale & Opacity Control"}
+                    {t("import.feature2Title")}
                   </h3>
                   <p className="text-[11px] text-muted-foreground mt-0.5">
-                    {isTr
-                      ? "İçe aktarılan görselin boyutunu, dönüşünü, şeffaflığını ve merkez hizasını ayarlayın."
-                      : "Fine-tune imported image dimensions, rotation, opacity, and center alignment."}
+                    {t("import.feature2Desc")}
                   </p>
                 </div>
               </div>
@@ -75,12 +69,10 @@ export const CrosshairImportSection: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-xs font-bold text-foreground">
-                    {isTr ? "Yerel Cihaz Gizliliği" : "Local Device Storage"}
+                    {t("import.feature3Title")}
                   </h3>
                   <p className="text-[11px] text-muted-foreground mt-0.5">
-                    {isTr
-                      ? "Görselleriniz sunuculara yüklenmez; tamamen cihazınızın kendi belleğinde saklanır."
-                      : "Your imported crosshair PNGs remain private on your phone and are never uploaded to servers."}
+                    {t("import.feature3Desc")}
                   </p>
                 </div>
               </div>
@@ -106,7 +98,7 @@ export const CrosshairImportSection: React.FC = () => {
                     <div>
                       <span className="text-[10px] font-mono text-muted-foreground uppercase">STEP 01</span>
                       <h3 className="text-xs font-bold text-foreground">
-                        {isTr ? "Android Galerisinden Seç" : "Select PNG from Android Gallery"}
+                        {t("import.step1Title")}
                       </h3>
                     </div>
                   </div>
@@ -137,7 +129,7 @@ export const CrosshairImportSection: React.FC = () => {
                   </div>
 
                   <div className="absolute bottom-2 left-3 text-[10px] font-mono text-white/50">
-                    {isTr ? "İÇE AKTARMA: ÖNİZLEME HAZIR" : "IMPORT: PREVIEW READY"}
+                    {t("import.previewReady")}
                   </div>
                 </div>
               </div>

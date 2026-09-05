@@ -16,7 +16,7 @@ interface GalleryItem {
   gap: number;
   outline: boolean;
   centerDot: boolean;
-  description: { tr: string; en: string };
+  descriptionKey: string;
 }
 
 const GALLERY_ITEMS: GalleryItem[] = [
@@ -31,10 +31,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
     gap: 3,
     outline: true,
     centerDot: false,
-    description: {
-      tr: "Dört kollu, dengeli ve sade klasik artı tasarımı.",
-      en: "A balanced, minimal four-armed classic cross design.",
-    },
+    descriptionKey: "gallery.descClassic",
   },
   {
     id: "pro-dot-cyan",
@@ -47,10 +44,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
     gap: 0,
     outline: true,
     centerDot: true,
-    description: {
-      tr: "Ekranda az yer kaplayan kompakt merkez noktası.",
-      en: "A compact center dot that occupies minimal screen space.",
-    },
+    descriptionKey: "gallery.descDot",
   },
   {
     id: "sniper-t-yellow",
@@ -63,10 +57,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
     gap: 2,
     outline: true,
     centerDot: true,
-    description: {
-      tr: "Üst tarafı açık, üç kollu T biçiminde görsel tasarım.",
-      en: "A three-armed T-shaped visual design with an open top.",
-    },
+    descriptionKey: "gallery.descT",
   },
   {
     id: "combat-circle-magenta",
@@ -79,10 +70,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
     gap: 4,
     outline: true,
     centerDot: false,
-    description: {
-      tr: "Merkezi çevreleyen, boyutu ayarlanabilir çember tasarımı.",
-      en: "An adjustable circle design surrounding the center point.",
-    },
+    descriptionKey: "gallery.descCircle",
   },
   {
     id: "diamond-spec-red",
@@ -95,10 +83,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
     gap: 3,
     outline: true,
     centerDot: true,
-    description: {
-      tr: "Yoğun zeminlerde belirgin ayrım sağlayan açılı elmas geometrisi.",
-      en: "Angled geometry providing high visual separation against busy textures.",
-    },
+    descriptionKey: "gallery.descDiamond",
   },
   {
     id: "cqb-box-white",
@@ -111,15 +96,12 @@ const GALLERY_ITEMS: GalleryItem[] = [
     gap: 3,
     outline: true,
     centerDot: true,
-    description: {
-      tr: "Yüksek kontrastlı, çerçeveli ve merkez noktası belirgin tasarım.",
-      en: "A framed, high-contrast design with a clearly visible center dot.",
-    },
+    descriptionKey: "gallery.descBox",
   },
 ];
 
 export const CrosshairGallerySection: React.FC = () => {
-  const { isTr } = useLanguage();
+  const { t } = useLanguage();
   const {
     shape: activeShape,
     setShape,
@@ -148,15 +130,13 @@ export const CrosshairGallerySection: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="space-y-3 max-w-2xl">
             <Badge variant="brand" className="text-xs px-3 py-1 font-semibold">
-              {isTr ? "Nişangah Koleksiyonu" : "Reticle Library"}
+              {t("gallery.badge")}
             </Badge>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-foreground tracking-tight">
-              {isTr ? "Kendi Nişangahınızı Keşfedin." : "Find your crosshair."}
+              {t("gallery.title")}
             </h2>
             <p className="text-sm sm:text-base text-muted-foreground">
-              {isTr
-                ? "Bir profile dokunarak tüm sayfada anında aktif edin veya uygulamada 50'den fazla hazır modeli keşfedin."
-                : "Tap any reticle to preview it across the site or explore the built-in designs in the app."}
+              {t("gallery.subtitle")}
             </p>
           </div>
 
@@ -171,7 +151,7 @@ export const CrosshairGallerySection: React.FC = () => {
               rel="noopener noreferrer"
             >
               <Download className="w-4 h-4" />
-              <span>{isTr ? "Uygulamadaki Tüm Nişangahları Gör" : "Explore Crosshairs in the App"}</span>
+              <span>{t("gallery.viewAllBtn")}</span>
             </a>
           </Button>
         </div>
@@ -289,12 +269,12 @@ export const CrosshairGallerySection: React.FC = () => {
                     {item.name}
                   </h3>
                   <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                    {isTr ? item.description.tr : item.description.en}
+                    {t(item.descriptionKey)}
                   </p>
                 </div>
 
                 <div className="pt-4 mt-4 border-t border-border/30 flex items-center justify-between text-xs font-semibold text-primary">
-                  <span>{isSelected ? (isTr ? "Aktif Nişangah" : "Active Selection") : isTr ? "Canlı Dene" : "Test Live"}</span>
+                  <span>{isSelected ? t("gallery.activeSelection") : t("gallery.testLive")}</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>

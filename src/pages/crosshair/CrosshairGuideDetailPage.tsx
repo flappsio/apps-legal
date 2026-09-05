@@ -17,7 +17,7 @@ import {
 
 export const CrosshairGuideDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
-  const { isTr } = useLanguage();
+  const { t, isTr } = useLanguage();
 
   const guide = GUIDES_DATA.find((g) => g.slug === slug);
 
@@ -71,9 +71,9 @@ export const CrosshairGuideDetailPage: React.FC = () => {
           "crosshair design guide",
         ]}
         breadcrumbs={[
-          { name: isTr ? "Ana Sayfa" : "Home", url: "/" },
+          { name: t("common.home"), url: "/" },
           { name: "Crossio", url: "/crosshair" },
-          { name: isTr ? "Rehberler" : "Guides", url: "/crosshair/guides" },
+          { name: t("common.guides"), url: "/crosshair/guides" },
           { name: isTr ? guide.title.tr : guide.title.en, url: `/crosshair/guides/${guide.slug}` },
         ]}
         jsonLd={articleJsonLd}
@@ -86,7 +86,7 @@ export const CrosshairGuideDetailPage: React.FC = () => {
           className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors mb-6 group"
         >
           <ChevronLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
-          <span>{isTr ? "Tüm Rehberlere Dön" : "Back to Guides"}</span>
+          <span>{t("guidesPage.backToGuides")}</span>
         </Link>
 
         {/* Article Header */}
@@ -164,7 +164,7 @@ export const CrosshairGuideDetailPage: React.FC = () => {
             >
               <span className="text-[10px] text-muted-foreground uppercase tracking-wider font-semibold mb-1 flex items-center gap-1">
                 <ChevronLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" />
-                {isTr ? "Önceki Rehber" : "Previous Guide"}
+                {t("guidesPage.prevGuide")}
               </span>
               <span className="text-xs font-bold text-foreground group-hover:text-primary transition-colors line-clamp-1">
                 {isTr ? prevGuide.title.tr : prevGuide.title.en}
@@ -178,7 +178,7 @@ export const CrosshairGuideDetailPage: React.FC = () => {
               className="p-4 rounded-2xl bg-card/60 border border-border/70 hover:border-primary/40 transition-colors flex flex-col text-right group sm:ml-auto w-full"
             >
               <span className="text-[10px] text-muted-foreground uppercase tracking-wider font-semibold mb-1 flex items-center justify-end gap-1">
-                {isTr ? "Sonraki Rehber" : "Next Guide"}
+                {t("guidesPage.nextGuide")}
                 <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
               </span>
               <span className="text-xs font-bold text-foreground group-hover:text-primary transition-colors line-clamp-1">

@@ -144,8 +144,8 @@
 }
 
 @keyframes reveal-on-scroll {
-  from { opacity: 0; transform: translateY(28px) scale(0.99); filter: blur(5px); }
-  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @media (prefers-reduced-motion: reduce) {

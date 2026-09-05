@@ -16,7 +16,7 @@ import {
 import { Link } from "react-router-dom";
 
 export const CrosshairSupportPage: React.FC = () => {
-  const { isTr } = useLanguage();
+  const { t } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -26,13 +26,8 @@ export const CrosshairSupportPage: React.FC = () => {
     message: "",
   });
 
-  const title = isTr
-    ? "Destek ve İletişim | Crossio & flappsio"
-    : "Support & Contact | Crossio & flappsio";
-
-  const description = isTr
-    ? "Crossio teknik destek, hata bildirimi, gizlilik soruları ve önerileriniz için resmi iletişim merkezi."
-    : "Official support and contact hub for Crossio. Reach out for technical assistance, privacy questions, bug reports, and feature requests.";
+  const title = t("supportPage.metaTitle");
+  const description = t("supportPage.metaDesc");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,9 +47,9 @@ export const CrosshairSupportPage: React.FC = () => {
           "crosshair support contact",
         ]}
         breadcrumbs={[
-          { name: isTr ? "Ana Sayfa" : "Home", url: "/" },
+          { name: t("common.home"), url: "/" },
           { name: "Crossio", url: "/crosshair" },
-          { name: isTr ? "Destek" : "Support", url: "/crosshair/support" },
+          { name: t("common.support"), url: "/crosshair/support" },
         ]}
       />
 
@@ -62,15 +57,13 @@ export const CrosshairSupportPage: React.FC = () => {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
           <Badge variant="brand" className="text-xs px-3 py-1 font-semibold">
-            {isTr ? "Destek & Yardım Merkezi" : "Support & Help Center"}
+            {t("supportPage.badge")}
           </Badge>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">
-            {isTr ? "Size Nasıl Yardımcı Olabiliriz?" : "How Can We Help You?"}
+            {t("supportPage.title")}
           </h1>
           <p className="text-sm sm:text-base text-muted-foreground">
-            {isTr
-              ? "Her türlü teknik soru, hata bildirimi veya özellik öneriniz için ekibimize doğrudan ulaşabilirsiniz."
-              : "Reach out directly for technical assistance, bug reports, or feature suggestions."}
+            {t("supportPage.subtitle")}
           </p>
         </div>
 
@@ -83,10 +76,10 @@ export const CrosshairSupportPage: React.FC = () => {
               </div>
               <div>
                 <h3 className="text-sm font-bold text-foreground">
-                  {isTr ? "Resmi E-Posta Desteği" : "Official Email Support"}
+                  {t("supportPage.officialEmail")}
                 </h3>
                 <p className="text-xs text-muted-foreground mt-1">
-                  {isTr ? "Doğrudan geliştirici ekibimize yazın:" : "Write directly to our team:"}
+                  {t("supportPage.writeDirect")}
                 </p>
               </div>
               <a
@@ -97,32 +90,32 @@ export const CrosshairSupportPage: React.FC = () => {
               </a>
               <div className="pt-2 border-t border-border/40 flex items-center gap-2 text-xs text-muted-foreground">
                 <Clock className="w-3.5 h-3.5 text-primary" />
-                <span>{isTr ? "Ortalama Yanıt: < 24 Saat" : "Average Response: < 24h"}</span>
+                <span>{t("supportPage.avgResponse")}</span>
               </div>
             </div>
 
             {/* Quick Links Card */}
             <div className="p-6 rounded-3xl bg-secondary/30 border border-border/60 space-y-3">
               <h4 className="text-xs font-bold text-foreground">
-                {isTr ? "Hızlı Çözümler" : "Quick Answers"}
+                {t("supportPage.quickAnswers")}
               </h4>
               <ul className="space-y-2 text-xs text-muted-foreground">
                 <li>
                   <Link to="/crosshair/faq" className="hover:text-primary transition-colors flex items-center gap-1.5">
                     <HelpCircle className="w-3.5 h-3.5 text-primary" />
-                    <span>{isTr ? "Sıkça Sorulan Sorular" : "Frequently Asked Questions"}</span>
+                    <span>{t("supportPage.faqLink")}</span>
                   </Link>
                 </li>
                 <li>
                   <Link to="/crosshair/how-to-use" className="hover:text-primary transition-colors flex items-center gap-1.5">
                     <CheckCircle2 className="w-3.5 h-3.5 text-primary" />
-                    <span>{isTr ? "Kurulum ve İzin Rehberi" : "Setup & Permission Guide"}</span>
+                    <span>{t("supportPage.setupLink")}</span>
                   </Link>
                 </li>
                 <li>
                   <Link to="/crosshair/guides/sorun-giderme-overlay-izinleri" className="hover:text-primary transition-colors flex items-center gap-1.5">
                     <ShieldCheck className="w-3.5 h-3.5 text-primary" />
-                    <span>{isTr ? "Arka Plan Pil Sorun Giderme" : "Battery Optimization Tips"}</span>
+                    <span>{t("supportPage.batteryLink")}</span>
                   </Link>
                 </li>
               </ul>
@@ -138,12 +131,10 @@ export const CrosshairSupportPage: React.FC = () => {
                     <CheckCircle2 className="w-6 h-6" />
                   </div>
                   <h3 className="text-lg font-bold text-foreground">
-                    {isTr ? "Mesajınız Başarıyla Alındı!" : "Message Received Successfully!"}
+                    {t("supportPage.successTitle")}
                   </h3>
                   <p className="text-xs sm:text-sm text-muted-foreground max-w-md mx-auto">
-                    {isTr
-                      ? "Destek talebiniz için teşekkür ederiz. Ekibimiz en kısa sürede e-posta adresiniz üzerinden geri dönüş yapacaktır."
-                      : "Thank you for reaching out. Our technical support team will reply to your email address promptly."}
+                    {t("supportPage.successDesc")}
                   </p>
                   <Button
                     onClick={() => setSubmitted(false)}
@@ -151,24 +142,24 @@ export const CrosshairSupportPage: React.FC = () => {
                     size="sm"
                     className="text-xs rounded-xl"
                   >
-                    {isTr ? "Yeni Mesaj Gönder" : "Send Another Message"}
+                    {t("supportPage.sendAnother")}
                   </Button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <h3 className="text-base font-bold text-foreground mb-4">
-                    {isTr ? "Bize Mesaj Gönderin" : "Send Us a Message"}
+                    {t("supportPage.formTitle")}
                   </h3>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1">
                       <label className="text-xs font-semibold text-foreground">
-                        {isTr ? "Adınız" : "Your Name"}
+                        {t("supportPage.name")}
                       </label>
                       <Input
                         required
                         type="text"
-                        placeholder={isTr ? "Örn. Can" : "e.g. John"}
+                        placeholder={t("supportPage.namePlaceholder")}
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         className="h-10 text-xs bg-background/80 rounded-xl"
@@ -177,7 +168,7 @@ export const CrosshairSupportPage: React.FC = () => {
 
                     <div className="space-y-1">
                       <label className="text-xs font-semibold text-foreground">
-                        {isTr ? "E-Posta Adresiniz" : "Email Address"}
+                        {t("supportPage.email")}
                       </label>
                       <Input
                         required
@@ -193,11 +184,11 @@ export const CrosshairSupportPage: React.FC = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1">
                       <label className="text-xs font-semibold text-foreground">
-                        {isTr ? "Cihaz Modeli (Opsiyonel)" : "Device Model (Optional)"}
+                        {t("supportPage.device")}
                       </label>
                       <Input
                         type="text"
-                        placeholder={isTr ? "Örn. Samsung S23, Xiaomi 13" : "e.g. Pixel 8, Galaxy S24"}
+                        placeholder={t("supportPage.devicePlaceholder")}
                         value={formData.device}
                         onChange={(e) => setFormData({ ...formData, device: e.target.value })}
                         className="h-10 text-xs bg-background/80 rounded-xl"
@@ -206,33 +197,29 @@ export const CrosshairSupportPage: React.FC = () => {
 
                     <div className="space-y-1">
                       <label className="text-xs font-semibold text-foreground">
-                        {isTr ? "Konu" : "Topic"}
+                        {t("supportPage.topic")}
                       </label>
                       <select
                         value={formData.category}
                         onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                         className="w-full h-10 px-3 text-xs bg-background/80 border border-input rounded-xl text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                       >
-                        <option value="support">{isTr ? "Teknik Destek / Hata Bildirimi" : "Technical Support / Bug"}</option>
-                        <option value="feature">{isTr ? "Yeni Özellik / Nişangah Önerisi" : "Feature / Reticle Request"}</option>
-                        <option value="privacy">{isTr ? "Gizlilik & Veri Silme Talebi" : "Privacy & Data Request"}</option>
-                        <option value="other">{isTr ? "Diğer" : "Other"}</option>
+                        <option value="support">{t("supportPage.topicSupport")}</option>
+                        <option value="feature">{t("supportPage.topicFeature")}</option>
+                        <option value="privacy">{t("supportPage.topicPrivacy")}</option>
+                        <option value="other">{t("supportPage.topicOther")}</option>
                       </select>
                     </div>
                   </div>
 
                   <div className="space-y-1">
                     <label className="text-xs font-semibold text-foreground">
-                      {isTr ? "Mesajınız" : "Your Message"}
+                      {t("supportPage.message")}
                     </label>
                     <textarea
                       required
                       rows={4}
-                      placeholder={
-                        isTr
-                          ? "Sorunuzu veya karşılaştığınız durumu detaylıca yazabilirsiniz..."
-                          : "Please describe your question or issue in detail..."
-                      }
+                      placeholder={t("supportPage.messagePlaceholder")}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       className="w-full p-3 text-xs bg-background/80 border border-input rounded-xl text-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none"
@@ -244,7 +231,7 @@ export const CrosshairSupportPage: React.FC = () => {
                     className="w-full h-11 bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-xl text-xs gap-2 shadow-sm"
                   >
                     <Send className="w-3.5 h-3.5" />
-                    <span>{isTr ? "Mesajı Gönder" : "Submit Message"}</span>
+                    <span>{t("supportPage.submit")}</span>
                   </Button>
                 </form>
               )}

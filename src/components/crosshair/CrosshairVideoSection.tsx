@@ -4,7 +4,7 @@ import { Play, Pause, Smartphone, Shield, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 export const CrosshairVideoSection: React.FC = () => {
-  const { isTr } = useLanguage();
+  const { t } = useLanguage();
   const [isPlaying, setIsPlaying] = useState(true);
   const [demoStep, setDemoStep] = useState(0);
 
@@ -23,15 +23,13 @@ export const CrosshairVideoSection: React.FC = () => {
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
           <Badge variant="brand" className="text-xs px-3 py-1 font-semibold">
-            {isTr ? "Pasif Katman Demonstrasyonu" : "Passive Overlay Demonstration"}
+            {t("video.badge")}
           </Badge>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-foreground tracking-tight">
-            {isTr ? "Seçtiğiniz Görsel Merkezde Kalır" : "Your Selected Visual Stays Centered"}
+            {t("video.title")}
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground">
-            {isTr
-              ? "Aşağıdaki tarafsız önizleme, katman etkinken nişangah görünümünün nasıl değiştiğini gösterir."
-              : "The neutral preview below shows how the crosshair appearance changes while the layer is active."}
+            {t("video.subtitle")}
           </p>
         </div>
 
@@ -101,7 +99,7 @@ export const CrosshairVideoSection: React.FC = () => {
 
             {/* In-Video Overlay Caption */}
             <div className="absolute top-6 left-1/2 -translate-x-1/2 z-20 px-4 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-xs font-semibold text-white/90">
-              {isTr ? "Nişangahınız her zaman merkezde kalır" : "Your crosshair stays with you."}
+              {t("video.caption")}
             </div>
 
             {/* Bottom Controls */}
@@ -116,7 +114,7 @@ export const CrosshairVideoSection: React.FC = () => {
                   {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
                 </button>
                 <span className="text-white/80 text-[11px] font-medium hidden sm:inline">
-                  {isTr ? "Otomatik Geçiş Vitrini" : "Autoplay Reticle Demo"}
+                  {t("video.autoPlay")}
                 </span>
               </div>
 
@@ -141,12 +139,10 @@ export const CrosshairVideoSection: React.FC = () => {
             </div>
             <div>
               <h3 className="text-xs font-bold text-foreground">
-                {isTr ? "Yüzen Hızlı Kontrol Düğmesi" : "Floating Quick Toggle"}
+                {t("video.val1Title")}
               </h3>
               <p className="text-[11px] text-muted-foreground mt-0.5">
-                {isTr
-                  ? "İsteğe bağlı mini kontrol görünürlüğü ve konumu yönetmek için dokunulabilirdir."
-                  : "The optional mini control is touchable so you can manage visibility and position."}
+                {t("video.val1Desc")}
               </p>
             </div>
           </div>
@@ -157,12 +153,10 @@ export const CrosshairVideoSection: React.FC = () => {
             </div>
             <div>
               <h3 className="text-xs font-bold text-foreground">
-                {isTr ? "Diğer Uygulamalara Erişim Yok" : "No Other-App Access"}
+                {t("video.val2Title")}
               </h3>
               <p className="text-[11px] text-muted-foreground mt-0.5">
-                {isTr
-                  ? "Diğer uygulamaların koduna, belleğine, dosyalarına, verilerine veya ağ trafiğine erişmez."
-                  : "Does not access another app's code, memory, files, data, or network traffic."}
+                {t("video.val2Desc")}
               </p>
             </div>
           </div>
@@ -173,12 +167,10 @@ export const CrosshairVideoSection: React.FC = () => {
             </div>
             <div>
               <h3 className="text-xs font-bold text-foreground">
-                {isTr ? "Cihaza Göre Değişen Kaynak Kullanımı" : "Device-Dependent Resource Use"}
+                {t("video.val3Title")}
               </h3>
               <p className="text-[11px] text-muted-foreground mt-0.5">
-                {isTr
-                  ? "Kaynak kullanımı cihaz modeline, Android sürümüne ve seçilen ayarlara göre değişebilir."
-                  : "Resource use may vary by device model, Android version, and selected settings."}
+                {t("video.val3Desc")}
               </p>
             </div>
           </div>

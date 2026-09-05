@@ -24,7 +24,7 @@ import { Button } from "@/components/ui/button";
 
 export const Header: React.FC = () => {
   const { theme, isMinimal } = useTheme();
-  const { t, isTr } = useLanguage();
+  const { t } = useLanguage();
   const { activeColorOption } = useCrosshairState();
   const location = useLocation();
   const navigate = useNavigate();
@@ -145,7 +145,7 @@ export const Header: React.FC = () => {
   const portalNavLinks: NavLinkItem[] = [
     {
       to: "/",
-      label: isTr ? "Tüm Uygulamalar" : "All Apps",
+      label: t("common.allAppsShort"),
       icon: <LayoutGrid className="w-3.5 h-3.5" />,
       active: location.pathname === "/",
     },
@@ -178,13 +178,13 @@ export const Header: React.FC = () => {
         style={{ transform: `scaleX(${scrollProgress / 100})` }}
         aria-hidden="true"
       />
-      <div className="container max-w-6xl mx-auto flex h-16 sm:h-18 items-center justify-between px-4 sm:px-6">
+      <div className="flex h-16 sm:h-18 items-center justify-between px-4 sm:px-6">
         {/* Left Side: Brand Logo & App Context Selector */}
         <div className="flex items-center gap-3">
           <Link
             to="/"
             className="h-10 sm:h-12 max-h-12 overflow-hidden flex items-center justify-center transition-opacity hover:opacity-85 group shrink-0"
-            aria-label={isTr ? "flappsio Ana Sayfa" : "flappsio Homepage"}
+            aria-label={t("common.brandHome")}
           >
             <img
               src={logoSrc}
@@ -198,11 +198,10 @@ export const Header: React.FC = () => {
             <button
               type="button"
               onClick={() => setAppsDropdownOpen(!appsDropdownOpen)}
-              className={`flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-semibold border transition-all ${
-                isCrosshairApp
-                  ? "bg-secondary/60 border-primary/40 text-foreground"
-                  : "bg-muted/40 border-border/70 text-muted-foreground hover:text-foreground"
-              }`}
+              className={`flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-semibold border transition-all ${isCrosshairApp
+                ? "bg-secondary/60 border-primary/40 text-foreground"
+                : "bg-muted/40 border-border/70 text-muted-foreground hover:text-foreground"
+                }`}
               aria-expanded={appsDropdownOpen}
               aria-haspopup="true"
             >
@@ -218,9 +217,8 @@ export const Header: React.FC = () => {
                 </>
               )}
               <ChevronDown
-                className={`w-3 h-3 transition-transform duration-200 ${
-                  appsDropdownOpen ? "rotate-180 text-primary" : "text-muted-foreground"
-                }`}
+                className={`w-3 h-3 transition-transform duration-200 ${appsDropdownOpen ? "rotate-180 text-primary" : "text-muted-foreground"
+                  }`}
               />
             </button>
 
@@ -231,16 +229,15 @@ export const Header: React.FC = () => {
                 className="absolute left-0 top-full mt-2 w-72 p-2 rounded-2xl bg-card/95 border border-border/80 shadow-2xl backdrop-blur-2xl z-50 space-y-1 animate-in fade-in slide-in-from-top-2 duration-150"
               >
                 <div className="px-3 py-1.5 text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-bold">
-                  {isTr ? "Mobil Uygulamalar" : "Mobile Applications"}
+                  {t("common.mobileApps")}
                 </div>
 
                 {/* Crosshair App Item */}
                 <Link
                   to="/crosshair"
                   onClick={() => setAppsDropdownOpen(false)}
-                  className={`flex items-center gap-3 p-2.5 rounded-xl transition-colors group ${
-                    isCrosshairApp ? "bg-primary/10 border border-primary/30" : "hover:bg-secondary/80"
-                  }`}
+                  className={`flex items-center gap-3 p-2.5 rounded-xl transition-colors group ${isCrosshairApp ? "bg-primary/10 border border-primary/30" : "hover:bg-secondary/80"
+                    }`}
                 >
                   <div className="w-9 h-9 rounded-xl bg-secondary border border-border/80 flex items-center justify-center text-primary group-hover:scale-105 transition-transform shrink-0 overflow-hidden">
                     <img
@@ -258,11 +255,11 @@ export const Header: React.FC = () => {
                         Crossio
                       </span>
                       <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-primary/20 text-primary">
-                        Active
+                        {t("common.active")}
                       </span>
                     </div>
                     <p className="text-[10px] text-muted-foreground truncate">
-                      Custom Crosshair • Passive Overlay
+                      {t("common.crossioSubtitle")}
                     </p>
                   </div>
                 </Link>
@@ -291,11 +288,10 @@ export const Header: React.FC = () => {
               key={link.to}
               to={link.to}
               onClick={link.onClick}
-              className={`whitespace-nowrap flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl font-medium transition-all ${
-                link.active
-                  ? "bg-background text-primary shadow-sm font-bold border border-border/40"
-                  : "text-muted-foreground hover:text-foreground hover:bg-background/40"
-              }`}
+              className={`whitespace-nowrap flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl font-medium transition-all ${link.active
+                ? "bg-background text-primary shadow-sm font-bold border border-border/40"
+                : "text-muted-foreground hover:text-foreground hover:bg-background/40"
+                }`}
             >
               {link.icon}
               <span>{link.label}</span>
@@ -332,7 +328,7 @@ export const Header: React.FC = () => {
             >
               <Link to="/crosshair">
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>Crossio App</span>
+                <span>{t("common.crossioApp")}</span>
               </Link>
             </Button>
           )}
@@ -380,11 +376,10 @@ export const Header: React.FC = () => {
                   if (link.onClick) link.onClick(e);
                   setMobileMenuOpen(false);
                 }}
-                className={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl font-medium transition-colors ${
-                  link.active
-                    ? "bg-primary/10 text-primary font-bold"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/60"
-                }`}
+                className={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl font-medium transition-colors ${link.active
+                  ? "bg-primary/10 text-primary font-bold"
+                  : "text-muted-foreground hover:text-foreground hover:bg-secondary/60"
+                  }`}
               >
                 {link.icon}
                 <span>{link.label}</span>

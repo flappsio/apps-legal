@@ -20,12 +20,14 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface LegalLayoutProps {
   document: LegalDocument;
 }
 
 export const LegalLayout: React.FC<LegalLayoutProps> = ({ document }) => {
+  const { t } = useLanguage();
   const [activeSectionId, setActiveSectionId] = useState<string>("");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [copied, setCopied] = useState<boolean>(false);
@@ -130,7 +132,7 @@ export const LegalLayout: React.FC<LegalLayoutProps> = ({ document }) => {
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-primary transition-colors bg-card/60 px-3 py-1.5 rounded-lg border border-border/60 backdrop-blur-sm"
           >
             <ChevronLeft className="w-4 h-4" />
-            Tüm Uygulamalar
+            {t("legalLayout.allApps")}
           </Link>
 
           <div className="flex items-center gap-2">
@@ -143,12 +145,12 @@ export const LegalLayout: React.FC<LegalLayoutProps> = ({ document }) => {
               {copied ? (
                 <>
                   <Check className="w-3.5 h-3.5 text-primary" />
-                  Kopyalandı
+                  {t("common.copied")}
                 </>
               ) : (
                 <>
                   <Share2 className="w-3.5 h-3.5" />
-                  Paylaş
+                  {t("common.share")}
                 </>
               )}
             </Button>
@@ -160,7 +162,7 @@ export const LegalLayout: React.FC<LegalLayoutProps> = ({ document }) => {
               className="text-xs h-8 gap-1.5 hidden sm:inline-flex"
             >
               <Printer className="w-3.5 h-3.5" />
-              Yazdır
+              {t("legalLayout.print")}
             </Button>
           </div>
         </div>
@@ -171,7 +173,7 @@ export const LegalLayout: React.FC<LegalLayoutProps> = ({ document }) => {
             <Badge variant="brand">{document.subtitle}</Badge>
             <span className="text-xs text-muted-foreground flex items-center gap-1">
               <Calendar className="w-3.5 h-3.5" />
-              Son Güncelleme: {document.lastUpdated}
+              {t("legalLayout.lastUpdated", { date: document.lastUpdated })}
             </span>
           </div>
 
@@ -186,7 +188,7 @@ export const LegalLayout: React.FC<LegalLayoutProps> = ({ document }) => {
           <div className="flex flex-wrap gap-4 text-xs text-muted-foreground pt-4 border-t border-border/50">
             <div className="flex items-center gap-1.5">
               <Building className="w-3.5 h-3.5 text-primary" />
-              <span>Yayıncı: <strong>{document.publisher}</strong></span>
+              <span>{t("legalLayout.publisher")} <strong>{document.publisher}</strong></span>
             </div>
             <div className="flex items-center gap-1.5">
               <Mail className="w-3.5 h-3.5 text-primary" />
@@ -208,7 +210,7 @@ export const LegalLayout: React.FC<LegalLayoutProps> = ({ document }) => {
               <div className="relative">
                 <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
                 <Input
-                  placeholder="Madde veya konu ara..."
+                  placeholder={t("legalLayout.searchPlaceholder")}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="pl-9 h-9 text-xs"
@@ -217,7 +219,7 @@ export const LegalLayout: React.FC<LegalLayoutProps> = ({ document }) => {
 
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2 px-1">
-                  İçindekiler
+                  {t("legalLayout.tableOfContents")}
                 </h4>
                 <nav className="space-y-1 max-h-[60vh] overflow-y-auto pr-1">
                   {document.sections.map((section) => {
@@ -251,10 +253,10 @@ export const LegalLayout: React.FC<LegalLayoutProps> = ({ document }) => {
             <div className="p-4 rounded-xl bg-gradient-to-br from-primary/10 via-card/50 to-card border border-primary/20 text-xs space-y-2">
               <div className="flex items-center gap-1.5 font-bold text-foreground">
                 <Shield className="w-4 h-4 text-primary" />
-                Yardıma mı ihtiyacınız var?
+                {t("legalLayout.needHelp")}
               </div>
               <p className="text-muted-foreground text-[11px] leading-relaxed">
-                Politikalarımız veya verilerinizle ilgili sorularınız için bize dilediğiniz an e-posta ile ulaşabilirsiniz.
+                {t("legalLayout.needHelpDesc")}
               </p>
               <a
                 href={`mailto:${document.contactEmail}`}
@@ -270,7 +272,7 @@ export const LegalLayout: React.FC<LegalLayoutProps> = ({ document }) => {
             {filteredSections.length === 0 ? (
               <div className="p-12 text-center rounded-2xl bg-card border border-border/70">
                 <p className="text-muted-foreground text-sm">
-                  "{searchQuery}" aramasıyla eşleşen bir madde bulunamadı.
+                  {t("legalLayout.noSectionsFound", { query: searchQuery })}
                 </p>
                 <Button
                   variant="outline"
@@ -278,7 +280,7 @@ export const LegalLayout: React.FC<LegalLayoutProps> = ({ document }) => {
                   onClick={() => setSearchQuery("")}
                   className="mt-4 text-xs"
                 >
-                  Aramayı Temizle
+                  {t("legalLayout.clearSearch")}
                 </Button>
               </div>
             ) : (
@@ -394,7 +396,7 @@ export const LegalLayout: React.FC<LegalLayoutProps> = ({ document }) => {
                                       rel="noopener noreferrer"
                                       className="text-primary hover:underline inline-flex items-center gap-1 font-mono text-[11px]"
                                     >
-                                      Bağlantı <ExternalLink className="w-3 h-3" />
+                                      {t("legalLayout.link")} <ExternalLink className="w-3 h-3" />
                                     </a>
                                   ) : (
                                     cell
@@ -421,7 +423,7 @@ export const LegalLayout: React.FC<LegalLayoutProps> = ({ document }) => {
           size="icon"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="fixed bottom-6 right-6 z-40 rounded-full shadow-lg border-border/80 bg-card/80 backdrop-blur-md hover:border-primary/50 text-primary"
-          aria-label="Yukarı Kaydır"
+          aria-label={t("common.backToTop")}
         >
           <ArrowUp className="w-4 h-4" />
         </Button>

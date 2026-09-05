@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export const Footer: React.FC = () => {
   const { theme, isMinimal } = useTheme();
-  const { isTr } = useLanguage();
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   const logoSrc =
@@ -17,21 +17,21 @@ export const Footer: React.FC = () => {
   if (isMinimal) {
     return (
       <footer className="py-6 border-t border-border/40 text-center text-xs text-muted-foreground">
-        <p>© {currentYear} flappsio. {isTr ? "Tüm hakları saklıdır." : "All rights reserved."}</p>
+        <p>© {currentYear} flappsio. {t("common.allRightsReserved")}</p>
       </footer>
     );
   }
 
   return (
     <footer className="border-t border-border/60 bg-card/40 backdrop-blur-sm mt-20 transition-colors">
-      <div className="container max-w-6xl mx-auto px-4 sm:px-6 py-12">
+      <div className="container mx-auto px-4 sm:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
           {/* Brand Col */}
           <div className="md:col-span-1 space-y-3.5">
             <Link
               to="/"
               className="h-10 sm:h-12 max-h-12 overflow-hidden inline-flex items-center justify-start transition-opacity hover:opacity-85 group"
-              aria-label={isTr ? "flappsio Ana Sayfa" : "flappsio Homepage"}
+              aria-label={t("common.brandHome")}
             >
               <img
                 src={logoSrc}
@@ -40,45 +40,43 @@ export const Footer: React.FC = () => {
               />
             </Link>
             <p className="text-xs text-muted-foreground leading-relaxed">
-              {isTr
-                ? "flappsio, Android için şeffaf ve gizlilik odaklı yardımcı araçlar geliştirir."
-                : "flappsio creates transparent, privacy-conscious utility applications for Android."}
+              {t("footer.tagline")}
             </p>
             <div className="pt-1 flex items-center gap-2 text-xs text-muted-foreground">
               <ShieldCheck className="w-4 h-4 text-primary" />
-              <span>Android Exclusivity • Google Play</span>
+              <span>{t("footer.exclusivity")}</span>
             </div>
           </div>
 
           {/* Product Links */}
           <div className="space-y-3">
             <h3 className="text-xs font-bold text-foreground uppercase tracking-wider">
-              {isTr ? "Uygulama" : "Product"}
+              {t("footer.product")}
             </h3>
             <ul className="space-y-2 text-xs text-muted-foreground">
               <li>
                 <Link to="/crosshair" className="hover:text-primary transition-colors">
-                  {isTr ? "Ana Tanıtım & Simülatör" : "Crosshair Overview"}
+                  {t("footer.overview")}
                 </Link>
               </li>
               <li>
                 <Link to="/crosshair/how-to-use" className="hover:text-primary transition-colors">
-                  {isTr ? "Nasıl Kullanılır?" : "How It Works"}
+                  {t("common.howItWorks")}
                 </Link>
               </li>
               <li>
                 <Link to="/crosshair/faq" className="hover:text-primary transition-colors">
-                  {isTr ? "Sıkça Sorulan Sorular" : "FAQ"}
+                  {t("common.faq")}
                 </Link>
               </li>
               <li>
                 <Link to="/crosshair/guides" className="hover:text-primary transition-colors">
-                  {isTr ? "Tüm Rehberler" : "Design Guides"}
+                  {t("footer.designGuides")}
                 </Link>
               </li>
               <li>
                 <Link to="/crosshair/about" className="hover:text-primary transition-colors">
-                  {isTr ? "Hakkında" : "About Crossio"}
+                  {t("footer.aboutCrossio")}
                 </Link>
               </li>
             </ul>
@@ -87,27 +85,27 @@ export const Footer: React.FC = () => {
           {/* Legal Links */}
           <div className="space-y-3">
             <h3 className="text-xs font-bold text-foreground uppercase tracking-wider">
-              {isTr ? "Yasal & Şartlar" : "Legal & Compliance"}
+              {t("footer.legalAndCompliance")}
             </h3>
             <ul className="space-y-2 text-xs text-muted-foreground">
               <li>
                 <Link to="/crosshair/privacy-policy" className="hover:text-primary transition-colors">
-                  {isTr ? "Gizlilik Politikası" : "Privacy Policy"}
+                  {t("common.privacy")}
                 </Link>
               </li>
               <li>
                 <Link to="/crosshair/terms-of-use" className="hover:text-primary transition-colors">
-                  {isTr ? "Kullanım Koşulları" : "Terms of Service"}
+                  {t("common.terms")}
                 </Link>
               </li>
               <li>
                 <Link to="/license" className="hover:text-primary transition-colors">
-                  {isTr ? "Açık Kaynak Lisansları" : "Open Source Licenses"}
+                  {t("common.licenses")}
                 </Link>
               </li>
               <li>
                 <Link to="/crosshair/support" className="hover:text-primary transition-colors">
-                  {isTr ? "Destek & İletişim" : "Support & Contact"}
+                  {t("common.support")}
                 </Link>
               </li>
             </ul>
@@ -116,7 +114,7 @@ export const Footer: React.FC = () => {
           {/* Google Play & Contact */}
           <div className="space-y-3">
             <h3 className="text-xs font-bold text-foreground uppercase tracking-wider">
-              {isTr ? "Mağaza & İletişim" : "Store & Contact"}
+              {t("footer.storeAndContact")}
             </h3>
             <ul className="space-y-2 text-xs text-muted-foreground">
               <li>
@@ -126,13 +124,13 @@ export const Footer: React.FC = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-primary hover:underline font-semibold"
                 >
-                  <span>Google Play Store</span>
+                  <span>{t("footer.storeBadge")}</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </li>
               <li>
                 <Link to="/" className="hover:text-primary transition-colors">
-                  {isTr ? "flappsio Uygulama Portalı" : "flappsio Apps Portal"}
+                  {t("common.allApps")}
                 </Link>
               </li>
               <li className="pt-1">
@@ -151,10 +149,10 @@ export const Footer: React.FC = () => {
         {/* Disclaimer & Copyright Bar */}
         <div className="pt-8 border-t border-border/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
           <p>
-            © {currentYear} <strong>flappsio</strong>. {isTr ? "Tüm hakları saklıdır." : "All rights reserved."}
+            © {currentYear} <strong>flappsio</strong>. {t("common.allRightsReserved")}
           </p>
           <p className="text-center sm:text-right text-[11px] max-w-md">
-            Android and Google Play are trademarks of Google LLC. Crossio is an independent Android mobile application.
+            {t("common.disclaimer")}
           </p>
         </div>
       </div>

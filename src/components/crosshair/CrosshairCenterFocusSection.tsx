@@ -3,7 +3,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { useCrosshairState } from "@/context/CrosshairStateContext";
 
 export const CrosshairCenterFocusSection: React.FC = () => {
-  const { isTr } = useLanguage();
+  const { t } = useLanguage();
   const { shape, color, size, thickness, opacity, outline, activeColorOption } = useCrosshairState();
 
   return (
@@ -95,12 +95,10 @@ export const CrosshairCenterFocusSection: React.FC = () => {
 
         {/* Text */}
         <h2 className="text-3xl sm:text-6xl font-black text-foreground tracking-tight max-w-2xl leading-tight">
-          {isTr ? "Görünümü Size Göre Ayarlayın." : "Make the appearance your own."}
+          {t("centerFocus.title")}
         </h2>
         <p className="text-sm sm:text-base text-muted-foreground mt-4 max-w-lg">
-          {isTr
-            ? "Renk, biçim ve opaklık ayarlarınız site genelindeki canlı önizlemeye anında yansır."
-            : "Your color, shape, and opacity settings update the live preview across the site."}
+          {t("centerFocus.subtitle")}
         </p>
       </div>
     </section>

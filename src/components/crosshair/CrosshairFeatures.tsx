@@ -13,57 +13,45 @@ import {
 import { Badge } from "@/components/ui/badge";
 
 export const CrosshairFeatures: React.FC = () => {
-  const { isTr } = useLanguage();
+  const { t } = useLanguage();
   const { activeColorOption } = useCrosshairState();
 
   const features = [
     {
       icon: <ShieldCheck className="w-5 h-5 text-primary" />,
-      title: isTr ? "Pasif Android Görsel Katmanı" : "Passive Android Visual Layer",
-      desc: isTr
-        ? "Yalnızca siz başlattığınızda görünür. Ana nişangah dokunma veya tuş girdisi almaz; diğer uygulamaların koduna, belleğine, dosyalarına, verilerine ya da ağ trafiğine erişmez."
-        : "Appears only after you start it. The main crosshair receives no touch or key input and does not access another app's code, memory, files, data, or network traffic.",
-      tag: isTr ? "Tıklamaları Geçirir" : "Click-through",
+      title: t("features.item1Title"),
+      desc: t("features.item1Desc"),
+      tag: t("features.item1Tag"),
     },
     {
       icon: <Crosshair className="w-5 h-5 text-[#00E5FF]" />,
-      title: isTr ? "Geniş Nişangah Kütüphanesi" : "Crosshair Preset Library",
-      desc: isTr
-        ? "Nokta, ince artı, T-cross, çember ve elmas gibi farklı görsel tasarımları keşfedin."
-        : "Explore dot, micro-cross, T-style, circle, and diamond visual designs.",
-      tag: isTr ? "Pro" : "Pro",
+      title: t("features.item2Title"),
+      desc: t("features.item2Desc"),
+      tag: t("features.item2Tag"),
     },
     {
       icon: <Sliders className="w-5 h-5 text-primary" />,
-      title: isTr ? "Piksel Hassasiyetinde Özelleştirme" : "Pixel-Perfect Reticle Editor",
-      desc: isTr
-        ? "Boyut, çizgi kalınlığı, merkez boşluğu, şeffaflık, siyah dış çizgi ve merkez nokta ayarlarını hassas kaydırıcılarla yönetin."
-        : "Fine-tune length, thickness, center gap, opacity, outer stroke outline, and center dot with precise sliders.",
-      tag: isTr ? "Editör" : "Editor",
+      title: t("features.item3Title"),
+      desc: t("features.item3Desc"),
+      tag: t("features.item3Tag"),
     },
     {
       icon: <Layers className="w-5 h-5 text-purple-400" />,
-      title: isTr ? "Yüzen Hızlı Kontrol Düğmesi" : "Floating Quick Toggle HUD",
-      desc: isTr
-        ? "İsteğe bağlı dokunulabilir mini kontrolle görsel katmanın görünürlüğünü ve konumunu yönetin."
-        : "Use the optional touchable mini control to manage visual-layer visibility and position.",
-      tag: isTr ? "Hızlı HUD" : "Quick HUD",
+      title: t("features.item4Title"),
+      desc: t("features.item4Desc"),
+      tag: t("features.item4Tag"),
     },
     {
       icon: <Zap className="w-5 h-5 text-amber-400" />,
-      title: isTr ? "Hafif Görsel Oluşturma" : "Lightweight Visual Rendering",
-      desc: isTr
-        ? "Nişangahlar Android'in görsel katmanında oluşturulur. Gerçek kaynak kullanımı cihaza, Android sürümüne ve seçilen ayarlara göre değişebilir."
-        : "Crosshairs are rendered in Android's visual layer. Actual resource use may vary by device, Android version, and selected settings.",
-      tag: isTr ? "Hafif" : "Lightweight",
+      title: t("features.item5Title"),
+      desc: t("features.item5Desc"),
+      tag: t("features.item5Tag"),
     },
     {
       icon: <Lock className="w-5 h-5 text-primary" />,
-      title: isTr ? "Yerel Tasarım Saklama" : "Local Design Storage",
-      desc: isTr
-        ? "Oluşturduğunuz tüm özel crosshair tasarımları ve ayarlarınız cihazınızda yerel saklanır; sunuculara yüklenmez."
-        : "Your customized crosshairs and profile codes remain securely stored on your device and are never sent to external servers.",
-      tag: isTr ? "Gizlilik" : "Privacy",
+      title: t("features.item6Title"),
+      desc: t("features.item6Desc"),
+      tag: t("features.item6Tag"),
     },
   ];
 
@@ -73,23 +61,21 @@ export const CrosshairFeatures: React.FC = () => {
         {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <Badge variant="brand" className="text-xs px-3 py-1 font-semibold">
-            {isTr ? "Android İçin Geliştirildi" : "Built for Android"}
+            {t("features.badge")}
           </Badge>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-foreground tracking-tight">
-            {isTr ? "Mobil İçin Tasarlandı." : "Made for mobile."} <br />
+            {t("features.title1")} <br />
             <span
               className="bg-clip-text text-transparent"
               style={{
                 backgroundImage: `linear-gradient(135deg, ${activeColorOption.hex} 0%, #00E5FF 100%)`,
               }}
             >
-              {isTr ? "Size Göre Özelleştirilir." : "Customized by you."}
+              {t("features.title2")}
             </span>
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground">
-            {isTr
-              ? "Şeffaf izin akışı, yerel tasarımlar ve ayrıntılı görünüm seçenekleri sunan Android aracı."
-              : "An Android utility with transparent permissions, local designs, and detailed appearance controls."}
+            {t("features.subtitle")}
           </p>
         </div>
 
@@ -130,7 +116,7 @@ export const CrosshairFeatures: React.FC = () => {
 
               <div className="pt-4 mt-4 border-t border-border/30 flex items-center gap-1.5 text-xs text-primary font-medium">
                 <CheckCircle2 className="w-3.5 h-3.5" />
-                <span>{isTr ? "Uygulamada Mevcut" : "Available in the App"}</span>
+                <span>{t("features.availableInApp")}</span>
               </div>
             </div>
           ))}

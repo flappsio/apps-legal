@@ -8,15 +8,10 @@ import { ArrowRight, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export const CrosshairGuidesPage: React.FC = () => {
-  const { isTr } = useLanguage();
+  const { t, isTr } = useLanguage();
 
-  const title = isTr
-    ? "Crosshair Rehberleri - Nişangah Seçimi, Renk Kontrastı ve Sorun Giderme"
-    : "Crosshair Guides - Reticle Selection, Color Contrast & Troubleshooting";
-
-  const description = isTr
-    ? "Crossio nişangah tasarımı, görünürlük, yerel görsel içe aktarma ve Android katman izinleri için pratik rehberler."
-    : "Practical Crossio guides for crosshair design, visibility, local image import, and Android overlay permissions.";
+  const title = t("guidesPage.metaTitle");
+  const description = t("guidesPage.metaDesc");
 
   return (
     <div className="min-h-screen py-10 sm:py-16">
@@ -33,9 +28,9 @@ export const CrosshairGuidesPage: React.FC = () => {
           "crosshair color contrast",
         ]}
         breadcrumbs={[
-          { name: isTr ? "Ana Sayfa" : "Home", url: "/" },
+          { name: t("common.home"), url: "/" },
           { name: "Crossio", url: "/crosshair" },
-          { name: isTr ? "Rehberler" : "Guides", url: "/crosshair/guides" },
+          { name: t("common.guides"), url: "/crosshair/guides" },
         ]}
       />
 
@@ -43,15 +38,13 @@ export const CrosshairGuidesPage: React.FC = () => {
         {/* Header Title */}
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
           <Badge variant="brand" className="text-xs px-3 py-1 font-semibold">
-            {isTr ? "Rehberler ve İpuçları" : "Guides & Practical Tips"}
+            {t("guidesPage.badge")}
           </Badge>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">
-            {isTr ? "Nişangahınızı Bilinçli Özelleştirin" : "Customize Your Crosshair Thoughtfully"}
+            {t("guidesPage.title")}
           </h1>
           <p className="text-sm sm:text-base text-muted-foreground">
-            {isTr
-              ? "Görsel tasarım, okunabilirlik, izinler ve Android cihaz ayarları için tarafsız teknik ipuçları."
-              : "Neutral technical guidance for visual design, readability, permissions, and Android device settings."}
+            {t("guidesPage.subtitle")}
           </p>
         </div>
 
@@ -86,7 +79,7 @@ export const CrosshairGuidesPage: React.FC = () => {
               </div>
 
               <div className="pt-4 mt-6 border-t border-border/40 flex items-center justify-between text-xs text-primary font-semibold">
-                <span>{isTr ? "Kılavuzu Oku" : "Read Full Guide"}</span>
+                <span>{t("guidesPage.readFull")}</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </div>
             </Link>

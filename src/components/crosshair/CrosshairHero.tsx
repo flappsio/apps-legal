@@ -82,7 +82,7 @@ export const CrosshairHero: React.FC = () => {
             <Button
               asChild
               size="lg"
-              className="shimmer-button w-full sm:w-auto h-13 px-8 text-black font-extrabold rounded-2xl shadow-xl gap-2.5 text-sm transition-all duration-300 hover:scale-[1.02]"
+              className="shimmer-button w-full sm:w-auto h-13 px-8 py-2 text-black font-extrabold rounded-2xl shadow-xl gap-2.5 text-sm transition-all duration-300 hover:scale-[1.02]"
               style={{
                 backgroundColor: activeColorOption.hex,
                 boxShadow: `0 10px 30px ${activeColorOption.hex}40`,
@@ -102,7 +102,7 @@ export const CrosshairHero: React.FC = () => {
               onClick={scrollToDemo}
               variant="outline"
               size="lg"
-              className="w-full sm:w-auto h-13 px-6 rounded-2xl border-border/80 hover:bg-secondary text-sm font-semibold gap-2 transition-all"
+              className="w-full sm:w-auto h-13 px-6 py-2 rounded-2xl border-border/80 hover:bg-secondary text-sm font-semibold gap-2 transition-all"
             >
               <Play className="w-3.5 h-3.5 text-primary" />
               <span>{t("hero.tryDemo")}</span>
@@ -348,7 +348,7 @@ export const CrosshairHero: React.FC = () => {
               </div>
 
               {/* Floating Quick Bubble Simulation in Game */}
-              <div className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2.5 rounded-2xl bg-black/60 border border-white/20 backdrop-blur-md text-[10px] font-bold text-white flex items-center gap-1.5 shadow-xl">
+              <div className="absolute right-4 top-8 -translate-y-1/2 z-30 p-2.5 rounded-2xl bg-black/60 border border-white/20 backdrop-blur-md text-[10px] font-bold text-white flex items-center gap-1.5 shadow-xl">
                 <div
                   className="w-2 h-2 rounded-full"
                   style={{ backgroundColor: activeColorOption.hex }}

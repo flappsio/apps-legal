@@ -4,7 +4,7 @@ import { useCrosshairState } from "@/context/CrosshairStateContext";
 import { Download } from "lucide-react";
 
 export const MobileStickyCTA: React.FC = () => {
-  const { isTr } = useLanguage();
+  const { t } = useLanguage();
   const { activeColorOption } = useCrosshairState();
   const [visible, setVisible] = useState(false);
 
@@ -40,7 +40,7 @@ export const MobileStickyCTA: React.FC = () => {
           <span>Crossio: Custom Crosshair</span>
         </div>
         <span className="bg-black/20 text-black px-2.5 py-1 rounded-lg text-[11px] font-bold">
-          {isTr ? "İndir" : "Get App"}
+          {t("common.download")}
         </span>
       </a>
     </div>

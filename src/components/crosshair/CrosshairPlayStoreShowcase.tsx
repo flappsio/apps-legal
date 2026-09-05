@@ -23,43 +23,23 @@ export const CrosshairPlayStoreShowcase: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [scrollIndex, setScrollIndex] = useState(0);
 
-  const trScreenshots = [
+  const screenshots = [
     {
-      src: "/assets/images/playstore/tr/2.png",
-      title: "Hassas Konumlandırma",
-      subtitle: "Boyut, konum ve dönüş ayarları",
+      src: isTr ? "/assets/images/playstore/tr/2.png" : "/assets/images/playstore/en/2.png",
+      title: t("store.screen1Title"),
+      subtitle: t("store.screen1Sub"),
     },
     {
-      src: "/assets/images/playstore/tr/4.png",
-      title: "Kişiselleştirilebilir Ana Sayfa",
-      subtitle: "Kartları kullanımınıza göre sıralayın",
+      src: isTr ? "/assets/images/playstore/tr/4.png" : "/assets/images/playstore/en/4.png",
+      title: t("store.screen2Title"),
+      subtitle: t("store.screen2Sub"),
     },
     {
-      src: "/assets/images/playstore/tr/5.png",
-      title: "Nişangah Editörü",
-      subtitle: "Şekil, renk, boyut ve opaklık ayarları",
-    },
-  ];
-
-  const enScreenshots = [
-    {
-      src: "/assets/images/playstore/en/2.png",
-      title: "Precision Positioning",
-      subtitle: "Size, position, and rotation controls",
-    },
-    {
-      src: "/assets/images/playstore/en/4.png",
-      title: "Customizable Home Screen",
-      subtitle: "Reorder cards to match your workflow",
-    },
-    {
-      src: "/assets/images/playstore/en/5.png",
-      title: "Crosshair Editor",
-      subtitle: "Shape, color, size, and opacity controls",
+      src: isTr ? "/assets/images/playstore/tr/5.png" : "/assets/images/playstore/en/5.png",
+      title: t("store.screen3Title"),
+      subtitle: t("store.screen3Sub"),
     },
   ];
-
-  const screenshots = isTr ? trScreenshots : enScreenshots;
 
   const handleShare = () => {
     const url = "https://play.google.com/store/apps/details?id=com.hasan.apps.crosshair";
@@ -162,7 +142,7 @@ export const CrosshairPlayStoreShowcase: React.FC = () => {
                   rel="noopener noreferrer"
                 >
                   <Download className="w-4 h-4" />
-                  <span>{isTr ? "Google Play'den Yükle" : "Install on Google Play"}</span>
+                  <span>{t("store.installPlayStore")}</span>
                 </a>
               </Button>
 
@@ -170,17 +150,17 @@ export const CrosshairPlayStoreShowcase: React.FC = () => {
                 variant="outline"
                 onClick={handleShare}
                 className="rounded-2xl h-12 px-4 border-border/80 bg-secondary/40 hover:bg-secondary text-xs font-semibold gap-1.5"
-                title={isTr ? "Google Play Bağlantısını Kopyala" : "Copy Google Play Link"}
+                title={t("store.copyLinkTitle")}
               >
                 {copied ? (
                   <>
                     <Check className="w-4 h-4 text-primary" />
-                    <span>{isTr ? "Kopyalandı" : "Copied"}</span>
+                    <span>{t("store.copied")}</span>
                   </>
                 ) : (
                   <>
                     <Share2 className="w-4 h-4 text-muted-foreground" />
-                    <span>{isTr ? "Paylaş" : "Share"}</span>
+                    <span>{t("store.share")}</span>
                   </>
                 )}
               </Button>
@@ -194,15 +174,15 @@ export const CrosshairPlayStoreShowcase: React.FC = () => {
                 <Smartphone className="w-4 h-4 text-primary" />
                 <span>Android</span>
               </div>
-              <p className="text-[11px] text-muted-foreground">{isTr ? "Görsel Katman" : "Visual Layer"}</p>
+              <p className="text-[11px] text-muted-foreground">{t("store.visualLayer")}</p>
             </div>
 
             <div className="space-y-1 border-l border-border/60">
               <div className="flex items-center justify-center gap-1 text-base sm:text-lg font-extrabold text-foreground">
                 <Check className="w-4 h-4 text-primary" />
-                <span>{isTr ? "Açık Başlatma" : "Explicit Start"}</span>
+                <span>{t("store.explicitStart")}</span>
               </div>
-              <p className="text-[11px] text-muted-foreground">{isTr ? "Kullanıcı Kontrollü" : "User Controlled"}</p>
+              <p className="text-[11px] text-muted-foreground">{t("store.userControlled")}</p>
             </div>
 
             <div className="space-y-1 border-l border-border/60">
@@ -210,15 +190,15 @@ export const CrosshairPlayStoreShowcase: React.FC = () => {
                 <Download className="w-4 h-4 text-primary" />
                 <span>PNG</span>
               </div>
-              <p className="text-[11px] text-muted-foreground">{isTr ? "İçe Aktarma" : "Local Import"}</p>
+              <p className="text-[11px] text-muted-foreground">{t("store.localImport")}</p>
             </div>
 
             <div className="space-y-1 border-l border-border/60">
               <div className="flex items-center justify-center gap-1 text-base sm:text-lg font-extrabold text-foreground">
                 <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>{isTr ? "Pasif" : "Passive"}</span>
+                <span>{t("store.passive")}</span>
               </div>
-              <p className="text-[11px] text-muted-foreground">{isTr ? "Girdi Otomasyonu Yok" : "No Input Automation"}</p>
+              <p className="text-[11px] text-muted-foreground">{t("store.noInputAutomation")}</p>
             </div>
           </div>
         </div>
@@ -228,10 +208,10 @@ export const CrosshairPlayStoreShowcase: React.FC = () => {
           <div className="flex items-center gap-2">
             <Smartphone className="w-4 h-4 text-primary" />
             <span className="text-xs font-bold text-foreground">
-              {isTr ? "Ekran Görüntüleri" : "Screenshots"}
+              {t("store.screenshotsTitle")}
             </span>
             <span className="text-xs text-muted-foreground">
-              ({screenshots.length} {isTr ? "Görsel" : "Images"})
+              ({screenshots.length} {t("store.imagesCount")})
             </span>
           </div>
 
@@ -304,15 +284,13 @@ export const CrosshairPlayStoreShowcase: React.FC = () => {
         <div className="mt-8 p-6 sm:p-8 rounded-[32px] bg-gradient-to-r from-card via-card/80 to-secondary/40 border border-border/80 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2 max-w-xl text-center md:text-left">
             <Badge variant="brand" className="text-[10px] font-mono">
-              {isTr ? "GOOGLE PLAY'DE MEVCUT" : "AVAILABLE ON GOOGLE PLAY"}
+              {t("store.bannerBadge")}
             </Badge>
             <h3 className="text-xl sm:text-2xl font-extrabold text-foreground">
-              {isTr ? "Seçin, özelleştirin ve açıkça başlatın." : "Choose, customize, and start explicitly."}
+              {t("store.bannerTitle")}
             </h3>
             <p className="text-xs sm:text-sm text-muted-foreground">
-              {isTr
-                ? "Katman yalnızca siz başlattığınızda görünür ve kalıcı bildirimden durdurulabilir."
-                : "The layer appears only after you start it and can be stopped from the persistent notification."}
+              {t("store.bannerDesc")}
             </p>
           </div>
 
@@ -327,7 +305,7 @@ export const CrosshairPlayStoreShowcase: React.FC = () => {
               rel="noopener noreferrer"
             >
               <ExternalLink className="w-4 h-4" />
-              <span>{isTr ? "Mağaza Sayfasını Aç" : "Open Store Page"}</span>
+              <span>{t("store.openStorePage")}</span>
             </a>
           </Button>
         </div>

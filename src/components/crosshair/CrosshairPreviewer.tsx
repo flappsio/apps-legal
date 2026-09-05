@@ -17,28 +17,28 @@ const SHAPES: { id: CrosshairShape; symbol: string; label: string }[] = [
 const SCENES = [
   {
     id: "dark",
-    name: { tr: "Koyu Zemin", en: "Dark Background" },
+    nameKey: "previewer.sceneDark",
     gradient: "linear-gradient(135deg, #090a0f 0%, #151824 50%, #0c0e14 100%)",
   },
   {
     id: "warm",
-    name: { tr: "Sıcak Tonlar", en: "Warm Tones" },
+    nameKey: "previewer.sceneWarm",
     gradient: "linear-gradient(135deg, #6e4f30 0%, #9e744d 50%, #3e2b17 100%)",
   },
   {
     id: "blue",
-    name: { tr: "Mavi Tonlar", en: "Blue Tones" },
+    nameKey: "previewer.sceneBlue",
     gradient: "linear-gradient(135deg, #1b3454 0%, #2f526b 50%, #121c27 100%)",
   },
   {
     id: "radial",
-    name: { tr: "Radyal Koyu", en: "Radial Dark" },
+    nameKey: "previewer.sceneRadial",
     gradient: "radial-gradient(circle at center, #1f293d 0%, #0d121c 60%, #05070a 100%)",
   },
 ];
 
 export const CrosshairPreviewer: React.FC = () => {
-  const { isTr } = useLanguage();
+  const { t } = useLanguage();
   const {
     shape,
     setShape,
@@ -56,7 +56,6 @@ export const CrosshairPreviewer: React.FC = () => {
     setOutline,
     centerDot,
     setCenterDot,
-    activeColorOption,
     resetDefaults,
   } = useCrosshairState();
 
@@ -176,24 +175,15 @@ export const CrosshairPreviewer: React.FC = () => {
       <div className="container max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-          <div
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-bold uppercase tracking-wider"
-            style={{
-              backgroundColor: `${activeColorOption.hex}15`,
-              borderColor: `${activeColorOption.hex}40`,
-              color: activeColorOption.hex,
-            }}
-          >
+          <div className="border border-primary/30 bg-primary/10 text-primary inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-bold uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>{isTr ? "İnteraktif Deneme Alanı" : "Interactive Playground"}</span>
+            <span>{t("previewer.badge")}</span>
           </div>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-foreground tracking-tight">
-            {isTr ? "Nişangahınızı Canlı Deneyin" : "Try the Crosshair Experience"}
+            {t("previewer.title")}
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground">
-            {isTr
-              ? "Nişangah seçin, tüm görünüm ayarlarını düzenleyin, farklı zeminlerde önizleyin ve şeffaf PNG olarak ücretsiz indirin."
-              : "Pick a crosshair, customize it, and preview its appearance on different backgrounds."}
+            {t("previewer.subtitle")}
           </p>
         </div>
 
@@ -203,7 +193,7 @@ export const CrosshairPreviewer: React.FC = () => {
           <div className="px-6 py-4 border-b border-border/60 flex flex-wrap items-center justify-between gap-3 bg-card/50">
             <div className="flex items-center gap-2">
               <span className="text-xs font-bold text-foreground">
-                {isTr ? "Yatay Görsel Önizleme" : "Landscape Visual Preview"}
+                {t("previewer.landscapePreview")}
               </span>
               <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-primary/20 text-primary font-bold">
                 VECTOR PREVIEW
@@ -213,19 +203,18 @@ export const CrosshairPreviewer: React.FC = () => {
             {/* Scene Selector */}
             <div className="flex items-center gap-1.5 text-xs">
               <span className="text-muted-foreground text-[11px] hidden sm:inline mr-1">
-                {isTr ? "Zemin:" : "Scene:"}
+                {t("previewer.sceneLabel")}
               </span>
               {SCENES.map((sc, idx) => (
                 <button
                   key={sc.id}
                   onClick={() => setActiveScene(idx)}
-                  className={`px-2.5 py-1 rounded-lg text-[10px] font-semibold transition-all ${
-                    activeScene === idx
-                      ? "bg-white text-black font-bold shadow-sm"
-                      : "text-muted-foreground hover:text-foreground bg-secondary/50"
-                  }`}
+                  className={`px-2.5 py-1 rounded-lg text-[10px] font-semibold transition-all ${activeScene === idx
+                    ? "bg-white text-black font-bold shadow-sm"
+                    : "text-muted-foreground hover:text-foreground bg-secondary/50"
+                    }`}
                 >
-                  {isTr ? sc.name.tr : sc.name.en}
+                  {t(sc.nameKey)}
                 </button>
               ))}
             </div>
@@ -253,9 +242,7 @@ export const CrosshairPreviewer: React.FC = () => {
             <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-black/50 backdrop-blur-md border border-white/10 text-[11px] text-white/70 pointer-events-none">
               <Move className="w-3.5 h-3.5 text-primary" />
               <span>
-                {isTr
-                  ? "Nişangahı sürükleyin (Bırakınca merkeze kilitlenir)"
-                  : "Drag reticle to test movement (Snaps back to center)"}
+                {t("previewer.dragHint")}
               </span>
             </div>
 
@@ -428,9 +415,9 @@ export const CrosshairPreviewer: React.FC = () => {
             {/* 1. Horizontal Shape Selector */}
             <div>
               <div className="flex items-center justify-between mb-3 text-xs font-bold text-foreground">
-                <span>{isTr ? "Nişangah Modelleri" : "Crosshair Shape Selector"}</span>
+                <span>{t("previewer.shapeSelector")}</span>
                 <span className="text-muted-foreground text-[11px] font-normal">
-                  {isTr ? "7 Temel Geometri" : "7 Core Geometries"}
+                  {t("previewer.shapesCount")}
                 </span>
               </div>
 
@@ -439,11 +426,10 @@ export const CrosshairPreviewer: React.FC = () => {
                   <button
                     key={item.id}
                     onClick={() => setShape(item.id)}
-                    className={`py-2.5 px-2 rounded-2xl flex flex-col items-center justify-center gap-1 border transition-all duration-200 ${
-                      shape === item.id
-                        ? "bg-primary text-black font-extrabold border-primary shadow-md scale-105"
-                        : "bg-secondary/40 text-muted-foreground border-border/60 hover:text-foreground hover:bg-secondary"
-                    }`}
+                    className={`py-2.5 px-2 rounded-2xl flex flex-col items-center justify-center gap-1 border transition-all duration-200 ${shape === item.id
+                      ? "bg-primary text-black font-extrabold border-primary shadow-md scale-105"
+                      : "bg-secondary/40 text-muted-foreground border-border/60 hover:text-foreground hover:bg-secondary"
+                      }`}
                   >
                     <span className="text-base leading-none font-mono">{item.symbol}</span>
                     <span className="text-[10px] font-medium tracking-tight truncate max-w-full">
@@ -458,7 +444,7 @@ export const CrosshairPreviewer: React.FC = () => {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2 border-t border-border/40">
               <div>
                 <span className="text-xs font-bold text-foreground block mb-2">
-                  {isTr ? "Dinamik Tema Rengi" : "Dynamic Reticle Color"}
+                  {t("previewer.dynamicColor")}
                 </span>
                 <div className="flex items-center gap-2.5">
                   {COLOR_OPTIONS.map((c) => (
@@ -466,24 +452,23 @@ export const CrosshairPreviewer: React.FC = () => {
                       key={c.hex}
                       onClick={() => setColor(c.hex)}
                       style={{ backgroundColor: c.hex }}
-                      className={`w-8 h-8 rounded-full transition-transform border-2 ${
-                        color.toLowerCase() === c.hex.toLowerCase()
-                          ? "scale-110 border-white ring-2 ring-primary ring-offset-2 ring-offset-background"
-                          : "border-transparent opacity-85 hover:opacity-100 hover:scale-105"
-                      }`}
+                      className={`w-8 h-8 rounded-full transition-transform border-2 ${color.toLowerCase() === c.hex.toLowerCase()
+                        ? "scale-110 border-white ring-2 ring-primary ring-offset-2 ring-offset-background"
+                        : "border-transparent opacity-85 hover:opacity-100 hover:scale-105"
+                        }`}
                       title={c.name}
                     />
                   ))}
                   <label
                     className="relative w-8 h-8 rounded-full border-2 border-dashed border-muted-foreground/60 hover:border-primary cursor-pointer overflow-hidden"
-                    title={isTr ? "Özel renk seç" : "Choose a custom color"}
+                    title={t("previewer.customColorTitle")}
                   >
                     <input
                       type="color"
                       value={color}
                       onChange={(e) => setColor(e.target.value)}
                       className="absolute inset-[-8px] w-12 h-12 cursor-pointer"
-                      aria-label={isTr ? "Özel nişangah rengi" : "Custom crosshair color"}
+                      aria-label={t("previewer.customColorAria")}
                     />
                   </label>
                 </div>
@@ -494,13 +479,13 @@ export const CrosshairPreviewer: React.FC = () => {
                 <div className="space-y-1 flex-1">
                   <div className="flex justify-between text-xs text-muted-foreground">
                     <label htmlFor="preview-size-slider" className="cursor-pointer">
-                      {isTr ? "Boyut" : "Size"}
+                      {t("previewer.sizeLabel")}
                     </label>
                     <span className="font-mono font-bold text-foreground">{size}px</span>
                   </div>
                   <input
                     id="preview-size-slider"
-                    aria-label={isTr ? "Nişangah Boyutu (Piksel)" : "Crosshair Size (Pixels)"}
+                    aria-label={t("previewer.sizeLabel")}
                     type="range"
                     min="2"
                     max="14"
@@ -513,13 +498,13 @@ export const CrosshairPreviewer: React.FC = () => {
                 <div className="space-y-1 flex-1">
                   <div className="flex justify-between text-xs text-muted-foreground">
                     <label htmlFor="preview-opacity-slider" className="cursor-pointer">
-                      {isTr ? "Opaklık" : "Opacity"}
+                      {t("previewer.opacityLabel")}
                     </label>
                     <span className="font-mono font-bold text-foreground">{Math.round(opacity * 100)}%</span>
                   </div>
                   <input
                     id="preview-opacity-slider"
-                    aria-label={isTr ? "Nişangah Opaklığı (Yüzde)" : "Crosshair Opacity (Percentage)"}
+                    aria-label={t("previewer.opacityLabel")}
                     type="range"
                     min="0.2"
                     max="1"
@@ -535,7 +520,7 @@ export const CrosshairPreviewer: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-border/40">
               <div className="space-y-1.5">
                 <div className="flex justify-between text-xs text-muted-foreground">
-                  <label htmlFor="preview-thickness-slider">{isTr ? "Kalınlık" : "Thickness"}</label>
+                  <label htmlFor="preview-thickness-slider">{t("previewer.thicknessLabel")}</label>
                   <span className="font-mono font-bold text-foreground">{thickness}px</span>
                 </div>
                 <input
@@ -550,7 +535,7 @@ export const CrosshairPreviewer: React.FC = () => {
               </div>
               <div className="space-y-1.5">
                 <div className="flex justify-between text-xs text-muted-foreground">
-                  <label htmlFor="preview-gap-slider">{isTr ? "Merkez boşluğu" : "Center gap"}</label>
+                  <label htmlFor="preview-gap-slider">{t("previewer.gapLabel")}</label>
                   <span className="font-mono font-bold text-foreground">{gap}px</span>
                 </div>
                 <input
@@ -571,25 +556,23 @@ export const CrosshairPreviewer: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setOutline(!outline)}
-                  className={`px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
-                    outline
-                      ? "bg-primary/10 border-primary/40 text-primary"
-                      : "bg-secondary/40 border-border/60 text-muted-foreground"
-                  }`}
+                  className={`px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${outline
+                    ? "bg-primary/10 border-primary/40 text-primary"
+                    : "bg-secondary/40 border-border/60 text-muted-foreground"
+                    }`}
                 >
-                  {isTr ? `Siyah Dış Çizgi: ${outline ? "Açık" : "Kapalı"}` : `Black Outline: ${outline ? "ON" : "OFF"}`}
+                  {t("previewer.outlineStatus", { status: outline ? t("previewer.on") : t("previewer.off") })}
                 </button>
 
                 <button
                   type="button"
                   onClick={() => setCenterDot(!centerDot)}
-                  className={`px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
-                    centerDot
-                      ? "bg-primary/10 border-primary/40 text-primary"
-                      : "bg-secondary/40 border-border/60 text-muted-foreground"
-                  }`}
+                  className={`px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${centerDot
+                    ? "bg-primary/10 border-primary/40 text-primary"
+                    : "bg-secondary/40 border-border/60 text-muted-foreground"
+                    }`}
                 >
-                  {isTr ? `Merkez Nokta: ${centerDot ? "Açık" : "Kapalı"}` : `Center Dot: ${centerDot ? "ON" : "OFF"}`}
+                  {t("previewer.centerDotStatus", { status: centerDot ? t("previewer.on") : t("previewer.off") })}
                 </button>
               </div>
 
@@ -600,7 +583,7 @@ export const CrosshairPreviewer: React.FC = () => {
                   className="shimmer-button h-9 px-4 bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-xl text-xs gap-1.5 shadow-sm"
                 >
                   {exported ? <Check className="w-3.5 h-3.5" /> : <Download className="w-3.5 h-3.5" />}
-                  <span>{exported ? (isTr ? "PNG İndirildi" : "PNG Downloaded") : isTr ? "Şeffaf PNG İndir" : "Download Transparent PNG"}</span>
+                  <span>{exported ? t("previewer.pngDownloaded") : t("previewer.downloadPng")}</span>
                 </Button>
 
                 <Button
@@ -609,7 +592,7 @@ export const CrosshairPreviewer: React.FC = () => {
                   className="h-9 px-4 bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-xl text-xs gap-1.5 shadow-sm"
                 >
                   {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-                  <span>{copied ? (isTr ? "Kod Kopyalandı!" : "Code Copied!") : isTr ? "Nişangah Kodunu Kopyala" : "Copy Reticle Code"}</span>
+                  <span>{copied ? t("previewer.codeCopied") : t("previewer.copyCode")}</span>
                 </Button>
 
                 <Button
@@ -617,7 +600,7 @@ export const CrosshairPreviewer: React.FC = () => {
                   size="sm"
                   onClick={resetDefaults}
                   className="h-9 px-3 text-xs rounded-xl"
-                  title={isTr ? "Sıfırla" : "Reset"}
+                  title={t("previewer.resetTitle")}
                 >
                   <RefreshCw className="w-3.5 h-3.5 text-muted-foreground" />
                 </Button>
