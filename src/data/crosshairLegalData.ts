@@ -33,7 +33,7 @@ export interface LegalDocument {
   sections: LegalSection[];
 }
 
-export const CROSSHAIR_PRIVACY_POLICY: LegalDocument = {
+export const CROSSHAIR_PRIVACY_POLICY_TR: LegalDocument = {
   id: "crosshair-privacy-policy",
   title: "Gizlilik Bildirimi",
   subtitle: "Crossio: Custom Crosshair Mobil Uygulaması",
@@ -113,6 +113,7 @@ export const CROSSHAIR_PRIVACY_POLICY: LegalDocument = {
       id: "isleme-dayanaklari",
       number: "3",
       title: "İşleme Dayanakları",
+      shortTitle: "İşleme Dayanakları",
       content:
         "Bilgiler; talep ettiğiniz hizmetlerin sağlanması, abonelik sözleşmesinin ifası, uygulamanın güvenliği ve optimizasyonuna ilişkin meşru menfaatlerimiz, yasal yükümlülükler ve mevzuatın gerektirdiği durumlarda açık rızanız doğrultusunda işlenir.",
     },
@@ -132,19 +133,14 @@ export const CROSSHAIR_PRIVACY_POLICY: LegalDocument = {
             "https://firebase.google.com/support/privacy",
           ],
           [
-            "Google Mobile Ads / AdMob",
-            "Kişiselleştirilmiş/kişiselleştirilmemiş reklam gösterimi ve sahtecilik önleme",
+            "Google Play & AdMob",
+            "Uygulama dağıtımı, lisanslama, mağaza faturalandırması, reklam gösterimi ve sahtecilik önleme",
             "https://policies.google.com/privacy",
           ],
           [
             "RevenueCat",
             "Abonelik yönetimi, satın alma doğrulama, Firebase uygulama örneği kimliği ve kategorik kullanım özelliklerine göre teklif hedefleme",
             "https://www.revenuecat.com/privacy/",
-          ],
-          [
-            "Google Play Store",
-            "Ödeme, faturalandırma, lisans ve uygulama dağıtım altyapısı",
-            "https://policies.google.com/privacy",
           ],
         ],
       },
@@ -214,7 +210,186 @@ export const CROSSHAIR_PRIVACY_POLICY: LegalDocument = {
   ],
 };
 
-export const CROSSHAIR_TERMS_OF_USE: LegalDocument = {
+export const CROSSHAIR_PRIVACY_POLICY_EN: LegalDocument = {
+  id: "crosshair-privacy-policy",
+  title: "Privacy Notice",
+  subtitle: "Crossio: Custom Crosshair Mobile App",
+  lastUpdated: "September 5, 2026",
+  publisher: "flappsio",
+  contactEmail: "info@flappsio.com",
+  summary:
+    "This Privacy Notice explains what information is processed when you use the Crossio: Custom Crosshair application, the purposes of use, service providers, and your privacy rights.",
+  metaDescription:
+    "Privacy notice for Crossio: Custom Crosshair mobile app, covering data processing purposes, third-party service providers, and user privacy rights.",
+  sections: [
+    {
+      id: "isledigimiz-bilgiler",
+      number: "1",
+      title: "Information We Process",
+      shortTitle: "Processed Data",
+      subsections: [
+        {
+          title: "Device and Application Information",
+          content:
+            "Application version, device model, operating system version, language setting, permission statuses, performance metrics, and crash diagnostic data may be processed. This information is used to ensure stability and compatibility across devices.",
+        },
+        {
+          title: "Identifiers and Contact Information",
+          content:
+            "Firebase app instance or anonymous user ID, RevenueCat App User ID, Firebase Cloud Messaging notification token, and any optional email address you provide in support or account inquiries may be processed. If a registered email address exists, it may be sent as a customer attribute to RevenueCat to associate subscription records. While these identifiers do not directly contain your name, they distinguish your device or application instance.",
+        },
+        {
+          title: "Usage and Interaction Data",
+          content:
+            "Features used, screens viewed, general event types (such as selecting, saving, or pinning crosshairs), permission and service diagnostic results, device manufacturer, Android version, app language, user cohort, premium interactions, ad interactions, and subscription flows may be analyzed with Firebase Analytics. Reticle names, full reticle definitions, and local file paths are never sent to analytics services.",
+        },
+        {
+          title: "Usage Cohorts and Campaign Data",
+          content:
+            "In-app counters such as active days, layer activation counts, paywall or ad interactions, last activity timestamp, and prior subscription status may be kept on-device. Based on rules from Firebase Firestore, categorical cohorts (new, active, loyal) may be formed and sent to RevenueCat as customer attributes to present appropriate subscription offerings.",
+        },
+        {
+          title: "Subscription and Purchase Information",
+          content:
+            "Premium status, purchase/renewal results, and transaction tokens are processed. We never collect or store your credit card or financial payment details; all transactions are secured through Google Play.",
+        },
+        {
+          title: "Advertising Information",
+          content:
+            "In the free version, advertising identifiers (ADID), IP address, and coarse region may be processed via Google AdMob for ad serving, frequency capping, and fraud prevention. Precise GPS location permission is never requested.",
+        },
+        {
+          title: "Imported Gallery Images & Local Content",
+          content:
+            "Images you select from your device gallery to create custom crosshairs are processed strictly within your device's local storage and are never uploaded to our servers.",
+        },
+        {
+          title: "Support Inquiries",
+          content:
+            "When you submit a support request, the message, optional email address, and technical diagnostic details you provide are used exclusively to resolve your issue.",
+        },
+      ],
+    },
+    {
+      id: "kullanim-amaclari",
+      number: "2",
+      title: "Purposes of Data Processing",
+      shortTitle: "Purposes",
+      bullets: [
+        "Ensuring smooth operation of the application and crosshair overlay features.",
+        "Validating premium subscription entitlements and restoring purchases.",
+        "Diagnosing errors, ensuring application security, and resolving crashes.",
+        "Enhancing user experience and analyzing aggregated feature usage statistics.",
+        "Displaying relevant in-app subscription options.",
+        "Delivering, measuring ads, and powering reward features.",
+        "Sending operational notifications and responding to support inquiries.",
+        "Fulfilling legal obligations and enforcing our rights.",
+      ],
+    },
+    {
+      id: "isleme-dayanaklari",
+      number: "3",
+      title: "Legal Bases for Processing",
+      shortTitle: "Legal Bases",
+      content:
+        "Data is processed on legal grounds including the provision of requested services, performance of subscription agreements, legitimate interests in application security and optimization, compliance with legal obligations, and user consent where required by law.",
+    },
+    {
+      id: "hizmet-saglayicilar",
+      number: "4",
+      title: "Service Providers and Data Sharing",
+      shortTitle: "Service Providers",
+      content:
+        "We partner with trusted global infrastructure providers to deliver app functionality:",
+      tableData: {
+        headers: ["Service Provider", "Purpose of Use", "Privacy Policy"],
+        rows: [
+          [
+            "Google Firebase",
+            "Analytics measurement, Crashlytics diagnostics, Cloud Messaging, anonymous auth, and remote configuration",
+            "https://firebase.google.com/support/privacy",
+          ],
+          [
+            "Google Play & AdMob",
+            "App distribution, licensing, in-app billing, and advertising delivery",
+            "https://policies.google.com/privacy",
+          ],
+          [
+            "RevenueCat",
+            "Subscription management, purchase validation, and entitlement targeting",
+            "https://www.revenuecat.com/privacy/",
+          ],
+        ],
+      },
+      callout: {
+        type: "success",
+        title: "No Sale of Personal Data",
+        text: "Your personal data is never sold, rented, or transferred to third parties for unauthorized commercial purposes.",
+      },
+    },
+    {
+      id: "uygulama-izinleri",
+      number: "5",
+      title: "Application Permissions",
+      shortTitle: "Permissions",
+      subsections: [
+        {
+          title: "Display Over Other Apps (Overlay)",
+          content:
+            "Required Android system permission to render your selected reticle as a passive visual layer. The layer cannot receive touch or key input. Crossio never accesses other applications' code, memory, files, data, or network traffic through this permission.",
+        },
+        {
+          title: "Notification Permission",
+          content:
+            "Used to show the foreground service notification allowing you to stop the layer at any time, and to deliver optional app updates if permitted.",
+        },
+        {
+          title: "Gallery / Media Access",
+          content:
+            "Requested only when you choose to import an image from your device as a custom crosshair.",
+        },
+        {
+          title: "Battery Optimization Exemption",
+          content:
+            "Optional setting to prevent the Android operating system from prematurely terminating the background overlay service on aggressive power-saving devices.",
+        },
+      ],
+    },
+    {
+      id: "saklama-ve-silme",
+      number: "6",
+      title: "Data Retention & Deletion Rights",
+      shortTitle: "Retention & Deletion",
+      content:
+        "Crosshair preferences and local data stored on your device remain until you delete them or uninstall the app. Server-side technical diagnostic logs are retained only for as long as strictly necessary.",
+      callout: {
+        type: "info",
+        title: "Data Deletion Requests",
+        text: "To request deletion of your data or records associated with your installation, please contact us at info@flappsio.com.",
+      },
+    },
+    {
+      id: "guvenlik",
+      number: "7",
+      title: "Data Security",
+      shortTitle: "Security",
+      content:
+        "Industry-standard encryption protocols and security safeguards are implemented to protect your information against unauthorized access, loss, or misuse.",
+    },
+    {
+      id: "iletisim",
+      number: "8",
+      title: "Contact & Inquiries",
+      shortTitle: "Contact",
+      content:
+        "For any questions, suggestions, or privacy rights requests regarding our Privacy Notice, please reach out to our official email address:",
+    },
+  ],
+};
+
+export const CROSSHAIR_PRIVACY_POLICY: LegalDocument = CROSSHAIR_PRIVACY_POLICY_TR;
+
+export const CROSSHAIR_TERMS_OF_USE_TR: LegalDocument = {
   id: "crosshair-terms-of-use",
   title: "Kullanım Koşulları",
   subtitle: "Crossio: Custom Crosshair Mobil Uygulaması",
@@ -327,13 +502,123 @@ export const CROSSHAIR_TERMS_OF_USE: LegalDocument = {
       content:
         "flappsio kullanım koşullarını güncelleme hakkını saklı tutar. Güncellenen metin bu sayfada yayımlandığı anda geçerlilik kazanır. Uygulamayı cihazınızdan kaldırarak kullanım sözleşmesini dilediğiniz an sonlandırabilirsiniz.",
     },
+  ],
+};
+
+export const CROSSHAIR_TERMS_OF_USE_EN: LegalDocument = {
+  id: "crosshair-terms-of-use",
+  title: "Terms of Use",
+  subtitle: "Crossio: Custom Crosshair Mobile App",
+  lastUpdated: "September 5, 2026",
+  publisher: "flappsio",
+  contactEmail: "info@flappsio.com",
+  summary:
+    "By using the Crossio: Custom Crosshair application, you agree to these Terms of Use. The scope of license, third-party independence, subscription terms, and limitations of liability are outlined below.",
+  metaDescription:
+    "Terms of Use for Crossio: Custom Crosshair mobile app covering license, independence disclosure, subscription, and refund policies.",
+  sections: [
     {
-      id: "uygulanacak-hukuk",
-      number: "8",
-      title: "Uygulanacak Hukuk ve Yetkili Mahkeme",
-      shortTitle: "Uygulanacak Hukuk",
+      id: "hizmet-ve-lisans",
+      number: "1",
+      title: "Scope of Service & License",
+      shortTitle: "Scope & License",
+      subsections: [
+        {
+          title: "Service Provided",
+          content:
+            "The application provides users with the ability to design, customize, and choose crosshair visual reticles on mobile devices and display them as an overlay on supported Android devices.",
+        },
+        {
+          title: "License to Use",
+          content:
+            "flappsio grants you a revocable, non-exclusive, non-transferable, limited license to use the application solely for personal, non-commercial purposes.",
+        },
+        {
+          title: "Restrictions",
+          content:
+            "Copying source code, reverse engineering, bypassing security or licensing mechanisms, deploying unauthorized bots/automation, or infringing upon third-party intellectual property is strictly prohibited.",
+        },
+      ],
+    },
+    {
+      id: "bagimsizlik-beyani",
+      number: "2",
+      title: "Intellectual Property & Independence Disclosure",
+      shortTitle: "Independence",
+      callout: {
+        type: "warning",
+        title: "Independent Utility",
+        text: "Crossio is an independent Android utility tool. It is not affiliated with, endorsed by, sponsored by, or approved by any third-party game developer, publisher, or platform.",
+      },
       content:
-        "Bu Koşullar Türkiye Cumhuriyeti kanunlarına tabidir. Doğabilecek her türlü uyuşmazlıkta Türkiye Cumhuriyeti mahkemeleri ve icra daireleri yetkilidir.",
+        "All rights to the application source code, interface designs, and content created by flappsio belong to flappsio. Android and Google Play are trademarks of Google LLC.",
+    },
+    {
+      id: "abonelik-ve-odemeler",
+      number: "3",
+      title: "Premium Subscriptions, Trials & Refunds",
+      shortTitle: "Billing & Subscriptions",
+      subsections: [
+        {
+          title: "Payment Channels",
+          content:
+            "In-app purchases and premium subscriptions are processed exclusively through Google Play Store billing. flappsio never collects or stores credit card details directly.",
+        },
+        {
+          title: "Automatic Renewal",
+          content:
+            "Subscriptions automatically renew for the chosen billing period (weekly, monthly, annual) unless cancelled at least 24 hours before the end of the current billing cycle.",
+        },
+        {
+          title: "Free Trial Periods",
+          content:
+            "Any offered free trial access will convert to a standard paid subscription unless cancelled before the trial period concludes.",
+        },
+        {
+          title: "Cancellation & Refund Policy",
+          content:
+            "You can cancel your subscription at any time via Google Play Store > Profile > Payments & Subscriptions. Refund requests are subject to Google Play standard refund policies and evaluated by Google Play.",
+        },
+      ],
+    },
+    {
+      id: "overlay-ve-oyun-uyumlulugu",
+      number: "4",
+      title: "Passive Visual Overlay & Platform Compatibility",
+      shortTitle: "Passive Overlay",
+      content:
+        "The crosshair reticle provided by Crossio is a passive Android visual layer initiated explicitly by the user and cannot receive touch or key input. If enabled by the user, a separate touchable mini control layer may be shown to adjust visibility and positioning; an optional autostart setting may also restart the selected reticle when the app opens. Crossio does not access any other application's code, memory, files, data, or network traffic, and does not provide auto-aim, auto-tap, macros, or gameplay automation.",
+      callout: {
+        type: "info",
+        title: "Third-Party Rules",
+        text: "Certain games and competitive platforms may restrict visual overlay tools. It is your sole responsibility to review and adhere to the terms and rules of the games or platforms you use. Crossio does not warrant or guarantee that any third-party game allows overlay usage.",
+      },
+    },
+    {
+      id: "reklamlar",
+      number: "5",
+      title: "Advertisements & External Links",
+      shortTitle: "Advertisements",
+      content:
+        "The free version of the application may display advertisements served via Google AdMob. flappsio is not responsible for the content, privacy practices, or policies of third-party websites or services reached through advertisements.",
+    },
+    {
+      id: "garanti-ve-sorumluluk",
+      number: "6",
+      title: "Disclaimer of Warranties & Limitation of Liability",
+      shortTitle: "Warranty & Liability",
+      content:
+        "The application is provided on an 'AS IS' and 'AS AVAILABLE' basis without warranty of any kind. flappsio does not guarantee uninterrupted or error-free operation across all hardware configurations. To the maximum extent permitted by applicable law, flappsio shall not be liable for indirect, incidental, or consequential damages.",
+    },
+    {
+      id: "kosul-degisiklikleri",
+      number: "7",
+      title: "Modifications to Terms & Termination",
+      shortTitle: "Changes & Termination",
+      content:
+        "flappsio reserves the right to revise these Terms of Use at any time. Updated terms become effective immediately upon being posted to this page. You may terminate this agreement at any time by uninstalling the application from your device.",
     },
   ],
 };
+
+export const CROSSHAIR_TERMS_OF_USE: LegalDocument = CROSSHAIR_TERMS_OF_USE_TR;

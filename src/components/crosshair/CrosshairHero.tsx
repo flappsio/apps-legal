@@ -198,8 +198,9 @@ export const CrosshairHero: React.FC = () => {
                   {(centerDot || shape === "dot") && (
                     <div
                       style={{
-                        width: `${shape === "dot" ? size * 2 : thickness * 1.5}px`,
-                        height: `${shape === "dot" ? size * 2 : thickness * 1.5}px`,
+                        position: "absolute",
+                        width: `${shape === "dot" ? Math.max(4, size * 2) : Math.max(3, thickness * 1.5)}px`,
+                        height: `${shape === "dot" ? Math.max(4, size * 2) : Math.max(3, thickness * 1.5)}px`,
                         backgroundColor: color,
                         borderRadius: "50%",
                         boxShadow: `0 0 8px ${color}90`,
@@ -208,7 +209,7 @@ export const CrosshairHero: React.FC = () => {
                     />
                   )}
 
-                  {shape === "cross" && (
+                  {(shape === "cross" || shape === "precision") && (
                     <>
                       <div
                         style={{
@@ -253,6 +254,19 @@ export const CrosshairHero: React.FC = () => {
                     </>
                   )}
 
+                  {shape === "precision" && (
+                    <div
+                      style={{
+                        position: "absolute",
+                        width: `${Math.max(16, (gap + size) * 2.2)}px`,
+                        height: `${Math.max(16, (gap + size) * 2.2)}px`,
+                        borderRadius: "50%",
+                        border: `${Math.max(1, Math.round(thickness * 0.75))}px solid ${color}`,
+                        boxShadow: `0 0 6px ${color}60`,
+                      }}
+                    />
+                  )}
+
                   {shape === "t-cross" && (
                     <>
                       <div
@@ -291,6 +305,7 @@ export const CrosshairHero: React.FC = () => {
                   {shape === "circle" && (
                     <div
                       style={{
+                        position: "absolute",
                         width: `${size * 3.5}px`,
                         height: `${size * 3.5}px`,
                         borderRadius: "50%",
@@ -303,6 +318,7 @@ export const CrosshairHero: React.FC = () => {
                   {shape === "box" && (
                     <div
                       style={{
+                        position: "absolute",
                         width: `${size * 3.2}px`,
                         height: `${size * 3.2}px`,
                         border: `${thickness}px solid ${color}`,
@@ -314,6 +330,7 @@ export const CrosshairHero: React.FC = () => {
                   {shape === "diamond" && (
                     <div
                       style={{
+                        position: "absolute",
                         width: `${size * 3}px`,
                         height: `${size * 3}px`,
                         transform: "rotate(45deg)",
@@ -321,28 +338,6 @@ export const CrosshairHero: React.FC = () => {
                         boxShadow: `0 0 8px ${color}80`,
                       }}
                     />
-                  )}
-
-                  {shape === "precision" && (
-                    <div className="relative flex items-center justify-center">
-                      <div
-                        style={{
-                          width: `${size * 3}px`,
-                          height: `${size * 3}px`,
-                          borderRadius: "50%",
-                          border: `1px solid ${color}80`,
-                        }}
-                      />
-                      <div
-                        style={{
-                          width: `${thickness * 2}px`,
-                          height: `${thickness * 2}px`,
-                          backgroundColor: color,
-                          borderRadius: "50%",
-                          boxShadow: `0 0 8px ${color}`,
-                        }}
-                      />
-                    </div>
                   )}
                 </div>
               </div>

@@ -3,6 +3,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { useCrosshairState, COLOR_OPTIONS, CrosshairShape } from "@/context/CrosshairStateContext";
 import { Check, Copy, Download, RefreshCw, Sparkles, Move } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { exportCrosshairToPng } from "@/lib/exportCrosshairPng";
 
 const SHAPES: { id: CrosshairShape; symbol: string; label: string }[] = [
   { id: "cross", symbol: "+", label: "Classic Cross" },
@@ -95,83 +96,24 @@ export const CrosshairPreviewer: React.FC = () => {
   };
 
   const handleExportPng = () => {
-    const canvas = document.createElement("canvas");
-    const exportSize = 512;
-    canvas.width = exportSize;
-    canvas.height = exportSize;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    const center = exportSize / 2;
-    const scale = 8;
-    const arm = size * scale;
-    const gapSize = gap * scale;
-    const lineWidth = Math.max(2, thickness * scale);
-
-    const drawPath = (stroke: string, width: number) => {
-      ctx.strokeStyle = stroke;
-      ctx.fillStyle = stroke;
-      ctx.lineWidth = width;
-      ctx.lineCap = "butt";
-      ctx.lineJoin = "round";
-
-      if (shape === "dot") {
-        ctx.beginPath();
-        ctx.arc(center, center, Math.max(4, size * scale), 0, Math.PI * 2);
-        ctx.fill();
-        return;
-      }
-
-      if (shape === "circle" || shape === "precision") {
-        ctx.beginPath();
-        ctx.arc(center, center, size * scale * 1.75, 0, Math.PI * 2);
-        ctx.stroke();
-      } else if (shape === "box" || shape === "diamond") {
-        const half = size * scale * 1.6;
-        ctx.save();
-        ctx.translate(center, center);
-        if (shape === "diamond") ctx.rotate(Math.PI / 4);
-        ctx.strokeRect(-half, -half, half * 2, half * 2);
-        ctx.restore();
-      } else {
-        ctx.beginPath();
-        ctx.moveTo(center - gapSize - arm, center);
-        ctx.lineTo(center - gapSize, center);
-        ctx.moveTo(center + gapSize, center);
-        ctx.lineTo(center + gapSize + arm, center);
-        if (shape === "t-cross") {
-          ctx.moveTo(center, center + gapSize);
-          ctx.lineTo(center, center + gapSize + arm * 1.1);
-        } else {
-          ctx.moveTo(center, center - gapSize - arm);
-          ctx.lineTo(center, center - gapSize);
-          ctx.moveTo(center, center + gapSize);
-          ctx.lineTo(center, center + gapSize + arm);
-        }
-        ctx.stroke();
-      }
-
-      if (centerDot || shape === "precision") {
-        ctx.beginPath();
-        ctx.arc(center, center, Math.max(2, lineWidth * 0.65), 0, Math.PI * 2);
-        ctx.fill();
-      }
-    };
-
-    ctx.globalAlpha = opacity;
-    if (outline) drawPath("#000000", lineWidth + 6);
-    drawPath(color, lineWidth);
-
-    const link = document.createElement("a");
-    link.download = `crossio-${shape}-${color.slice(1).toLowerCase()}.png`;
-    link.href = canvas.toDataURL("image/png");
-    link.click();
-    setExported(true);
-    window.setTimeout(() => setExported(false), 2200);
+    const success = exportCrosshairToPng({
+      shape,
+      size,
+      thickness,
+      gap,
+      color,
+      outline,
+      centerDot,
+      opacity,
+    });
+    if (success) {
+      setExported(true);
+      window.setTimeout(() => setExported(false), 2200);
+    }
   };
 
   return (
-    <section id="interactive-demo" className="py-16 sm:py-24 border-t border-border/40 relative">
+    <section id="interactive-demo" className="scroll-mt-20 py-16 sm:py-24 border-t border-border/40 relative">
       <div className="container max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
@@ -261,8 +203,9 @@ export const CrosshairPreviewer: React.FC = () => {
               {(centerDot || shape === "dot") && (
                 <div
                   style={{
-                    width: `${shape === "dot" ? size * 2 : thickness * 1.5}px`,
-                    height: `${shape === "dot" ? size * 2 : thickness * 1.5}px`,
+                    position: "absolute",
+                    width: `${shape === "dot" ? Math.max(4, size * 2) : Math.max(3, thickness * 1.5)}px`,
+                    height: `${shape === "dot" ? Math.max(4, size * 2) : Math.max(3, thickness * 1.5)}px`,
                     backgroundColor: color,
                     borderRadius: "50%",
                     boxShadow: `0 0 8px ${color}80`,
@@ -271,7 +214,7 @@ export const CrosshairPreviewer: React.FC = () => {
                 />
               )}
 
-              {shape === "cross" && (
+              {(shape === "cross" || shape === "precision") && (
                 <>
                   <div
                     style={{
@@ -316,6 +259,19 @@ export const CrosshairPreviewer: React.FC = () => {
                 </>
               )}
 
+              {shape === "precision" && (
+                <div
+                  style={{
+                    position: "absolute",
+                    width: `${Math.max(16, (gap + size) * 2.2)}px`,
+                    height: `${Math.max(16, (gap + size) * 2.2)}px`,
+                    borderRadius: "50%",
+                    border: `${Math.max(1, Math.round(thickness * 0.75))}px solid ${color}`,
+                    boxShadow: `0 0 6px ${color}60`,
+                  }}
+                />
+              )}
+
               {shape === "t-cross" && (
                 <>
                   <div
@@ -354,6 +310,7 @@ export const CrosshairPreviewer: React.FC = () => {
               {shape === "circle" && (
                 <div
                   style={{
+                    position: "absolute",
                     width: `${size * 3.5}px`,
                     height: `${size * 3.5}px`,
                     borderRadius: "50%",
@@ -363,31 +320,10 @@ export const CrosshairPreviewer: React.FC = () => {
                 />
               )}
 
-              {shape === "precision" && (
-                <div className="relative flex items-center justify-center">
-                  <div
-                    style={{
-                      width: `${size * 3.2}px`,
-                      height: `${size * 3.2}px`,
-                      borderRadius: "50%",
-                      border: `1px solid ${color}`,
-                      boxShadow: `0 0 6px ${color}60`,
-                    }}
-                  />
-                  <div
-                    style={{
-                      width: `${thickness * 2}px`,
-                      height: `${thickness * 2}px`,
-                      backgroundColor: color,
-                      borderRadius: "50%",
-                    }}
-                  />
-                </div>
-              )}
-
               {shape === "box" && (
                 <div
                   style={{
+                    position: "absolute",
                     width: `${size * 3.2}px`,
                     height: `${size * 3.2}px`,
                     border: `${thickness}px solid ${color}`,
@@ -399,6 +335,7 @@ export const CrosshairPreviewer: React.FC = () => {
               {shape === "diamond" && (
                 <div
                   style={{
+                    position: "absolute",
                     width: `${size * 3}px`,
                     height: `${size * 3}px`,
                     transform: "rotate(45deg)",

@@ -1,22 +1,29 @@
 import React from "react";
-import { CROSSHAIR_PRIVACY_POLICY } from "@/data/crosshairLegalData";
+import {
+  CROSSHAIR_PRIVACY_POLICY_TR,
+  CROSSHAIR_PRIVACY_POLICY_EN,
+} from "@/data/crosshairLegalData";
 import { LegalLayout } from "@/components/layout/LegalLayout";
 import { SEOHead } from "@/components/seo/SEOHead";
+import { useLanguage } from "@/context/LanguageContext";
 
 export const PrivacyPolicyPage: React.FC = () => {
+  const { t, isTr } = useLanguage();
+  const document = isTr ? CROSSHAIR_PRIVACY_POLICY_TR : CROSSHAIR_PRIVACY_POLICY_EN;
+
   return (
     <>
       <SEOHead
-        title={`${CROSSHAIR_PRIVACY_POLICY.title} - ${CROSSHAIR_PRIVACY_POLICY.subtitle} | flappsio`}
-        description={CROSSHAIR_PRIVACY_POLICY.metaDescription}
+        title={`${document.title} - ${document.subtitle} | flappsio`}
+        description={document.metaDescription}
         canonicalPath="/crosshair/privacy-policy"
         breadcrumbs={[
-          { name: "Ana Sayfa", url: "/" },
+          { name: t("common.home"), url: "/" },
           { name: "Crossio", url: "/crosshair" },
-          { name: "Gizlilik Politikası", url: "/crosshair/privacy-policy" },
+          { name: t("common.privacy"), url: "/crosshair/privacy-policy" },
         ]}
       />
-      <LegalLayout document={CROSSHAIR_PRIVACY_POLICY} />
+      <LegalLayout document={document} />
     </>
   );
 };
