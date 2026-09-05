@@ -12,7 +12,7 @@ export const PrivacyPolicyPage: React.FC = () => {
         canonicalPath="/crosshair/privacy-policy"
         breadcrumbs={[
           { name: "Ana Sayfa", url: "/" },
-          { name: "Crosshair Valo", url: "/crosshair" },
+          { name: "Crossio", url: "/crosshair" },
           { name: "Gizlilik Politikası", url: "/crosshair/privacy-policy" },
         ]}
       />

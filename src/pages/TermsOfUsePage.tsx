@@ -12,7 +12,7 @@ export const TermsOfUsePage: React.FC = () => {
         canonicalPath="/crosshair/terms-of-use"
         breadcrumbs={[
           { name: "Ana Sayfa", url: "/" },
-          { name: "Crosshair Valo", url: "/crosshair" },
+          { name: "Crossio", url: "/crosshair" },
           { name: "Kullanım Koşulları", url: "/crosshair/terms-of-use" },
         ]}
       />

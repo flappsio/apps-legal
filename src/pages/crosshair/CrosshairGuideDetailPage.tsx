@@ -25,7 +25,7 @@ export const CrosshairGuideDetailPage: React.FC = () => {
     return <Navigate to="/crosshair/guides" replace />;
   }
 
-  const title = `${isTr ? guide.title.tr : guide.title.en} | Crosshair Valo`;
+  const title = `${isTr ? guide.title.tr : guide.title.en} | Crossio`;
   const description = isTr ? guide.description.tr : guide.description.en;
 
   // TechArticle JSON-LD
@@ -66,13 +66,13 @@ export const CrosshairGuideDetailPage: React.FC = () => {
         ogType="article"
         keywords={[
           guide.slug.replace(/-/g, " "),
-          "crosshair valo rehber",
+          "crossio rehber",
           "nişangah ayarları",
-          "fps crosshair guide",
+          "crosshair design guide",
         ]}
         breadcrumbs={[
           { name: isTr ? "Ana Sayfa" : "Home", url: "/" },
-          { name: "Crosshair Valo", url: "/crosshair" },
+          { name: "Crossio", url: "/crosshair" },
           { name: isTr ? "Rehberler" : "Guides", url: "/crosshair/guides" },
           { name: isTr ? guide.title.tr : guide.title.en, url: `/crosshair/guides/${guide.slug}` },
         ]}

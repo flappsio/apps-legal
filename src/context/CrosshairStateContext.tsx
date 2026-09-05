@@ -19,7 +19,7 @@ export const COLOR_OPTIONS: CrosshairColorOption[] = [
   { name: "Lime Green", hex: "#69F0AE", glow: "rgba(105, 240, 174, 0.35)" },
   { name: "Cyber Cyan", hex: "#00E5FF", glow: "rgba(0, 229, 255, 0.35)" },
   { name: "Electric Violet", hex: "#8B5CF6", glow: "rgba(139, 92, 246, 0.35)" },
-  { name: "Valor Red", hex: "#FF4655", glow: "rgba(255, 70, 85, 0.35)" },
+  { name: "Coral Red", hex: "#FF4655", glow: "rgba(255, 70, 85, 0.35)" },
   { name: "Sun Orange", hex: "#FF9100", glow: "rgba(255, 145, 0, 0.35)" },
   { name: "Pure White", hex: "#FFFFFF", glow: "rgba(255, 255, 255, 0.35)" },
 ];

@@ -1,10 +1,10 @@
-# Crosshair Valo Mobil Uygulama Kullanım Koşulları
+# Crossio: Custom Crosshair Mobil Uygulama Kullanım Koşulları
 
-**Son güncelleme:** 18 Ağustos 2026  
+**Son güncelleme:** 5 Eylül 2026  
 **Uygulama yayıncısı:** flappsio  
 **İletişim:** info@flappsio.com
 
-Crosshair Valo mobil uygulamasını ("Uygulama") indirerek, yükleyerek veya kullanarak bu Kullanım Koşulları'nı ("Koşullar") kabul etmiş sayılırsınız. Bu Koşulları kabul etmiyorsanız lütfen Uygulamayı yükleyiniz veya kullanmayınız.
+Crossio: Custom Crosshair mobil uygulamasını ("Uygulama") indirerek, yükleyerek veya kullanarak bu Kullanım Koşulları'nı ("Koşullar") kabul etmiş sayılırsınız. Bu Koşulları kabul etmiyorsanız lütfen Uygulamayı yüklemeyiniz veya kullanmayınız.
 
 ---
 
@@ -27,9 +27,8 @@ Crosshair Valo mobil uygulamasını ("Uygulama") indirerek, yükleyerek veya kul
 2.1. **Fikri Mülkiyet Hakları:** Uygulamanın tasarımı, kaynak kodu, arayüzü, logoları, grafikleri ve flappsio tarafından oluşturulan içeriklerin tüm mülkiyet ve telif hakları flappsio'ya aittir.
 
 2.2. **Bağımsızlık ve Marka Feragatnamesi:**
-- **Crosshair Valo**, bağımsız bir yardımcı araç olup **Riot Games, Inc.** veya **VALORANT** ile hiçbir resmi bağı, ortaklığı, sponsorluğu, yetkilendirmesi veya onayı bulunmamaktadır.
-- "VALORANT" ve ilgili tüm logolar, karakterler ve ticari markalar Riot Games, Inc.'nin tescilli ticari markalarıdır.
-- Uygulama içerisinde oyunlara veya markalara yapılan tüm atıflar yalnızca tanımlama ve bilgilendirme amaçlıdır (nominal fair use / dürüst kullanım).
+- **Crossio**, bağımsız bir Android yardımcı aracıdır ve herhangi bir üçüncü taraf oyun geliştiricisi, yayıncısı veya platformu tarafından desteklenmez ya da onaylanmaz.
+- Android ve Google Play, Google LLC'nin ticari markalarıdır.
 
 ---
 
@@ -51,9 +50,10 @@ Crosshair Valo mobil uygulamasını ("Uygulama") indirerek, yükleyerek veya kul
 
 4.1. **Gerekli İzinler:** Nişangahın diğer uygulamaların üzerinde görüntülenebilmesi için Android "Diğer uygulamaların üzerinde gösterim" (Overlay) izni gereklidir. Ayrıca isteğe bağlı olarak bildirim, medya/galeri erişimi ve pil optimizasyonu muafiyeti istenebilir.
 
-4.2. **Üçüncü Taraf Oyun ve Uygulama Uyumluluğu:**
-- Uygulamanın sunduğu ekran üstü katman özelliği genel bir Android işletim sistemi arayüz katmanıdır; oyun dosyalarına, belleğine (RAM) veya oyun kodlarına müdahale etmez.
-- Bununla birlikte, oynadığınız üçüncü taraf oyunların (ör. mobil FPS oyunları) kendi hizmet şartları, hile karşıtı politikaları veya ekran üstü araçlara ilişkin kuralları kullanıcı sorumluluğundadır. Oyun içi hesap kısıtlamaları veya yaptırımlardan flappsio sorumlu tutulamaz.
+4.2. **Katman Davranışı ve Üçüncü Taraf Kuralları:**
+- Ana nişangah katmanı dokunma veya tuş girdisi alamayan pasif bir Android görsel katmanıdır. Kullanıcı etkinleştirirse görünürlük ve konum için ayrı, dokunulabilir mini kontrol gösterilebilir; otomatik başlatma seçeneği de uygulama açıldığında seçilmiş katmanı yeniden başlatabilir.
+- Uygulama diğer uygulamaların koduna, belleğine, dosyalarına, verilerine veya ağ trafiğine erişmez; otomatik nişan alma, otomatik dokunma, makro veya oyun otomasyonu sağlamaz.
+- Bazı oyunlar ve rekabetçi platformlar görsel katmanları kısıtlayabilir. Kullandığınız hizmetin kurallarını kontrol etmek sizin sorumluluğunuzdadır; Crossio hiçbir üçüncü tarafın kullanıma izin verdiğini garanti etmez.
 
 ---
 

@@ -37,7 +37,7 @@ export const CrosshairFinalCTA: React.FC = () => {
           </div>
 
           <h2 className="text-3xl sm:text-6xl font-black text-foreground tracking-tight leading-[1.08]">
-            {isTr ? "Oyununuz." : "Your game."} <br />
+            {isTr ? "Görünümünüz." : "Your visual."} <br />
             <span
               className="bg-clip-text text-transparent"
               style={{
@@ -50,15 +50,15 @@ export const CrosshairFinalCTA: React.FC = () => {
 
           <p className="text-sm sm:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
             {isTr
-              ? "Seçin. Özelleştirin. Oyuna Taşıyın."
-              : "Choose it. Customize it. Take it into the game."}
+              ? "Seçin, özelleştirin ve Android katmanını siz hazır olduğunuzda başlatın."
+              : "Choose, customize, and start the Android layer when you are ready."}
           </p>
 
           <div className="pt-2 flex flex-col items-center justify-center gap-3">
             <Button
               asChild
               size="lg"
-              className="h-14 px-10 text-black font-extrabold rounded-2xl shadow-2xl gap-3 text-base transition-all duration-300 hover:scale-[1.03]"
+              className="shimmer-button h-14 px-10 text-black font-extrabold rounded-2xl shadow-2xl gap-3 text-base transition-all duration-300 hover:scale-[1.03]"
               style={{
                 backgroundColor: activeColorOption.hex,
                 boxShadow: `0 12px 35px ${activeColorOption.hex}50`,
@@ -76,7 +76,7 @@ export const CrosshairFinalCTA: React.FC = () => {
 
             <span className="text-xs font-mono text-muted-foreground pt-1 flex items-center gap-1.5">
               <ShieldCheck className="w-3.5 h-3.5 text-primary" />
-              <span>Available for Android • Google Play Verified</span>
+              <span>{isTr ? "Android 7.0 veya üzeri • Google Play'de mevcut" : "Android 7.0 or later • Available on Google Play"}</span>
             </span>
           </div>
         </div>

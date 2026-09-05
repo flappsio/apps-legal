@@ -65,11 +65,6 @@ const CrosshairMobileFirstSection = lazy(() =>
     default: m.CrosshairMobileFirstSection,
   }))
 );
-const CrosshairTestimonials = lazy(() =>
-  import("@/components/crosshair/CrosshairTestimonials").then((m) => ({
-    default: m.CrosshairTestimonials,
-  }))
-);
 const CrosshairFinalCTA = lazy(() =>
   import("@/components/crosshair/CrosshairFinalCTA").then((m) => ({
     default: m.CrosshairFinalCTA,
@@ -91,23 +86,23 @@ export const CrosshairLandingPage: React.FC = () => {
   const { isTr } = useLanguage();
 
   const title = isTr
-    ? "Crosshair – Özel Android Nişangah & Katman Uygulaması"
-    : "Crosshair – Custom Aim Overlay for Android Mobile Games";
+    ? "Crossio: Custom Crosshair – Android Görsel Katmanı"
+    : "Crossio: Custom Crosshair – Passive Android Visual Overlay";
 
   const description = isTr
-    ? "Crosshair, mobil oyuncuların desteklenen Android oyunlarının üzerinde özelleştirilebilir bir nişangah katmanı yerleştirmesini sağlayan bir Android uygulamasıdır."
-    : "Crosshair is an Android app that lets mobile gamers place and customize a crosshair overlay on top of supported games. Download free on Google Play.";
+    ? "Crossio, kullanıcı tarafından seçilen nişangahı Android ekranında pasif ve özelleştirilebilir bir görsel katman olarak gösterir."
+    : "Crossio displays a user-selected crosshair as a passive, customizable visual layer on Android.";
 
   const keywords = [
     "crosshair app",
     "crosshair app Android",
     "custom crosshair Android",
     "crosshair overlay Android",
-    "gaming crosshair",
+    "crosshair designer",
     "mobile crosshair",
-    "custom aim overlay",
+    "passive visual overlay",
     "crosshair overlay",
-    "crosshair for mobile games",
+    "click-through overlay",
     "custom crosshair app",
   ];
 
@@ -120,7 +115,7 @@ export const CrosshairLandingPage: React.FC = () => {
         keywords={keywords}
         breadcrumbs={[
           { name: isTr ? "Ana Sayfa" : "Home", url: "/" },
-          { name: "Crosshair", url: "/crosshair" },
+          { name: "Crossio", url: "/crosshair" },
         ]}
       />
 
@@ -163,7 +158,6 @@ export const CrosshairLandingPage: React.FC = () => {
         <CrosshairMobileFirstSection />
 
         {/* Section: Real Play Store Reviews */}
-        <CrosshairTestimonials />
 
         {/* FAQ Spotlight Section */}
         <section className="py-16 sm:py-20 border-t border-border/40">
@@ -184,7 +178,7 @@ export const CrosshairLandingPage: React.FC = () => {
                 className="text-xs rounded-xl border-border/80 hover:bg-secondary gap-1.5"
               >
                 <Link to="/crosshair/faq">
-                  <span>{isTr ? "Tüm 15 SSS'i Görüntüle" : "View All 15 FAQs"}</span>
+                  <span>{isTr ? `Tüm ${FAQS_DATA.length} SSS'i Görüntüle` : `View All ${FAQS_DATA.length} FAQs`}</span>
                   <ChevronRight className="w-3.5 h-3.5" />
                 </Link>
               </Button>
@@ -220,7 +214,7 @@ export const CrosshairLandingPage: React.FC = () => {
                   {isTr ? "Rehberler & Taktikler" : "Guides & Strategies"}
                 </Badge>
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground">
-                  {isTr ? "Nişangahınızı Optimize Edin" : "Optimize Your Aim & Setup"}
+                  {isTr ? "Görünümünüzü Kişiselleştirin" : "Personalize Your Visual Setup"}
                 </h2>
               </div>
               <Button

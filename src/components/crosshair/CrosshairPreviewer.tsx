@@ -1,38 +1,38 @@
 import React, { useState, useRef } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useCrosshairState, COLOR_OPTIONS, CrosshairShape } from "@/context/CrosshairStateContext";
-import { Check, Copy, RefreshCw, Sparkles, Move } from "lucide-react";
+import { Check, Copy, Download, RefreshCw, Sparkles, Move } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const SHAPES: { id: CrosshairShape; symbol: string; label: string }[] = [
   { id: "cross", symbol: "+", label: "Classic Cross" },
-  { id: "dot", symbol: "•", label: "Pro Dot" },
-  { id: "circle", symbol: "○", label: "Combat Circle" },
-  { id: "precision", symbol: "⊕", label: "Precision" },
-  { id: "t-cross", symbol: "T", label: "Sniper T" },
+  { id: "dot", symbol: "•", label: "Center Dot" },
+  { id: "circle", symbol: "○", label: "Circle" },
+  { id: "precision", symbol: "⊕", label: "Ring + Dot" },
+  { id: "t-cross", symbol: "T", label: "T Shape" },
   { id: "diamond", symbol: "◇", label: "Diamond" },
-  { id: "box", symbol: "□", label: "CQB Box" },
+  { id: "box", symbol: "□", label: "Box" },
 ];
 
 const SCENES = [
   {
-    id: "arena-dark",
-    name: { tr: "Karanlık Poligon", en: "Dark Training Arena" },
+    id: "dark",
+    name: { tr: "Koyu Zemin", en: "Dark Background" },
     gradient: "linear-gradient(135deg, #090a0f 0%, #151824 50%, #0c0e14 100%)",
   },
   {
-    id: "desert-sand",
-    name: { tr: "Çöl / Kum Haritası", en: "Desert Sand Map" },
+    id: "warm",
+    name: { tr: "Sıcak Tonlar", en: "Warm Tones" },
     gradient: "linear-gradient(135deg, #6e4f30 0%, #9e744d 50%, #3e2b17 100%)",
   },
   {
-    id: "city-blue",
-    name: { tr: "Açık Şehir / Gökyüzü", en: "Urban & Daylight" },
+    id: "blue",
+    name: { tr: "Mavi Tonlar", en: "Blue Tones" },
     gradient: "linear-gradient(135deg, #1b3454 0%, #2f526b 50%, #121c27 100%)",
   },
   {
-    id: "night-combat",
-    name: { tr: "Gece Operasyonu", en: "Night Combat" },
+    id: "radial",
+    name: { tr: "Radyal Koyu", en: "Radial Dark" },
     gradient: "radial-gradient(circle at center, #1f293d 0%, #0d121c 60%, #05070a 100%)",
   },
 ];
@@ -47,7 +47,9 @@ export const CrosshairPreviewer: React.FC = () => {
     size,
     setSize,
     thickness,
+    setThickness,
     gap,
+    setGap,
     opacity,
     setOpacity,
     outline,
@@ -60,6 +62,7 @@ export const CrosshairPreviewer: React.FC = () => {
 
   const [activeScene, setActiveScene] = useState(0);
   const [copied, setCopied] = useState(false);
+  const [exported, setExported] = useState(false);
   const [dragOffset, setDragOffset] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const dragRef = useRef<HTMLDivElement>(null);
@@ -92,6 +95,82 @@ export const CrosshairPreviewer: React.FC = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const handleExportPng = () => {
+    const canvas = document.createElement("canvas");
+    const exportSize = 512;
+    canvas.width = exportSize;
+    canvas.height = exportSize;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const center = exportSize / 2;
+    const scale = 8;
+    const arm = size * scale;
+    const gapSize = gap * scale;
+    const lineWidth = Math.max(2, thickness * scale);
+
+    const drawPath = (stroke: string, width: number) => {
+      ctx.strokeStyle = stroke;
+      ctx.fillStyle = stroke;
+      ctx.lineWidth = width;
+      ctx.lineCap = "butt";
+      ctx.lineJoin = "round";
+
+      if (shape === "dot") {
+        ctx.beginPath();
+        ctx.arc(center, center, Math.max(4, size * scale), 0, Math.PI * 2);
+        ctx.fill();
+        return;
+      }
+
+      if (shape === "circle" || shape === "precision") {
+        ctx.beginPath();
+        ctx.arc(center, center, size * scale * 1.75, 0, Math.PI * 2);
+        ctx.stroke();
+      } else if (shape === "box" || shape === "diamond") {
+        const half = size * scale * 1.6;
+        ctx.save();
+        ctx.translate(center, center);
+        if (shape === "diamond") ctx.rotate(Math.PI / 4);
+        ctx.strokeRect(-half, -half, half * 2, half * 2);
+        ctx.restore();
+      } else {
+        ctx.beginPath();
+        ctx.moveTo(center - gapSize - arm, center);
+        ctx.lineTo(center - gapSize, center);
+        ctx.moveTo(center + gapSize, center);
+        ctx.lineTo(center + gapSize + arm, center);
+        if (shape === "t-cross") {
+          ctx.moveTo(center, center + gapSize);
+          ctx.lineTo(center, center + gapSize + arm * 1.1);
+        } else {
+          ctx.moveTo(center, center - gapSize - arm);
+          ctx.lineTo(center, center - gapSize);
+          ctx.moveTo(center, center + gapSize);
+          ctx.lineTo(center, center + gapSize + arm);
+        }
+        ctx.stroke();
+      }
+
+      if (centerDot || shape === "precision") {
+        ctx.beginPath();
+        ctx.arc(center, center, Math.max(2, lineWidth * 0.65), 0, Math.PI * 2);
+        ctx.fill();
+      }
+    };
+
+    ctx.globalAlpha = opacity;
+    if (outline) drawPath("#000000", lineWidth + 6);
+    drawPath(color, lineWidth);
+
+    const link = document.createElement("a");
+    link.download = `crossio-${shape}-${color.slice(1).toLowerCase()}.png`;
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+    setExported(true);
+    window.setTimeout(() => setExported(false), 2200);
+  };
+
   return (
     <section id="interactive-demo" className="py-16 sm:py-24 border-t border-border/40 relative">
       <div className="container max-w-6xl mx-auto px-4 sm:px-6">
@@ -113,21 +192,21 @@ export const CrosshairPreviewer: React.FC = () => {
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground">
             {isTr
-              ? "Nişangah seçin, renk ve boyutunu ayarlayın, oyun zeminlerinde anında test edin."
-              : "Pick a crosshair, customize it, and see it instantly react over realistic gameplay."}
+              ? "Nişangah seçin, tüm görünüm ayarlarını düzenleyin, farklı zeminlerde önizleyin ve şeffaf PNG olarak ücretsiz indirin."
+              : "Pick a crosshair, customize it, and preview its appearance on different backgrounds."}
           </p>
         </div>
 
         {/* Playground Container Card */}
-        <div className="rounded-3xl bg-card/80 border border-border/80 shadow-2xl backdrop-blur-xl overflow-hidden">
+        <div className="modern-card rounded-[2rem] border border-border/80 overflow-hidden">
           {/* Top Bar */}
           <div className="px-6 py-4 border-b border-border/60 flex flex-wrap items-center justify-between gap-3 bg-card/50">
             <div className="flex items-center gap-2">
               <span className="text-xs font-bold text-foreground">
-                {isTr ? "Landscape Mobile Gameplay Viewport" : "Landscape Mobile Gameplay Viewport"}
+                {isTr ? "Yatay Görsel Önizleme" : "Landscape Visual Preview"}
               </span>
               <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-primary/20 text-primary font-bold">
-                100% VECTOR HUD
+                VECTOR PREVIEW
               </span>
             </div>
 
@@ -395,6 +474,18 @@ export const CrosshairPreviewer: React.FC = () => {
                       title={c.name}
                     />
                   ))}
+                  <label
+                    className="relative w-8 h-8 rounded-full border-2 border-dashed border-muted-foreground/60 hover:border-primary cursor-pointer overflow-hidden"
+                    title={isTr ? "Özel renk seç" : "Choose a custom color"}
+                  >
+                    <input
+                      type="color"
+                      value={color}
+                      onChange={(e) => setColor(e.target.value)}
+                      className="absolute inset-[-8px] w-12 h-12 cursor-pointer"
+                      aria-label={isTr ? "Özel nişangah rengi" : "Custom crosshair color"}
+                    />
+                  </label>
                 </div>
               </div>
 
@@ -441,6 +532,39 @@ export const CrosshairPreviewer: React.FC = () => {
               </div>
             </div>
 
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-border/40">
+              <div className="space-y-1.5">
+                <div className="flex justify-between text-xs text-muted-foreground">
+                  <label htmlFor="preview-thickness-slider">{isTr ? "Kalınlık" : "Thickness"}</label>
+                  <span className="font-mono font-bold text-foreground">{thickness}px</span>
+                </div>
+                <input
+                  id="preview-thickness-slider"
+                  type="range"
+                  min="1"
+                  max="6"
+                  value={thickness}
+                  onChange={(e) => setThickness(Number(e.target.value))}
+                  className="w-full accent-primary h-1.5 bg-muted rounded-lg cursor-pointer"
+                />
+              </div>
+              <div className="space-y-1.5">
+                <div className="flex justify-between text-xs text-muted-foreground">
+                  <label htmlFor="preview-gap-slider">{isTr ? "Merkez boşluğu" : "Center gap"}</label>
+                  <span className="font-mono font-bold text-foreground">{gap}px</span>
+                </div>
+                <input
+                  id="preview-gap-slider"
+                  type="range"
+                  min="0"
+                  max="12"
+                  value={gap}
+                  onChange={(e) => setGap(Number(e.target.value))}
+                  className="w-full accent-primary h-1.5 bg-muted rounded-lg cursor-pointer"
+                />
+              </div>
+            </div>
+
             {/* Action Row */}
             <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-border/40">
               <div className="flex items-center gap-2">
@@ -453,7 +577,7 @@ export const CrosshairPreviewer: React.FC = () => {
                       : "bg-secondary/40 border-border/60 text-muted-foreground"
                   }`}
                 >
-                  {isTr ? "Siyah Dış Çizgi: Açık" : "Black Outline: ON"}
+                  {isTr ? `Siyah Dış Çizgi: ${outline ? "Açık" : "Kapalı"}` : `Black Outline: ${outline ? "ON" : "OFF"}`}
                 </button>
 
                 <button
@@ -465,11 +589,20 @@ export const CrosshairPreviewer: React.FC = () => {
                       : "bg-secondary/40 border-border/60 text-muted-foreground"
                   }`}
                 >
-                  {isTr ? "Merkez Nokta: Açık" : "Center Dot: ON"}
+                  {isTr ? `Merkez Nokta: ${centerDot ? "Açık" : "Kapalı"}` : `Center Dot: ${centerDot ? "ON" : "OFF"}`}
                 </button>
               </div>
 
               <div className="flex items-center gap-2">
+                <Button
+                  onClick={handleExportPng}
+                  size="sm"
+                  className="shimmer-button h-9 px-4 bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-xl text-xs gap-1.5 shadow-sm"
+                >
+                  {exported ? <Check className="w-3.5 h-3.5" /> : <Download className="w-3.5 h-3.5" />}
+                  <span>{exported ? (isTr ? "PNG İndirildi" : "PNG Downloaded") : isTr ? "Şeffaf PNG İndir" : "Download Transparent PNG"}</span>
+                </Button>
+
                 <Button
                   onClick={handleCopyCode}
                   size="sm"

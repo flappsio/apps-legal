@@ -27,12 +27,12 @@ export const CrosshairSupportPage: React.FC = () => {
   });
 
   const title = isTr
-    ? "Destek ve İletişim | Crosshair Valo & flappsio"
-    : "Support & Contact | Crosshair Valo & flappsio";
+    ? "Destek ve İletişim | Crossio & flappsio"
+    : "Support & Contact | Crossio & flappsio";
 
   const description = isTr
-    ? "Crosshair Valo teknik destek, soru bildirimi ve önerileriniz için doğrudan iletişim merkezi. 24 saat içinde uzman geri dönüşü."
-    : "Official support and contact hub for Crosshair Valo. Reach out for technical assistance, bug reports, and feature requests.";
+    ? "Crossio teknik destek, hata bildirimi, gizlilik soruları ve önerileriniz için resmi iletişim merkezi."
+    : "Official support and contact hub for Crossio. Reach out for technical assistance, privacy questions, bug reports, and feature requests.";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,14 +46,14 @@ export const CrosshairSupportPage: React.FC = () => {
         description={description}
         canonicalPath="/crosshair/support"
         keywords={[
-          "crosshair valo destek",
+          "crossio destek",
           "flappsio iletişim",
-          "crosshair valo yardım",
+          "crossio yardım",
           "crosshair support contact",
         ]}
         breadcrumbs={[
           { name: isTr ? "Ana Sayfa" : "Home", url: "/" },
-          { name: "Crosshair Valo", url: "/crosshair" },
+          { name: "Crossio", url: "/crosshair" },
           { name: isTr ? "Destek" : "Support", url: "/crosshair/support" },
         ]}
       />

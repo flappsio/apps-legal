@@ -33,12 +33,12 @@ export const CrosshairCustomizationSection: React.FC = () => {
             {isTr ? "Hassas Nişangah Ayarı" : "Precision Reticle Tuning"}
           </Badge>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-foreground tracking-tight">
-            {isTr ? "Piksel Hassasiyetinde Kontrol." : "Pixel-perfect control."}
+            {isTr ? "Ayrıntılı Görünüm Kontrolü." : "Detailed visual control."}
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground">
             {isTr
-              ? "Her oyun ve her silah için hedef alma reflekslerinize tam oturan nişangahı milimetrik olarak şekillendirin."
-              : "Fine-tune every visual parameter so your reticle aligns flawlessly with your aiming mechanics."}
+              ? "Renk, boyut, kalınlık, boşluk ve opaklık ayarlarıyla kendi nişangah görünümünüzü oluşturun."
+              : "Create your own crosshair appearance with color, size, thickness, gap, and opacity controls."}
           </p>
         </div>
 

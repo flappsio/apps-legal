@@ -91,6 +91,70 @@
       radial-gradient(circle 600px at 100% 400px, var(--bg-radial-2), transparent 60%);
     background-attachment: fixed;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .shimmer-button {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .shimmer-button::after {
+    content: "";
+    position: absolute;
+    inset: -40% auto -40% -45%;
+    width: 32%;
+    transform: skewX(-20deg);
+    background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.55), transparent);
+    animation: button-shimmer 3.4s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .shimmer-button > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  .modern-card {
+    background: linear-gradient(145deg, hsl(var(--card) / 0.88), hsl(var(--card) / 0.52));
+    box-shadow: 0 24px 70px rgb(0 0 0 / 0.16), inset 0 1px rgb(255 255 255 / 0.05);
+    backdrop-filter: blur(20px);
+  }
+}
+
+@keyframes button-shimmer {
+  0%, 58% { left: -45%; opacity: 0; }
+  66% { opacity: 1; }
+  86%, 100% { left: 120%; opacity: 0; }
+}
+
+@supports (animation-timeline: view()) {
+  main section,
+  main > div > .container > div {
+    animation: reveal-on-scroll both linear;
+    animation-timeline: view();
+    animation-range: entry 5% cover 24%;
+  }
+}
+
+@keyframes reveal-on-scroll {
+  from { opacity: 0; transform: translateY(28px) scale(0.99); filter: blur(5px); }
+  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
 
 /* Smooth custom scrollbars */

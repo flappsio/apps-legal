@@ -32,8 +32,8 @@ export const CrosshairImportSection: React.FC = () => {
 
             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
               {isTr
-                ? "Fotoğraf galerinizden şeffaf arka planlı (PNG) herhangi bir özel crosshair görselini seçin ve mobil oyunlarınızın üzerinde anında katman olarak kullanın."
-                : "Import any custom transparent PNG reticle image directly from your Android gallery and project it as an active on-screen overlay over your favorite mobile games."}
+                ? "Fotoğraf galerinizden şeffaf arka planlı (PNG) özel bir crosshair görseli seçin, uygulama içinde önizleyin ve pasif katmanınızda kullanın."
+                : "Choose a custom transparent PNG crosshair from your Android gallery, preview it in the app, and use it in your passive visual layer."}
             </p>
 
             <div className="space-y-3 pt-2">
@@ -47,8 +47,8 @@ export const CrosshairImportSection: React.FC = () => {
                   </h3>
                   <p className="text-[11px] text-muted-foreground mt-0.5">
                     {isTr
-                      ? "Photoshop, web veya topluluktan indirdiğiniz her türlü PNG nişangahı destekler."
-                      : "Supports any PNG custom crosshair image downloaded from the web or created in Photoshop."}
+                      ? "Cihazınıza kaydettiğiniz şeffaf PNG nişangah görsellerini galeriden seçebilirsiniz."
+                      : "Select a transparent PNG crosshair image saved on your device."}
                   </p>
                 </div>
               </div>
@@ -63,7 +63,7 @@ export const CrosshairImportSection: React.FC = () => {
                   </h3>
                   <p className="text-[11px] text-muted-foreground mt-0.5">
                     {isTr
-                      ? "İçe aktarılan görselin boyutunu ve şeffaflığını milimetrik olarak ayarlayın."
+                      ? "İçe aktarılan görselin boyutunu, dönüşünü, şeffaflığını ve merkez hizasını ayarlayın."
                       : "Fine-tune imported image dimensions, rotation, opacity, and center alignment."}
                   </p>
                 </div>
@@ -75,7 +75,7 @@ export const CrosshairImportSection: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-xs font-bold text-foreground">
-                    {isTr ? "Yerel Cihaz Gizliliği" : "100% Local Device Storage"}
+                    {isTr ? "Yerel Cihaz Gizliliği" : "Local Device Storage"}
                   </h3>
                   <p className="text-[11px] text-muted-foreground mt-0.5">
                     {isTr
@@ -122,7 +122,7 @@ export const CrosshairImportSection: React.FC = () => {
                   </div>
                 </div>
 
-                {/* 3. In-Game Viewport with Imported Reticle */}
+                {/* 3. Neutral preview with imported reticle */}
                 <div className="relative aspect-[16/9] rounded-2xl bg-[#090b12] border border-white/15 overflow-hidden flex items-center justify-center">
                   <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:16px_16px]" />
                   <div className="w-24 h-24 rounded-full border border-white/10 absolute" />
@@ -137,7 +137,7 @@ export const CrosshairImportSection: React.FC = () => {
                   </div>
 
                   <div className="absolute bottom-2 left-3 text-[10px] font-mono text-white/50">
-                    IMPORT STATUS: ACTIVE IN GAME
+                    {isTr ? "İÇE AKTARMA: ÖNİZLEME HAZIR" : "IMPORT: PREVIEW READY"}
                   </div>
                 </div>
               </div>

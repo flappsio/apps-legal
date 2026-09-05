@@ -1,10 +1,10 @@
-# Crosshair Valo Mobil Uygulama Gizlilik Bildirimi
+# Crossio: Custom Crosshair Mobil Uygulama Gizlilik Bildirimi
 
-**Son güncelleme:** 18 Ağustos 2026  
+**Son güncelleme:** 5 Eylül 2026  
 **Veri sorumlusu / uygulama yayıncısı:** flappsio  
 **İletişim:** info@flappsio.com
 
-Bu Gizlilik Bildirimi, Crosshair Valo mobil uygulamasını ("Uygulama") kullandığınızda hangi bilgilerin işlendiğini, bu bilgilerin hangi amaçlarla kullanıldığını, kimlerle paylaşılabildiğini ve tercihlerinizi nasıl yönetebileceğinizi açıklar.
+Bu Gizlilik Bildirimi, Crossio: Custom Crosshair mobil uygulamasını ("Uygulama") kullandığınızda hangi bilgilerin işlendiğini, bu bilgilerin hangi amaçlarla kullanıldığını, kimlerle paylaşılabildiğini ve tercihlerinizi nasıl yönetebileceğinizi açıklar.
 
 ## 1. İşlediğimiz bilgiler
 
@@ -14,13 +14,13 @@ Uygulama sürümü, cihaz modeli, işletim sistemi, dil ayarı, izin durumları,
 
 ### Tanımlayıcılar ve iletişim bilgileri
 
-Firebase tarafından oluşturulan anonim kullanıcı kimliği, RevenueCat App User ID, bildirim token'ı ve destek talebi sırasında isteğe bağlı olarak verdiğiniz e-posta adresi işlenebilir. Bu tanımlayıcılar adınızı doğrudan içermese de cihazınızı veya uygulama kullanımınızı ayırt edebileceğinden her durumda anonim veri olarak kabul edilmeyebilir.
+Firebase tarafından oluşturulan anonim kullanıcı kimliği, RevenueCat App User ID, bildirim token'ı ve destek ya da hesap işlemlerinde isteğe bağlı olarak verdiğiniz e-posta adresi işlenebilir. Kayıtlı bir e-posta adresi varsa bu bilgi abonelik müşteri kaydını eşleştirmek için RevenueCat'e müşteri özelliği olarak aktarılabilir. Bu tanımlayıcılar adınızı doğrudan içermese de cihazınızı veya uygulama kullanımınızı ayırt edebileceğinden her durumda anonim veri olarak kabul edilmeyebilir.
 
 ### Kullanım ve etkileşim bilgileri
 
-Kullanılan özellikler, görüntülenen ekranlar, crosshair oluşturma veya sabitleme işlemleri, premium özelliklerle etkileşimler, reklam etkileşimleri ve abonelik ekranındaki işlemler gibi kullanım bilgileri analiz edilebilir.
+Kullanılan özellikler, görüntülenen ekranlar, nişangah seçme/kaydetme/sabitleme gibi genel olay türleri, izin ve servis tanılama sonuçları, cihaz üreticisi, Android sürümü, uygulama dili, kullanıcı türü, premium özelliklerle etkileşimler, reklam etkileşimleri ve abonelik ekranındaki işlemler analiz edilebilir. Nişangah adı, tam nişangah tanımı ve yerel dosya yolu analitik hizmetlerine gönderilmez.
 
-Uygulama, kullanım sıklığı ve belirli özelliklerle etkileşim gibi bilgileri cihazda sayaçlar hâlinde tutabilir. Bu bilgiler kategorik kullanıcı segmentlerine dönüştürülerek uygun abonelik tekliflerinin belirlenmesinde kullanılabilir. Bu işlem yalnızca teklifin gösterilip gösterilmemesini, zamanlamasını veya içeriğini etkiler; hukuki ya da benzer ölçüde önemli bir karar vermek amacıyla kullanılmaz.
+Uygulama; aktif gün, katmanı sabitleme sayısı, reklam veya ödeme ekranı etkileşimi, son etkinlik zamanı ve daha önce abone olunup olunmadığı gibi bilgileri cihazda sayaçlar hâlinde tutabilir. Firestore'dan alınan kurallarla kategorik kullanıcı segmentleri oluşturulabilir ve uygun abonelik teklifini belirlemek için RevenueCat'e müşteri özellikleri olarak gönderilebilir. Bu işlem hukuki ya da benzer ölçüde önemli bir karar vermek amacıyla kullanılmaz.
 
 ### Abonelik ve satın alma bilgileri
 
@@ -63,9 +63,9 @@ Bilgiler; talep ettiğiniz hizmetlerin sağlanması, abonelik ilişkisinin yür�
 
 Uygulamanın çalışması için aşağıdaki hizmet sağlayıcılardan yararlanırız:
 
-- **Google Firebase:** Analiz, hata raporlama, anonim kimlik doğrulama, bildirim, uzaktan yapılandırma ve destek süreçleri için kullanılır. [Firebase Gizlilik ve Güvenlik](https://firebase.google.com/support/privacy)
+- **Google Firebase:** Analytics, Crashlytics, Cloud Messaging, anonim kimlik doğrulama ve Firestore tabanlı uygulama/kampanya yapılandırması için kullanılır. [Firebase Gizlilik ve Güvenlik](https://firebase.google.com/support/privacy)
 - **Google Mobile Ads / AdMob:** Reklamların sunulması, ölçülmesi ve güvenliğinin sağlanması için kullanılır. [Google Gizlilik Politikası](https://policies.google.com/privacy)
-- **RevenueCat:** Aboneliklerin ve premium erişimin yönetilmesi ile uygun uygulama içi tekliflerin belirlenmesi için kullanılır. [RevenueCat Gizlilik Politikası](https://www.revenuecat.com/privacy/)
+- **RevenueCat:** Abonelik yönetimi, satın alma doğrulama ve kategorik kullanım özelliklerine göre uygun uygulama içi tekliflerin belirlenmesi için kullanılır. [RevenueCat Gizlilik Politikası](https://www.revenuecat.com/privacy/)
 - **Google Play:** Ödeme, abonelik, faturalandırma ve satın alma kayıtlarının yönetilmesini sağlar. [Google Gizlilik Politikası](https://policies.google.com/privacy)
 
 Bu hizmet sağlayıcılar bilgileri kendi koşulları ve gizlilik politikaları doğrultusunda işleyebilir. Kişisel bilgilerinizi doğrudan satmayız. Yasal bir zorunluluk bulunması veya haklarımızın ve kullanıcıların güvenliğinin korunması gerekmesi hâlinde bilgiler yetkili mercilerle paylaşılabilir.

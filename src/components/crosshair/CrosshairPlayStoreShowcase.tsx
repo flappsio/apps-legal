@@ -4,7 +4,6 @@ import { useCrosshairState } from "@/context/CrosshairStateContext";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
-  Star,
   Download,
   ShieldCheck,
   Smartphone,
@@ -26,57 +25,37 @@ export const CrosshairPlayStoreShowcase: React.FC = () => {
 
   const trScreenshots = [
     {
-      src: "/assets/images/playstore/tr/1.png",
-      title: "Hazır Nişangah Kütüphanesi",
-      subtitle: "50+ Esporcu & Profesyonel Profil",
-    },
-    {
       src: "/assets/images/playstore/tr/2.png",
-      title: "Piksel Hassasiyetinde Editör",
-      subtitle: "Boyut, Kalınlık ve Renk Ayarı",
-    },
-    {
-      src: "/assets/images/playstore/tr/3.png",
-      title: "Şeffaf PNG İçe Aktarma",
-      subtitle: "Galeriden Kendi Görselini Yükle",
+      title: "Hassas Konumlandırma",
+      subtitle: "Boyut, konum ve dönüş ayarları",
     },
     {
       src: "/assets/images/playstore/tr/4.png",
-      title: "Oyun İçi Yüzen Hızlı Menü",
-      subtitle: "Oyundan Çıkmadan Tek Dokunuş Kontrol",
+      title: "Kişiselleştirilebilir Ana Sayfa",
+      subtitle: "Kartları kullanımınıza göre sıralayın",
     },
     {
       src: "/assets/images/playstore/tr/5.png",
-      title: "100% Güvenli Sistem Katmanı",
-      subtitle: "Sıfır Bellek Enjeksiyonu, Sıfır Ban Riski",
+      title: "Nişangah Editörü",
+      subtitle: "Şekil, renk, boyut ve opaklık ayarları",
     },
   ];
 
   const enScreenshots = [
     {
-      src: "/assets/images/playstore/en/1.png",
-      title: "Esports Preset Library",
-      subtitle: "50+ Tournament Ready Reticles",
-    },
-    {
       src: "/assets/images/playstore/en/2.png",
-      title: "Pixel-Precision Editor",
-      subtitle: "Full Color, Size & Gap Customization",
-    },
-    {
-      src: "/assets/images/playstore/en/3.png",
-      title: "Transparent PNG Import",
-      subtitle: "Bring Your Own Image from Gallery",
+      title: "Precision Positioning",
+      subtitle: "Size, position, and rotation controls",
     },
     {
       src: "/assets/images/playstore/en/4.png",
-      title: "In-Game Floating HUD Widget",
-      subtitle: "One-Tap Instant Overlay Switcher",
+      title: "Customizable Home Screen",
+      subtitle: "Reorder cards to match your workflow",
     },
     {
       src: "/assets/images/playstore/en/5.png",
-      title: "Safe Native System Layer",
-      subtitle: "Zero Memory Injection, 100% Ban Safe",
+      title: "Crosshair Editor",
+      subtitle: "Shape, color, size, and opacity controls",
     },
   ];
 
@@ -208,40 +187,38 @@ export const CrosshairPlayStoreShowcase: React.FC = () => {
             </div>
           </div>
 
-          {/* Stats Bar (Like Play Store) */}
+          {/* Stable capability facts — avoids stale store metrics */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 text-center">
             <div className="space-y-1">
               <div className="flex items-center justify-center gap-1 text-base sm:text-lg font-extrabold text-foreground">
-                <span>4.4</span>
-                <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                <Smartphone className="w-4 h-4 text-primary" />
+                <span>Android</span>
               </div>
-              <p className="text-[11px] text-muted-foreground">300+ {isTr ? "Yorum" : "Reviews"}</p>
+              <p className="text-[11px] text-muted-foreground">{isTr ? "Görsel Katman" : "Visual Layer"}</p>
+            </div>
+
+            <div className="space-y-1 border-l border-border/60">
+              <div className="flex items-center justify-center gap-1 text-base sm:text-lg font-extrabold text-foreground">
+                <Check className="w-4 h-4 text-primary" />
+                <span>{isTr ? "Açık Başlatma" : "Explicit Start"}</span>
+              </div>
+              <p className="text-[11px] text-muted-foreground">{isTr ? "Kullanıcı Kontrollü" : "User Controlled"}</p>
             </div>
 
             <div className="space-y-1 border-l border-border/60">
               <div className="flex items-center justify-center gap-1 text-base sm:text-lg font-extrabold text-foreground">
                 <Download className="w-4 h-4 text-primary" />
-                <span>50K+</span>
+                <span>PNG</span>
               </div>
-              <p className="text-[11px] text-muted-foreground">{isTr ? "İndirme" : "Downloads"}</p>
-            </div>
-
-            <div className="space-y-1 border-l border-border/60">
-              <div className="flex items-center justify-center gap-1 text-base sm:text-lg font-extrabold text-foreground">
-                <div className="w-5 h-5 rounded-md border border-border flex items-center justify-center text-[10px] font-bold">
-                  3+
-                </div>
-                <span>{isTr ? "Herkes" : "Rated 3+"}</span>
-              </div>
-              <p className="text-[11px] text-muted-foreground">{isTr ? "İçerik Derecesi" : "Content Rating"}</p>
+              <p className="text-[11px] text-muted-foreground">{isTr ? "İçe Aktarma" : "Local Import"}</p>
             </div>
 
             <div className="space-y-1 border-l border-border/60">
               <div className="flex items-center justify-center gap-1 text-base sm:text-lg font-extrabold text-foreground">
                 <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>{isTr ? "Doğrulandı" : "Verified"}</span>
+                <span>{isTr ? "Pasif" : "Passive"}</span>
               </div>
-              <p className="text-[11px] text-muted-foreground">Play Protect</p>
+              <p className="text-[11px] text-muted-foreground">{isTr ? "Girdi Otomasyonu Yok" : "No Input Automation"}</p>
             </div>
           </div>
         </div>
@@ -327,15 +304,15 @@ export const CrosshairPlayStoreShowcase: React.FC = () => {
         <div className="mt-8 p-6 sm:p-8 rounded-[32px] bg-gradient-to-r from-card via-card/80 to-secondary/40 border border-border/80 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2 max-w-xl text-center md:text-left">
             <Badge variant="brand" className="text-[10px] font-mono">
-              GOOGLE PLAY VERIFIED
+              {isTr ? "GOOGLE PLAY'DE MEVCUT" : "AVAILABLE ON GOOGLE PLAY"}
             </Badge>
             <h3 className="text-xl sm:text-2xl font-extrabold text-foreground">
-              {isTr ? "Sıfır Kurulum Zahmeti. Anında Aktif." : "Zero Complex Setup. Instant In-Game HUD."}
+              {isTr ? "Seçin, özelleştirin ve açıkça başlatın." : "Choose, customize, and start explicitly."}
             </h3>
             <p className="text-xs sm:text-sm text-muted-foreground">
               {isTr
-                ? "Google Play'den indirin, 1 tıkla katman iznini verin ve oyununuza başlayın."
-                : "Download directly from Google Play, grant overlay permission in 1 tap, and dominate your matches."}
+                ? "Katman yalnızca siz başlattığınızda görünür ve kalıcı bildirimden durdurulabilir."
+                : "The layer appears only after you start it and can be stopped from the persistent notification."}
             </p>
           </div>
 

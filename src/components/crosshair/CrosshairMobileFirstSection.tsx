@@ -11,17 +11,17 @@ export const CrosshairMobileFirstSection: React.FC = () => {
   const specs = [
     {
       icon: <Cpu className="w-5 h-5 text-primary" />,
-      title: isTr ? "<%0.5 CPU Kullanımı" : "<0.5% CPU Load",
+      title: isTr ? "Hafif Görsel Çizim" : "Lightweight Rendering",
       desc: isTr
-        ? "Donanım hızlandırmalı vektörel motoru sayesinde arka planda telefonunuzu ısıtmaz."
-        : "Ultra-low processor footprint keeps your device cool and frame rates rock-solid.",
+        ? "Kaynak kullanımı cihazınıza, Android sürümüne ve seçtiğiniz ayarlara göre değişebilir."
+        : "Resource use may vary by device, Android version, and selected settings.",
     },
     {
       icon: <BatteryCharging className="w-5 h-5 text-cyan-400" />,
-      title: isTr ? "Pil Dostu Mimari" : "Battery-Efficient Engine",
+      title: isTr ? "Kontrollü Arka Plan Çalışması" : "Controlled Background Operation",
       desc: isTr
-        ? "Yalnızca ekrana şeffaf piksel çizer, gereksiz arka plan işlemleri yapmaz."
-        : "Only renders pixels when active; zero idle background drain during extended sessions.",
+        ? "Katman etkinken ön plan servisi kalıcı bir bildirim gösterir ve bildirimdeki Durdur eylemiyle kapatılabilir."
+        : "The visual layer is rendered while active and can be stopped from its persistent notification.",
     },
     {
       icon: <Smartphone className="w-5 h-5 text-purple-400" />,
@@ -56,8 +56,8 @@ export const CrosshairMobileFirstSection: React.FC = () => {
 
             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
               {isTr
-                ? "Crosshair, masaüstü veya konsol portu değildir. Baştan sona Android işletim sisteminin pencere yöneticisi, dokunmatik ekranları ve mobil oyun ihtiyaçları için geliştirilmiştir."
-                : "Crosshair is designed around Android gaming, touch controls, and mobile screens from the ground up."}
+                ? "Crossio, Android işletim sisteminin pencere yöneticisi ve farklı mobil ekran boyutları için geliştirilmiştir."
+                : "Crossio is designed around Android's window manager and a range of mobile screen sizes."}
             </p>
 
             <div className="space-y-4 pt-4">
@@ -89,7 +89,7 @@ export const CrosshairMobileFirstSection: React.FC = () => {
               <div className="flex items-center justify-between text-xs border-b border-border/60 pb-3">
                 <span className="font-mono text-muted-foreground">ANDROID COMPATIBILITY</span>
                 <Badge variant="brand" className="text-[10px] font-mono">
-                  Android 7.0 - 15+
+                  Android 7.0+
                 </Badge>
               </div>
 
@@ -125,8 +125,8 @@ export const CrosshairMobileFirstSection: React.FC = () => {
 
               <div className="pt-3 border-t border-border/60 text-center text-[11px] text-muted-foreground">
                 {isTr
-                  ? "Samsung, Xiaomi, Google Pixel, OnePlus, Oppo ve tüm Android cihazlarla tam uyumlu"
-                  : "Fully compatible with Samsung, Xiaomi, Pixel, OnePlus, Oppo and all Android devices"}
+                  ? "Desteklenen Android sürümlerinde kullanılabilir; davranış üretici ayarlarına göre değişebilir"
+                  : "Available on supported Android versions; behavior may vary by manufacturer settings"}
               </div>
             </div>
           </div>

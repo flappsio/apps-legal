@@ -87,7 +87,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     setMeta("property", "og:type", ogType);
     setMeta("property", "og:url", fullUrl);
     setMeta("property", "og:image", fullImageUrl);
-    setMeta("property", "og:image:alt", "Crosshair – Custom Aim Overlay Android App");
+    setMeta("property", "og:image:alt", "Crossio: Custom Crosshair Android App");
     setMeta("property", "og:site_name", "Crosshair | flappsio");
     setMeta("property", "og:locale", language === "tr" ? "tr_TR" : "en_US");
     setMeta("property", "og:locale:alternate", language === "tr" ? "en_US" : "tr_TR");
@@ -124,7 +124,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "Crosshair – Custom Aim Overlay",
+        "name": "Crossio: Custom Crosshair",
         "operatingSystem": "Android",
         "applicationCategory": "UtilitiesApplication, GameApplication",
         "offers": {

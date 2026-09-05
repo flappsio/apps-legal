@@ -9,11 +9,11 @@ export const CrosshairScreenshots: React.FC = () => {
   const screens = [
     {
       title: isTr ? "Hazır Nişangah Galerisi" : "Crosshair Presets Library",
-      category: isTr ? "Espor & Popüler" : "Esports & Trending",
+      category: isTr ? "Hazır Tasarımlar" : "Built-in Designs",
       icon: <Sparkles className="w-4 h-4 text-primary" />,
       description: isTr
-        ? "Yüzlerce hazır profesyonel nişangah arasında arama yapın ve tek tıkla aktif edin."
-        : "Browse hundreds of tournament-ready reticles and activate them instantly.",
+        ? "Hazır nişangahlar arasında arama yapın, bir tasarım seçin ve görünümünü özelleştirin."
+        : "Browse built-in crosshairs, choose a design, and customize its appearance.",
       previewType: "presets",
     },
     {
@@ -21,17 +21,17 @@ export const CrosshairScreenshots: React.FC = () => {
       category: isTr ? "Piksel Ayarı" : "Pixel Tuning",
       icon: <Sliders className="w-4 h-4 text-[#00E5FF]" />,
       description: isTr
-        ? "Boyut, kalınlık, aralık, dış çizgi ve opaklığı milimetrik kontrol edin."
+        ? "Boyut, kalınlık, aralık, dış çizgi ve opaklığı hassas kaydırıcılarla kontrol edin."
         : "Adjust length, stroke width, gap, opacity, and outline with real-time feedback.",
       previewType: "editor",
     },
     {
       title: isTr ? "Ekran Katman & Hızlı Menü" : "Overlay & Quick Controls",
-      category: isTr ? "Oyun İçi Kontrol" : "In-Game HUD",
+      category: isTr ? "İsteğe Bağlı Kontrol" : "Optional Controls",
       icon: <Layers className="w-4 h-4 text-purple-400" />,
       description: isTr
-        ? "Ekran üzerinde yüzen baloncuk ile oyunu kapatmadan hızlıca yönetin."
-        : "Floating HUD bubble allows instant toggle and repositioning during matches.",
+        ? "İsteğe bağlı yüzen baloncuk ile görünürlüğü ve konumu yönetin."
+        : "Use the optional floating control to manage visibility and position.",
       previewType: "overlay",
     },
   ];
@@ -48,8 +48,8 @@ export const CrosshairScreenshots: React.FC = () => {
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground">
             {isTr
-              ? "Karmaşadan uzak, sadece nişangahınızı mükemmelleştirmeye odaklanan temiz tasarım."
-              : "A clean, distraction-free design focused solely on elevating your in-game precision."}
+              ? "Hazır tasarım, yerel içe aktarma ve görünüm ayarlarını bir araya getiren sade arayüz."
+              : "A focused interface for built-in designs, local import, and appearance controls."}
           </p>
         </div>
 
@@ -86,7 +86,7 @@ export const CrosshairScreenshots: React.FC = () => {
                     <div className="grid grid-cols-2 gap-2">
                       <div className="p-3 rounded-2xl bg-secondary/60 border border-border/60 flex flex-col items-center justify-center gap-2 hover:border-primary/50 transition-colors">
                         <div className="w-2 h-2 rounded-full bg-[#69F0AE] shadow-[0_0_6px_#69F0AE]" />
-                        <span className="text-[10px] font-bold text-foreground">Pro Dot (Green)</span>
+                        <span className="text-[10px] font-bold text-foreground">Center Dot</span>
                       </div>
                       <div className="p-3 rounded-2xl bg-secondary/60 border border-border/60 flex flex-col items-center justify-center gap-2 hover:border-primary/50 transition-colors">
                         <div className="w-3 h-3 border border-[#00E5FF] shadow-[0_0_6px_#00E5FF]" />
@@ -94,7 +94,7 @@ export const CrosshairScreenshots: React.FC = () => {
                       </div>
                       <div className="p-3 rounded-2xl bg-secondary/60 border border-border/60 flex flex-col items-center justify-center gap-2 hover:border-primary/50 transition-colors">
                         <div className="w-3 h-3 rounded-full border border-[#FF007F] shadow-[0_0_6px_#FF007F]" />
-                        <span className="text-[10px] font-bold text-foreground">Combat Circle</span>
+                        <span className="text-[10px] font-bold text-foreground">Soft Circle</span>
                       </div>
                       <div className="p-3 rounded-2xl bg-secondary/60 border border-border/60 flex flex-col items-center justify-center gap-2 hover:border-primary/50 transition-colors">
                         <div className="w-2.5 h-2.5 bg-[#FFD600] rotate-45 shadow-[0_0_6px_#FFD600]" />
@@ -104,7 +104,7 @@ export const CrosshairScreenshots: React.FC = () => {
 
                     <div className="mt-4 p-2.5 rounded-xl bg-primary/10 border border-primary/20 text-center">
                       <span className="text-[11px] font-bold text-primary">
-                        +50 {isTr ? "Esporcu Profili Dahil" : "Pro Profiles Included"}
+                        {isTr ? "Farklı tasarım seçenekleri" : "Multiple design options"}
                       </span>
                     </div>
                   </div>

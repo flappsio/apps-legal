@@ -15,8 +15,8 @@ export const CrosshairGuidesPage: React.FC = () => {
     : "Crosshair Guides - Reticle Selection, Color Contrast & Troubleshooting";
 
   const description = isTr
-    ? "FPS ve Battle Royale oyunlarında nişangahınızı mükemmelleştirin. Nokta ve klasik crosshair karşılaştırmaları, harita zıtlık renkleri ve Android overlay rehberleri."
-    : "Master your crosshair settings in FPS and Battle Royale games. Dot vs classic reticles comparison, high-contrast map colors, and Android overlay guides.";
+    ? "Crossio nişangah tasarımı, görünürlük, yerel görsel içe aktarma ve Android katman izinleri için pratik rehberler."
+    : "Practical Crossio guides for crosshair design, visibility, local image import, and Android overlay permissions.";
 
   return (
     <div className="min-h-screen py-10 sm:py-16">
@@ -28,13 +28,13 @@ export const CrosshairGuidesPage: React.FC = () => {
           "crosshair rehberleri",
           "en iyi crosshair seçimi",
           "nişangah renkleri",
-          "crosshair valo rehber",
-          "fps reticle guides",
+          "crossio rehber",
+          "reticle design guides",
           "crosshair color contrast",
         ]}
         breadcrumbs={[
           { name: isTr ? "Ana Sayfa" : "Home", url: "/" },
-          { name: "Crosshair Valo", url: "/crosshair" },
+          { name: "Crossio", url: "/crosshair" },
           { name: isTr ? "Rehberler" : "Guides", url: "/crosshair/guides" },
         ]}
       />
@@ -43,15 +43,15 @@ export const CrosshairGuidesPage: React.FC = () => {
         {/* Header Title */}
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
           <Badge variant="brand" className="text-xs px-3 py-1 font-semibold">
-            {isTr ? "Rehberler ve Taktikler" : "Guides & Tactical Knowledge"}
+            {isTr ? "Rehberler ve İpuçları" : "Guides & Practical Tips"}
           </Badge>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">
-            {isTr ? "Nişangahınızı ve İsabetinizi Geliştirin" : "Elevate Your Reticle Precision"}
+            {isTr ? "Nişangahınızı Bilinçli Özelleştirin" : "Customize Your Crosshair Thoughtfully"}
           </h1>
           <p className="text-sm sm:text-base text-muted-foreground">
             {isTr
-              ? "Espor standartlarında nişangah seçim kuralları, harita kontrast rehberleri ve teknik ipuçları."
-              : "Esports-grade crosshair optimization, map contrast strategies, and technical guides."}
+              ? "Görsel tasarım, okunabilirlik, izinler ve Android cihaz ayarları için tarafsız teknik ipuçları."
+              : "Neutral technical guidance for visual design, readability, permissions, and Android device settings."}
           </p>
         </div>
 

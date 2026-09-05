@@ -24,11 +24,11 @@ export const CrosshairDisclaimer: React.FC<{ className?: string }> = ({ classNam
           <p className="leading-relaxed text-[11px] sm:text-xs">
             {isTr ? (
               <>
-                <strong>Crosshair Valo</strong>, bağımsız bir yardımcı araç olup <strong>Riot Games, Inc.</strong> veya <strong>VALORANT</strong> ile hiçbir resmi bağı, ortaklığı, sponsorluğu veya onayı bulunmamaktadır. VALORANT ve ilgili tüm logolar, Riot Games, Inc.'nin tescilli ticari markalarıdır. Uygulama içerisindeki referanslar yalnızca dürüst bilgilendirme (nominal fair use) amacıyla yer almaktadır.
+                <strong>Crossio</strong>, bağımsız bir Android yardımcı aracıdır ve hiçbir üçüncü taraf oyun geliştiricisi, yayıncısı veya platformu tarafından desteklenmez ya da onaylanmaz. Bazı oyunlar ve rekabetçi platformlar görsel katmanları kısıtlayabilir; kullandığınız hizmetin kurallarını kontrol etmek sizin sorumluluğunuzdadır.
               </>
             ) : (
               <>
-                <strong>Crosshair Valo</strong> is an independent utility tool and is not affiliated with, endorsed, sponsored, or approved by <strong>Riot Games, Inc.</strong> or <strong>VALORANT</strong>. VALORANT and all associated logos are registered trademarks of Riot Games, Inc. All in-app game references are for nominative fair use and identification purposes only.
+                <strong>Crossio</strong> is an independent Android utility and is not endorsed or approved by any third-party game developer, publisher, or platform. Some games and competitive platforms may restrict visual overlays; you are responsible for checking the rules of each service you use.
               </>
             )}
           </p>

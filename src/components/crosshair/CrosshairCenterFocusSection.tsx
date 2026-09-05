@@ -95,12 +95,12 @@ export const CrosshairCenterFocusSection: React.FC = () => {
 
         {/* Text */}
         <h2 className="text-3xl sm:text-6xl font-black text-foreground tracking-tight max-w-2xl leading-tight">
-          {isTr ? "Merkeze Odaklanın." : "Stay focused on the center."}
+          {isTr ? "Görünümü Size Göre Ayarlayın." : "Make the appearance your own."}
         </h2>
         <p className="text-sm sm:text-base text-muted-foreground mt-4 max-w-lg">
           {isTr
-            ? "Oyun ne kadar hareketli ve hızlı olursa olsun, nişangahınız tam gözünüzün önünde."
-            : "No matter how chaotic the match gets, your aiming focal point stays crystal clear."}
+            ? "Renk, biçim ve opaklık ayarlarınız site genelindeki canlı önizlemeye anında yansır."
+            : "Your color, shape, and opacity settings update the live preview across the site."}
         </p>
       </div>
     </section>

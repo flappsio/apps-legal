@@ -41,8 +41,8 @@ export const Footer: React.FC = () => {
             </Link>
             <p className="text-xs text-muted-foreground leading-relaxed">
               {isTr
-                ? "flappsio, Android mobil oyuncuları için hafif, güvenli ve profesyonel yardımcı araçlar geliştirir."
-                : "flappsio creates lightweight, secure, and professional utility applications for Android mobile gamers."}
+                ? "flappsio, Android için şeffaf ve gizlilik odaklı yardımcı araçlar geliştirir."
+                : "flappsio creates transparent, privacy-conscious utility applications for Android."}
             </p>
             <div className="pt-1 flex items-center gap-2 text-xs text-muted-foreground">
               <ShieldCheck className="w-4 h-4 text-primary" />
@@ -73,12 +73,12 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link to="/crosshair/guides" className="hover:text-primary transition-colors">
-                  {isTr ? "Tüm Rehberler" : "Aim Guides"}
+                  {isTr ? "Tüm Rehberler" : "Design Guides"}
                 </Link>
               </li>
               <li>
                 <Link to="/crosshair/about" className="hover:text-primary transition-colors">
-                  {isTr ? "Hakkında" : "About Crosshair"}
+                  {isTr ? "Hakkında" : "About Crossio"}
                 </Link>
               </li>
             </ul>
@@ -154,7 +154,7 @@ export const Footer: React.FC = () => {
             © {currentYear} <strong>flappsio</strong>. {isTr ? "Tüm hakları saklıdır." : "All rights reserved."}
           </p>
           <p className="text-center sm:text-right text-[11px] max-w-md">
-            Android and Google Play are trademarks of Google LLC. Crosshair is an independent Android mobile application.
+            Android and Google Play are trademarks of Google LLC. Crossio is an independent Android mobile application.
           </p>
         </div>
       </div>

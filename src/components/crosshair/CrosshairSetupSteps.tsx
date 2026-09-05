@@ -16,8 +16,8 @@ export const CrosshairSetupSteps: React.FC = () => {
       title: t("setup.step1Title"),
       desc: t("setup.step1Desc"),
       icon: <Crosshair className="w-5 h-5 text-primary" />,
-      image: `/assets/images/playstore/${langPath}/1.png`,
-      badge: "50+ PRESETS",
+      image: `/assets/images/playstore/${langPath}/5.png`,
+      badge: "BUILT-IN DESIGNS",
     },
     {
       num: "02",

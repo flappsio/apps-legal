@@ -22,12 +22,12 @@ export interface LegalApp {
 
 export const APPS_DATA: LegalApp[] = [
   {
-    id: "crosshair-valo",
-    name: "Crosshair: Valorant & FPS Aim",
-    shortName: "Crosshair",
-    category: "Araçlar & Mobil FPS Yardımcısı",
+    id: "crossio-custom-crosshair",
+    name: "Crossio: Custom Crosshair",
+    shortName: "Crossio",
+    category: "Araçlar & Kişiselleştirme",
     description:
-      "Android mobil FPS ve aksiyon oyunları için özelleştirilebilir ekran üstü nişangah (crosshair) katmanı, hazır espor profilleri ve piksel editörü.",
+      "Android için özelleştirilebilir, kullanıcı tarafından başlatılan pasif nişangah katmanı; hazır tasarımlar, yerel görsel içe aktarma ve görünüm editörü.",
     iconUrl: "/assets/images/playstore/icons/crosshair_playstore_512.png",
     badge: {
       text: "Aktif • Google Play",
@@ -44,7 +44,7 @@ export const APPS_DATA: LegalApp[] = [
     highlights: [
       "Kişisel verileriniz satılmaz veya yetkisiz paylaşılmaz.",
       "Özel crosshair görselleriniz cihazınızda yerel işlenir.",
-      "Google Play güvencesiyle %100 güvenli ve ban korumalı katman.",
+      "Katman dokunma veya tuş girdisi almaz ve uygulama otomasyon özelliği sunmaz.",
     ],
   },
 ];

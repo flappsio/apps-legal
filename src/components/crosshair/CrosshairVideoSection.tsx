@@ -23,15 +23,15 @@ export const CrosshairVideoSection: React.FC = () => {
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
           <Badge variant="brand" className="text-xs px-3 py-1 font-semibold">
-            {isTr ? "Mobil Oyun İçi Demonstrasyon" : "Mobile In-Game Gameplay Demo"}
+            {isTr ? "Pasif Katman Demonstrasyonu" : "Passive Overlay Demonstration"}
           </Badge>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-foreground tracking-tight">
-            {isTr ? "Oyun Boyunca Merkezinizde Kalır" : "Your Crosshair Stays With You."}
+            {isTr ? "Seçtiğiniz Görsel Merkezde Kalır" : "Your Selected Visual Stays Centered"}
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground">
             {isTr
-              ? "Silah değiştirseniz, dürbün açsanız veya koşsanız bile sabit nişangah katmanınız asla kaybolmaz."
-              : "Whether switching weapons, sprinting, or hip-firing, your custom reticle overlay remains locked to the center."}
+              ? "Aşağıdaki tarafsız önizleme, katman etkinken nişangah görünümünün nasıl değiştiğini gösterir."
+              : "The neutral preview below shows how the crosshair appearance changes while the layer is active."}
           </p>
         </div>
 
@@ -50,7 +50,7 @@ export const CrosshairVideoSection: React.FC = () => {
 
             <div className="flex items-center gap-2">
               <span className="px-2.5 py-0.5 rounded-full bg-primary/20 text-primary font-mono text-[10px] font-bold">
-                1080P • 60 FPS
+                VISUAL PREVIEW
               </span>
             </div>
           </div>
@@ -126,7 +126,7 @@ export const CrosshairVideoSection: React.FC = () => {
                   {demoStep === 0 && "WHITE DOT"}
                   {demoStep === 1 && "LIME GREEN DOT"}
                   {demoStep === 2 && "CYAN CROSS"}
-                  {demoStep === 3 && "SNIPER T-CROSS"}
+                  {demoStep === 3 && "YELLOW T-SHAPE"}
                 </span>
               </div>
             </div>
@@ -145,8 +145,8 @@ export const CrosshairVideoSection: React.FC = () => {
               </h3>
               <p className="text-[11px] text-muted-foreground mt-0.5">
                 {isTr
-                  ? "Oyunu alta almadan tek dokunuşla nişangahı açıp kapatabilirsiniz."
-                  : "Toggle overlay with one tap directly inside any game."}
+                  ? "İsteğe bağlı mini kontrol görünürlüğü ve konumu yönetmek için dokunulabilirdir."
+                  : "The optional mini control is touchable so you can manage visibility and position."}
               </p>
             </div>
           </div>
@@ -157,12 +157,12 @@ export const CrosshairVideoSection: React.FC = () => {
             </div>
             <div>
               <h3 className="text-xs font-bold text-foreground">
-                {isTr ? "Sıfır Bellek Enjeksiyonu" : "Zero Memory Injection"}
+                {isTr ? "Diğer Uygulamalara Erişim Yok" : "No Other-App Access"}
               </h3>
               <p className="text-[11px] text-muted-foreground mt-0.5">
                 {isTr
-                  ? "Oyun belleğine dokunmaz, saf Android pencere yöneticisini kullanır."
-                  : "Never modifies game RAM; 100% compliant Android system window."}
+                  ? "Diğer uygulamaların koduna, belleğine, dosyalarına, verilerine veya ağ trafiğine erişmez."
+                  : "Does not access another app's code, memory, files, data, or network traffic."}
               </p>
             </div>
           </div>
@@ -173,12 +173,12 @@ export const CrosshairVideoSection: React.FC = () => {
             </div>
             <div>
               <h3 className="text-xs font-bold text-foreground">
-                {isTr ? "Hafif & Donanım Hızlandırmalı" : "Ultra-Low CPU Usage"}
+                {isTr ? "Cihaza Göre Değişen Kaynak Kullanımı" : "Device-Dependent Resource Use"}
               </h3>
               <p className="text-[11px] text-muted-foreground mt-0.5">
                 {isTr
-                  ? "FPS düşüşü yapmaz, pil ömrünü korur (<%0.5 işlemci kullanımı)."
-                  : "Zero FPS drops and minimal battery drain (<0.5% CPU load)."}
+                  ? "Kaynak kullanımı cihaz modeline, Android sürümüne ve seçilen ayarlara göre değişebilir."
+                  : "Resource use may vary by device model, Android version, and selected settings."}
               </p>
             </div>
           </div>

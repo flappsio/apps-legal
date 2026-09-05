@@ -11,31 +11,31 @@ export const CrosshairWhyUseSection: React.FC = () => {
   const benefits = [
     {
       icon: <Eye className="w-5 h-5 text-primary" />,
-      title: isTr ? "Daha İyi Görünürlük" : "Better Visibility",
+      title: isTr ? "Ayarlanabilir Görünürlük" : "Adjustable Visibility",
       desc: isTr
-        ? "Karmaşık harita kaplamalarında ve patlama efektlerinde kaybolmayan yüksek kontrastlı nişangah."
-        : "Maintains clear visual contrast across complex map textures, foliage, shadows, and dynamic visual effects.",
+        ? "Farklı arka planlarda renk, dış çizgi ve opaklık ayarlarını önizleyin."
+        : "Preview color, outline, and opacity settings across different backgrounds.",
     },
     {
       icon: <Target className="w-5 h-5 text-cyan-400" />,
-      title: isTr ? "Tutarlı Hedef Alma Referansı" : "Consistent Aiming Reference",
+      title: isTr ? "Sabit Merkez Konumu" : "Fixed Center Position",
       desc: isTr
-        ? "Farklı silahlarda veya nişangahı olmayan keskin nişancı modellerinde ekranın merkezini anında bulma."
-        : "Provides a constant center focal point across all weapons, hip-fire scenarios, and sniper quick-scopes.",
+        ? "Seçtiğiniz görsel katmanı Android ekranının merkezinde konumlandırın."
+        : "Position the visual layer you choose at the center of your Android display.",
     },
     {
       icon: <Palette className="w-5 h-5 text-purple-400" />,
       title: isTr ? "Kişiselleştirilmiş Tasarım" : "Custom Appearance",
       desc: isTr
-        ? "Göz yapınıza ve oyun tarzınıza en uygun nokta, artı veya çember geometrileri."
-        : "Tailor size, thickness, outline, and shape to match your personal visual ergonomics and playstyle.",
+        ? "Nokta, artı veya çember geometrilerini görsel tercihlerinize göre düzenleyin."
+        : "Adjust dot, cross, or circle geometry to your visual preferences.",
     },
     {
       icon: <Sparkles className="w-5 h-5 text-amber-400" />,
-      title: isTr ? "Ortama Göre Renk Seçimi" : "Environment Contrast Colors",
+      title: isTr ? "Zemine Göre Renk Seçimi" : "Background Contrast Colors",
       desc: isTr
-        ? "Aydınlık, karanlık ve çöl haritaları için en yüksek zıtlığı sağlayan neon renkler."
-        : "Switch between neon green, cyan, magenta, and yellow to adapt to daylight or night map lighting.",
+        ? "Açık, koyu ve renkli zeminlerde farklı renk seçeneklerini karşılaştırın."
+        : "Compare color options across light, dark, and colorful backgrounds.",
     },
   ];
 
@@ -69,12 +69,12 @@ export const CrosshairWhyUseSection: React.FC = () => {
 
           <p className="text-sm sm:text-base font-medium text-foreground leading-relaxed">
             {isTr
-              ? "Özel bir crosshair katmanı, Android ekranınızın tam merkezine görünür ve sabit bir nişan alma referansı yerleştirir. Oyuncular görmesi daha kolay bir tasarım seçebilir, boyutunu ve rengini özelleştirebilir ve uyumlu mobil oyunları oynarken bunu ekranda tutabilir."
-              : "A custom crosshair overlay places a visible aiming reference at the center of your Android screen. Players can choose a design that is easier to see, customize its size and color, and use it while playing compatible mobile games."}
+              ? "Crossio, kullanıcı tarafından seçilen nişangahı Android ekranının merkezinde pasif bir görsel katman olarak gösterir. Tasarımın renk, boyut, kalınlık, boşluk ve opaklık ayarları özelleştirilebilir."
+              : "Crossio displays a user-selected crosshair as a passive visual layer at the center of an Android screen. Its color, size, thickness, gap, and opacity can be customized."}
           </p>
 
           <div className="pt-2 flex items-center justify-between text-[11px] text-muted-foreground border-t border-border/40">
-            <span>Crosshair Knowledge Base</span>
+            <span>Crossio Knowledge Base</span>
             <span className="font-mono text-primary font-bold">flappsio Android Engineering</span>
           </div>
         </div>

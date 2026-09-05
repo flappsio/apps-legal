@@ -13,7 +13,7 @@ export const QuickAnswerBlock: React.FC<QuickAnswerBlockProps> = ({
   question,
   summary,
   keyPoints = [],
-  sourceCategory = "Crosshair Valo Knowledge Base",
+  sourceCategory = "Crossio Knowledge Base",
 }) => {
   const { isTr } = useLanguage();
 

@@ -36,14 +36,14 @@ export interface LegalDocument {
 export const CROSSHAIR_PRIVACY_POLICY: LegalDocument = {
   id: "crosshair-privacy-policy",
   title: "Gizlilik Bildirimi",
-  subtitle: "Crosshair Valo Mobil Uygulaması",
-  lastUpdated: "18 Ağustos 2026",
+  subtitle: "Crossio: Custom Crosshair Mobil Uygulaması",
+  lastUpdated: "5 Eylül 2026",
   publisher: "flappsio",
   contactEmail: "info@flappsio.com",
   summary:
-    "Bu Gizlilik Bildirimi; Crosshair Valo uygulamasını kullandığınızda hangi bilgilerin işlendiğini, kullanım amaçlarını, servis sağlayıcıları ve haklarınızı açıklar.",
+    "Bu Gizlilik Bildirimi; Crossio: Custom Crosshair uygulamasını kullandığınızda hangi bilgilerin işlendiğini, kullanım amaçlarını, servis sağlayıcıları ve haklarınızı açıklar.",
   metaDescription:
-    "Crosshair Valo mobil uygulaması için gizlilik bildirimi, veri işleme amaçları, hizmet sağlayıcılar ve kullanıcı hakları.",
+    "Crossio: Custom Crosshair mobil uygulaması için gizlilik bildirimi, veri işleme amaçları, hizmet sağlayıcılar ve kullanıcı hakları.",
   sections: [
     {
       id: "isledigimiz-bilgiler",
@@ -59,12 +59,17 @@ export const CROSSHAIR_PRIVACY_POLICY: LegalDocument = {
         {
           title: "Tanımlayıcılar ve İletişim Bilgileri",
           content:
-            "Firebase tarafından üretilen anonim kullanıcı kimliği, RevenueCat App User ID, bildirim token'ı ve destek taleplerinizde isteğe bağlı olarak ilettiğiniz e-posta adresi işlenebilir.",
+            "Firebase tarafından üretilen uygulama örneği veya anonim kullanıcı kimliği, RevenueCat App User ID, Firebase Cloud Messaging bildirim token'ı ve destek ya da hesap işlemlerinde isteğe bağlı olarak ilettiğiniz e-posta adresi işlenebilir. Kayıtlı bir e-posta adresi varsa bu bilgi abonelik müşteri kaydını eşleştirmek için RevenueCat'e müşteri özelliği olarak aktarılabilir. Bu tanımlayıcılar adınızı doğrudan içermese de cihazınızı veya uygulama kullanımınızı ayırt edebilir.",
         },
         {
           title: "Kullanım ve Etkileşim Bilgileri",
           content:
-            "Kullanılan özellikler, görüntülenen ekranlar, crosshair oluşturma/sabitleme işlemleri, premium özellik etkileşimleri ve abonelik akışları analiz edilebilir. Uygulama, kişiselleştirilmiş teklifler için yerel sayaçlar tutabilir.",
+            "Kullanılan özellikler, görüntülenen ekranlar, nişangah seçme/kaydetme/sabitleme gibi genel olay türleri, izin ve servis tanılama sonuçları, cihaz üreticisi, Android sürümü, uygulama dili, kullanıcı türü, premium özellik etkileşimleri, reklam etkileşimleri ve abonelik akışları Firebase Analytics ile analiz edilebilir. Nişangah adı, tam nişangah tanımı ve yerel dosya yolu analitik hizmetlerine gönderilmez.",
+        },
+        {
+          title: "Kullanım Segmentleri ve Kampanya Verileri",
+          content:
+            "Aktif gün, katmanı sabitleme sayısı, reklam veya ödeme ekranı etkileşimi, son etkinlik zamanı ve daha önce abone olunup olunmadığı gibi uygulama içi sayaçlar cihazda tutulabilir. Firebase Firestore'dan alınan kurallara göre yeni, aktif veya sadık kullanıcı gibi kategorik segmentler oluşturulabilir ve uygun abonelik teklifini belirlemek için RevenueCat'e müşteri özellikleri olarak gönderilebilir.",
         },
         {
           title: "Abonelik ve Satın Alma Bilgileri",
@@ -98,7 +103,7 @@ export const CROSSHAIR_PRIVACY_POLICY: LegalDocument = {
         "Premium abonelik haklarını doğrulamak ve satın almaları geri yüklemek.",
         "Hataları tespit etmek, güvenliği sağlamak ve kilitlenmeleri çözmek.",
         "Kullanıcı deneyimini geliştirmek ve özellik kullanım istatistiklerini anlamak.",
-        "Kullanım düzeyine uygun avantajlı abonelik teklifleri sunmak.",
+        "Uygun uygulama içi abonelik seçeneklerini göstermek.",
         "Reklamları sunmak, ölçmek ve ödüllü özellikleri çalıştırmak.",
         "Bildirim göndermek ve destek taleplerinize çözüm üretmek.",
         "Yasal yükümlülükleri yerine getirmek ve haklarımızı korumak.",
@@ -123,7 +128,7 @@ export const CROSSHAIR_PRIVACY_POLICY: LegalDocument = {
         rows: [
           [
             "Google Firebase",
-            "Analitik, Crashlytics kilitlenme raporları, bildirim ve uzaktan yapılandırma",
+            "Firebase Analytics kullanım ölçümü, Crashlytics kilitlenme raporları, Cloud Messaging bildirimleri, anonim kimlik doğrulama ve Firestore üzerinden uygulama/kampanya yapılandırması",
             "https://firebase.google.com/support/privacy",
           ],
           [
@@ -133,7 +138,7 @@ export const CROSSHAIR_PRIVACY_POLICY: LegalDocument = {
           ],
           [
             "RevenueCat",
-            "Abonelik yönetimi, paywall optimizasyonu ve satın alma doğrulama",
+            "Abonelik yönetimi, satın alma doğrulama, Firebase uygulama örneği kimliği ve kategorik kullanım özelliklerine göre teklif hedefleme",
             "https://www.revenuecat.com/privacy/",
           ],
           [
@@ -158,12 +163,12 @@ export const CROSSHAIR_PRIVACY_POLICY: LegalDocument = {
         {
           title: "Diğer Uygulamaların Üzerinde Gösterim (Overlay)",
           content:
-            "Crosshair nişangahının oyunların veya ekranın üzerinde katman olarak görüntülenebilmesi için zorunlu sistem iznidir.",
+            "Seçtiğiniz nişangahın diğer uygulamaların üzerinde pasif bir görsel katman olarak gösterilebilmesi için gereken Android sistem iznidir. Katman dokunma veya tuş girdisi alamaz. Crossio diğer uygulamaların koduna, belleğine, dosyalarına, verilerine ya da ağ trafiğine bu izin üzerinden erişmez.",
         },
         {
           title: "Bildirim İzni",
           content:
-            "Çalışan crosshair arka plan servisini kontrol edebilmeniz ve önemli uygulama duyuruları için kullanılır.",
+            "Çalışan ön plan katman servisini görebilmeniz, kalıcı bildirimden durdurabilmeniz ve izin verirseniz uygulama bildirimleri alabilmeniz için kullanılır.",
         },
         {
           title: "Galeri / Medya Erişimi",
@@ -212,14 +217,14 @@ export const CROSSHAIR_PRIVACY_POLICY: LegalDocument = {
 export const CROSSHAIR_TERMS_OF_USE: LegalDocument = {
   id: "crosshair-terms-of-use",
   title: "Kullanım Koşulları",
-  subtitle: "Crosshair Valo Mobil Uygulaması",
-  lastUpdated: "18 Ağustos 2026",
+  subtitle: "Crossio: Custom Crosshair Mobil Uygulaması",
+  lastUpdated: "5 Eylül 2026",
   publisher: "flappsio",
   contactEmail: "info@flappsio.com",
   summary:
-    "Crosshair Valo uygulamasını kullanarak bu Kullanım Koşulları'nı kabul etmiş sayılırsınız. Lisans kapsamı, bağımsızlık beyanı, abonelik kuralları ve sorumluluk sınırları aşağıda belirtilmiştir.",
+    "Crossio: Custom Crosshair uygulamasını kullanarak bu Kullanım Koşulları'nı kabul etmiş sayılırsınız. Lisans kapsamı, üçüncü taraflardan bağımsızlık, abonelik kuralları ve sorumluluk sınırları aşağıda belirtilmiştir.",
   metaDescription:
-    "Crosshair Valo mobil uygulaması için kullanım lisansı, Riot Games bağımsızlık beyanı, abonelik ve iade kuralları.",
+    "Crossio: Custom Crosshair mobil uygulaması için kullanım lisansı, bağımsızlık beyanı, abonelik ve iade kuralları.",
   sections: [
     {
       id: "hizmet-ve-lisans",
@@ -247,15 +252,15 @@ export const CROSSHAIR_TERMS_OF_USE: LegalDocument = {
     {
       id: "bagimsizlik-beyani",
       number: "2",
-      title: "Fikri Mülkiyet ve Bağımsızlık Beyanı (Disclaimer)",
+      title: "Fikri Mülkiyet ve Bağımsızlık Beyanı",
       shortTitle: "Bağımsızlık Beyanı",
       callout: {
         type: "warning",
-        title: "Riot Games & VALORANT Bağımsızlık Beyanı",
-        text: "Crosshair Valo bağımsız bir yardımcı araç olup Riot Games, Inc. veya VALORANT ile hiçbir resmi bağı, ortaklığı, sponsorluğu veya onayı bulunmamaktadır. VALORANT ve tüm ilgili varlıklar Riot Games, Inc.'nin tescilli ticari markalarıdır.",
+        title: "Bağımsız Uygulama",
+        text: "Crossio bağımsız bir Android yardımcı aracıdır. Herhangi bir üçüncü taraf oyun geliştiricisi, yayıncısı veya platformuyla bağlı, onlar tarafından desteklenen, sponsor olunan ya da onaylanan bir ürün değildir.",
       },
       content:
-        "Uygulama içerisindeki marka ve oyun referansları yalnızca tanımlama ve bilgilendirme (nominal fair use / dürüst kullanım) amacıyla yer almaktadır. Uygulama kaynak kodları, arayüz tasarımları ve flappsio tarafından oluşturulan içeriklerin tüm hakları flappsio'ya aittir.",
+        "Uygulama kaynak kodları, arayüz tasarımları ve flappsio tarafından oluşturulan içeriklerin tüm hakları flappsio'ya aittir. Android ve Google Play, Google LLC'nin ticari markalarıdır.",
     },
     {
       id: "abonelik-ve-odemeler",
@@ -288,14 +293,14 @@ export const CROSSHAIR_TERMS_OF_USE: LegalDocument = {
     {
       id: "overlay-ve-oyun-uyumlulugu",
       number: "4",
-      title: "Ekran Üstü Katman (Overlay) ve Oyun Uyumluluğu",
-      shortTitle: "Overlay & Uyumluluk",
+      title: "Pasif Ekran Üstü Katman (Overlay)",
+      shortTitle: "Pasif Overlay",
       content:
-        "Crosshair Valo'nun sunduğu katman özelliği standart bir Android işletim sistemi arayüzüdür. Oyun kodlarına, oyun dosyalarına veya bellek (RAM) alanına kesinlikle müdahale etmez veya enjekte olmaz.",
+        "Crossio'nun sunduğu ana nişangah, kullanıcı tarafından başlatılan pasif bir Android görsel katmanıdır ve dokunma veya tuş girdisi alamaz. Kullanıcı etkinleştirirse görünürlük ve konum ayarları için ayrı, dokunulabilir bir mini kontrol katmanı gösterilebilir; otomatik başlatma seçeneği de uygulama açıldığında seçilmiş katmanı yeniden başlatabilir. Uygulama diğer uygulamaların koduna, belleğine, dosyalarına, verilerine veya ağ trafiğine erişmez; otomatik nişan alma, otomatik dokunma, makro ya da oyun otomasyonu sağlamaz.",
       callout: {
         type: "info",
-        title: "Üçüncü Taraf Oyun Politikaları",
-        text: "Kullanılan oyunların kendi hizmet şartları ve ekran üstü araç kurallarına uyum kullanıcı sorumluluğundadır. Üçüncü taraf oyun hesap yaptırımlarından flappsio sorumlu tutulamaz.",
+        title: "Üçüncü Taraf Kuralları",
+        text: "Bazı oyunlar ve rekabetçi platformlar görsel katmanları kısıtlayabilir. Kullandığınız hizmetin kurallarını kontrol etmek sizin sorumluluğunuzdadır. Crossio hiçbir üçüncü taraf oyunun veya platformun bu kullanıma izin verdiğini garanti etmez.",
       },
     },
     {

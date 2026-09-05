@@ -1,33 +1,29 @@
-# Crosshair – Custom Aim Overlay
+# Crossio: Custom Crosshair
 
-> Crosshair is an Android application that enables mobile gamers to place and customize an on-screen crosshair overlay on top of supported mobile games.
+Crossio is an Android utility for choosing, customizing, locally importing, and displaying a crosshair as a visual overlay.
 
-## Overview
-Crosshair runs independently via Android's native `SYSTEM_ALERT_WINDOW` permission to render a hardware-accelerated, high-contrast reticle on mobile screens. It never modifies game binaries, memory (RAM), or network packets, making it 100% compliant and ban-safe.
+## Verified behavior
 
-## Core Features
-- **Esports Presets Library**: Built-in Dot, Classic Cross (+), Circle, Sniper T-Cross, Box, and Diamond reticle geometries.
-- **Custom PNG Import**: Import any transparent PNG crosshair image directly from the Android gallery.
-- **Pixel-Perfect Editor**: Millimeter controls for length, thickness, center gap, opacity, outer stroke outline, and center dot.
-- **Dynamic Color Spectrum**: High-contrast shades (Neon Green `#69F0AE`, Cyber Cyan `#00E5FF`, Electric Violet `#8B5CF6`, Valor Red `#FF4655`, Sun Orange `#FF9100`, Pure White).
-- **Floating Quick Toggle**: In-game HUD bubble to enable, disable, or adjust reticle positions without minimizing the active game.
-- **Lightweight Engine**: Hardware-accelerated vector drawing with <0.5% CPU load and negligible battery consumption.
+- The main crosshair overlay is passive and click-through; it cannot receive touch or key input.
+- An optional, separate mini control overlay is touchable so the user can manage visibility and position.
+- The app does not access another app's code, memory, files, data, or network traffic.
+- The app provides no auto-aim, auto-tap, macros, input injection, or game automation.
+- Users start the overlay from the app and can stop the foreground service from its persistent notification.
+- Optional auto-start may restart the selected overlay when Crossio is opened.
+- Battery-optimization exemption is optional and managed in Android settings.
 
-## Platform & Availability
-- **Operating System**: Android (Android 7.0 Nougat to Android 15+)
-- **Store**: Official download exclusively via Google Play Store
-- **Note**: iOS (iPhone) and PC (Windows) are not supported.
+## Data and services
 
-## Pages & Documentation
-- [Overview & Interactive Simulator](https://flappsio.com/crosshair): Core features, real-time simulator, and presets.
-- [Setup & How It Works](https://flappsio.com/crosshair/how-to-use): 3-step setup guide and Android overlay permission instructions.
-- [Frequently Asked Questions (FAQ)](https://flappsio.com/crosshair/faq): Direct, factual answers to 15 common questions regarding permissions, safety, battery whitelisting, and compatibility.
-- [Reticle Selection Guide](https://flappsio.com/crosshair/guides/crosshair-secimi): Guide for choosing between Dot, Classic Cross, and T-style reticles.
-- [Color & Contrast Guide](https://flappsio.com/crosshair/guides/renk-ve-gorunurluk): Guide for choosing high-contrast colors across different map terrains.
-- [Troubleshooting & Battery Whitelist](https://flappsio.com/crosshair/guides/sorun-giderme-overlay-izinleri): Android battery optimization guides for Xiaomi, Samsung, and Oppo devices.
-- [Privacy Policy](https://flappsio.com/crosshair/privacy-policy): Privacy commitments and local device data retention policies.
-- [Terms of Service](https://flappsio.com/crosshair/terms-of-use): Terms of use and legal fair-use disclaimers.
-- [Google Play Store](https://play.google.com/store/apps/details?id=com.hasan.apps.crosshair): Official Android application download link.
+Crossio uses Firebase Analytics, Crashlytics, Cloud Messaging, anonymous authentication and Firestore; Google Mobile Ads; RevenueCat; and Google Play Billing. Imported crosshair images remain in local app storage and are not uploaded to flappsio servers for the import feature. Crosshair names, full definitions, and local file paths are not sent to Firebase Analytics. Categorical engagement attributes may be sent to RevenueCat for subscription-offer targeting.
 
-## Optional
-- [Full LLM Documentation](https://flappsio.com/llms-full.txt): Complete, uncompressed knowledge base and technical specifications for LLMs and AI search engines.
+## Important limitation
+
+Some games and competitive platforms may restrict visual overlays. Users must check the current rules of each third-party service. Crossio does not guarantee that a third party permits overlay use or that an account will not be restricted.
+
+## Pages
+
+- [Overview](https://flappsio.com/crosshair)
+- [How to use](https://flappsio.com/crosshair/how-to-use)
+- [FAQ](https://flappsio.com/crosshair/faq)
+- [Privacy Policy](https://flappsio.com/crosshair/privacy-policy)
+- [Terms of Use](https://flappsio.com/crosshair/terms-of-use)

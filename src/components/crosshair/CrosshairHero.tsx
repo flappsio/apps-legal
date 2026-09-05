@@ -82,7 +82,7 @@ export const CrosshairHero: React.FC = () => {
             <Button
               asChild
               size="lg"
-              className="w-full sm:w-auto h-13 px-8 text-black font-extrabold rounded-2xl shadow-xl gap-2.5 text-sm transition-all duration-300 hover:scale-[1.02]"
+              className="shimmer-button w-full sm:w-auto h-13 px-8 text-black font-extrabold rounded-2xl shadow-xl gap-2.5 text-sm transition-all duration-300 hover:scale-[1.02]"
               style={{
                 backgroundColor: activeColorOption.hex,
                 boxShadow: `0 10px 30px ${activeColorOption.hex}40`,
@@ -167,7 +167,7 @@ export const CrosshairHero: React.FC = () => {
           >
             {/* Phone Screen Bezel */}
             <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full rounded-[28px] sm:rounded-[36px] overflow-hidden bg-[#07090e] border border-white/10 flex items-center justify-center">
-              {/* Simulated Generic Tactical Mobile FPS Environment (Training Arena) */}
+              {/* Neutral preview canvas */}
               <div className="absolute inset-0 bg-gradient-to-br from-[#0c0e17] via-[#151928] to-[#08090f]">
                 {/* 3D Perspective Grid for Arena Floor */}
                 <div className="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#ffffff15_1px,transparent_1px),linear-gradient(to_bottom,#ffffff15_1px,transparent_1px)] bg-[size:3.5rem_3.5rem] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_60%,#000_70%,transparent_100%)]" />
@@ -178,18 +178,9 @@ export const CrosshairHero: React.FC = () => {
                   <div className="w-28 h-24 border border-white/10 rounded-xl" />
                 </div>
 
-                {/* Mobile Game HUD Elements (Left virtual joystick & Right fire button outlines) */}
-                <div className="absolute left-6 bottom-6 w-16 h-16 rounded-full border border-white/20 bg-white/5 flex items-center justify-center pointer-events-none">
-                  <div className="w-6 h-6 rounded-full bg-white/20" />
-                </div>
-
-                <div className="absolute right-6 bottom-6 w-16 h-16 rounded-full border border-white/25 bg-primary/10 flex items-center justify-center pointer-events-none">
-                  <div className="w-8 h-8 rounded-full bg-primary/20" />
-                </div>
-
                 <div className="absolute top-4 left-6 flex items-center gap-2 text-[10px] font-mono text-white/50 pointer-events-none">
-                  <span className="w-2 h-2 rounded-full bg-green-500 animate-ping" />
-                  <span>ANDROID HUD • 60 FPS • 24ms</span>
+                  <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                  <span>LIVE CROSSHAIR PREVIEW</span>
                 </div>
               </div>
 

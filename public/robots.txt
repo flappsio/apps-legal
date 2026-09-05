@@ -1,5 +1,5 @@
 # robots.txt for https://flappsio.com
-# Crosshair – Custom Aim Overlay & Apps Portal
+# Crossio: Custom Crosshair & Apps Portal
 
 User-agent: *
 Allow: /

@@ -14,12 +14,12 @@ export const CrosshairFAQPage: React.FC = () => {
   const [expandedId, setExpandedId] = useState<string | null>(FAQS_DATA[0].id);
 
   const categories = [
-    { id: "all", label: isTr ? "Tümü (15)" : "All (15)" },
+    { id: "all", label: isTr ? `Tümü (${FAQS_DATA.length})` : `All (${FAQS_DATA.length})` },
     { id: "general", label: isTr ? "Genel" : "General" },
     { id: "overlay", label: isTr ? "Overlay & İzinler" : "Overlay & Permissions" },
     { id: "import", label: isTr ? "PNG İçe Aktarma" : "PNG Import" },
     { id: "performance", label: isTr ? "Pil & Performans" : "Battery & Performance" },
-    { id: "compatibility", label: isTr ? "Uyumluluk (Oyunlar/Cihazlar)" : "Compatibility" },
+    { id: "compatibility", label: isTr ? "Uyumluluk & Kurallar" : "Compatibility & Rules" },
   ];
 
   const filteredFaqs = FAQS_DATA.filter((faq) => {
@@ -35,11 +35,11 @@ export const CrosshairFAQPage: React.FC = () => {
 
   const title = isTr
     ? "Crosshair Sıkça Sorulan Sorular - Overlay, İzinler, Güvenlik ve Uyumluluk"
-    : "Crosshair FAQ - Overlay Engine, Android Permissions, Safety & Compatibility";
+    : "Crossio FAQ - Visual Overlay, Android Permissions & Privacy";
 
   const description = isTr
-    ? "Crosshair Android uygulaması hakkında tüm sorular: Overlay nasıl çalışır, ban riski var mı, pil optimizasyonu nasıl yapılır, PNG nasıl aktarılır, iOS/PC desteği var mı?"
-    : "Everything you need to know about Crosshair for Android: how overlays work, safety & zero-ban risk, battery whitelisting, PNG import, and device compatibility.";
+    ? "Crossio hakkında sık sorulan sorular: pasif katman nasıl çalışır, izinler ne yapar, üçüncü taraf kuralları nasıl değerlendirilir, PNG nasıl aktarılır ve veriler nasıl işlenir?"
+    : "Frequently asked questions about Crossio: how its passive layer works, what permissions do, how third-party rules apply, PNG import, and data handling.";
 
   // FAQPage JSON-LD schema
   const faqJsonLd = {
@@ -65,7 +65,7 @@ export const CrosshairFAQPage: React.FC = () => {
           "crosshair faq",
           "crosshair overlay nasıl çalışır",
           "crosshair güvenli mi",
-          "crosshair ban sebebi mi",
+          "crosshair üçüncü taraf kuralları",
           "android overlay izni",
           "crosshair battery optimization",
           "crosshair png import",
@@ -90,8 +90,8 @@ export const CrosshairFAQPage: React.FC = () => {
           </h1>
           <p className="text-sm sm:text-base text-muted-foreground">
             {isTr
-              ? "Crosshair Android katmanı, izinler, pil tasarrufu ve oyun uyumluluğu hakkında merak ettiğiniz tüm doğrudan cevaplar."
-              : "Direct, factual answers regarding Android overlay mechanics, safety, custom PNG import, and performance."}
+              ? "Crossio Android katmanı, izinler, pil ayarları, gizlilik ve üçüncü taraf kuralları hakkında doğrudan cevaplar."
+              : "Direct answers about Android overlay behavior, permissions, custom PNG import, privacy, and device settings."}
           </p>
         </div>
 
@@ -105,8 +105,8 @@ export const CrosshairFAQPage: React.FC = () => {
               type="text"
               placeholder={
                 isTr
-                  ? "Soru veya konu ara (örn. ban, izin, pil, png, iphone, pc)..."
-                  : "Search questions (e.g. ban, permission, battery, png, iphone, pc)..."
+                  ? "Soru veya konu ara (örn. izin, katman, pil, png, gizlilik)..."
+                  : "Search questions (e.g. permission, overlay, battery, png, privacy)..."
               }
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}

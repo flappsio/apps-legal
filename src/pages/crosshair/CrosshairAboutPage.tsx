@@ -9,12 +9,12 @@ export const CrosshairAboutPage: React.FC = () => {
   const { isTr } = useLanguage();
 
   const title = isTr
-    ? "Hakkımızda & Proje Misyonu | Crosshair Valo & flappsio"
-    : "About Us & Mission | Crosshair Valo & flappsio";
+    ? "Hakkımızda & Proje Misyonu | Crossio & flappsio"
+    : "About Us & Mission | Crossio & flappsio";
 
   const description = isTr
-    ? "flappsio ve Crosshair Valo hakkında. Mobil oyuncular için şeffaf, güvenli, gizlilik odaklı ve yüksek performanslı yardımcı araçlar geliştirme vizyonumuz."
-    : "About flappsio and Crosshair Valo. Our mission to engineer transparent, safe, privacy-focused, and ultra-performant tools for mobile gamers.";
+    ? "flappsio ve Crossio hakkında. Android için şeffaf, kullanıcı kontrollü ve gizlilik odaklı yardımcı araçlar geliştirme vizyonumuz."
+    : "About flappsio and Crossio. Our mission is to build transparent, user-controlled, privacy-conscious Android utilities.";
 
   const values = [
     {
@@ -26,17 +26,17 @@ export const CrosshairAboutPage: React.FC = () => {
     },
     {
       icon: <ShieldCheck className="w-5 h-5 text-[#00E5FF]" />,
-      title: isTr ? "Etik ve Güvenli Mühendislik" : "Safe & Ethical Engineering",
+      title: isTr ? "Şeffaf ve Etik Mühendislik" : "Transparent & Ethical Engineering",
       desc: isTr
-        ? "Oyun hileleri, modlar veya bellek enjektörleri geliştirmeyiz. Yalnızca sistem seviyesinde yasal ve güvenli araçlar üretiriz."
-        : "We never build cheats, hacks, or injectors. We strictly engineer compliant OS-level accessibility overlays.",
+        ? "Otomatik nişan alma, otomatik dokunma, makro veya bellek enjeksiyonu geliştirmeyiz. Crossio, Android'in standart katman iznini kullanan kullanıcı kontrollü bir görsel araçtır."
+        : "We do not build auto-aim, auto-tap, macros, or memory injection. Crossio is a user-controlled visual tool that uses Android's standard overlay permission.",
     },
     {
       icon: <Zap className="w-5 h-5 text-amber-400" />,
-      title: isTr ? "Maksimum Performans, Sıfır Şişkinlik" : "Peak Performance, Zero Bloat",
+      title: isTr ? "Sade ve Ölçülü Tasarım" : "Focused, Measured Design",
       desc: isTr
-        ? "Uygulamalarımız donanımı yormayacak, FPS düşürmeyecek ve pili sömürmeyecek şekilde hafif tasarlanır."
-        : "Engineered to have near-zero CPU/RAM overhead without draining battery or causing frame drops.",
+        ? "Uygulamayı gereksiz işlevlerden arındırıp kaynak kullanımını farklı cihazlarda izlemeye ve iyileştirmeye odaklanırız."
+        : "We keep the app focused, monitor resource use across devices, and improve it without making absolute performance claims.",
     },
   ];
 
@@ -48,13 +48,13 @@ export const CrosshairAboutPage: React.FC = () => {
         canonicalPath="/crosshair/about"
         keywords={[
           "flappsio hakkında",
-          "crosshair valo geliştiricisi",
+          "crossio geliştiricisi",
           "flappsio mission",
-          "about crosshair valo",
+          "about crossio",
         ]}
         breadcrumbs={[
           { name: isTr ? "Ana Sayfa" : "Home", url: "/" },
-          { name: "Crosshair Valo", url: "/crosshair" },
+          { name: "Crossio", url: "/crosshair" },
           { name: isTr ? "Hakkımızda" : "About", url: "/crosshair/about" },
         ]}
       />
@@ -66,29 +66,29 @@ export const CrosshairAboutPage: React.FC = () => {
             {isTr ? "Hakkımızda & Vizyonumuz" : "About Us & Vision"}
           </Badge>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">
-            {isTr ? "Oyuncular İçin, Şeffaflıkla" : "Built for Gamers, with Transparency"}
+            {isTr ? "Kullanıcılar İçin, Şeffaflıkla" : "Built for Users, with Transparency"}
           </h1>
           <p className="text-sm sm:text-base text-muted-foreground">
             {isTr
-              ? "Mobil espor ve FPS oyun deneyimini daha erişilebilir, hassas ve keyifli kılmak için buradayız."
-              : "Dedicated to making mobile esports and FPS gaming more accessible, precise, and enjoyable."}
+              ? "Android'de görsel özelleştirmeyi daha şeffaf, anlaşılır ve kullanıcı kontrollü kılmak için buradayız."
+              : "We are here to make visual customization on Android more transparent, understandable, and user-controlled."}
           </p>
         </div>
 
         {/* Story Section */}
         <div className="p-8 rounded-3xl bg-card/60 border border-border/80 backdrop-blur-sm space-y-4 text-sm text-muted-foreground leading-relaxed">
           <h2 className="text-lg sm:text-xl font-bold text-foreground">
-            {isTr ? "flappsio ve Crosshair Valo Hikayesi" : "The Story Behind Crosshair Valo"}
+            {isTr ? "flappsio ve Crossio Hikayesi" : "The Story Behind Crossio"}
           </h2>
           <p>
             {isTr
-              ? "Crosshair Valo, küçük mobil ekranlarda nişangahın arka planla karışması ve hedef almanın zorlaşması problemine temiz bir çözüm üretmek amacıyla doğdu. Piyasada bulunan birçok uygulamanın aşırı reklam dolu, cihazı yoran veya şüpheli izinler isteyen yapısına karşı; şeffaf, hafif ve %100 ban korumalı bir alternatif inşa ettik."
-              : "Crosshair Valo was born to solve a fundamental mobile FPS frustration: tiny reticles getting lost against map backgrounds and imprecise hip-fire alignment. Unlike cluttered alternatives laden with invasive ads and shady permissions, we built a transparent, ultra-lightweight, and 100% ban-safe overlay solution."}
+              ? "Crossio, kullanıcıların hazır bir tasarım seçebilmesi, kendi görsellerini yerel olarak ekleyebilmesi ve nişangah görünümünü ayrıntılı biçimde özelleştirebilmesi için geliştirildi. İzinlerin ne yaptığına dair açık açıklamalar ve kullanıcı tarafından başlatılan bir katman deneyimi sunmayı önemsiyoruz."
+              : "Crossio was created so users can choose a built-in design, add their own local images, and customize a crosshair's appearance in detail. We prioritize clear permission disclosures and an overlay experience that the user starts explicitly."}
           </p>
           <p>
             {isTr
-              ? "Bugün 50.000'den fazla aktif oyuncu turnuvalarda, dereceli maçlarda ve günlük oyunlarında Crosshair Valo'ya güveniyor. Kullanıcı geri bildirimlerini dinleyerek uygulamamızı sürekli optimize ediyoruz."
-              : "Today, over 50,000 active gamers rely on Crosshair Valo for ranked play and casual matches. We actively iterate based on community feedback to ensure peak reliability."}
+              ? "Crossio'yu kullanıcı geri bildirimlerini ve Android platform gereksinimlerini dikkate alarak geliştirmeyi sürdürüyoruz."
+              : "We continue to develop Crossio with user feedback and Android platform requirements in mind."}
           </p>
         </div>
 

@@ -32,14 +32,14 @@ const GALLERY_ITEMS: GalleryItem[] = [
     outline: true,
     centerDot: false,
     description: {
-      tr: "Dengeli görüş ve hızlı hedef kilitleme için 4 kollu klasik espor modeli.",
-      en: "The standard 4-armed tournament reticle for peripheral target tracking.",
+      tr: "Dört kollu, dengeli ve sade klasik artı tasarımı.",
+      en: "A balanced, minimal four-armed classic cross design.",
     },
   },
   {
     id: "pro-dot-cyan",
     name: "Micro Dot",
-    category: "Precision",
+    category: "Minimal",
     shape: "dot",
     color: "#00E5FF",
     size: 3,
@@ -48,14 +48,14 @@ const GALLERY_ITEMS: GalleryItem[] = [
     outline: true,
     centerDot: true,
     description: {
-      tr: "Uzak mesafe kafa vuruşları için hedefi kapatmayan kompakt nokta.",
-      en: "Unobstructed view for pinpoint long-range headshots and tap-firing.",
+      tr: "Ekranda az yer kaplayan kompakt merkez noktası.",
+      en: "A compact center dot that occupies minimal screen space.",
     },
   },
   {
     id: "sniper-t-yellow",
-    name: "Sniper T-Style",
-    category: "Sniper",
+    name: "Open T-Style",
+    category: "T Shape",
     shape: "t-cross",
     color: "#FF9100",
     size: 7,
@@ -64,14 +64,14 @@ const GALLERY_ITEMS: GalleryItem[] = [
     outline: true,
     centerDot: true,
     description: {
-      tr: "Dürbün kapalıyken (no-scope) ve quick-scope için dikey referans.",
-      en: "Top-open vertical line for sniper hip-fire and quick-scope alignment.",
+      tr: "Üst tarafı açık, üç kollu T biçiminde görsel tasarım.",
+      en: "A three-armed T-shaped visual design with an open top.",
     },
   },
   {
     id: "combat-circle-magenta",
-    name: "Combat Circle",
-    category: "CQB & Shotgun",
+    name: "Soft Circle",
+    category: "Circle",
     shape: "circle",
     color: "#8B5CF6",
     size: 8,
@@ -80,14 +80,14 @@ const GALLERY_ITEMS: GalleryItem[] = [
     outline: true,
     centerDot: false,
     description: {
-      tr: "Yakın mesafe çatışmalarda ve pompalı silahlarda gövdeyi çevreleme.",
-      en: "Fast torso acquisition during fast-paced close-quarters engagements.",
+      tr: "Merkezi çevreleyen, boyutu ayarlanabilir çember tasarımı.",
+      en: "An adjustable circle design surrounding the center point.",
     },
   },
   {
     id: "diamond-spec-red",
     name: "Diamond Spec",
-    category: "Tactical",
+    category: "Angular",
     shape: "diamond",
     color: "#FF4655",
     size: 6,
@@ -96,14 +96,14 @@ const GALLERY_ITEMS: GalleryItem[] = [
     outline: true,
     centerDot: true,
     description: {
-      tr: "Açılı köşelerle hızlı göz takibi sağlayan modern elmas nişangah.",
+      tr: "Yoğun zeminlerde belirgin ayrım sağlayan açılı elmas geometrisi.",
       en: "Angled geometry providing high visual separation against busy textures.",
     },
   },
   {
     id: "cqb-box-white",
     name: "CQB Box",
-    category: "SMG & Auto",
+    category: "Framed",
     shape: "box",
     color: "#FFFFFF",
     size: 6,
@@ -112,8 +112,8 @@ const GALLERY_ITEMS: GalleryItem[] = [
     outline: true,
     centerDot: true,
     description: {
-      tr: "Otomatik silahlar ve sprey kontrolü için çerçeveli hedefleme.",
-      en: "Framed reticle design optimized for automatic spray tracking.",
+      tr: "Yüksek kontrastlı, çerçeveli ve merkez noktası belirgin tasarım.",
+      en: "A framed, high-contrast design with a clearly visible center dot.",
     },
   },
 ];
@@ -156,7 +156,7 @@ export const CrosshairGallerySection: React.FC = () => {
             <p className="text-sm sm:text-base text-muted-foreground">
               {isTr
                 ? "Bir profile dokunarak tüm sayfada anında aktif edin veya uygulamada 50'den fazla hazır modeli keşfedin."
-                : "Tap any reticle to preview it live across the site or explore the full 50+ preset library in the app."}
+                : "Tap any reticle to preview it across the site or explore the built-in designs in the app."}
             </p>
           </div>
 

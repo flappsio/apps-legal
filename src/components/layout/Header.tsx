@@ -31,6 +31,7 @@ export const Header: React.FC = () => {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [appsDropdownOpen, setAppsDropdownOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -44,6 +45,20 @@ export const Header: React.FC = () => {
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    const updateScrollProgress = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(scrollable > 0 ? Math.min(100, (window.scrollY / scrollable) * 100) : 0);
+    };
+    updateScrollProgress();
+    window.addEventListener("scroll", updateScrollProgress, { passive: true });
+    window.addEventListener("resize", updateScrollProgress);
+    return () => {
+      window.removeEventListener("scroll", updateScrollProgress);
+      window.removeEventListener("resize", updateScrollProgress);
+    };
   }, []);
 
   if (isMinimal) return null;
@@ -112,6 +127,18 @@ export const Header: React.FC = () => {
       icon: <Sliders className="w-3.5 h-3.5" />,
       active: location.pathname.startsWith("/crosshair/guides"),
     },
+    {
+      to: "/crosshair/privacy-policy",
+      label: t("common.privacy"),
+      icon: <ShieldCheck className="w-3.5 h-3.5" />,
+      active: location.pathname.includes("/privacy-policy"),
+    },
+    {
+      to: "/crosshair/terms-of-use",
+      label: t("common.terms"),
+      icon: <FileText className="w-3.5 h-3.5" />,
+      active: location.pathname.includes("/terms-of-use"),
+    },
   ];
 
   // Portal / General Hub Nav Links
@@ -145,7 +172,12 @@ export const Header: React.FC = () => {
   const activeNavLinks = isCrosshairApp ? crosshairNavLinks : portalNavLinks;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/85 backdrop-blur-xl transition-colors duration-200">
+    <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-2xl transition-colors duration-200 shadow-[0_10px_35px_rgba(0,0,0,0.08)]">
+      <div
+        className="absolute inset-x-0 bottom-0 h-[2px] origin-left bg-gradient-to-r from-primary via-cyan-400 to-violet-500"
+        style={{ transform: `scaleX(${scrollProgress / 100})` }}
+        aria-hidden="true"
+      />
       <div className="container max-w-6xl mx-auto flex h-16 sm:h-18 items-center justify-between px-4 sm:px-6">
         {/* Left Side: Brand Logo & App Context Selector */}
         <div className="flex items-center gap-3">
@@ -177,7 +209,7 @@ export const Header: React.FC = () => {
               {isCrosshairApp ? (
                 <>
                   <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                  <span className="font-bold">Crosshair</span>
+                  <span className="font-bold">Crossio</span>
                 </>
               ) : (
                 <>
@@ -223,14 +255,14 @@ export const Header: React.FC = () => {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-bold text-foreground group-hover:text-primary transition-colors truncate">
-                        Crosshair
+                        Crossio
                       </span>
                       <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-primary/20 text-primary">
                         Active
                       </span>
                     </div>
                     <p className="text-[10px] text-muted-foreground truncate">
-                      Valorant & FPS Aim Overlay
+                      Custom Crosshair • Passive Overlay
                     </p>
                   </div>
                 </Link>
@@ -253,7 +285,7 @@ export const Header: React.FC = () => {
         </div>
 
         {/* Desktop Contextual Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-1.5 bg-muted/30 p-1 rounded-2xl border border-border/40 text-xs">
+        <nav className="hidden xl:flex items-center gap-1 bg-muted/30 p-1 rounded-2xl border border-border/40 text-xs shadow-inner">
           {activeNavLinks.map((link) => (
             <Link
               key={link.to}
@@ -300,7 +332,7 @@ export const Header: React.FC = () => {
             >
               <Link to="/crosshair">
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>Crosshair App</span>
+                <span>Crossio App</span>
               </Link>
             </Button>
           )}
@@ -315,7 +347,7 @@ export const Header: React.FC = () => {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-xl bg-card border border-border/80 text-muted-foreground hover:text-foreground"
+            className="xl:hidden p-2 rounded-xl bg-card border border-border/80 text-muted-foreground hover:text-foreground"
             aria-label="Toggle Navigation Menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -325,7 +357,7 @@ export const Header: React.FC = () => {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-b border-border/60 bg-card/95 backdrop-blur-2xl px-4 py-4 space-y-3 animate-fade-in">
+        <div className="xl:hidden border-b border-border/60 bg-card/95 backdrop-blur-2xl px-4 py-4 space-y-3 animate-fade-in">
           <div className="flex flex-col gap-1 text-xs">
             {/* Apps Hub Link */}
             <Link
