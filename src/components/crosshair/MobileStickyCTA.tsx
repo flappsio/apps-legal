@@ -11,7 +11,9 @@ export const MobileStickyCTA: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       // Show sticky CTA after scrolling past 400px
-      if (window.scrollY > 400) {
+      const footer = document.getElementById("cinematic-footer");
+      const footerVisible = footer && footer.getBoundingClientRect().top < window.innerHeight;
+      if (window.scrollY > 400 && !footerVisible) {
         setVisible(true);
       } else {
         setVisible(false);

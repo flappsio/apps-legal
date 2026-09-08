@@ -109,8 +109,10 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       {
         "@context": "https://schema.org",
         "@type": "Organization",
+        "@id": `${BASE_URL}/#organization`,
         "name": "flappsio",
         "url": BASE_URL,
+        "description": "flappsio develops Crossio, an Android app for creating and displaying customizable visual crosshair overlays.",
         "logo": `${BASE_URL}/assets/images/logo.png`,
         "sameAs": [
           "https://play.google.com/store/apps/details?id=com.hasan.apps.crosshair"
@@ -130,7 +132,8 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
         "offers": {
           "@type": "Offer",
           "price": "0",
-          "priceCurrency": "USD"
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
         },
         "description": description,
         "downloadUrl": "https://play.google.com/store/apps/details?id=com.hasan.apps.crosshair",
@@ -145,7 +148,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
           "100% anti-cheat compliant passive visual overlay with zero game memory modification",
           "No root required, utilizes standard Android SYSTEM_ALERT_WINDOW",
           "Lightweight passive canvas rendering optimized for minimal battery and GPU usage",
-          "100% offline privacy with local on-device design storage and zero telemetry collection"
+          "Crosshair designs and imported images remain in local app storage; see the privacy policy for analytics and service-provider details"
         ],
         "author": {
           "@type": "Organization",

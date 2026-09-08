@@ -2,7 +2,7 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 import { defineConfig } from "vite";
 
-export default defineConfig({
+export default defineConfig(({ isSsrBuild }) => ({
   plugins: [react()],
   resolve: {
     alias: {
@@ -20,11 +20,13 @@ export default defineConfig({
     sourcemap: false,
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ["react", "react-dom", "react-router-dom"],
-          icons: ["lucide-react"],
-        },
+        manualChunks: isSsrBuild
+          ? undefined
+          : {
+              vendor: ["react", "react-dom", "react-router-dom"],
+              icons: ["lucide-react"],
+            },
       },
     },
   },
-});
+}));

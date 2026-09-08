@@ -181,3 +181,30 @@
   background-color: hsl(var(--primary) / 0.25);
   color: hsl(var(--foreground));
 }
+
+/* Crossio landing: precision grid, editorial typography and a framed live preview. */
+.crossio-landing > section:first-child {
+  background-image: linear-gradient(hsl(var(--foreground) / .025) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground) / .025) 1px, transparent 1px);
+  background-size: 80px 80px;
+  padding-top: clamp(48px, 7vw, 108px);
+}
+.crossio-landing > section:first-child h1 {
+  font-size: clamp(42px, 6.6vw, 92px);
+  line-height: 1.04;
+  letter-spacing: -.06em;
+}
+.crossio-landing > section:first-child h1 > span {
+  background-image: linear-gradient(120deg, hsl(var(--primary)), hsl(var(--foreground))) !important;
+}
+.crossio-landing > section:first-child::after {
+  content: "CROSSIO / CUSTOM CROSSHAIR";
+  display: block;
+  margin: 44px auto 0;
+  text-align: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  letter-spacing: .32em;
+  color: hsl(var(--muted-foreground));
+}
+.crossio-landing > section:nth-of-type(even) { background-color: hsl(var(--card) / .18); }
+.crossio-landing h2 { letter-spacing: -.035em; }

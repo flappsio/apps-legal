@@ -70,11 +70,6 @@ const CrosshairFeatureMatrixSection = lazy(() =>
     default: m.CrosshairFeatureMatrixSection,
   }))
 );
-const CrosshairFinalCTA = lazy(() =>
-  import("@/components/crosshair/CrosshairFinalCTA").then((m) => ({
-    default: m.CrosshairFinalCTA,
-  }))
-);
 const MobileStickyCTA = lazy(() =>
   import("@/components/crosshair/MobileStickyCTA").then((m) => ({
     default: m.MobileStickyCTA,
@@ -107,7 +102,7 @@ export const CrosshairLandingPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="crossio-landing min-h-screen">
       <SEOHead
         title={title}
         description={description}
@@ -266,7 +261,7 @@ export const CrosshairLandingPage: React.FC = () => {
         </section>
 
         {/* Cinematic Final CTA */}
-        <CrosshairFinalCTA />
+
 
         {/* Trademark Disclaimer */}
         <div className="container max-w-4xl mx-auto px-4 sm:px-6 pb-16">

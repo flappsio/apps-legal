@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { Header } from "@/components/layout/Header";
+import { CinematicFooter } from "@/components/ui/motion-footer";
 import { Footer } from "@/components/layout/Footer";
 import { HomePage } from "@/pages/HomePage";
 import { PrivacyPolicyPage } from "@/pages/PrivacyPolicyPage";
@@ -115,7 +116,7 @@ export const App: React.FC = () => {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
-      <Footer />
+      {location.pathname.replace(/\/$/, "") === "/crosshair" ? <CinematicFooter /> : <Footer />}
     </div>
   );
 };
