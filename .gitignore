@@ -1,2 +1,8 @@
 node_modules/*
 dist/*
+.agent
+premium-frontend-design/agents
+.claude
+premium-frontend-design
+.cursor
+.codex

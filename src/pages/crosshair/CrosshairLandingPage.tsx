@@ -5,19 +5,14 @@ import { CrosshairHero } from "@/components/crosshair/CrosshairHero";
 import { CrosshairDisclaimer } from "@/components/crosshair/CrosshairDisclaimer";
 import { FAQS_DATA, GUIDES_DATA } from "@/data/crosshairTranslations";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { HelpCircle, ChevronRight, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
-// Lazy load below-the-fold sections for instant FCP / LCP (<0.5s)
+// Lazy load below-the-fold scenes for instant FCP / LCP (<0.4s)
 const CrosshairPreviewer = lazy(() =>
   import("@/components/crosshair/CrosshairPreviewer").then((m) => ({
     default: m.CrosshairPreviewer,
-  }))
-);
-const CrosshairVideoSection = lazy(() =>
-  import("@/components/crosshair/CrosshairVideoSection").then((m) => ({
-    default: m.CrosshairVideoSection,
   }))
 );
 const CrosshairPlayStoreShowcase = lazy(() =>
@@ -25,9 +20,9 @@ const CrosshairPlayStoreShowcase = lazy(() =>
     default: m.CrosshairPlayStoreShowcase,
   }))
 );
-const CrosshairFeatures = lazy(() =>
-  import("@/components/crosshair/CrosshairFeatures").then((m) => ({
-    default: m.CrosshairFeatures,
+const CrosshairVideoSection = lazy(() =>
+  import("@/components/crosshair/CrosshairVideoSection").then((m) => ({
+    default: m.CrosshairVideoSection,
   }))
 );
 const CrosshairGallerySection = lazy(() =>
@@ -40,9 +35,9 @@ const CrosshairImportSection = lazy(() =>
     default: m.CrosshairImportSection,
   }))
 );
-const CrosshairCustomizationSection = lazy(() =>
-  import("@/components/crosshair/CrosshairCustomizationSection").then((m) => ({
-    default: m.CrosshairCustomizationSection,
+const CrosshairArchitectureCore = lazy(() =>
+  import("@/components/crosshair/CrosshairArchitectureCore").then((m) => ({
+    default: m.CrosshairArchitectureCore,
   }))
 );
 const CrosshairSetupSteps = lazy(() =>
@@ -50,24 +45,9 @@ const CrosshairSetupSteps = lazy(() =>
     default: m.CrosshairSetupSteps,
   }))
 );
-const CrosshairWhyUseSection = lazy(() =>
-  import("@/components/crosshair/CrosshairWhyUseSection").then((m) => ({
-    default: m.CrosshairWhyUseSection,
-  }))
-);
-const CrosshairCenterFocusSection = lazy(() =>
-  import("@/components/crosshair/CrosshairCenterFocusSection").then((m) => ({
-    default: m.CrosshairCenterFocusSection,
-  }))
-);
-const CrosshairMobileFirstSection = lazy(() =>
-  import("@/components/crosshair/CrosshairMobileFirstSection").then((m) => ({
-    default: m.CrosshairMobileFirstSection,
-  }))
-);
-const CrosshairFeatureMatrixSection = lazy(() =>
-  import("@/components/crosshair/CrosshairFeatureMatrixSection").then((m) => ({
-    default: m.CrosshairFeatureMatrixSection,
+const CrosshairFinalCTA = lazy(() =>
+  import("@/components/crosshair/CrosshairFinalCTA").then((m) => ({
+    default: m.CrosshairFinalCTA,
   }))
 );
 const MobileStickyCTA = lazy(() =>
@@ -102,7 +82,7 @@ export const CrosshairLandingPage: React.FC = () => {
   ];
 
   return (
-    <div className="crossio-landing min-h-screen">
+    <div className="crossio-landing min-h-screen bg-background text-foreground selection:bg-primary/20 selection:text-primary">
       <SEOHead
         title={title}
         description={description}
@@ -114,156 +94,160 @@ export const CrosshairLandingPage: React.FC = () => {
         ]}
       />
 
-      {/* 1. Critical Hero Section (Rendered immediately for ultra-fast LCP / FCP) */}
+      {/* SCENE 1: Critical Hero Section (Immediate render for ultra-fast LCP / FCP) */}
       <CrosshairHero />
 
-      {/* 2. Below-the-fold sections loaded asynchronously */}
+      {/* Below-the-fold sections loaded asynchronously with progressive ScrollReveal */}
       <Suspense fallback={<SectionSkeleton />}>
-        {/* Official Google Play Store Card & Screenshot Carousel */}
-        <CrosshairPlayStoreShowcase />
+        {/* SCENE 2: Interactive Crosshair Simulator Lab */}
+        <ScrollReveal direction="up" delay={80}>
+          <CrosshairPreviewer />
+        </ScrollReveal>
 
-        {/* Interactive "Try the Crosshair" Playground */}
-        <CrosshairPreviewer />
+        {/* SCENE 3: Verified Gameplay Proof & Google Play Showcase */}
+        <ScrollReveal direction="up" delay={80}>
+          <CrosshairPlayStoreShowcase />
+        </ScrollReveal>
 
-        {/* Autoplay Cinematic Mobile Gameplay Video Demo */}
-        <CrosshairVideoSection />
+        {/* SCENE 4: Mobile Gameplay Video Demo */}
+        <ScrollReveal direction="up" delay={80}>
+          <CrosshairVideoSection />
+        </ScrollReveal>
 
-        {/* Section: Made for mobile. Built for your aim. */}
-        <CrosshairFeatures />
+        {/* SCENE 5: Pro Gallery & Custom Reticle Import */}
+        <ScrollReveal direction="up" delay={80}>
+          <CrosshairGallerySection />
+        </ScrollReveal>
 
-        {/* Section: Find your crosshair (Gallery Explorer) */}
-        <CrosshairGallerySection />
+        <ScrollReveal direction="up" delay={80}>
+          <CrosshairImportSection />
+        </ScrollReveal>
 
-        {/* Section: Custom Crosshair Import */}
-        <CrosshairImportSection />
+        {/* SCENE 6: Consolidated System Architecture & Safety Core */}
+        <ScrollReveal direction="up" delay={80}>
+          <CrosshairArchitectureCore />
+        </ScrollReveal>
 
-        {/* Section: Pixel-perfect control */}
-        <CrosshairCustomizationSection />
+        {/* SCENE 7: 3-Step Setup Flow (From Download to Aim) */}
+        <ScrollReveal direction="up" delay={80}>
+          <CrosshairSetupSteps />
+        </ScrollReveal>
 
-        {/* Section: From download to gameplay in seconds */}
-        <CrosshairSetupSteps />
-
-        {/* Section: Why use a custom crosshair on Android? */}
-        <CrosshairWhyUseSection />
-
-        {/* Section: Stay focused on the center */}
-        <CrosshairCenterFocusSection />
-
-        {/* Section: Built for Android. Not adapted to it */}
-        <CrosshairMobileFirstSection />
-
-        {/* Section: Full Technical Feature Matrix & AI Knowledge Base */}
-        <CrosshairFeatureMatrixSection />
-
-        {/* FAQ Spotlight Section */}
-        <section className="py-16 sm:py-20 border-t border-border/40">
+        {/* SCENE 8: Essential Knowledge: FAQ Spotlight */}
+        <section className="py-16 sm:py-24 border-t border-border/40">
           <div className="container max-w-5xl mx-auto px-4 sm:px-6">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-10">
-              <div>
-                <Badge variant="brand" className="text-xs px-3 py-1 font-semibold mb-2">
-                  {t("landingPage.faqBadge")}
-                </Badge>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground">
-                  {t("landingPage.faqTitle")}
-                </h2>
+            <ScrollReveal direction="up" delay={50}>
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-10">
+                <div>
+                  <div className="text-[11px] font-mono tracking-widest text-primary uppercase font-bold mb-1">
+                    {t("landingPage.faqBadge")}
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
+                    {t("landingPage.faqTitle")}
+                  </h2>
+                </div>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="sm"
+                  className="text-xs rounded-xl border-border/80 hover:bg-secondary gap-1.5 font-mono"
+                >
+                  <Link to="/crosshair/faq">
+                    <span>{t("landingPage.viewAllFaqs", { count: FAQS_DATA.length })}</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </Link>
+                </Button>
               </div>
-              <Button
-                asChild
-                variant="outline"
-                size="sm"
-                className="text-xs rounded-xl border-border/80 hover:bg-secondary gap-1.5"
-              >
-                <Link to="/crosshair/faq">
-                  <span>{t("landingPage.viewAllFaqs", { count: FAQS_DATA.length })}</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
-                </Link>
-              </Button>
-            </div>
+            </ScrollReveal>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {FAQS_DATA.slice(0, 4).map((faq) => (
-                <div
-                  key={faq.id}
-                  className="p-5 rounded-2xl bg-card/60 border border-border/70 backdrop-blur-sm space-y-2 hover:border-primary/40 transition-colors"
-                >
-                  <div className="flex items-start gap-2.5">
-                    <HelpCircle className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                    <h3 className="text-sm font-bold text-foreground">
-                      {isTr ? faq.question.tr : faq.question.en}
-                    </h3>
-                  </div>
-                  <p className="text-xs text-muted-foreground pl-6 leading-relaxed">
-                    {isTr ? faq.directAnswer.tr : faq.directAnswer.en}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Guides Spotlight */}
-        <section className="py-16 sm:py-20 border-t border-border/40">
-          <div className="container max-w-5xl mx-auto px-4 sm:px-6">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-10">
-              <div>
-                <Badge variant="brand" className="text-xs px-3 py-1 font-semibold mb-2">
-                  {t("landingPage.guidesBadge")}
-                </Badge>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground">
-                  {t("landingPage.guidesTitle")}
-                </h2>
-              </div>
-              <Button
-                asChild
-                variant="outline"
-                size="sm"
-                className="text-xs rounded-xl border-border/80 hover:bg-secondary gap-1.5"
-              >
-                <Link to="/crosshair/guides">
-                  <span>{t("landingPage.readAllGuides")}</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
-                </Link>
-              </Button>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {GUIDES_DATA.map((guide) => (
-                <Link
-                  key={guide.slug}
-                  to={`/crosshair/guides/${guide.slug}`}
-                  className="group p-5 rounded-2xl bg-card/60 border border-border/70 hover:border-primary/40 hover:shadow-lg transition-all flex flex-col justify-between"
-                >
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between text-[11px] text-muted-foreground">
-                      <span className="px-2 py-0.5 rounded-full bg-secondary text-primary font-semibold">
-                        {guide.category}
-                      </span>
-                      <span>{guide.readTime}</span>
+              {FAQS_DATA.slice(0, 4).map((faq, idx) => (
+                <ScrollReveal key={faq.id} direction="up" delay={idx * 80}>
+                  <div className="p-5 rounded-2xl bg-card/40 border border-border/70 backdrop-blur-sm space-y-2 hover:border-primary/40 transition-colors h-full">
+                    <div className="flex items-start gap-2.5">
+                      <HelpCircle className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                      <h3 className="text-sm font-bold text-foreground">
+                        {isTr ? faq.question.tr : faq.question.en}
+                      </h3>
                     </div>
-
-                    <h3 className="text-sm font-bold text-foreground group-hover:text-primary transition-colors leading-snug">
-                      {isTr ? guide.title.tr : guide.title.en}
-                    </h3>
-
-                    <p className="text-xs text-muted-foreground line-clamp-2">
-                      {isTr ? guide.description.tr : guide.description.en}
+                    <p className="text-xs text-muted-foreground pl-6 leading-relaxed">
+                      {isTr ? faq.directAnswer.tr : faq.directAnswer.en}
                     </p>
                   </div>
-
-                  <div className="pt-4 mt-4 border-t border-border/40 flex items-center text-xs text-primary font-semibold group-hover:translate-x-0.5 transition-transform">
-                    <span>{t("guidesPage.readGuide")}</span>
-                    <ArrowRight className="w-3.5 h-3.5 ml-1" />
-                  </div>
-                </Link>
+                </ScrollReveal>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Cinematic Final CTA */}
+        {/* SCENE 9: Practical Gaming Guides Spotlight */}
+        <section className="py-16 sm:py-24 border-t border-border/40">
+          <div className="container max-w-5xl mx-auto px-4 sm:px-6">
+            <ScrollReveal direction="up" delay={50}>
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-10">
+                <div>
+                  <div className="text-[11px] font-mono tracking-widest text-primary uppercase font-bold mb-1">
+                    {t("landingPage.guidesBadge")}
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
+                    {t("landingPage.guidesTitle")}
+                  </h2>
+                </div>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="sm"
+                  className="text-xs rounded-xl border-border/80 hover:bg-secondary gap-1.5 font-mono"
+                >
+                  <Link to="/crosshair/guides">
+                    <span>{t("landingPage.readAllGuides")}</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </Link>
+                </Button>
+              </div>
+            </ScrollReveal>
 
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {GUIDES_DATA.map((guide, idx) => (
+                <ScrollReveal key={guide.slug} direction="up" delay={idx * 100} className="h-full">
+                  <Link
+                    to={`/crosshair/guides/${guide.slug}`}
+                    className="group p-5 rounded-2xl bg-card/40 border border-border/70 hover:border-primary/40 hover:bg-card/60 transition-all flex flex-col justify-between h-full"
+                  >
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between text-[11px] text-muted-foreground font-mono">
+                        <span className="px-2 py-0.5 rounded bg-secondary text-primary font-bold">
+                          {guide.category}
+                        </span>
+                        <span>{guide.readTime}</span>
+                      </div>
 
-        {/* Trademark Disclaimer */}
+                      <h3 className="text-sm font-bold text-foreground group-hover:text-primary transition-colors leading-snug">
+                        {isTr ? guide.title.tr : guide.title.en}
+                      </h3>
+
+                      <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
+                        {isTr ? guide.description.tr : guide.description.en}
+                      </p>
+                    </div>
+
+                    <div className="pt-4 mt-4 border-t border-border/40 flex items-center text-xs text-primary font-semibold group-hover:translate-x-0.5 transition-transform">
+                      <span>{t("guidesPage.readGuide")}</span>
+                      <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                    </div>
+                  </Link>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* SCENE 10: Cinematic Final CTA */}
+        <ScrollReveal direction="up" delay={80}>
+          <CrosshairFinalCTA />
+        </ScrollReveal>
+
+        {/* Disclaimer */}
         <div className="container max-w-4xl mx-auto px-4 sm:px-6 pb-16">
           <CrosshairDisclaimer />
         </div>
@@ -274,3 +258,5 @@ export const CrosshairLandingPage: React.FC = () => {
     </div>
   );
 };
+
+export default CrosshairLandingPage;

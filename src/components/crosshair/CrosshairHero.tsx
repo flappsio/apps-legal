@@ -5,10 +5,7 @@ import { Button } from "@/components/ui/button";
 import {
   Download,
   Play,
-  Layers,
-  Sparkles,
   Zap,
-  Sliders,
   ShieldCheck,
 } from "lucide-react";
 
@@ -46,26 +43,13 @@ export const CrosshairHero: React.FC = () => {
       <div className="container max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Top Text Cluster */}
         <div className="text-center max-w-3xl mx-auto space-y-6">
-          {/* Eyebrow badge */}
-          <div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-bold tracking-wider uppercase backdrop-blur-md shadow-sm transition-all duration-300"
-            style={{
-              backgroundColor: `${activeColorOption.hex}15`,
-              borderColor: `${activeColorOption.hex}40`,
-              color: activeColorOption.hex,
-            }}
-          >
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>{t("hero.eyebrow")}</span>
-          </div>
-
           {/* Semantic H1 (SEO) + Main prominent typography (72-96px desktop, 42-52px mobile) */}
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-foreground leading-[1.08]">
             {t("hero.titleLine1")} <br />
             <span
-              className="bg-clip-text text-transparent transition-all duration-500"
+              className="transition-colors duration-500"
               style={{
-                backgroundImage: `linear-gradient(135deg, ${activeColorOption.hex} 0%, #00E5FF 50%, #8B5CF6 100%)`,
+                color: activeColorOption.hex,
               }}
             >
               {t("hero.titleLine2")}
@@ -125,42 +109,11 @@ export const CrosshairHero: React.FC = () => {
           </div>
         </div>
 
-        {/* 3D Landscape Android Smartphone Hero Mockup Composition */}
-        <div className="mt-12 sm:mt-16 max-w-5xl mx-auto relative select-none">
-          {/* Floating UI Parameter Chips around device in 3D space */}
-          <div className="hidden lg:flex absolute -left-6 top-1/4 z-30 flex-col gap-3 animate-float-slow">
-            <div className="p-3 rounded-2xl bg-card/90 border border-border/80 backdrop-blur-xl shadow-2xl flex items-center gap-2.5 text-xs">
-              <div
-                className="w-3 h-3 rounded-full"
-                style={{ backgroundColor: activeColorOption.hex }}
-              />
-              <span className="font-mono text-muted-foreground text-[11px]">COLOR:</span>
-              <span className="font-bold text-foreground">{activeColorOption.name}</span>
-            </div>
-
-            <div className="p-3 rounded-2xl bg-card/90 border border-border/80 backdrop-blur-xl shadow-2xl flex items-center gap-2.5 text-xs">
-              <Sliders className="w-3.5 h-3.5 text-primary" />
-              <span className="font-mono text-muted-foreground text-[11px]">SIZE:</span>
-              <span className="font-bold text-foreground">{size}px</span>
-            </div>
-          </div>
-
-          <div className="hidden lg:flex absolute -right-6 top-1/3 z-30 flex-col gap-3 animate-float-delayed">
-            <div className="p-3 rounded-2xl bg-card/90 border border-border/80 backdrop-blur-xl shadow-2xl flex items-center gap-2.5 text-xs">
-              <Layers className="w-3.5 h-3.5 text-cyan-400" />
-              <span className="font-mono text-muted-foreground text-[11px]">STATUS:</span>
-              <span className="font-bold text-primary">OVERLAY ACTIVE</span>
-            </div>
-
-            <div className="p-3 rounded-2xl bg-card/90 border border-border/80 backdrop-blur-xl shadow-2xl flex items-center gap-2.5 text-xs">
-              <span className="font-mono text-muted-foreground text-[11px]">OPACITY:</span>
-              <span className="font-bold text-foreground">{Math.round(opacity * 100)}%</span>
-            </div>
-          </div>
-
+        {/* Landscape Android Smartphone Hero Mockup Composition */}
+        <div className="mt-12 sm:mt-16 max-w-4xl mx-auto relative select-none">
           {/* Landscape Phone Device Frame */}
           <div
-            className="relative mx-auto rounded-[36px] sm:rounded-[44px] p-3 sm:p-4 bg-gradient-to-b from-[#222530] via-[#12141c] to-[#0a0b10] border-2 border-white/15 shadow-[0_25px_70px_rgba(0,0,0,0.8)] transition-all duration-500"
+            className="relative mx-auto rounded-[32px] sm:rounded-[40px] p-2.5 sm:p-3.5 bg-gradient-to-b from-[#222530] via-[#12141c] to-[#0a0b10] border border-white/15 shadow-[0_25px_70px_rgba(0,0,0,0.8)] transition-all duration-500 hover:border-primary/40"
             style={{
               boxShadow: `0 25px 80px -10px ${activeColorOption.hex}25, 0 0 40px rgba(0,0,0,0.9)`,
             }}

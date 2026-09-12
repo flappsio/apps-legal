@@ -16,8 +16,9 @@ import {
 import { Link } from "react-router-dom";
 
 export const CrosshairSupportPage: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, isTr } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
+  const [mailtoUrl, setMailtoUrl] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -31,7 +32,47 @@ export const CrosshairSupportPage: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const topicLabels: Record<string, string> = {
+      support: t("supportPage.topicSupport"),
+      feature: t("supportPage.topicFeature"),
+      privacy: t("supportPage.topicPrivacy"),
+      other: t("supportPage.topicOther"),
+    };
+
+    const selectedTopic = topicLabels[formData.category] || formData.category;
+    const subject = `[Crossio Support - ${selectedTopic}] ${formData.name}`;
+
+    const bodyLines = [
+      `${isTr ? "Ad Soyad" : "Name"}: ${formData.name}`,
+      `${isTr ? "E-Posta" : "Email"}: ${formData.email}`,
+      formData.device ? `${isTr ? "Cihaz / Model" : "Device / Model"}: ${formData.device}` : "",
+      `${isTr ? "Konu" : "Category"}: ${selectedTopic}`,
+      "",
+      `${isTr ? "Mesaj" : "Message"}:`,
+      formData.message,
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    const url = `mailto:info@flappsio.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines)}`;
+    setMailtoUrl(url);
+
+    // Open mail client directly
+    window.location.href = url;
     setSubmitted(true);
+  };
+
+  const handleReset = () => {
+    setFormData({
+      name: "",
+      email: "",
+      device: "",
+      category: "support",
+      message: "",
+    });
+    setMailtoUrl("");
+    setSubmitted(false);
   };
 
   return (
@@ -126,24 +167,38 @@ export const CrosshairSupportPage: React.FC = () => {
           <div className="md:col-span-2">
             <div className="p-6 sm:p-8 rounded-3xl bg-card/80 border border-border/80 shadow-xl backdrop-blur-md">
               {submitted ? (
-                <div className="text-center py-12 space-y-4">
+                <div className="text-center py-10 space-y-4">
                   <div className="w-12 h-12 rounded-full bg-primary/20 text-primary flex items-center justify-center mx-auto">
                     <CheckCircle2 className="w-6 h-6" />
                   </div>
                   <h3 className="text-lg font-bold text-foreground">
                     {t("supportPage.successTitle")}
                   </h3>
-                  <p className="text-xs sm:text-sm text-muted-foreground max-w-md mx-auto">
+                  <p className="text-xs sm:text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
                     {t("supportPage.successDesc")}
                   </p>
-                  <Button
-                    onClick={() => setSubmitted(false)}
-                    variant="outline"
-                    size="sm"
-                    className="text-xs rounded-xl"
-                  >
-                    {t("supportPage.sendAnother")}
-                  </Button>
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+                    {mailtoUrl && (
+                      <Button
+                        asChild
+                        size="sm"
+                        className="text-xs rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground font-bold h-10 px-5 gap-1.5"
+                      >
+                        <a href={mailtoUrl}>
+                          <Mail className="w-3.5 h-3.5" />
+                          <span>{t("supportPage.openMailClient")}</span>
+                        </a>
+                      </Button>
+                    )}
+                    <Button
+                      onClick={handleReset}
+                      variant="outline"
+                      size="sm"
+                      className="text-xs rounded-xl h-10 px-5"
+                    >
+                      {t("supportPage.sendAnother")}
+                    </Button>
+                  </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">

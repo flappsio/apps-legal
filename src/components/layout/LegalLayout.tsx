@@ -14,6 +14,9 @@ import {
   Info,
   Shield,
   ExternalLink,
+  ChevronDown,
+  ChevronUp,
+  List,
 } from "lucide-react";
 import { LegalDocument } from "@/data/crosshairLegalData";
 import { Button } from "@/components/ui/button";
@@ -27,12 +30,13 @@ interface LegalLayoutProps {
 }
 
 export const LegalLayout: React.FC<LegalLayoutProps> = ({ document }) => {
-  const { t } = useLanguage();
+  const { t, isTr } = useLanguage();
   const [activeSectionId, setActiveSectionId] = useState<string>("");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [copied, setCopied] = useState<boolean>(false);
   const [showBackToTop, setShowBackToTop] = useState<boolean>(false);
   const [readingProgress, setReadingProgress] = useState<number>(0);
+  const [isMobileTocOpen, setIsMobileTocOpen] = useState<boolean>(false);
 
   // ScrollSpy & reading progress tracking
   useEffect(() => {
@@ -204,9 +208,9 @@ export const LegalLayout: React.FC<LegalLayoutProps> = ({ document }) => {
 
         {/* Main Content Layout: Sidebar TOC + Sections */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Sidebar (TOC & Search) */}
-          <aside className="lg:col-span-4 sticky top-24 space-y-4">
-            <div className="p-4 rounded-2xl bg-card/60 border border-border/70 backdrop-blur-sm shadow-sm space-y-4">
+          {/* Desktop Sidebar (TOC & Search) */}
+          <aside className="hidden lg:block lg:col-span-4 lg:sticky lg:top-24 space-y-4">
+            <div className="p-4 rounded-2xl bg-card border border-border/70 backdrop-blur-sm shadow-sm space-y-4">
               <div className="relative">
                 <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
                 <Input
@@ -268,7 +272,98 @@ export const LegalLayout: React.FC<LegalLayoutProps> = ({ document }) => {
           </aside>
 
           {/* Document Content Sections */}
-          <main className="lg:col-span-8 space-y-8">
+          <main className="col-span-1 lg:col-span-8 space-y-8 min-w-0">
+            {/* Mobile-only Collapsible Table of Contents */}
+            <div className="lg:hidden rounded-2xl bg-card border border-border/80 shadow-sm overflow-hidden transition-all">
+              <button
+                type="button"
+                onClick={() => setIsMobileTocOpen(!isMobileTocOpen)}
+                className="w-full p-4 flex items-center justify-between text-left hover:bg-muted/30 transition-colors"
+                aria-expanded={isMobileTocOpen}
+              >
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <div className="p-2 rounded-xl bg-primary/10 text-primary shrink-0">
+                    <List className="w-4 h-4" />
+                  </div>
+                  <div className="min-w-0">
+                    <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground block">
+                      {t("legalLayout.tableOfContents")}
+                    </span>
+                    <span className="text-xs text-foreground font-semibold truncate block mt-0.5">
+                      {document.sections.find((s) => s.id === activeSectionId)?.title || document.sections[0]?.title}
+                    </span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 shrink-0 ml-2">
+                  <Badge variant="outline" className="text-[10px] font-mono border-primary/30 text-primary">
+                    {document.sections.length} {isTr ? "Bölüm" : "Sections"}
+                  </Badge>
+                  {isMobileTocOpen ? (
+                    <ChevronUp className="w-4 h-4 text-muted-foreground" />
+                  ) : (
+                    <ChevronDown className="w-4 h-4 text-muted-foreground" />
+                  )}
+                </div>
+              </button>
+
+              {isMobileTocOpen && (
+                <div className="px-4 pb-4 pt-2 border-t border-border/60 space-y-3 bg-background/60">
+                  <div className="relative">
+                    <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+                    <Input
+                      placeholder={t("legalLayout.searchPlaceholder")}
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="pl-9 h-9 text-xs bg-background"
+                    />
+                  </div>
+
+                  <nav className="space-y-1 max-h-[50vh] overflow-y-auto pr-1">
+                    {filteredSections.map((section) => {
+                      const isActive = activeSectionId === section.id;
+                      return (
+                        <button
+                          key={section.id}
+                          onClick={() => {
+                            scrollToSection(section.id);
+                            setIsMobileTocOpen(false);
+                          }}
+                          className={`w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium transition-all flex items-start gap-2.5 ${
+                            isActive
+                              ? "bg-primary text-primary-foreground font-bold shadow-sm"
+                              : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                          }`}
+                        >
+                          {section.number && (
+                            <span
+                              className={`font-mono text-[11px] ${
+                                isActive ? "text-primary-foreground/80" : "opacity-60"
+                              }`}
+                            >
+                              {section.number}.
+                            </span>
+                          )}
+                          <span className="line-clamp-1">
+                            {section.shortTitle || section.title}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </nav>
+
+                  {/* Mobile Support shortcut in accordion */}
+                  <div className="pt-2 border-t border-border/40 flex items-center justify-between text-[11px]">
+                    <span className="text-muted-foreground">{t("legalLayout.needHelp")}</span>
+                    <a
+                      href={`mailto:${document.contactEmail}`}
+                      className="text-primary font-bold hover:underline inline-flex items-center gap-1"
+                    >
+                      {document.contactEmail} <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </div>
+                </div>
+              )}
+            </div>
             {filteredSections.length === 0 ? (
               <div className="p-12 text-center rounded-2xl bg-card border border-border/70">
                 <p className="text-muted-foreground text-sm">
