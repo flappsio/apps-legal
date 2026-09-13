@@ -1,0 +1,157 @@
+.md3-slider {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 48px;
+  color: hsl(var(--primary));
+}
+
+.md3-slider__visual {
+  position: absolute;
+  inset: 0 10px;
+  pointer-events: none;
+}
+
+.md3-slider__active,
+.md3-slider__inactive {
+  position: absolute;
+  top: 16px;
+  height: 16px;
+  overflow: hidden;
+}
+
+.md3-slider__active {
+  left: -8px;
+  width: max(0px, calc(var(--slider-progress) + 2px));
+  border-radius: 999px 2px 2px 999px;
+  background: currentColor;
+}
+
+.md3-slider__inactive {
+  right: -8px;
+  width: max(0px, calc(100% - var(--slider-progress) + 2px));
+  border-radius: 2px 999px 999px 2px;
+  background: hsl(var(--primary) / 0.16);
+}
+
+.md3-slider__inactive::after {
+  content: "";
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.md3-slider__handle {
+  position: absolute;
+  left: var(--slider-progress);
+  top: 4px;
+  width: 4px;
+  height: 40px;
+  border-radius: 2px;
+  background: currentColor;
+  transform: translateX(-50%);
+}
+
+.md3-slider__input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 48px;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  appearance: none;
+  background: transparent;
+}
+
+/* Match the native thumb's travel to the inset visual track. */
+.md3-slider__input::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 48px;
+}
+.md3-slider__input::-moz-range-thumb {
+  width: 20px;
+  height: 48px;
+  border: 0;
+}
+
+.md3-slider:has(:focus-visible) {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+.md3-slider__value {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: clamp(24px, var(--slider-progress), calc(100% - 24px));
+  transform: translateX(-50%);
+  border-radius: 8px;
+  padding: 6px 10px;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  visibility: hidden;
+  z-index: 10;
+}
+
+.md3-slider:not([data-disabled]):is(:hover, :focus-within) .md3-slider__value {
+  visibility: visible;
+}
+.md3-slider:not([data-disabled]):active .md3-slider__handle {
+  transform: translateX(-50%) scaleX(0.5);
+}
+.md3-slider[data-disabled] {
+  color: hsl(var(--foreground) / 0.38);
+}
+.md3-slider[data-disabled] .md3-slider__inactive {
+  background: hsl(var(--foreground) / 0.12);
+}
+.md3-slider[data-disabled] .md3-slider__input { cursor: not-allowed; }
+
+/* Collapse the track and its stop indicator together at either endpoint. */
+.md3-slider[data-at-min] .md3-slider__active,
+.md3-slider[data-at-max] .md3-slider__inactive {
+  display: none;
+}
+
+.md3-slider__ticks {
+  position: absolute;
+  inset: 16px 0;
+}
+.md3-slider__ticks > span {
+  position: absolute;
+  top: 6px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: currentColor;
+  transform: translateX(-50%);
+}
+.md3-slider__ticks--active {
+  color: hsl(var(--primary-foreground));
+  clip-path: inset(0 max(0px, calc(100% - var(--slider-progress) + 6px)) 0 -2px);
+}
+.md3-slider__ticks--inactive {
+  clip-path: inset(0 -2px 0 max(0px, calc(var(--slider-progress) + 6px)));
+}
+.md3-slider[data-at-min] .md3-slider__ticks--active,
+.md3-slider[data-at-max] .md3-slider__ticks--inactive {
+  display: none;
+}
+.md3-slider[data-disabled] .md3-slider__ticks--active {
+  color: hsl(var(--background));
+}
+
+@media (forced-colors: active) {
+  .md3-slider__visual { display: none; }
+  .md3-slider__input { opacity: 1; appearance: auto; }
+  .md3-slider__input::-webkit-slider-thumb { appearance: auto; }
+}

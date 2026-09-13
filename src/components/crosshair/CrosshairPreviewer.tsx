@@ -1,3 +1,4 @@
+import { Slider } from "@/components/ui/slider";
 import React, { useState, useRef } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useCrosshairState, COLOR_OPTIONS, CrosshairShape } from "@/context/CrosshairStateContext";
@@ -420,15 +421,13 @@ export const CrosshairPreviewer: React.FC = () => {
                     </label>
                     <span className="font-mono font-bold text-foreground">{size}px</span>
                   </div>
-                  <input
+                  <Slider
                     id="preview-size-slider"
                     aria-label={t("previewer.sizeLabel")}
-                    type="range"
                     min="2"
                     max="14"
-                    value={size}
+                    value={size} formatValue={(value) => `${value}px`}
                     onChange={(e) => setSize(Number(e.target.value))}
-                    className="w-full accent-primary h-1.5 bg-muted rounded-lg cursor-pointer"
                   />
                 </div>
 
@@ -439,16 +438,14 @@ export const CrosshairPreviewer: React.FC = () => {
                     </label>
                     <span className="font-mono font-bold text-foreground">{Math.round(opacity * 100)}%</span>
                   </div>
-                  <input
+                  <Slider
                     id="preview-opacity-slider"
                     aria-label={t("previewer.opacityLabel")}
-                    type="range"
                     min="0.2"
                     max="1"
                     step="0.05"
-                    value={opacity}
+                    value={opacity} formatValue={(value) => `${Math.round(value * 100)}%`}
                     onChange={(e) => setOpacity(Number(e.target.value))}
-                    className="w-full accent-primary h-1.5 bg-muted rounded-lg cursor-pointer"
                   />
                 </div>
               </div>
@@ -460,14 +457,12 @@ export const CrosshairPreviewer: React.FC = () => {
                   <label htmlFor="preview-thickness-slider">{t("previewer.thicknessLabel")}</label>
                   <span className="font-mono font-bold text-foreground">{thickness}px</span>
                 </div>
-                <input
+                <Slider
                   id="preview-thickness-slider"
-                  type="range"
                   min="1"
                   max="6"
-                  value={thickness}
+                  value={thickness} formatValue={(value) => `${value}px`}
                   onChange={(e) => setThickness(Number(e.target.value))}
-                  className="w-full accent-primary h-1.5 bg-muted rounded-lg cursor-pointer"
                 />
               </div>
               <div className="space-y-1.5">
@@ -475,14 +470,12 @@ export const CrosshairPreviewer: React.FC = () => {
                   <label htmlFor="preview-gap-slider">{t("previewer.gapLabel")}</label>
                   <span className="font-mono font-bold text-foreground">{gap}px</span>
                 </div>
-                <input
+                <Slider
                   id="preview-gap-slider"
-                  type="range"
                   min="0"
                   max="12"
-                  value={gap}
+                  value={gap} formatValue={(value) => `${value}px`}
                   onChange={(e) => setGap(Number(e.target.value))}
-                  className="w-full accent-primary h-1.5 bg-muted rounded-lg cursor-pointer"
                 />
               </div>
             </div>

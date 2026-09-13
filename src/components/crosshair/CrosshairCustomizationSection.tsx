@@ -1,3 +1,4 @@
+import { Slider } from "@/components/ui/slider";
 import React from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useCrosshairState, COLOR_OPTIONS } from "@/context/CrosshairStateContext";
@@ -249,15 +250,13 @@ export const CrosshairCustomizationSection: React.FC = () => {
                   </label>
                   <span className="font-mono font-bold text-foreground">{size}px</span>
                 </div>
-                <input
+                <Slider
                   id="custom-size-slider"
                   aria-label={t("customization.sizeLabel")}
-                  type="range"
                   min="2"
                   max="16"
-                  value={size}
+                  value={size} formatValue={(value) => `${value}px`}
                   onChange={(e) => setSize(Number(e.target.value))}
-                  className="w-full accent-primary h-1.5 bg-muted rounded-lg cursor-pointer"
                 />
               </div>
 
@@ -268,15 +267,13 @@ export const CrosshairCustomizationSection: React.FC = () => {
                   </label>
                   <span className="font-mono font-bold text-foreground">{thickness}px</span>
                 </div>
-                <input
+                <Slider
                   id="custom-thickness-slider"
                   aria-label={t("customization.thicknessLabel")}
-                  type="range"
                   min="1"
                   max="6"
-                  value={thickness}
+                  value={thickness} formatValue={(value) => `${value}px`}
                   onChange={(e) => setThickness(Number(e.target.value))}
-                  className="w-full accent-primary h-1.5 bg-muted rounded-lg cursor-pointer"
                 />
               </div>
 
@@ -288,15 +285,13 @@ export const CrosshairCustomizationSection: React.FC = () => {
                     </label>
                     <span className="font-mono font-bold text-foreground">{gap}px</span>
                   </div>
-                  <input
+                  <Slider
                     id="custom-gap-slider"
                     aria-label={t("customization.gapLabel")}
-                    type="range"
                     min="0"
                     max="14"
-                    value={gap}
+                    value={gap} formatValue={(value) => `${value}px`}
                     onChange={(e) => setGap(Number(e.target.value))}
-                    className="w-full accent-primary h-1.5 bg-muted rounded-lg cursor-pointer"
                   />
                 </div>
               )}
@@ -308,16 +303,14 @@ export const CrosshairCustomizationSection: React.FC = () => {
                   </label>
                   <span className="font-mono font-bold text-foreground">{Math.round(opacity * 100)}%</span>
                 </div>
-                <input
+                <Slider
                   id="custom-opacity-slider"
                   aria-label={t("customization.opacityLabel")}
-                  type="range"
                   min="0.2"
                   max="1"
                   step="0.05"
-                  value={opacity}
+                  value={opacity} formatValue={(value) => `${Math.round(value * 100)}%`}
                   onChange={(e) => setOpacity(Number(e.target.value))}
-                  className="w-full accent-primary h-1.5 bg-muted rounded-lg cursor-pointer"
                 />
               </div>
             </div>
