@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { readPreference, writePreference } from "@/lib/preferenceStorage";
 
 type Theme = "dark" | "light";
 
@@ -24,7 +25,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
         return urlTheme;
       }
       // 2. Check localStorage
-      const savedTheme = localStorage.getItem("theme") as Theme | null;
+      const savedTheme = readPreference("theme") as Theme | null;
       if (savedTheme === "light" || savedTheme === "dark") {
         return savedTheme;
       }
@@ -62,7 +63,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
       root.classList.add("light");
       root.classList.remove("dark");
     }
-    localStorage.setItem("theme", theme);
+    writePreference("theme", theme);
   }, [theme]);
 
   const setTheme = (newTheme: Theme) => {

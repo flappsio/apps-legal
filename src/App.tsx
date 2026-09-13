@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { Header } from "@/components/layout/Header";
 import { CinematicFooter } from "@/components/ui/motion-footer";
@@ -19,8 +19,11 @@ import { CrosshairGuideDetailPage } from "@/pages/crosshair/CrosshairGuideDetail
 import { CrosshairAboutPage } from "@/pages/crosshair/CrosshairAboutPage";
 import { CrosshairSupportPage } from "@/pages/crosshair/CrosshairSupportPage";
 
+const CrosshairEditorPage = lazy(() => import("@/pages/crosshair/CrosshairEditorPage"));
+
 export const App: React.FC = () => {
   const location = useLocation();
+  const isEditor = location.pathname.replace(/\/$/, "") === "/crosshair/editor";
 
   // Known routes list for header/footer rendering
   const knownPrefixes = [
@@ -51,7 +54,7 @@ export const App: React.FC = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
+      {!isEditor && <Header />}
       <main className="flex-1">
         <Routes>
           {/* Main Legal Portal */}
@@ -59,6 +62,7 @@ export const App: React.FC = () => {
 
           {/* Crosshair Showcase & Landing */}
           <Route path="/crosshair" element={<CrosshairLandingPage />} />
+          <Route path="/crosshair/editor" element={<Suspense fallback={<div className="min-h-screen bg-background" aria-busy="true" />}><CrosshairEditorPage /></Suspense>} />
           <Route path="/crosshair/how-to-use" element={<CrosshairHowToUsePage />} />
           <Route path="/crosshair/faq" element={<CrosshairFAQPage />} />
           <Route path="/crosshair/guides" element={<CrosshairGuidesPage />} />
@@ -116,7 +120,7 @@ export const App: React.FC = () => {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
-      {location.pathname.replace(/\/$/, "") === "/crosshair" ? <CinematicFooter /> : <Footer />}
+      {!isEditor && (location.pathname.replace(/\/$/, "") === "/crosshair" ? <CinematicFooter /> : <Footer />)}
     </div>
   );
 };

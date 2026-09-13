@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
+  <url>
+    <loc>https://flappsio.com/crosshair/editor</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://flappsio.com/crosshair/editor?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://flappsio.com/crosshair/editor?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://flappsio.com/crosshair/editor"/>
+  </url>
+
   <!-- 1. Crossio Main Landing Showcase -->
   <url>
     <loc>https://flappsio.com/crosshair</loc>

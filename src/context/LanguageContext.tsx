@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import i18n from "@/i18n";
 import type { TFunction } from "i18next";
+import { readPreference, writePreference } from "@/lib/preferenceStorage";
 
 export type Language = "tr" | "en";
 
@@ -24,7 +25,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
       if (urlLang === "en" || urlLang === "tr") {
         return urlLang;
       }
-      const savedLang = localStorage.getItem("flappsio_lang") as Language | null;
+      const savedLang = readPreference("flappsio_lang") as Language | null;
       if (savedLang === "en" || savedLang === "tr") {
         return savedLang;
       }
@@ -49,7 +50,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      localStorage.setItem("flappsio_lang", language);
+      writePreference("flappsio_lang", language);
       document.documentElement.lang = language;
       if (i18n.language !== language) {
         i18n.changeLanguage(language);

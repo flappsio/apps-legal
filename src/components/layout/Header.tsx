@@ -24,7 +24,7 @@ import { Button } from "@/components/ui/button";
 
 export const Header: React.FC = () => {
   const { theme, isMinimal } = useTheme();
-  const { t } = useLanguage();
+  const { t, isTr } = useLanguage();
   const { activeColorOption } = useCrosshairState();
   const location = useLocation();
   const navigate = useNavigate();
@@ -94,6 +94,12 @@ export const Header: React.FC = () => {
 
   // Crosshair Specific Nav Links
   const crosshairNavLinks: NavLinkItem[] = [
+    {
+      to: "/crosshair/editor",
+      label: isTr ? "Editör" : "Editor",
+      icon: <Sliders className="w-3.5 h-3.5" />,
+      active: location.pathname === "/crosshair/editor",
+    },
     {
       to: "/crosshair",
       label: t("common.features"),

@@ -9,6 +9,11 @@ const serverOutputDir = resolve(projectRoot, ".prerender-server");
 const baseUrl = "https://flappsio.com";
 
 const pages = {
+  "/crosshair/editor": {
+    title: "Crossio Crosshair Editor | flappsio",
+    description: "Build a layered crosshair, save your designs locally, and export transparent PNG images or editable project files.",
+    name: "Crosshair editor",
+  },
   "/": {
     title: "Crossio: Custom Crosshair – Android Visual Layer | flappsio",
     description: "Crossio displays a customizable crosshair overlay on Android. Choose designs, adjust appearance transparently, and improve your gaming precision.",
@@ -127,7 +132,7 @@ const { render, getRouteSchema } = await import(pathToFileURL(join(serverOutputD
 const template = await readFile(join(outputDir, "index.html"), "utf8");
 
 for (const [path, page] of Object.entries(pages)) {
-  const appHtml = render(path);
+  const appHtml = await render(path);
   const head = template
     .replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(page.title)}</title>`)
     .replace(/<meta\s+name="description"[\s\S]*?>/i, "")

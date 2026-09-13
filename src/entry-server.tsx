@@ -1,4 +1,5 @@
-import { renderToString } from "react-dom/server";
+import { renderToPipeableStream } from "react-dom/server";
+import { Writable } from "node:stream";
 import { StaticRouter } from "react-router-dom";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { LanguageProvider } from "@/context/LanguageContext";
@@ -6,8 +7,12 @@ import { CrosshairStateProvider } from "@/context/CrosshairStateContext";
 import { FAQS_DATA } from "@/data/crosshairTranslations";
 import App from "@/App";
 
-export const render = (url: string) =>
-  renderToString(
+export const render = (url: string): Promise<string> => new Promise((resolve, reject) => {
+  let html = "";
+  const output = new Writable({ write(chunk, _encoding, callback) { html += chunk.toString(); callback(); } });
+  output.on("finish", () => resolve(html));
+  output.on("error", reject);
+  const stream = renderToPipeableStream(
     <StaticRouter location={url}>
       <LanguageProvider>
         <ThemeProvider>
@@ -16,8 +21,10 @@ export const render = (url: string) =>
           </CrosshairStateProvider>
         </ThemeProvider>
       </LanguageProvider>
-    </StaticRouter>
+    </StaticRouter>,
+    { onAllReady() { stream.pipe(output); }, onError: reject },
   );
+});
 
 export const getRouteSchema = (url: string): Record<string, unknown> | undefined => {
   if (url === "/crosshair/faq") {
