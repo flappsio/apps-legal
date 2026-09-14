@@ -15,6 +15,8 @@ import {
   X,
   ExternalLink,
   Image as ImageIcon,
+  MessageCircle,
+  Star,
 } from "lucide-react";
 
 export const CrosshairPlayStoreShowcase: React.FC = () => {
@@ -165,6 +167,33 @@ export const CrosshairPlayStoreShowcase: React.FC = () => {
                   </>
                 )}
               </Button>
+            </div>
+          </div>
+
+          {/* Current Google Play listing metrics */}
+          <div className="grid grid-cols-3 divide-x divide-border/60 border-b border-border/60 py-5 text-center">
+            <div className="space-y-1 px-2">
+              <div className="flex items-center justify-center gap-1 text-xl sm:text-2xl font-extrabold text-foreground">
+                <Star className="w-4 h-4 sm:w-5 sm:h-5 fill-current text-primary" />
+                <span>{isTr ? "4,5" : "4.5"}</span>
+              </div>
+              <p className="text-[10px] sm:text-[11px] text-muted-foreground">{t("store.rating")}</p>
+            </div>
+
+            <div className="space-y-1 px-2">
+              <div className="flex items-center justify-center gap-1 text-xl sm:text-2xl font-extrabold text-foreground">
+                <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+                <span>318</span>
+              </div>
+              <p className="text-[10px] sm:text-[11px] text-muted-foreground">{t("store.totalReviews")}</p>
+            </div>
+
+            <div className="space-y-1 px-2">
+              <div className="flex items-center justify-center gap-1 text-xl sm:text-2xl font-extrabold text-foreground">
+                <Download className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+                <span>{isTr ? "50 B+" : "50K+"}</span>
+              </div>
+              <p className="text-[10px] sm:text-[11px] text-muted-foreground">{t("store.totalDownloads")}</p>
             </div>
           </div>
 
