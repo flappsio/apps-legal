@@ -36,9 +36,9 @@ export const APPS_DATA: LegalApp[] = [
     lastUpdated: "Eylül 2026",
     version: "v1.3.0+",
     links: {
-      showcase: "/crosshair",
-      privacyPolicy: "/crosshair/privacy-policy",
-      termsOfUse: "/crosshair/terms-of-use",
+      showcase: "/crossio",
+      privacyPolicy: "/crossio/privacy-policy",
+      termsOfUse: "/crossio/terms-of-use",
       storeUrl: "https://play.google.com/store/apps/details?id=com.hasan.apps.crosshair",
     },
     highlights: [

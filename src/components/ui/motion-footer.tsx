@@ -76,12 +76,12 @@ export function CinematicFooter() {
           <p className="footer-reveal text-muted-foreground max-w-md text-center text-sm sm:text-base">{isTr ? "Küçük bir detay. Sana ait bir deneyim. Crossio ile kendi nişangahını tasarla." : "A small detail. An experience that is yours. Create your own crosshair with Crossio."}</p>
           <div className="footer-reveal mt-8 flex flex-wrap justify-center gap-3">
             <MagneticButton as="a" href={APPS_DATA[0].links.storeUrl} target="_blank" rel="noopener noreferrer" className="footer-download"><Download size={19} /> Google Play <ArrowUpRight size={17} /></MagneticButton>
-            <MagneticButton as="a" href="/crosshair/how-to-use">{isTr ? "Nasıl çalışır?" : "How it works"}<ArrowUpRight size={16} /></MagneticButton>
+            <MagneticButton as="a" href="/crossio/how-to-use">{isTr ? "Nasıl çalışır?" : "How it works"}<ArrowUpRight size={16} /></MagneticButton>
           </div>
           <nav aria-label={isTr ? "Alt bilgi bağlantıları" : "Footer links"} className="footer-reveal mt-6 flex flex-wrap justify-center gap-2">
-            <MagneticButton as="a" href="/crosshair/privacy-policy">{isTr ? "Gizlilik politikası" : "Privacy policy"}</MagneticButton>
-            <MagneticButton as="a" href="/crosshair/terms-of-use">{isTr ? "Kullanım koşulları" : "Terms of use"}</MagneticButton>
-            <MagneticButton as="a" href="/crosshair/support">{isTr ? "Destek" : "Support"}</MagneticButton>
+            <MagneticButton as="a" href="/crossio/privacy-policy">{isTr ? "Gizlilik politikası" : "Privacy policy"}</MagneticButton>
+            <MagneticButton as="a" href="/crossio/terms-of-use">{isTr ? "Kullanım koşulları" : "Terms of use"}</MagneticButton>
+            <MagneticButton as="a" href="/crossio/support">{isTr ? "Destek" : "Support"}</MagneticButton>
           </nav>
         </div>
         <div className="footer-bottom">

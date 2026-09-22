@@ -31,10 +31,10 @@ The Crossio website includes a free browser-based crosshair creator. It previews
 
 ## Official pages
 
-- [Overview and free PNG creator](https://flappsio.com/crosshair)
-- [Setup and permissions](https://flappsio.com/crosshair/how-to-use)
-- [FAQ](https://flappsio.com/crosshair/faq)
-- [Guides](https://flappsio.com/crosshair/guides)
-- [Privacy Policy](https://flappsio.com/crosshair/privacy-policy)
-- [Terms of Use](https://flappsio.com/crosshair/terms-of-use)
-- [Support](https://flappsio.com/crosshair/support)
+- [Overview and free PNG creator](https://flappsio.com/crossio)
+- [Setup and permissions](https://flappsio.com/crossio/how-to-use)
+- [FAQ](https://flappsio.com/crossio/faq)
+- [Guides](https://flappsio.com/crossio/guides)
+- [Privacy Policy](https://flappsio.com/crossio/privacy-policy)
+- [Terms of Use](https://flappsio.com/crossio/terms-of-use)
+- [Support](https://flappsio.com/crossio/support)

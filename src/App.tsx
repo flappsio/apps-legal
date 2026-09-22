@@ -8,26 +8,24 @@ import { PrivacyPolicyPage } from "@/pages/PrivacyPolicyPage";
 import { TermsOfUsePage } from "@/pages/TermsOfUsePage";
 import { LicensePage } from "@/pages/LicensePage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
-import { LegacyRedirect } from "@/pages/LegacyRedirect";
+import { LegacyRedirect, CrosshairLegacyRedirect } from "@/pages/LegacyRedirect";
+import { CrosshairLandingPage } from "@/pages/crossio/CrosshairLandingPage";
+import { CrosshairHowToUsePage } from "@/pages/crossio/CrosshairHowToUsePage";
+import { CrosshairFAQPage } from "@/pages/crossio/CrosshairFAQPage";
+import { CrosshairGuidesPage } from "@/pages/crossio/CrosshairGuidesPage";
+import { CrosshairGuideDetailPage } from "@/pages/crossio/CrosshairGuideDetailPage";
+import { CrosshairAboutPage } from "@/pages/crossio/CrosshairAboutPage";
+import { CrosshairSupportPage } from "@/pages/crossio/CrosshairSupportPage";
+import ModelPreviewPage from "@/pages/ModelPreviewPage";
 
-// Crosshair App Pages
-import { CrosshairLandingPage } from "@/pages/crosshair/CrosshairLandingPage";
-import { CrosshairHowToUsePage } from "@/pages/crosshair/CrosshairHowToUsePage";
-import { CrosshairFAQPage } from "@/pages/crosshair/CrosshairFAQPage";
-import { CrosshairGuidesPage } from "@/pages/crosshair/CrosshairGuidesPage";
-import { CrosshairGuideDetailPage } from "@/pages/crosshair/CrosshairGuideDetailPage";
-import { CrosshairAboutPage } from "@/pages/crosshair/CrosshairAboutPage";
-import { CrosshairSupportPage } from "@/pages/crosshair/CrosshairSupportPage";
-
-const CrosshairEditorPage = lazy(() => import("@/pages/crosshair/CrosshairEditorPage"));
+const CrosshairEditorPage = lazy(() => import("@/pages/crossio/CrosshairEditorPage"));
 
 export const App: React.FC = () => {
   const location = useLocation();
-  const isEditor = location.pathname.replace(/\/$/, "") === "/crosshair/editor";
-
-  // Known routes list for header/footer rendering
+  const isEditor = location.pathname.replace(/\/$/, "") === "/crossio/editor";
   const knownPrefixes = [
     "/",
+    "/crossio",
     "/crosshair",
     "/how-to-use",
     "/faq",
@@ -39,8 +37,8 @@ export const App: React.FC = () => {
     "/privacy-policy",
     "/terms-of-use",
     "/terms-of-service",
+    "/model-preview",
   ];
-
   const isKnownRoute = knownPrefixes.some(
     (prefix) =>
       location.pathname === prefix ||
@@ -48,79 +46,47 @@ export const App: React.FC = () => {
       location.pathname.startsWith(`${prefix}.html`)
   );
 
-  if (!isKnownRoute) {
-    return <NotFoundPage />;
-  }
+  if (!isKnownRoute) return <NotFoundPage />;
 
   return (
     <div className="flex flex-col min-h-screen">
       {!isEditor && <Header />}
       <main className="flex-1">
         <Routes>
-          {/* Main Legal Portal */}
           <Route path="/" element={<HomePage />} />
-
-          {/* Crosshair Showcase & Landing */}
-          <Route path="/crosshair" element={<CrosshairLandingPage />} />
-          <Route path="/crosshair/editor" element={<Suspense fallback={<div className="min-h-screen bg-background" aria-busy="true" />}><CrosshairEditorPage /></Suspense>} />
-          <Route path="/crosshair/how-to-use" element={<CrosshairHowToUsePage />} />
-          <Route path="/crosshair/faq" element={<CrosshairFAQPage />} />
-          <Route path="/crosshair/guides" element={<CrosshairGuidesPage />} />
-          <Route path="/crosshair/guides/:slug" element={<CrosshairGuideDetailPage />} />
-          <Route path="/crosshair/about" element={<CrosshairAboutPage />} />
-          <Route path="/crosshair/support" element={<CrosshairSupportPage />} />
-
-          {/* Legal Documents */}
-          <Route path="/crosshair/privacy-policy" element={<PrivacyPolicyPage />} />
-          <Route
-            path="/crosshair/privacy-policy.html"
-            element={<LegacyRedirect to="/crosshair/privacy-policy" />}
-          />
-          <Route path="/crosshair/terms-of-use" element={<TermsOfUsePage />} />
-          <Route
-            path="/crosshair/terms-of-use.html"
-            element={<LegacyRedirect to="/crosshair/terms-of-use" />}
-          />
-          <Route
-            path="/crosshair/terms-of-service"
-            element={<LegacyRedirect to="/crosshair/terms-of-use" />}
-          />
-          <Route
-            path="/crosshair/terms-of-service.html"
-            element={<LegacyRedirect to="/crosshair/terms-of-use" />}
-          />
-
-          {/* License */}
+          <Route path="/crossio" element={<CrosshairLandingPage />} />
+          <Route path="/crossio/editor" element={<Suspense fallback={<div className="min-h-screen bg-background" aria-busy="true" />}><CrosshairEditorPage /></Suspense>} />
+          <Route path="/crossio/how-to-use" element={<CrosshairHowToUsePage />} />
+          <Route path="/crossio/faq" element={<CrosshairFAQPage />} />
+          <Route path="/crossio/guides" element={<CrosshairGuidesPage />} />
+          <Route path="/crossio/guides/:slug" element={<CrosshairGuideDetailPage />} />
+          <Route path="/crossio/about" element={<CrosshairAboutPage />} />
+          <Route path="/crossio/support" element={<CrosshairSupportPage />} />
+          <Route path="/crossio/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/crossio/privacy-policy.html" element={<LegacyRedirect to="/crossio/privacy-policy" />} />
+          <Route path="/crossio/terms-of-use" element={<TermsOfUsePage />} />
+          <Route path="/crossio/terms-of-use.html" element={<LegacyRedirect to="/crossio/terms-of-use" />} />
+          <Route path="/crossio/terms-of-service" element={<LegacyRedirect to="/crossio/terms-of-use" />} />
+          <Route path="/crossio/terms-of-service.html" element={<LegacyRedirect to="/crossio/terms-of-use" />} />
           <Route path="/license" element={<LicensePage />} />
           <Route path="/mit-license" element={<LegacyRedirect to="/license" />} />
           <Route path="/license.html" element={<LegacyRedirect to="/license" />} />
-
-          {/* Top-Level Aliases */}
-          <Route path="/how-to-use" element={<LegacyRedirect to="/crosshair/how-to-use" />} />
-          <Route path="/faq" element={<LegacyRedirect to="/crosshair/faq" />} />
-          <Route path="/guides" element={<LegacyRedirect to="/crosshair/guides" />} />
-          <Route path="/about" element={<LegacyRedirect to="/crosshair/about" />} />
-          <Route path="/support" element={<LegacyRedirect to="/crosshair/support" />} />
-          <Route path="/privacy-policy" element={<LegacyRedirect to="/crosshair/privacy-policy" />} />
-          <Route
-            path="/privacy-policy.html"
-            element={<LegacyRedirect to="/crosshair/privacy-policy" />}
-          />
-          <Route path="/terms-of-use" element={<LegacyRedirect to="/crosshair/terms-of-use" />} />
-          <Route
-            path="/terms-of-use.html"
-            element={<LegacyRedirect to="/crosshair/terms-of-use" />}
-          />
-          <Route
-            path="/terms-of-service"
-            element={<LegacyRedirect to="/crosshair/terms-of-use" />}
-          />
-
-          {/* 404 Catch-all */}
+          <Route path="/how-to-use" element={<LegacyRedirect to="/crossio/how-to-use" />} />
+          <Route path="/faq" element={<LegacyRedirect to="/crossio/faq" />} />
+          <Route path="/guides" element={<LegacyRedirect to="/crossio/guides" />} />
+          <Route path="/about" element={<LegacyRedirect to="/crossio/about" />} />
+          <Route path="/support" element={<LegacyRedirect to="/crossio/support" />} />
+          <Route path="/privacy-policy" element={<LegacyRedirect to="/crossio/privacy-policy" />} />
+          <Route path="/privacy-policy.html" element={<LegacyRedirect to="/crossio/privacy-policy" />} />
+          <Route path="/terms-of-use" element={<LegacyRedirect to="/crossio/terms-of-use" />} />
+          <Route path="/terms-of-use.html" element={<LegacyRedirect to="/crossio/terms-of-use" />} />
+          <Route path="/terms-of-service" element={<LegacyRedirect to="/crossio/terms-of-use" />} />
+          <Route path="/crosshair/*" element={<CrosshairLegacyRedirect />} />
+          <Route path="/model-preview" element={<ModelPreviewPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
-      {!isEditor && (location.pathname.replace(/\/$/, "") === "/crosshair" ? <CinematicFooter /> : <Footer />)}
+      {!isEditor && (location.pathname.replace(/\/$/, "") === "/crossio" ? <CinematicFooter /> : <Footer />)}
     </div>
   );
 };

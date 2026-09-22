@@ -9,7 +9,7 @@ export interface BreadcrumbItem {
 export interface SEOHeadProps {
   title: string;
   description: string;
-  canonicalPath: string; // e.g. "/crosshair" or "/crosshair/faq"
+  canonicalPath: string; // e.g. "/crossio" or "/crossio/faq"
   ogType?: "website" | "article" | "product";
   ogImage?: string;
   keywords?: string[];

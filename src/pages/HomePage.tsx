@@ -39,7 +39,7 @@ export const HomePage: React.FC = () => {
       desc: t("home.legalDir.privacy.desc"),
       category: t("home.legalDir.privacy.category"),
       status: t("home.legalDir.privacy.status"),
-      link: "/crosshair/privacy-policy",
+      link: "/crossio/privacy-policy",
       icon: <Lock className="w-4 h-4 text-primary" />,
     },
     {
@@ -47,7 +47,7 @@ export const HomePage: React.FC = () => {
       desc: t("home.legalDir.terms.desc"),
       category: t("home.legalDir.terms.category"),
       status: t("home.legalDir.terms.status"),
-      link: "/crosshair/terms-of-use",
+      link: "/crossio/terms-of-use",
       icon: <FileText className="w-4 h-4 text-primary" />,
     },
     {
@@ -63,7 +63,7 @@ export const HomePage: React.FC = () => {
       desc: t("home.legalDir.permissions.desc"),
       category: t("home.legalDir.permissions.category"),
       status: t("home.legalDir.permissions.status"),
-      link: "/crosshair/guides/sorun-giderme-overlay-izinleri",
+      link: "/crossio/guides/sorun-giderme-overlay-izinleri",
       icon: <Smartphone className="w-4 h-4 text-primary" />,
     },
     {
@@ -71,7 +71,7 @@ export const HomePage: React.FC = () => {
       desc: t("home.legalDir.howToUse.desc"),
       category: t("home.legalDir.howToUse.category"),
       status: t("home.legalDir.howToUse.status"),
-      link: "/crosshair/how-to-use",
+      link: "/crossio/how-to-use",
       icon: <BookOpen className="w-4 h-4 text-primary" />,
     },
     {
@@ -79,7 +79,7 @@ export const HomePage: React.FC = () => {
       desc: t("home.legalDir.faq.desc"),
       category: t("home.legalDir.faq.category"),
       status: t("home.legalDir.faq.status"),
-      link: "/crosshair/faq",
+      link: "/crossio/faq",
       icon: <HelpCircle className="w-4 h-4 text-primary" />,
     },
   ];
@@ -225,7 +225,7 @@ export const HomePage: React.FC = () => {
                     size="lg"
                     className="w-full sm:flex-1 h-12 bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-xl shadow-md text-xs gap-2 group"
                   >
-                    <Link to="/crosshair">
+                    <Link to="/crossio">
                       <Sparkles className="w-4 h-4" />
                       <span>{t("home.showcaseBtn")}</span>
                       <ArrowRight className="w-4 h-4 ml-auto group-hover:translate-x-1 transition-transform" />
@@ -257,7 +257,7 @@ export const HomePage: React.FC = () => {
                     size="sm"
                     className="h-8 text-[11px] justify-start text-muted-foreground hover:text-foreground hover:bg-secondary/60 gap-1.5"
                   >
-                    <Link to="/crosshair/privacy-policy">
+                    <Link to="/crossio/privacy-policy">
                       <ShieldCheck className="w-3.5 h-3.5 text-primary" />
                       <span>{t("home.privacyBtn")}</span>
                     </Link>
@@ -269,7 +269,7 @@ export const HomePage: React.FC = () => {
                     size="sm"
                     className="h-8 text-[11px] justify-start text-muted-foreground hover:text-foreground hover:bg-secondary/60 gap-1.5"
                   >
-                    <Link to="/crosshair/terms-of-use">
+                    <Link to="/crossio/terms-of-use">
                       <FileText className="w-3.5 h-3.5 text-primary" />
                       <span>{t("home.termsBtn")}</span>
                     </Link>
@@ -310,7 +310,7 @@ export const HomePage: React.FC = () => {
 
                   {/* Active SVG Crosshair Reticle */}
                   <Link
-                    to="/crosshair"
+                    to="/crossio"
                     title={t("home.launchSimulator")}
                     className="relative z-10 transition-transform duration-300 hover:scale-110 cursor-crosshair group"
                   >

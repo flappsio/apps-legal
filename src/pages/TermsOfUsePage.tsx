@@ -16,11 +16,11 @@ export const TermsOfUsePage: React.FC = () => {
       <SEOHead
         title={`${document.title} - ${document.subtitle} | flappsio`}
         description={document.metaDescription}
-        canonicalPath="/crosshair/terms-of-use"
+        canonicalPath="/crossio/terms-of-use"
         breadcrumbs={[
           { name: t("common.home"), url: "/" },
-          { name: "Crossio", url: "/crosshair" },
-          { name: t("common.terms"), url: "/crosshair/terms-of-use" },
+          { name: "Crossio", url: "/crossio" },
+          { name: t("common.terms"), url: "/crossio/terms-of-use" },
         ]}
       />
       <LegalLayout document={document} />

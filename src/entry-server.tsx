@@ -27,7 +27,7 @@ export const render = (url: string): Promise<string> => new Promise((resolve, re
 });
 
 export const getRouteSchema = (url: string): Record<string, unknown> | undefined => {
-  if (url === "/crosshair/faq") {
+  if (url === "/crossio/faq") {
     return {
       "@context": "https://schema.org",
       "@type": "FAQPage",
@@ -44,7 +44,7 @@ export const getRouteSchema = (url: string): Record<string, unknown> | undefined
     };
   }
 
-  if (url === "/crosshair/how-to-use") {
+  if (url === "/crossio/how-to-use") {
     return {
       "@context": "https://schema.org",
       "@type": "HowTo",

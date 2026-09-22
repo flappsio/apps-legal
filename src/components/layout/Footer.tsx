@@ -55,27 +55,27 @@ export const Footer: React.FC = () => {
             </h3>
             <ul className="space-y-2 text-xs text-muted-foreground">
               <li>
-                <Link to="/crosshair" className="hover:text-primary transition-colors">
+                <Link to="/crossio" className="hover:text-primary transition-colors">
                   {t("footer.overview")}
                 </Link>
               </li>
               <li>
-                <Link to="/crosshair/how-to-use" className="hover:text-primary transition-colors">
+                <Link to="/crossio/how-to-use" className="hover:text-primary transition-colors">
                   {t("common.howItWorks")}
                 </Link>
               </li>
               <li>
-                <Link to="/crosshair/faq" className="hover:text-primary transition-colors">
+                <Link to="/crossio/faq" className="hover:text-primary transition-colors">
                   {t("common.faq")}
                 </Link>
               </li>
               <li>
-                <Link to="/crosshair/guides" className="hover:text-primary transition-colors">
+                <Link to="/crossio/guides" className="hover:text-primary transition-colors">
                   {t("footer.designGuides")}
                 </Link>
               </li>
               <li>
-                <Link to="/crosshair/about" className="hover:text-primary transition-colors">
+                <Link to="/crossio/about" className="hover:text-primary transition-colors">
                   {t("footer.aboutCrossio")}
                 </Link>
               </li>
@@ -89,12 +89,12 @@ export const Footer: React.FC = () => {
             </h3>
             <ul className="space-y-2 text-xs text-muted-foreground">
               <li>
-                <Link to="/crosshair/privacy-policy" className="hover:text-primary transition-colors">
+                <Link to="/crossio/privacy-policy" className="hover:text-primary transition-colors">
                   {t("common.privacy")}
                 </Link>
               </li>
               <li>
-                <Link to="/crosshair/terms-of-use" className="hover:text-primary transition-colors">
+                <Link to="/crossio/terms-of-use" className="hover:text-primary transition-colors">
                   {t("common.terms")}
                 </Link>
               </li>
@@ -104,7 +104,7 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/crosshair/support" className="hover:text-primary transition-colors">
+                <Link to="/crossio/support" className="hover:text-primary transition-colors">
                   {t("common.support")}
                 </Link>
               </li>

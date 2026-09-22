@@ -16,11 +16,11 @@ export const PrivacyPolicyPage: React.FC = () => {
       <SEOHead
         title={`${document.title} - ${document.subtitle} | flappsio`}
         description={document.metaDescription}
-        canonicalPath="/crosshair/privacy-policy"
+        canonicalPath="/crossio/privacy-policy"
         breadcrumbs={[
           { name: t("common.home"), url: "/" },
-          { name: "Crossio", url: "/crosshair" },
-          { name: t("common.privacy"), url: "/crosshair/privacy-policy" },
+          { name: "Crossio", url: "/crossio" },
+          { name: t("common.privacy"), url: "/crossio/privacy-policy" },
         ]}
       />
       <LegalLayout document={document} />

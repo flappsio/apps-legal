@@ -95,6 +95,13 @@
   html {
     scroll-behavior: smooth;
   }
+
+  /* Smooth theme colour transitions – suppressed by prefers-reduced-motion below */
+  *, *::before, *::after {
+    transition-property: color, background-color, border-color, fill, stroke, box-shadow, outline-color;
+    transition-duration: 220ms;
+    transition-timing-function: ease;
+  }
 }
 
 @layer components {
@@ -154,6 +161,7 @@
     scroll-behavior: auto !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 

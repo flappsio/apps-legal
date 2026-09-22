@@ -22,8 +22,8 @@ Some games and competitive platforms may restrict visual overlays. Users must ch
 
 ## Pages
 
-- [Overview](https://flappsio.com/crosshair)
-- [How to use](https://flappsio.com/crosshair/how-to-use)
-- [FAQ](https://flappsio.com/crosshair/faq)
-- [Privacy Policy](https://flappsio.com/crosshair/privacy-policy)
-- [Terms of Use](https://flappsio.com/crosshair/terms-of-use)
+- [Overview](https://flappsio.com/crossio)
+- [How to use](https://flappsio.com/crossio/how-to-use)
+- [FAQ](https://flappsio.com/crossio/faq)
+- [Privacy Policy](https://flappsio.com/crossio/privacy-policy)
+- [Terms of Use](https://flappsio.com/crossio/terms-of-use)

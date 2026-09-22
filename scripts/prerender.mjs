@@ -9,7 +9,7 @@ const serverOutputDir = resolve(projectRoot, ".prerender-server");
 const baseUrl = "https://flappsio.com";
 
 const pages = {
-  "/crosshair/editor": {
+  "/crossio/editor": {
     title: "Crossio Crosshair Editor | flappsio",
     description: "Build a layered crosshair, save your designs locally, and export transparent PNG images or editable project files.",
     name: "Crosshair editor",
@@ -19,57 +19,57 @@ const pages = {
     description: "Crossio displays a customizable crosshair overlay on Android. Choose designs, adjust appearance transparently, and improve your gaming precision.",
     name: "Crossio",
   },
-  "/crosshair": {
+    "/crossio": {
     title: "Crossio: Custom Crosshair for Android | flappsio",
     description: "Create, customize, and export a Crossio crosshair for Android with transparent visual overlay controls.",
     name: "Crossio custom crosshair",
   },
-  "/crosshair/how-to-use": {
+    "/crossio/how-to-use": {
     title: "How to Use Crossio on Android | flappsio",
     description: "Set up the Crossio Android overlay, customize a crosshair, and resolve common permissions issues.",
     name: "How to use Crossio",
   },
-  "/crosshair/faq": {
+    "/crossio/faq": {
     title: "Crossio FAQ: Android Crosshair Overlay | flappsio",
     description: "Answers to common questions about Crossio, Android overlay permissions, privacy, compatibility, and crosshair imports.",
     name: "Crossio FAQ",
   },
-  "/crosshair/guides": {
+    "/crossio/guides": {
     title: "Crossio Guides: Android Crosshair Tips | flappsio",
     description: "Practical guides for choosing a visible crosshair, configuring Android overlay permissions, and using Crossio.",
     name: "Crossio guides",
   },
-  "/crosshair/guides/crosshair-tasarimi": {
+    "/crossio/guides/crosshair-tasarimi": {
     title: "How to Choose a Crosshair | Crossio Guides",
     description: "Choose a crosshair shape, color, size, and contrast that stays visible during Android gameplay.",
     name: "How to choose a crosshair",
   },
-  "/crosshair/guides/renk-ve-kontrast": {
+    "/crossio/guides/renk-ve-kontrast": {
     title: "Crosshair Color and Visibility Guide | Crossio",
     description: "Improve crosshair visibility with contrast, color, outline, opacity, and size settings.",
     name: "Crosshair color and visibility guide",
   },
-  "/crosshair/guides/sorun-giderme-overlay-izinleri": {
+    "/crossio/guides/sorun-giderme-overlay-izinleri": {
     title: "Android Overlay Permission Troubleshooting | Crossio",
     description: "Resolve Android overlay permission, foreground service, and battery optimization issues for Crossio.",
     name: "Android overlay permission troubleshooting",
   },
-  "/crosshair/about": {
+    "/crossio/about": {
     title: "About Crossio | flappsio",
     description: "Learn how Crossio provides a passive, customizable visual crosshair overlay for Android.",
     name: "About Crossio",
   },
-  "/crosshair/support": {
+    "/crossio/support": {
     title: "Crossio Support | flappsio",
     description: "Find Crossio support, setup guidance, and links to privacy and terms documentation.",
     name: "Crossio support",
   },
-  "/crosshair/privacy-policy": {
+    "/crossio/privacy-policy": {
     title: "Crossio Privacy Policy | flappsio",
     description: "Read the Crossio privacy policy, including data processing and service-provider information.",
     name: "Crossio privacy policy",
   },
-  "/crosshair/terms-of-use": {
+    "/crossio/terms-of-use": {
     title: "Crossio Terms of Use | flappsio",
     description: "Read the terms that apply to using Crossio and its Android visual overlay features.",
     name: "Crossio terms of use",
