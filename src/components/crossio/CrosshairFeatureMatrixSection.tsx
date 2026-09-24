@@ -107,7 +107,7 @@ export const CrosshairFeatureMatrixSection: React.FC = () => {
             </div>
           </TiltCard>
 
-          {/* 3. Security & Anti-Cheat Compliance */}
+          {/* 3. Security & Memory Isolation */}
           <TiltCard className="rounded-3xl">
             <div className="p-6 sm:p-8 rounded-3xl bg-card/60 border border-border/70 backdrop-blur-sm space-y-4 hover:border-primary/40 transition-colors">
               <div className="flex items-center gap-3">

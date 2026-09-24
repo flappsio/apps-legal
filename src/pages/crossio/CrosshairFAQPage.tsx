@@ -5,7 +5,8 @@ import { CrosshairDisclaimer } from "@/components/crossio/CrosshairDisclaimer";
 import { FAQS_DATA } from "@/data/crosshairTranslations";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { ChevronDown, Search, HelpCircle, Sparkles } from "lucide-react";
+import { ChevronDown, Search, HelpCircle, Sparkles, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const CrosshairFAQPage: React.FC = () => {
   const { t, isTr } = useLanguage();
@@ -179,8 +180,36 @@ export const CrosshairFAQPage: React.FC = () => {
           )}
         </div>
 
+        {/* Internal Linking / Useful Resources */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-10 pt-6 border-t border-border/40">
+          <Link
+            to="/crossio/guides/android-overlay-permission"
+            className="group flex flex-col p-5 rounded-2xl bg-card/60 border border-border/50 hover:border-primary/50 transition-all hover:-translate-y-1"
+          >
+            <h3 className="font-bold text-sm text-foreground group-hover:text-primary mb-1 flex items-center justify-between">
+              {isTr ? "Overlay İzinleri Hakkında" : "About Overlay Permissions"}
+              <ArrowRight className="w-4 h-4" />
+            </h3>
+            <p className="text-xs text-muted-foreground">
+              {isTr ? "Android'de uygulamaların üstünde gösterme iznini nasıl yöneteceğinizi öğrenin." : "Learn how to manage the display over other apps permission on Android."}
+            </p>
+          </Link>
+          <Link
+            to="/crossio/custom-png-crosshair"
+            className="group flex flex-col p-5 rounded-2xl bg-card/60 border border-border/50 hover:border-primary/50 transition-all hover:-translate-y-1"
+          >
+            <h3 className="font-bold text-sm text-foreground group-hover:text-primary mb-1 flex items-center justify-between">
+              {isTr ? "Özel PNG Ekleme" : "Import Custom PNG"}
+              <ArrowRight className="w-4 h-4" />
+            </h3>
+            <p className="text-xs text-muted-foreground">
+              {isTr ? "Kendi saydam PNG görsellerinizi nasıl nişangah yapabileceğinizi keşfedin." : "Discover how to use your own transparent PNG images as a crosshair."}
+            </p>
+          </Link>
+        </div>
+
         {/* Disclaimer */}
-        <div className="pt-8">
+        <div className="pt-4">
           <CrosshairDisclaimer />
         </div>
       </div>

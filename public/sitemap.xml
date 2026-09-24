@@ -22,6 +22,26 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://flappsio.com/crossio"/>
   </url>
 
+  <!-- Crossio Android Overlay Landing Page -->
+  <url>
+    <loc>https://flappsio.com/crossio/crosshair-overlay-android</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://flappsio.com/crossio/crosshair-overlay-android?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://flappsio.com/crossio/crosshair-overlay-android?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://flappsio.com/crossio/crosshair-overlay-android"/>
+  </url>
+
+  <!-- Crossio Custom PNG Landing Page -->
+  <url>
+    <loc>https://flappsio.com/crossio/custom-png-crosshair</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://flappsio.com/crossio/custom-png-crosshair?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://flappsio.com/crossio/custom-png-crosshair?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://flappsio.com/crossio/custom-png-crosshair"/>
+  </url>
+
   <!-- 2. How to Use & Setup Guide -->
   <url>
     <loc>https://flappsio.com/crossio/how-to-use</loc>
@@ -57,35 +77,46 @@
 
   <!-- 5. Guide: Crosshair Selection -->
   <url>
-    <loc>https://flappsio.com/crossio/guides/crosshair-tasarimi</loc>
-    <lastmod>2026-08-20</lastmod>
+    <loc>https://flappsio.com/crossio/guides/best-crosshair-color</loc>
+    <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://flappsio.com/crossio/guides/crosshair-tasarimi?lang=tr"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://flappsio.com/crossio/guides/crosshair-tasarimi?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://flappsio.com/crossio/guides/crosshair-tasarimi"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://flappsio.com/crossio/guides/best-crosshair-color?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://flappsio.com/crossio/guides/best-crosshair-color?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://flappsio.com/crossio/guides/best-crosshair-color"/>
   </url>
 
-  <!-- 6. Guide: Color & Contrast -->
+  <!-- 6. Guide: Size Guide -->
   <url>
-    <loc>https://flappsio.com/crossio/guides/renk-ve-kontrast</loc>
-    <lastmod>2026-08-22</lastmod>
+    <loc>https://flappsio.com/crossio/guides/crosshair-size-guide</loc>
+    <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://flappsio.com/crossio/guides/renk-ve-kontrast?lang=tr"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://flappsio.com/crossio/guides/renk-ve-kontrast?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://flappsio.com/crossio/guides/renk-ve-kontrast"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://flappsio.com/crossio/guides/crosshair-size-guide?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://flappsio.com/crossio/guides/crosshair-size-guide?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://flappsio.com/crossio/guides/crosshair-size-guide"/>
   </url>
 
-  <!-- 7. Guide: Overlay Permission & Battery Optimization -->
+  <!-- 7. Guide: Overlay Permission -->
   <url>
-    <loc>https://flappsio.com/crossio/guides/sorun-giderme-overlay-izinleri</loc>
-    <lastmod>2026-08-25</lastmod>
+    <loc>https://flappsio.com/crossio/guides/android-overlay-permission</loc>
+    <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://flappsio.com/crossio/guides/sorun-giderme-overlay-izinleri?lang=tr"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://flappsio.com/crossio/guides/sorun-giderme-overlay-izinleri?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://flappsio.com/crossio/guides/sorun-giderme-overlay-izinleri"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://flappsio.com/crossio/guides/android-overlay-permission?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://flappsio.com/crossio/guides/android-overlay-permission?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://flappsio.com/crossio/guides/android-overlay-permission"/>
+  </url>
+
+  <!-- 8. Guide: Crosshair Keeps Disappearing -->
+  <url>
+    <loc>https://flappsio.com/crossio/guides/crosshair-keeps-disappearing</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://flappsio.com/crossio/guides/crosshair-keeps-disappearing?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://flappsio.com/crossio/guides/crosshair-keeps-disappearing?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://flappsio.com/crossio/guides/crosshair-keeps-disappearing"/>
   </url>
 
   <!-- 8. About Page -->

@@ -145,7 +145,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
           "Fine-tune size, line thickness, center gap, opacity, and center dot",
           "High-contrast black outline mode for visibility across light and dark game scenes",
           "Floating quick-toggle HUD overlay for instant one-thumb visibility and position control",
-          "100% anti-cheat compliant passive visual overlay with zero game memory modification",
+          "Passive visual overlay with zero code injection or game memory modification",
           "No root required, utilizes standard Android SYSTEM_ALERT_WINDOW",
           "Lightweight passive canvas rendering optimized for minimal battery and GPU usage",
           "Crosshair designs and imported images remain in local app storage; see the privacy policy for analytics and service-provider details"
@@ -187,10 +187,12 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       document.head.appendChild(scriptTag);
     }
     scriptTag.textContent = JSON.stringify(defaultSchemas, null, 2);
-
-    // Scroll to top upon page navigation
-    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
   }, [title, description, canonicalPath, ogType, ogImage, keywords, breadcrumbs, jsonLd, language, fullUrl, fullImageUrl, currentPath]);
+
+  // Scroll to top upon page navigation (only when canonicalPath changes, not on language/state changes)
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+  }, [currentPath]);
 
   return null;
 };

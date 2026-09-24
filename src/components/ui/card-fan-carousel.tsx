@@ -95,7 +95,7 @@ export default function SocialCards({ cards, onSelect, label = "Screenshots", pr
       });
       gsap.killTweensOf(elements);
     };
-  }, [slotsKey, total, visibleCount]);
+  }, [slotsKey, total, visibleCount, cards.map((c) => c.imgUrl).join(",")]);
 
   if (!total) return null;
 

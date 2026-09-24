@@ -16,6 +16,8 @@ import { CrosshairGuidesPage } from "@/pages/crossio/CrosshairGuidesPage";
 import { CrosshairGuideDetailPage } from "@/pages/crossio/CrosshairGuideDetailPage";
 import { CrosshairAboutPage } from "@/pages/crossio/CrosshairAboutPage";
 import { CrosshairSupportPage } from "@/pages/crossio/CrosshairSupportPage";
+import { CrosshairOverlayAndroidPage } from "@/pages/crossio/CrosshairOverlayAndroidPage";
+import { CrosshairCustomPngPage } from "@/pages/crossio/CrosshairCustomPngPage";
 import ModelPreviewPage from "@/pages/ModelPreviewPage";
 
 const CrosshairEditorPage = lazy(() => import("@/pages/crossio/CrosshairEditorPage"));
@@ -62,6 +64,8 @@ export const App: React.FC = () => {
           <Route path="/crossio/guides/:slug" element={<CrosshairGuideDetailPage />} />
           <Route path="/crossio/about" element={<CrosshairAboutPage />} />
           <Route path="/crossio/support" element={<CrosshairSupportPage />} />
+          <Route path="/crossio/crosshair-overlay-android" element={<CrosshairOverlayAndroidPage />} />
+          <Route path="/crossio/custom-png-crosshair" element={<CrosshairCustomPngPage />} />
           <Route path="/crossio/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/crossio/privacy-policy.html" element={<LegacyRedirect to="/crossio/privacy-policy" />} />
           <Route path="/crossio/terms-of-use" element={<TermsOfUsePage />} />

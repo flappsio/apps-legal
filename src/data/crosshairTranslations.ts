@@ -57,97 +57,120 @@ export const TESTIMONIALS_DATA: TestimonialItem[] = [
 
 export const FAQS_DATA: FAQItem[] = [
   {
-    id: "what-is-crossio", category: "general",
-    question: { tr: "Crossio nedir?", en: "What is Crossio?" },
-    directAnswer: { tr: "Crossio, seçtiğiniz nişangahı Android ekranında pasif ve özelleştirilebilir bir görsel katman olarak gösteren bir uygulamadır.", en: "Crossio displays the crosshair you choose as a passive, customizable visual layer on your Android screen." },
-    detailedAnswer: { tr: "Hazır tasarımları kullanabilir, görünüm ayarlarını değiştirebilir veya kendi şeffaf PNG görselinizi yerel olarak ekleyebilirsiniz.", en: "Use built-in designs, adjust their appearance, or add your own transparent PNG locally." },
+    id: "does-crossio-require-root", category: "overlay",
+    question: { tr: "Crossio root gerektirir mi?", en: "Does Crossio require root?" },
+    directAnswer: { tr: "Hayır. Crossio root erişimi gerektirmez.", en: "No. Crossio does not require root access." },
+    detailedAnswer: { tr: "Android'in standart 'Diğer uygulamaların üzerinde gösterim' (SYSTEM_ALERT_WINDOW) izni kullanılarak çalışır.", en: "It operates strictly using Android's native 'Display over other apps' (SYSTEM_ALERT_WINDOW) permission." },
   },
   {
-    id: "how-overlay-works", category: "overlay",
-    question: { tr: "Pasif katman nasıl çalışır?", en: "How does the passive overlay work?" },
-    directAnswer: { tr: "Crossio, Android'in standart 'Diğer uygulamaların üzerinde gösterim' izniyle kullanıcı tarafından başlatılan bir görsel katman oluşturur.", en: "Crossio uses Android's standard 'Display over other apps' permission to create a visual layer that the user starts explicitly." },
-    detailedAnswer: { tr: "Ana nişangah click-through çalışır; dokunma veya tuş girdisi alamaz. Uygulamada başlatılır ve kalıcı bildirimden durdurulabilir. İsteğe bağlı mini kontrol katmanı, kullanıcı etkileşimi için dokunulabilirdir.", en: "The main crosshair is click-through and cannot receive touch or key input. It starts in the app and can be stopped from the persistent notification. The optional mini control overlay is touchable for user interaction." },
+    id: "how-to-add-crosshair", category: "general",
+    question: { tr: "Android'de nişangah nasıl eklerim?", en: "How do I add a crosshair on Android?" },
+    directAnswer: { tr: "Crossio uygulamasını indirip bir nişangah seçerek veya kendi görselinizi ekleyerek Android ekranınıza nişangah ekleyebilirsiniz.", en: "You can add a crosshair on Android by downloading the Crossio app, selecting a reticle or importing your own image." },
+    detailedAnswer: { tr: "Uygulama içindeki güç düğmesine dokunduğunuzda nişangah, diğer uygulamaların ve oyunların üzerinde pasif bir katman olarak belirecektir.", en: "Once you tap the power button in the app, the crosshair will appear as a passive layer over other apps and games." },
   },
   {
-    id: "other-app-data", category: "overlay",
-    question: { tr: "Crossio diğer uygulamaların verilerine erişir mi?", en: "Does Crossio access data from other apps?" },
-    directAnswer: { tr: "Hayır. Crossio diğer uygulamaların kodunu, belleğini, dosyalarını, verilerini veya ağ trafiğini okumaz ya da değiştirmez.", en: "No. Crossio does not read or modify another app's code, memory, files, data, or network traffic." },
-    detailedAnswer: { tr: "Uygulama otomatik nişan alma, otomatik dokunma, makro, girdi enjeksiyonu veya oyun otomasyonu sağlamaz.", en: "The app provides no auto-aim, auto-tap, macros, input injection, or game automation." },
+    id: "can-i-use-png", category: "import",
+    question: { tr: "Kendi PNG görselimi nişangah yapabilir miyim?", en: "Can I use my own PNG as a crosshair?" },
+    directAnswer: { tr: "Evet. Galerinizden şeffaf arka planlı bir PNG seçip ekrana sabitleyebilirsiniz.", en: "Yes. You can select a transparent PNG from your gallery and pin it to your screen." },
+    detailedAnswer: { tr: "Uygulama içerisindeki 'İçe Aktar' (Import) bölümünü kullanarak istediğiniz JPG veya PNG dosyasını nişangah olarak ayarlayabilirsiniz.", en: "By using the 'Import' section in the app, you can set any JPG or PNG file as your crosshair." },
+  },
+  {
+    id: "crosshair-disappears", category: "performance",
+    question: { tr: "Oyunu açınca nişangahım neden kayboluyor?", en: "Why does my crosshair disappear when I open a game?" },
+    directAnswer: { tr: "Android sistemleri (özellikle Xiaomi, Samsung) RAM ve pil tasarrufu sağlamak için arka planda çalışan katman servislerini bazen zorla durdurur.", en: "Android systems (especially Xiaomi, Samsung) sometimes forcefully stop background overlay services to save RAM and battery." },
+    detailedAnswer: { tr: "Bunu çözmek için cihazınızın Pil ve Uygulama ayarlarından Crossio için 'Pil optimizasyonu yok' (No restrictions) seçeneğini işaretlemelisiniz.", en: "To solve this, you must select 'No restrictions' or 'Don't optimize' for Crossio from your device's Battery and App settings." },
   },
   {
     id: "why-overlay-permission", category: "overlay",
-    question: { tr: "Android neden katman izni ister?", en: "Why does Android ask for overlay permission?" },
-    directAnswer: { tr: "Android, başka uygulamaların üzerinde görsel içerik gösterilmeden önce SYSTEM_ALERT_WINDOW iznini zorunlu kılar.", en: "Android requires SYSTEM_ALERT_WINDOW permission before visual content can be displayed above other apps." },
-    detailedAnswer: { tr: "Crossio sistem ayarını, açıklamayı okuyup Devam Et'i seçtiğinizde açar. Bu izin; rehber, mikrofon veya kamera erişimi vermez.", en: "Crossio opens the system setting after you read the disclosure and choose Continue. This permission does not grant contacts, microphone, or camera access." },
+    question: { tr: "Crossio neden katman izni ister?", en: "Why does Crossio need overlay permission?" },
+    directAnswer: { tr: "Android, oyunların veya diğer uygulamaların üzerine bir görsel (nişangah) çizebilmek için SYSTEM_ALERT_WINDOW iznini zorunlu kılar.", en: "Android requires the SYSTEM_ALERT_WINDOW permission in order to draw a visual graphic (crosshair) over games or other apps." },
+    detailedAnswer: { tr: "Bu izin sadece ekrana çizim yapmak için kullanılır; uygulama başka izinler (kişiler, kamera vb.) istemez ve verilerinize erişmez.", en: "This permission is solely used to draw on the screen; the app does not ask for other permissions (contacts, camera, etc.) and does not access your data." },
   },
   {
-    id: "third-party-rules", category: "compatibility",
-    question: { tr: "Üçüncü taraf uygulama ve oyun kuralları geçerli mi?", en: "Do third-party app and game rules still apply?" },
-    directAnswer: { tr: "Evet. Bazı oyunlar ve rekabetçi platformlar görsel katmanları kısıtlayabilir.", en: "Yes. Some games and competitive platforms may restrict visual overlays." },
-    detailedAnswer: { tr: "Kullandığınız hizmetin güncel kurallarını kontrol etmek sizin sorumluluğunuzdadır. Crossio hiçbir üçüncü taraf hizmetin katmana izin verdiğini veya yaptırım uygulanmayacağını garanti etmez.", en: "You are responsible for checking each service's current rules. Crossio does not guarantee that a third-party service permits overlays or that an account will not be restricted." },
+    id: "does-crossio-modify-games", category: "compatibility",
+    question: { tr: "Crossio oyun dosyalarını değiştirir mi?", en: "Does Crossio modify game files?" },
+    directAnswer: { tr: "Hayır. Crossio bağımsız bir görsel katman olarak çalışır ve hiçbir oyun dosyasına veya belleğine müdahale etmez.", en: "No. Crossio works as an independent visual layer and does not tamper with any game files or memory." },
+    detailedAnswer: { tr: "Ancak bazı oyunların hizmet şartları görsel katmanları kısıtlayabilir. Kullanıcılar oynadıkları oyunların kurallarına uymaktan sorumludur.", en: "However, some games' terms of service may restrict visual overlays. Users are responsible for complying with the rules of the games they play." },
   },
   {
-    id: "import-custom-image", category: "import",
-    question: { tr: "Kendi PNG görselimi ekleyebilir miyim?", en: "Can I add my own PNG image?" },
-    directAnswer: { tr: "Evet. Galerinizden şeffaf arka planlı bir PNG seçip görünümünü ayarlayabilirsiniz.", en: "Yes. Select a transparent PNG from your gallery and adjust its appearance." },
-    detailedAnswer: { tr: "Görsel uygulamanın yerel depolama alanında işlenir ve bu özellik kapsamında sunucularımıza yüklenmez. Tam yerel dosya yolu analitik hizmetlerine gönderilmez.", en: "The image is processed in local app storage and is not uploaded to our servers for this feature. Its full local path is not sent to analytics." },
+    id: "prevent-closing-overlay", category: "performance",
+    question: { tr: "Android'in katmanı kapatmasını nasıl engellerim?", en: "How do I prevent Android from closing the overlay?" },
+    directAnswer: { tr: "Uygulamayı Android'in Son Uygulamalar (Recent Apps) menüsünde kilitleyerek (asma kilit simgesi) ve pil optimizasyonunu devre dışı bırakarak engellenmesini önleyebilirsiniz.", en: "You can prevent it from closing by locking the app in Android's Recent Apps menu (padlock icon) and disabling battery optimization." },
+    detailedAnswer: { tr: "Ayrıca 'Otomatik Başlatma' (Auto-start) iznini vererek de sistemin arka planda servisi açık tutmasına yardımcı olabilirsiniz.", en: "Additionally, granting 'Auto-start' permission helps the system keep the service running in the background." },
   },
   {
-    id: "analytics-data", category: "general",
-    question: { tr: "Analitik kapsamında ne paylaşılır?", en: "What is shared for analytics?" },
-    directAnswer: { tr: "Genel özellik ve ekran etkileşimleri ile built_in, custom veya saved gibi anonim nişangah türleri ölçülebilir.", en: "General feature and screen interactions, plus anonymous crosshair types such as built_in, custom, or saved, may be measured." },
-    detailedAnswer: { tr: "Nişangah adı, tam nişangah tanımı ve yerel dosya yolu Firebase Analytics'e gönderilmez. Uygulama, RevenueCat hedeflemesi için kategorik kullanım segmentleri de işleyebilir.", en: "Crosshair names, full definitions, and local file paths are not sent to Firebase Analytics. The app may also process categorical usage segments for RevenueCat targeting." },
-  },
-  {
-    id: "battery-settings", category: "performance",
-    question: { tr: "Pil ayarlarını değiştirmek zorunlu mu?", en: "Must I change battery settings?" },
-    directAnswer: { tr: "Hayır. Pil optimizasyonu muafiyeti isteğe bağlıdır ve gerektiğinde Android sistem ayarlarından yönetilir.", en: "No. A battery optimization exemption is optional and is managed from Android system settings when needed." },
-    detailedAnswer: { tr: "Bazı üreticiler ön plan servislerini daha agresif sonlandırabilir. Uygulama katman başlatılırken muafiyet durumunu kontrol edebilir; davranış cihaz ve Android sürümüne göre değişir.", en: "Some manufacturers stop foreground services more aggressively. The app may check exemption status when the overlay starts; behavior varies by device and Android version." },
-  },
-  {
-    id: "notification-permission", category: "overlay",
-    question: { tr: "Bildirim izni neden kullanılır?", en: "Why is notification permission used?" },
-    directAnswer: { tr: "Bildirim, çalışan ön plan katman servisini görünür kılmak ve Durdur eylemini sunmak için kullanılır.", en: "The notification keeps the active foreground overlay service visible and provides a Stop action." },
-    detailedAnswer: { tr: "İzin verirseniz Firebase Cloud Messaging üzerinden uygulama bildirimleri de gönderilebilir; bildirimleri cihaz ayarlarından kapatabilirsiniz.", en: "If allowed, app notifications may also be sent through Firebase Cloud Messaging; you can disable them in device settings." },
-  },
-  {
-    id: "android-support", category: "compatibility",
-    question: { tr: "Hangi cihazlar desteklenir?", en: "Which devices are supported?" },
-    directAnswer: { tr: "Crossio desteklenen Android telefon ve tabletler için sunulur; iOS ve masaüstü sürümü yoktur.", en: "Crossio is available for supported Android phones and tablets; there is no iOS or desktop version." },
-    detailedAnswer: { tr: "Katman davranışı Android sürümüne, üretici kısıtlamalarına ve cihaz ayarlarına göre değişebilir; her cihazda aynı sonucu garanti etmiyoruz.", en: "Overlay behavior may vary by Android version, manufacturer restrictions, and device settings; identical behavior on every device is not guaranteed." },
+    id: "change-color-size", category: "general",
+    question: { tr: "Nişangah rengini ve boyutunu değiştirebilir miyim?", en: "Can I change the crosshair color and size?" },
+    directAnswer: { tr: "Evet. Editör üzerinden nişangahın boyutunu, rengini, kalınlığını, opaklığını ve merkez boşluğunu serbestçe değiştirebilirsiniz.", en: "Yes. You can freely change the size, color, thickness, opacity, and center gap of the crosshair via the editor." },
+    detailedAnswer: { tr: "Tüm değişiklikler anında kaydedilir ve katman açıkken eşzamanlı olarak ekranınızda güncellenir.", en: "All changes are saved instantly and update synchronously on your screen while the overlay is active." },
   },
 ];
 
 export const GUIDES_DATA: GuideArticle[] = [
   {
-    slug: "crosshair-tasarimi", readTime: "4 min read", publishedDate: "2026-09-05", category: "Visual Design",
-    title: { tr: "Okunaklı Bir Nişangah Nasıl Tasarlanır?", en: "How to Design a Readable Crosshair" },
-    description: { tr: "Boyut, kalınlık, boşluk ve opaklık ayarlarını farklı ekranlarda dengeli kullanın.", en: "Balance size, thickness, gap, and opacity across different displays." },
-    summary: { tr: "İyi bir görsel tasarım, farklı arka planlarda okunaklı kalırken ekranı gereksiz yere kaplamaz.", en: "A good visual design remains readable across backgrounds without covering more of the screen than needed." },
+    slug: "best-crosshair-color", readTime: "4 min read", publishedDate: "2026-09-24", category: "Visual Design",
+    title: { tr: "Mobil FPS Oyunlarında En İyi Crosshair Rengi Hangisi?", en: "What is the Best Crosshair Color for Mobile FPS Games?" },
+    description: { tr: "Mobil ekranlarda kaybolmayan yüksek kontrastlı crosshair renkleri. Gözünüzü yormayan ve nişan almayı kolaylaştıran renk ayarları.", en: "High-contrast crosshair colors that don't get lost on mobile screens. Color settings that ease aiming without straining your eyes." },
+    summary: { tr: "Doğru crosshair rengini seçmek, arka plan ne kadar karışık olursa olsun hedefinizi görmenizi sağlar. Parlak ve zıt renkler en iyi performansı verir.", en: "Choosing the right crosshair color ensures you can see your target no matter how cluttered the background is. Bright and contrasting colors perform best." },
     sections: [
-      { title: { tr: "Basit bir şekille başlayın", en: "Start with a simple shape" }, content: { tr: "Nokta, artı veya çember gibi sade bir tasarım seçin; sonra boyutu küçük adımlarla değiştirin.", en: "Choose a simple dot, cross, or circle, then adjust its size in small steps." }, bullets: { tr: ["Önizlemeyi farklı arka planlarda kontrol edin.", "Gereksiz parıltı ve kalınlıktan kaçının."], en: ["Check the preview on different backgrounds.", "Avoid unnecessary glow and thickness."] } },
-      { title: { tr: "Ayarları yerel profil olarak kaydedin", en: "Save settings as a local profile" }, content: { tr: "Beğendiğiniz görünümü kaydedip daha sonra yeniden düzenleyebilirsiniz.", en: "Save an appearance you like and edit it again later." } },
+      { 
+        title: { tr: "Yüksek Kontrast Neden Önemli?", en: "Why is High Contrast Important?" }, 
+        content: { tr: "Oyun haritaları genellikle kahverengi, gri (binalar) ve mavi (gökyüzü) tonlarındadır. Eğer beyaz veya siyah bir crosshair kullanırsanız, karanlık veya çok aydınlık noktalarda görünmez hale gelebilir.", en: "Game maps are generally in shades of brown, gray (buildings), and blue (sky). If you use a white or black crosshair, it can become invisible in dark or very bright spots." }, 
+        bullets: { tr: ["Neon Yeşil (Cyan) ve Pembe (Magenta) doğada en az bulunan renkler olduğu için FPS oyunlarında en çok tercih edilen renklerdir."], en: ["Neon Green (Cyan) and Pink (Magenta) are the most preferred colors in FPS games because they are rarely found in nature."] } 
+      },
+      {
+        title: { tr: "Siyah Dış Çizgi (Outline) Kullanımı", en: "Using a Black Outline" },
+        content: { tr: "Renginiz ne kadar parlak olursa olsun, Crossio'daki 'Outline' (Dış Çizgi) özelliğini aktif etmek, crosshair'in her türlü zeminde okunabilir kalmasını sağlar.", en: "No matter how bright your color is, activating the 'Outline' feature in Crossio ensures the crosshair remains readable on any background." },
+        tip: { tr: "Parlak yeşil bir crosshair ve ince bir siyah dış çizgi, mobil e-spor oyuncularının en çok kullandığı kombinasyondur.", en: "A bright green crosshair with a thin black outline is the most commonly used combination by mobile esports players." }
+      }
     ],
   },
   {
-    slug: "renk-ve-kontrast", readTime: "3 min read", publishedDate: "2026-09-05", category: "Accessibility",
-    title: { tr: "Renk ve Kontrastı Ekranınıza Göre Ayarlayın", en: "Adjust Color and Contrast for Your Display" },
-    description: { tr: "Nişangah rengini farklı parlaklık ve arka plan koşullarında önizleyin.", en: "Preview crosshair colors under different brightness and background conditions." },
-    summary: { tr: "Tek bir renk her ekranda aynı görünmez; önizleme alanı doğru seçimi yapmanıza yardımcı olur.", en: "One color does not look the same on every display; the preview helps you choose deliberately." },
+    slug: "crosshair-size-guide", readTime: "5 min read", publishedDate: "2026-09-24", category: "Optimization",
+    title: { tr: "Mobil Ekranlar İçin Crosshair Boyut Rehberi", en: "Crosshair Size Guide for Mobile Screens" },
+    description: { tr: "Telefon ve tablet ekranları için en ideal crosshair boyutlarını ve kalınlık ayarlarını keşfedin.", en: "Discover the most ideal crosshair sizes and thickness settings for phone and tablet screens." },
+    summary: { tr: "Büyük ekranlı bir bilgisayarda harika görünen bir crosshair, telefonda hedefi tamamen kapatabilir. Boyut ayarlarını cihazınıza göre optimize etmelisiniz.", en: "A crosshair that looks great on a large PC monitor can completely obscure the target on a phone. You must optimize size settings according to your device." },
     sections: [
-      { title: { tr: "Birden fazla arka plan deneyin", en: "Try multiple backgrounds" }, content: { tr: "Koyu, açık ve renkli önizlemeler arasında geçiş yaparak kenar çizgisi ve opaklık ayarlarını karşılaştırın.", en: "Switch between dark, light, and colorful previews to compare outline and opacity settings." } },
-      { title: { tr: "Erişilebilirliği gözetin", en: "Consider accessibility" }, content: { tr: "Renk körlüğü veya düşük görüş koşullarında yalnız renge güvenmeyin; şekil ve dış çizgiyi de ayarlayın.", en: "For color-vision differences or low visibility, do not rely on color alone; adjust shape and outline too." } },
+      { 
+        title: { tr: "Hedefi Kapatmayan Tasarımlar", en: "Designs That Don't Obscure the Target" }, 
+        content: { tr: "Mobil ekranlar küçük olduğundan, crosshair kalınlığını (Thickness) minimumda tutmalısınız. 1 veya 2 piksel kalınlık genellikle en iyi görüşü sağlar.", en: "Since mobile screens are small, you should keep the crosshair thickness to a minimum. A thickness of 1 or 2 pixels generally provides the best view." } 
+      },
+      {
+        title: { tr: "Merkez Boşluğu (Center Gap)", en: "Center Gap" },
+        content: { tr: "Özellikle artı (+) şeklindeki tasarımlarda 'Center Gap' değerini bir miktar artırmak, düşmanın kafasını tam ortaya almanızı kolaylaştırır.", en: "Especially in cross (+) designs, slightly increasing the 'Center Gap' value makes it easier to center the enemy's head." }
+      }
     ],
   },
   {
-    slug: "sorun-giderme-overlay-izinleri", readTime: "5 min read", publishedDate: "2026-09-05", category: "Android Help",
-    title: { tr: "Android Katman İzni ve Servis Kontrolleri", en: "Android Overlay Permission and Service Controls" },
-    description: { tr: "Katman iznini bilinçli yönetin, servisi başlatın ve bildirimden durdurun.", en: "Manage overlay permission deliberately, start the service, and stop it from the notification." },
-    summary: { tr: "Crossio ilgili izinleri, katmanı başlatmayı seçtiğinizde kontrol eder ve sistem ayarına yönlendirir.", en: "Crossio checks relevant permissions when you choose to start the layer and directs you to system settings." },
+    slug: "android-overlay-permission", readTime: "4 min read", publishedDate: "2026-09-24", category: "Android Help",
+    title: { tr: "Android 'Diğer Uygulamaların Üzerinde Göster' İzni Nedir?", en: "What is Android's 'Display Over Other Apps' Permission?" },
+    description: { tr: "SYSTEM_ALERT_WINDOW izninin neden gerekli olduğunu ve cihazınızda güvenli bir şekilde nasıl etkinleştirileceğini öğrenin.", en: "Learn why the SYSTEM_ALERT_WINDOW permission is necessary and how to safely enable it on your device." },
+    summary: { tr: "Crossio gibi görsel katman uygulamaları, ekrana bir grafik çizebilmek için Android sisteminin bu özel iznine ihtiyaç duyar.", en: "Visual overlay apps like Crossio require this special permission from the Android system in order to draw a graphic on the screen." },
     sections: [
-      { title: { tr: "Açıklamayı okuyun", en: "Read the disclosure" }, content: { tr: "İlk sabitlemede gösterilen açıklama katmanın davranışını ve sınırlarını anlatır. Devam Et veya İptal seçeneklerinden birini seçebilirsiniz.", en: "The first-pin disclosure explains the layer's behavior and limits. You can choose Continue or Cancel." } },
-      { title: { tr: "Android ayarından izin verin", en: "Grant permission in Android settings" }, content: { tr: "Devam Et'i seçerseniz Android'in Crossio için 'Diğer uygulamaların üzerinde göster' ayarını açın, sonra uygulamaya dönün.", en: "If you choose Continue, enable Android's 'Display over other apps' setting for Crossio, then return to the app." } },
-      { title: { tr: "Katmanı durdurun", en: "Stop the layer" }, content: { tr: "Etkin katmanı kalıcı bildirimdeki Durdur eylemiyle kapatabilirsiniz. Pil optimizasyonu muafiyeti isteğe bağlıdır.", en: "Stop the active layer with the Stop action in the persistent notification. A battery optimization exemption is optional." } },
+      { 
+        title: { tr: "İzin Ne İşe Yarar?", en: "What Does the Permission Do?" }, 
+        content: { tr: "Bu izin, uygulamanın (oyun oynarken veya video izlerken) ekranın en üst katmanında görünmesini sağlar. Crossio bu izni sadece ortada küçük bir crosshair çizmek için kullanır.", en: "This permission allows the app to appear on the top layer of the screen (while playing games or watching videos). Crossio uses this permission solely to draw a small crosshair in the center." } 
+      },
+      {
+        title: { tr: "Gizlilik ve Güvenlik", en: "Privacy and Security" },
+        content: { tr: "Bu izin, uygulamanın diğer uygulamaların içindeki mesajları veya şifreleri okuması anlamına gelmez. Crossio klavye girdilerine veya ekran kayıtlarına erişmez.", en: "This permission does not mean the app can read messages or passwords inside other apps. Crossio does not access keyboard inputs or screen recordings." }
+      }
     ],
   },
+  {
+    slug: "crosshair-keeps-disappearing", readTime: "6 min read", publishedDate: "2026-09-24", category: "Troubleshooting",
+    title: { tr: "Oyuna Girince Crosshair Neden Kapanıyor? (Çözüm)", en: "Why Does the Crosshair Keep Disappearing in Game? (Fix)" },
+    description: { tr: "Xiaomi, Samsung ve diğer Android cihazlarda arka planda kapanan overlay sorununu çözmek için pil optimizasyonu ayarları.", en: "Battery optimization settings to fix the overlay closing in the background on Xiaomi, Samsung, and other Android devices." },
+    summary: { tr: "Eğer Crossio'yu açıp bir oyuna girdiğinizde nişangah aniden kayboluyorsa, telefonunuzun 'Pil Tasarrufu' sistemi uygulamayı zorla kapatıyor demektir.", en: "If you open Crossio and enter a game only to have the crosshair suddenly disappear, your phone's 'Battery Saver' system is forcefully closing the app." },
+    sections: [
+      { 
+        title: { tr: "Xiaomi (MIUI / HyperOS) Çözümü", en: "Xiaomi (MIUI / HyperOS) Fix" }, 
+        content: { tr: "Ayarlar > Uygulamalar > Uygulamaları Yönet > Crossio yolunu izleyin. 'Otomatik Başlatma' (Auto-start) seçeneğini açın. Ardından 'Pil Tasarrufu' (Battery Saver) menüsüne girip 'Kısıtlama Yok' (No restrictions) seçeneğini işaretleyin.", en: "Go to Settings > Apps > Manage Apps > Crossio. Turn on 'Auto-start'. Then, go to the 'Battery Saver' menu and select 'No restrictions'." } 
+      },
+      {
+        title: { tr: "Samsung (One UI) Çözümü", en: "Samsung (One UI) Fix" },
+        content: { tr: "Ayarlar > Uygulamalar > Crossio yolunu izleyin. 'Pil' (Battery) menüsüne girip 'Kısıtlanmamış' (Unrestricted) seçeneğini işaretleyin.", en: "Go to Settings > Apps > Crossio. Enter the 'Battery' menu and select 'Unrestricted'." }
+      }
+    ],
+  }
 ];

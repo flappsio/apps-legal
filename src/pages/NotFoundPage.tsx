@@ -11,7 +11,7 @@ export const NotFoundPage: React.FC = () => {
   useEffect(() => {
     window.document.title = t("notFound.metaTitle");
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
-  }, [t]);
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground transition-colors duration-200">

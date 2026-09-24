@@ -12,6 +12,8 @@ export function Header() {
     { title: isTr ? "Nişangah editörü" : "Crosshair editor", description: isTr ? "Tasarla, özelleştir ve PNG olarak kaydet." : "Design, customize, and export as PNG.", href: "/crossio/editor", icon: Sliders },
     { title: t("common.gallery"), description: isTr ? "Nişangah tasarımlarını keşfet." : "Browse the crosshair collection.", href: "/crossio#gallery-section", icon: Sparkles },
     { title: t("common.howItWorks"), description: isTr ? "İlk nişangahını adım adım ayarla." : "Set up your first crosshair, step by step.", href: "/crossio/how-to-use", icon: BookOpen },
+    { title: isTr ? "Android Katmanı" : "Android Overlay", description: isTr ? "Root gerektirmeyen bağımsız nişangah katmanı." : "Independent overlay technology without root.", href: "/crossio/crosshair-overlay-android", icon: ShieldCheck },
+    { title: isTr ? "PNG İçeri Aktar" : "Import PNG", description: isTr ? "Kendi şeffaf görselini nişangah yap." : "Use your own transparent image.", href: "/crossio/custom-png-crosshair", icon: FileText },
   ];
   const resourceLinks: HeaderLink[] = [
     { title: t("common.guides"), description: isTr ? "İpuçları ve kullanım rehberleri." : "Tips and practical walkthroughs.", href: "/crossio/guides", icon: BookOpen },

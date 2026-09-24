@@ -28,9 +28,9 @@ export const CrosshairArchitectureCore: React.FC = () => {
       tag: "ZERO HOOKS",
       title: isTr ? "Oyun Belleğine Sıfır Müdahale" : "Zero Game File Injection",
       desc: isTr
-        ? "Oyun dosyalarını veya belleğini okumaz, modifiye etmez. Anti-cheat sistemlerini asla tetiklemez; tamamen bağımsız bir Android penceresidir."
-        : "Does not inspect, hook, or modify game memory or APK binaries. 100% ban-safe and compatible with all mobile FPS titles.",
-      spec: "STATUS: 100% BAN-SAFE",
+        ? "Oyun dosyalarını veya belleğini okumaz, modifiye etmez, kod enjekte etmez. Bağımsız bir Android sistem penceresidir."
+        : "Does not inspect, hook, or modify game memory or APK binaries. Operates as an independent visual overlay layer.",
+      spec: "STATUS: ZERO CODE INJECTION",
     },
     {
       icon: <Cpu className="w-5 h-5 text-cyan-400" />,

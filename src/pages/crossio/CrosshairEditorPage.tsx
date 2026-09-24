@@ -75,8 +75,38 @@ export default function CrosshairEditorPage() {
   const button = (label: string, icon: React.ReactNode, action: () => void, disabled = false) => <button type="button" title={label} aria-label={label} onClick={action} disabled={disabled}>{icon}</button>;
   const numeric = (key: string, label: string, value: number, min: number, max: number, step = 1, unit = "px") => <NumberField key={key} label={label} value={value} min={min} max={max} step={step} unit={unit} onChange={v => update({ [key]: v } as Partial<CrosshairLayer>)} />;
 
+  const webAppJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Crossio Crosshair Editor",
+    "alternateName": ["Crosshair Generator", "Crosshair Maker"],
+    "description": tx(
+      "Android cihazlar için özel şeffaf PNG nişangah (crosshair) tasarlama ve oluşturma aracı. Katmanlı yapı ile kendi nişangahınızı çizin.",
+      "Custom transparent PNG crosshair designer and generator for Android devices. Draw your own crosshair with a layered editor."
+    ),
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "WebBrowser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  };
+
   return <div className="crosshair-editor">
-    <SEOHead title={tx("Crossio — Crosshair Editörü", "Crossio — Crosshair Editor")} description={tx("Katmanlarla crosshair tasarlayın ve şeffaf PNG indirin.", "Design a layered crosshair and download a transparent PNG.")} canonicalPath="/crossio/editor" />
+    <SEOHead 
+      title={tx("Crossio — Crosshair Editörü", "Crossio — Crosshair Editor")} 
+      description={tx("Katmanlarla crosshair tasarlayın ve şeffaf PNG indirin.", "Design a layered crosshair and download a transparent PNG.")} 
+      canonicalPath="/crossio/editor"
+      jsonLd={webAppJsonLd}
+      keywords={[
+        "crosshair generator",
+        "crosshair maker",
+        "custom crosshair maker",
+        "transparent crosshair png maker",
+        "android crosshair creator"
+      ]}
+    />
     <header className="editor-header">
       <Link to="/crossio" className="editor-brand"><ArrowLeft size={16} /><Crosshair size={23} /><strong>Crossio</strong><span>{tx("Editör", "Editor")}</span></Link>
       <div className="editor-header-actions"><LanguageToggle />{button(tx("Temayı değiştir", "Toggle theme"), <SunMoon size={18} />, toggleTheme)}</div>

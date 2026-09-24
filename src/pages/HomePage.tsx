@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/context/LanguageContext";
+import { SEOHead } from "@/components/seo/SEOHead";
 import { APPS_DATA } from "@/data/apps";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -27,9 +28,21 @@ export const HomePage: React.FC = () => {
   const { t } = useLanguage();
 
   useEffect(() => {
-    window.document.title = t("home.metaTitle");
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
-  }, [t]);
+  }, []);
+
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "flappsio",
+    "url": "https://flappsio.com",
+    "description": "Mobile Apps Built for Simplicity",
+    "publisher": {
+      "@type": "Organization",
+      "name": "flappsio",
+      "url": "https://flappsio.com"
+    }
+  };
 
   const flagshipApp = APPS_DATA[0];
 
@@ -63,7 +76,7 @@ export const HomePage: React.FC = () => {
       desc: t("home.legalDir.permissions.desc"),
       category: t("home.legalDir.permissions.category"),
       status: t("home.legalDir.permissions.status"),
-      link: "/crossio/guides/sorun-giderme-overlay-izinleri",
+      link: "/crossio/guides/android-overlay-permission",
       icon: <Smartphone className="w-4 h-4 text-primary" />,
     },
     {
@@ -86,6 +99,13 @@ export const HomePage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-primary/20 selection:text-primary">
+      <SEOHead
+        title={t("home.metaTitle")}
+        description="Discover mobile apps built by flappsio with a focus on simplicity, privacy, performance and useful everyday experiences."
+        canonicalPath="/"
+        jsonLd={websiteJsonLd}
+        keywords={["flappsio", "mobile apps", "android apps", "crossio", "flappsio apps"]}
+      />
       {/* 1. ARCHITECTURAL HERO & STUDIO MANIFESTO */}
       <section className="relative overflow-hidden pt-12 pb-14 sm:pt-20 sm:pb-20 border-b border-border/40">
         {/* Subtle grid pattern background */}

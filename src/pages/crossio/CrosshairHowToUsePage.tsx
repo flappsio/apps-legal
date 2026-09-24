@@ -220,7 +220,7 @@ export const CrosshairHowToUsePage: React.FC = () => {
               size="sm"
               className="text-xs rounded-xl border-border/80 gap-1.5"
             >
-              <Link to="/crossio/guides/sorun-giderme-overlay-izinleri">
+              <Link to="/crossio/guides/android-overlay-permission">
                 <span>{t("howToUsePage.oemBtn")}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>

@@ -60,6 +60,16 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/crossio/crosshair-overlay-android" className="hover:text-primary transition-colors">
+                  {t("overlayPage.navTitle")}
+                </Link>
+              </li>
+              <li>
+                <Link to="/crossio/custom-png-crosshair" className="hover:text-primary transition-colors">
+                  {t("pngPage.navTitle")}
+                </Link>
+              </li>
+              <li>
                 <Link to="/crossio/how-to-use" className="hover:text-primary transition-colors">
                   {t("common.howItWorks")}
                 </Link>
