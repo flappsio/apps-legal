@@ -15,10 +15,10 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
   children,
   className = "",
   delay = 0,
-  duration = 700,
+  duration = 500,
   direction = "up",
-  distance = 28,
-  threshold = 0.12,
+  distance = 16,
+  threshold = 0.05,
   once = true,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -54,7 +54,7 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
       },
       {
         threshold,
-        rootMargin: "0px 0px -40px 0px",
+        rootMargin: "0px 0px -20px 0px",
       }
     );
 
@@ -87,10 +87,9 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
       ref={elementRef}
       className={className}
       style={{
-        opacity: isVisible ? 1 : 0,
         transform: getTransform(),
-        transition: `opacity ${duration}ms cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, transform ${duration}ms cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
-        willChange: isVisible ? "auto" : "opacity, transform",
+        transition: `transform ${duration}ms cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
+        willChange: isVisible ? "auto" : "transform",
       }}
     >
       {children}

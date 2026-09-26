@@ -2,7 +2,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { createProject, CrosshairProject, EditorStorage, parseStorage, STORAGE_KEY, uid } from "@/lib/crosshairEditor";
 
 export function useEditorProject() {
-  const [project, setProject] = useState<CrosshairProject>(() => createProject());
+  const [project, setProjectRaw] = useState<CrosshairProject>(() => createProject());
+  const [history, setHistory] = useState<CrosshairProject[]>([]);
+  const [historyIndex, setHistoryIndex] = useState(-1);
   const [saved, setSaved] = useState<CrosshairProject[]>([]);
   const [ready, setReady] = useState(false);
   const [status, setStatus] = useState<"loading" | "saved" | "pending" | "error">("loading");
@@ -16,9 +18,16 @@ export function useEditorProject() {
       if (raw) {
         const data = parseStorage(raw);
         latest.current = data;
-        setProject(data.draft);
+        setProjectRaw(data.draft);
+        setHistory([data.draft]);
+        setHistoryIndex(0);
         setSaved(data.saved);
         lastWritten.current = JSON.stringify(data);
+      } else {
+        const initial = createProject();
+        setProjectRaw(initial);
+        setHistory([initial]);
+        setHistoryIndex(0);
       }
       setStatus("saved");
     } catch { blocked.current = true; setStatus("error"); }
@@ -55,6 +64,46 @@ export function useEditorProject() {
     return () => { flush(); window.removeEventListener("pagehide", flush); document.removeEventListener("visibilitychange", visibility); };
   }, [write]);
 
+  const setProject = useCallback((action: CrosshairProject | ((prev: CrosshairProject) => CrosshairProject), options?: { historyCommit?: boolean }) => {
+    setProjectRaw(prev => {
+      const next = typeof action === 'function' ? action(prev) : action;
+      if (JSON.stringify(next) !== JSON.stringify(prev)) {
+        if (options?.historyCommit === false) {
+           setHistory(h => {
+             const newH = [...h];
+             if (historyIndex >= 0) newH[historyIndex] = next;
+             return newH;
+           });
+        } else {
+           setHistory(h => {
+             const newHistory = h.slice(0, historyIndex + 1);
+             newHistory.push(next);
+             if (newHistory.length > 50) newHistory.shift();
+             return newHistory;
+           });
+           setHistoryIndex(prevIdx => Math.min(prevIdx + 1, 50));
+        }
+      }
+      return next;
+    });
+  }, [historyIndex]);
+
+  const undo = useCallback(() => {
+    if (historyIndex > 0) {
+      const nextIndex = historyIndex - 1;
+      setHistoryIndex(nextIndex);
+      setProjectRaw(history[nextIndex]);
+    }
+  }, [history, historyIndex]);
+
+  const redo = useCallback(() => {
+    if (historyIndex < history.length - 1) {
+      const nextIndex = historyIndex + 1;
+      setHistoryIndex(nextIndex);
+      setProjectRaw(history[nextIndex]);
+    }
+  }, [history, historyIndex]);
+
   const replace = (next: CrosshairProject) => {
     if (blocked.current) return false;
     // Every replacement preserves an independent snapshot of the previous draft.
@@ -63,7 +112,9 @@ export function useEditorProject() {
     const data: EditorStorage = { version: 1, draft: next, saved: nextSaved };
     if (!write(data)) return false;
     latest.current = data;
-    setProject(next);
+    setProjectRaw(next);
+    setHistory([next]);
+    setHistoryIndex(0);
     setSaved(nextSaved);
     return true;
   };
@@ -80,5 +131,8 @@ export function useEditorProject() {
     setSaved(next);
     return true;
   };
-  return { project, setProject, saved, ready, status, replace, saveNamed, deleteSaved };
+  return { 
+    project, setProject, saved, ready, status, replace, saveNamed, deleteSaved,
+    undo, redo, canUndo: historyIndex > 0, canRedo: historyIndex < history.length - 1
+  };
 }

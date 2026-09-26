@@ -15,14 +15,28 @@ interface LayerBase {
   opacity: number;
   outlineColor: string;
   outlineWidth: number;
+  hasShadow: boolean;
+  shadowColor: string;
+  shadowBlur: number;
+  hasNeon: boolean;
+  neonColor: string;
+  neonBlur: number;
+  gap: number;
+  groupId?: string;
 }
 export type CrosshairLayer = LayerBase & (
   | { type: "line"; length: number; thickness: number; cap: "butt" | "round" }
   | { type: "dot"; radius: number }
   | { type: "ring"; radius: number; thickness: number }
   | { type: "rectangle"; width: number; height: number; thickness: number }
+  | { type: "triangle"; radius: number; thickness: number }
+  | { type: "star"; radius: number; points: number; innerRadius: number; thickness: number }
+  | { type: "brackets"; width: number; height: number; thickness: number; cornerLength: number }
+  | { type: "diamond"; size: number; thickness: number }
+  | { type: "cross"; length: number; thickness: number; gap: number; cap: "butt" | "round" }
+  | { type: "t"; length: number; thickness: number; gap: number; cap: "butt" | "round" }
 );
-export type ElementType = CrosshairLayer["type"] | "cross" | "t" | "diamond";
+export type ElementType = CrosshairLayer["type"];
 export interface CrosshairProject {
   version: 1;
   id: string;
@@ -37,13 +51,25 @@ export const uid = () => globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${M
 export const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
 export const isColor = (value: string) => /^#[\da-f]{6}$/i.test(value);
 
-export function createLayer(type: CrosshairLayer["type"], name: string, color = "#69F0AE"): CrosshairLayer {
-  const base: LayerBase = { id: uid(), name, visible: true, locked: false, x: 0, y: 0, rotation: 0, color, opacity: 1, outlineColor: "#000000", outlineWidth: 1 };
+export function createLayer(type: CrosshairLayer["type"], name: string, color = "#10b981"): CrosshairLayer {
+  const base: LayerBase = { 
+    id: uid(), name, visible: true, locked: false, x: 0, y: 0, rotation: 0, 
+    color, opacity: 1, outlineColor: "#000000", outlineWidth: 1,
+    hasShadow: false, shadowColor: "#000000", shadowBlur: 4,
+    hasNeon: false, neonColor: color, neonBlur: 8,
+    gap: 10
+  };
   switch (type) {
-    case "line": return { ...base, type, x: 14, length: 16, thickness: 2, cap: "butt" };
+    case "line": return { ...base, type, x: 0, length: 16, thickness: 2, cap: "butt" };
     case "dot": return { ...base, type, radius: 3 };
     case "ring": return { ...base, type, radius: 20, thickness: 2 };
     case "rectangle": return { ...base, type, width: 32, height: 32, thickness: 2 };
+    case "triangle": return { ...base, type, radius: 16, thickness: 2 };
+    case "star": return { ...base, type, radius: 20, points: 5, innerRadius: 8, thickness: 2 };
+    case "brackets": return { ...base, type, width: 40, height: 40, thickness: 2, cornerLength: 10 };
+    case "diamond": return { ...base, type, size: 20, thickness: 2 };
+    case "cross": return { ...base, type, length: 14, thickness: 2, gap: 6, cap: "butt" };
+    case "t": return { ...base, type, length: 14, thickness: 2, gap: 6, cap: "butt" };
   }
 }
 
@@ -58,17 +84,6 @@ export function symmetryCopies(layer: CrosshairLayer, count: 2 | 4): CrosshairLa
 }
 
 export function createElements(type: ElementType, name: string, color?: string): CrosshairLayer[] {
-  if (type === "cross" || type === "t") {
-    const line = createLayer("line", name, color);
-    const layers = [line, ...symmetryCopies(line, 4)];
-    return type === "t" ? layers.filter((_, index) => index !== 3) : layers;
-  }
-  if (type === "diamond") {
-    return [0, 90, 180, 270].map((angle, index) => {
-      const radians = angle * Math.PI / 180;
-      return { ...createLayer("line", `${name} ${index + 1}`, color), x: 12 * Math.cos(radians) - 12 * Math.sin(radians), y: 12 * Math.sin(radians) + 12 * Math.cos(radians), rotation: angle - 45, length: Math.sqrt(1152) } as CrosshairLayer;
-    });
-  }
   return [createLayer(type, name, color)];
 }
 
@@ -87,11 +102,36 @@ export function reorderLayer(project: CrosshairProject, id: string, direction: -
   [layers[index], layers[next]] = [layers[next], layers[index]];
   return { ...project, layers };
 }
+export function moveLayerTo(project: CrosshairProject, id: string, target: "front" | "back"): CrosshairProject {
+  const index = project.layers.findIndex(layer => layer.id === id);
+  if (index < 0 || project.layers[index].locked) return project;
+  const layers = [...project.layers];
+  const [layer] = layers.splice(index, 1);
+  if (target === "front") layers.push(layer);
+  else layers.unshift(layer);
+  return { ...project, layers };
+}
 export function duplicateLayer(project: CrosshairProject, id: string): CrosshairProject {
   const index = project.layers.findIndex(layer => layer.id === id);
   if (index < 0 || project.layers[index].locked || project.layers.length >= MAX_LAYERS) return project;
   const layers = [...project.layers];
   layers.splice(index + 1, 0, { ...layers[index], id: uid(), name: `${layers[index].name} +` });
+  return { ...project, layers };
+}
+
+export function groupLayers(project: CrosshairProject, ids: string[]): CrosshairProject {
+  if (ids.length < 2) return project;
+  const newGroupId = uid();
+  const layers = project.layers.map(layer => ids.includes(layer.id) ? { ...layer, groupId: newGroupId } : layer);
+  return { ...project, layers };
+}
+
+export function ungroupLayers(project: CrosshairProject, ids: string[]): CrosshairProject {
+  const targetGroupIds = new Set(
+    project.layers.filter(l => ids.includes(l.id) && l.groupId).map(l => l.groupId!)
+  );
+  if (targetGroupIds.size === 0) return project;
+  const layers = project.layers.map(layer => layer.groupId && targetGroupIds.has(layer.groupId) ? { ...layer, groupId: undefined } : layer);
   return { ...project, layers };
 }
 
@@ -122,7 +162,20 @@ export function parseProject(input: unknown): CrosshairProject {
     const id = str(layer.id, 100);
     if (ids.has(id)) throw new Error("Duplicate layer");
     ids.add(id);
-    const base: LayerBase = { id, name: str(layer.name), visible: bool(layer.visible), locked: bool(layer.locked), x: num(layer.x, -128, 128), y: num(layer.y, -128, 128), rotation: num(layer.rotation, -360, 360), color: color(layer.color), opacity: num(layer.opacity, 0, 1), outlineColor: color(layer.outlineColor), outlineWidth: num(layer.outlineWidth, 0, 16) };
+    const base: LayerBase = { 
+      id, name: str(layer.name), visible: bool(layer.visible), locked: bool(layer.locked), 
+      x: num(layer.x, -128, 128), y: num(layer.y, -128, 128), rotation: num(layer.rotation, -360, 360), 
+      color: color(layer.color), opacity: num(layer.opacity, 0, 1), 
+      outlineColor: color(layer.outlineColor), outlineWidth: num(layer.outlineWidth, 0, 16),
+      hasShadow: typeof layer.hasShadow === 'boolean' ? layer.hasShadow : false,
+      shadowColor: typeof layer.shadowColor === 'string' && isColor(layer.shadowColor) ? layer.shadowColor : "#000000",
+      shadowBlur: typeof layer.shadowBlur === 'number' ? num(layer.shadowBlur, 0, 64) : 4,
+      hasNeon: typeof layer.hasNeon === 'boolean' ? layer.hasNeon : false,
+      neonColor: typeof layer.neonColor === 'string' && isColor(layer.neonColor) ? layer.neonColor : (typeof layer.color === 'string' && isColor(layer.color) ? layer.color : "#10b981"),
+      neonBlur: typeof layer.neonBlur === 'number' ? num(layer.neonBlur, 0, 64) : 8,
+      gap: typeof layer.gap === 'number' ? num(layer.gap, 0, 128) : 10,
+      groupId: typeof layer.groupId === 'string' ? str(layer.groupId, 100) : undefined,
+    };
     switch (layer.type) {
       case "line": {
         if (layer.cap !== "butt" && layer.cap !== "round") throw new Error("Invalid cap");
@@ -131,6 +184,18 @@ export function parseProject(input: unknown): CrosshairProject {
       case "dot": return { ...base, type: layer.type, radius: num(layer.radius, 0.5, 128) };
       case "ring": return { ...base, type: layer.type, radius: num(layer.radius, 0.5, 128), thickness: num(layer.thickness, 0.5, 64) };
       case "rectangle": return { ...base, type: layer.type, width: num(layer.width, 1, 256), height: num(layer.height, 1, 256), thickness: num(layer.thickness, 0.5, 64) };
+      case "triangle": return { ...base, type: layer.type, radius: num(layer.radius, 1, 128), thickness: num(layer.thickness, 0.5, 64) };
+      case "star": return { ...base, type: layer.type, radius: num(layer.radius, 1, 128), points: num(layer.points, 3, 12), innerRadius: num(layer.innerRadius, 1, 128), thickness: num(layer.thickness, 0.5, 64) };
+      case "brackets": return { ...base, type: layer.type, width: num(layer.width, 1, 256), height: num(layer.height, 1, 256), thickness: num(layer.thickness, 0.5, 64), cornerLength: num(layer.cornerLength, 1, 128) };
+      case "diamond": return { ...base, type: layer.type, size: num(layer.size, 1, 128), thickness: num(layer.thickness, 0.5, 64) };
+      case "cross": {
+        if (layer.cap !== "butt" && layer.cap !== "round") throw new Error("Invalid cap");
+        return { ...base, type: layer.type, length: num(layer.length, 1, 256), thickness: num(layer.thickness, 0.5, 64), gap: num(layer.gap, 0, 128), cap: layer.cap };
+      }
+      case "t": {
+        if (layer.cap !== "butt" && layer.cap !== "round") throw new Error("Invalid cap");
+        return { ...base, type: layer.type, length: num(layer.length, 1, 256), thickness: num(layer.thickness, 0.5, 64), gap: num(layer.gap, 0, 128), cap: layer.cap };
+      }
       default: throw new Error("Invalid layer type");
     }
   });
@@ -144,21 +209,130 @@ export function parseStorage(raw: string): EditorStorage {
 }
 
 export function layerBounds(layer: CrosshairLayer) {
-  const padding = layer.outlineWidth + ("thickness" in layer ? layer.thickness / 2 : 0);
-  const width = layer.type === "line" ? layer.length : layer.type === "rectangle" ? layer.width : layer.radius * 2;
-  const height = layer.type === "line" ? 0 : layer.type === "rectangle" ? layer.height : layer.radius * 2;
-  return { x: -width / 2 - padding, y: -height / 2 - padding, width: width + padding * 2, height: height + padding * 2 };
+  const padding = layer.outlineWidth + ("thickness" in layer ? layer.thickness / 2 : 0) + 4;
+  let width = 0;
+  let height = 0;
+
+  switch (layer.type) {
+    case "line":
+      width = layer.length;
+      height = Math.max(layer.thickness, 8);
+      break;
+    case "rectangle":
+    case "brackets":
+      width = layer.width;
+      height = layer.height;
+      break;
+    case "dot":
+    case "ring":
+    case "triangle":
+    case "star":
+      width = layer.radius * 2;
+      height = layer.radius * 2;
+      break;
+    case "diamond":
+      width = layer.size * 2;
+      height = layer.size * 2;
+      break;
+    case "cross":
+    case "t": {
+      const span = (layer.gap + layer.length) * 2;
+      width = span;
+      height = span;
+      break;
+    }
+  }
+
+  return { 
+    x: -width / 2 - padding, 
+    y: -height / 2 - padding, 
+    width: Math.max(16, width + padding * 2), 
+    height: Math.max(16, height + padding * 2) 
+  };
 }
 
 export function layerSvg(layer: CrosshairLayer): string {
   const shape = (color: string, extra = 0) => {
     if (layer.type === "dot") return `<circle r="${layer.radius + extra}" fill="${color}"/>`;
+    
     const stroke = `fill="none" stroke="${color}" stroke-width="${layer.thickness + extra * 2}" stroke-linejoin="round"`;
+    
     if (layer.type === "line") return `<path d="M ${-layer.length / 2} 0 H ${layer.length / 2}" ${stroke} stroke-linecap="${layer.cap}"/>`;
     if (layer.type === "ring") return `<circle r="${layer.radius}" ${stroke}/>`;
-    return `<rect x="${-layer.width / 2}" y="${-layer.height / 2}" width="${layer.width}" height="${layer.height}" ${stroke}/>`;
+    if (layer.type === "rectangle") return `<rect x="${-layer.width / 2}" y="${-layer.height / 2}" width="${layer.width}" height="${layer.height}" ${stroke}/>`;
+    
+    if (layer.type === "triangle") {
+      const h = layer.radius * Math.sqrt(3) / 2;
+      return `<polygon points="0,${-layer.radius} ${h},${layer.radius/2} ${-h},${layer.radius/2}" ${stroke}/>`;
+    }
+    
+    if (layer.type === "star") {
+      let path = "M";
+      for (let i = 0; i < layer.points * 2; i++) {
+        const r = i % 2 === 0 ? layer.radius : layer.innerRadius;
+        const angle = (i * Math.PI) / layer.points - Math.PI / 2;
+        path += ` ${r * Math.cos(angle)},${r * Math.sin(angle)}`;
+      }
+      path += " Z";
+      return `<path d="${path}" ${stroke}/>`;
+    }
+    
+    if (layer.type === "brackets") {
+      const w = layer.width / 2;
+      const h = layer.height / 2;
+      const c = layer.cornerLength;
+      return `
+        <path d="M ${-w+c} ${-h} H ${-w} V ${-h+c}" ${stroke}/>
+        <path d="M ${w-c} ${-h} H ${w} V ${-h+c}" ${stroke}/>
+        <path d="M ${-w+c} ${h} H ${-w} V ${h-c}" ${stroke}/>
+        <path d="M ${w-c} ${h} H ${w} V ${h-c}" ${stroke}/>
+      `;
+    }
+
+    if (layer.type === "diamond") {
+      const s = layer.size;
+      return `<polygon points="0,${-s} ${s},0 0,${s} ${-s},0" ${stroke}/>`;
+    }
+
+    if (layer.type === "cross") {
+      const g = layer.gap;
+      const l = layer.length;
+      return `
+        <path d="M 0 ${-g} V ${-g - l}" ${stroke} stroke-linecap="${layer.cap}"/>
+        <path d="M 0 ${g} V ${g + l}" ${stroke} stroke-linecap="${layer.cap}"/>
+        <path d="M ${-g} 0 H ${-g - l}" ${stroke} stroke-linecap="${layer.cap}"/>
+        <path d="M ${g} 0 H ${g + l}" ${stroke} stroke-linecap="${layer.cap}"/>
+      `;
+    }
+
+    if (layer.type === "t") {
+      const g = layer.gap;
+      const l = layer.length;
+      return `
+        <path d="M 0 ${g} V ${g + l}" ${stroke} stroke-linecap="${layer.cap}"/>
+        <path d="M ${-g} 0 H ${-g - l}" ${stroke} stroke-linecap="${layer.cap}"/>
+        <path d="M ${g} 0 H ${g + l}" ${stroke} stroke-linecap="${layer.cap}"/>
+      `;
+    }
+    
+    return "";
   };
-  return `<g opacity="${layer.opacity}">${layer.outlineWidth ? shape(layer.outlineColor, layer.outlineWidth) : ""}${shape(layer.color)}</g>`;
+
+  const filterId = `glow_${layer.id}`;
+  const filter = (layer.hasNeon || layer.hasShadow) ? `
+    <filter id="${filterId}" x="-50%" y="-50%" width="200%" height="200%">
+      ${layer.hasShadow ? `<feDropShadow dx="0" dy="0" stdDeviation="${layer.shadowBlur/2}" flood-color="${layer.shadowColor}" />` : ''}
+      ${layer.hasNeon ? `<feDropShadow dx="0" dy="0" stdDeviation="${layer.neonBlur/2}" flood-color="${layer.neonColor}" />` : ''}
+    </filter>
+  ` : '';
+
+  return `
+    ${filter ? `<defs>${filter}</defs>` : ''}
+    <g opacity="${layer.opacity}" ${filter ? `filter="url(#${filterId})"` : ''}>
+      ${layer.outlineWidth ? shape(layer.outlineColor, layer.outlineWidth) : ""}
+      ${shape(layer.color)}
+    </g>
+  `;
 }
 
 export function projectSvg(project: CrosshairProject): string {
