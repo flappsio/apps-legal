@@ -44,7 +44,7 @@ export const CrosshairGuideDetailPage: React.FC = () => {
       "name": "flappsio",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://flappsio.com/assets/images/logo.png"
+        "url": "https://flappsio.com/assets/images/flappsio_black.png"
       }
     },
     "mainEntityOfPage": {

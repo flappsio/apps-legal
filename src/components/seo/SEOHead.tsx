@@ -24,7 +24,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
   description,
   canonicalPath,
   ogType = "website",
-  ogImage = "/assets/images/logo.png",
+  ogImage = "/assets/images/flappsio_black.png",
   keywords = [],
   breadcrumbs = [],
   jsonLd,
@@ -74,7 +74,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     }
     setMeta("name", "robots", "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1");
     setMeta("name", "author", "flappsio");
-    setMeta("name", "application-name", "Crosshair");
+    setMeta("name", "application-name", "flappsio");
 
     // GEO / AEO & AI Engine Hints
     setMeta("name", "rating", "General");
@@ -87,8 +87,8 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     setMeta("property", "og:type", ogType);
     setMeta("property", "og:url", fullUrl);
     setMeta("property", "og:image", fullImageUrl);
-    setMeta("property", "og:image:alt", "Crossio: Custom Crosshair Android App");
-    setMeta("property", "og:site_name", "Crosshair | flappsio");
+    setMeta("property", "og:image:alt", "flappsio");
+    setMeta("property", "og:site_name", "flappsio");
     setMeta("property", "og:locale", language === "tr" ? "tr_TR" : "en_US");
     setMeta("property", "og:locale:alternate", language === "tr" ? "en_US" : "tr_TR");
 
@@ -113,7 +113,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
         "name": "flappsio",
         "url": BASE_URL,
         "description": "flappsio develops Crossio, an Android app for creating and displaying customizable visual crosshair overlays.",
-        "logo": `${BASE_URL}/assets/images/logo.png`,
+        "logo": `${BASE_URL}/assets/images/flappsio_black.png`,
         "sameAs": [
           "https://play.google.com/store/apps/details?id=com.hasan.apps.crosshair"
         ],
